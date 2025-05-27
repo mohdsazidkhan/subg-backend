@@ -178,7 +178,9 @@ io.on('connection', (socket) => {
     console.log('Client disconnected');
   });
 });
-
+app.get('/', (req, res) => {
+  res.send('🚀 API is Running...');
+});
 const PORT = process.env.PORT || 5000;
 
 mongoose.connect(process.env.MONGO_URI)
