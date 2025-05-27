@@ -10,10 +10,11 @@ const liveQuizSchema = new mongoose.Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     score: { type: Number, default: 0 },
     coinsEarned: { type: Number, default: 0 },
-    currentQuestionIndex: { type: Number, default: 0 }, // individual progress (optional)
+    currentQuestionIndex: { type: Number, default: 0 },
+    completed: { type: Boolean, default: false }, // ✅ NEW
     answers: [{ questionId: mongoose.Schema.Types.ObjectId, answer: String }]
   }]
-}, { timestamps: true });
 
+}, { timestamps: true });
 
 module.exports = mongoose.model('LiveQuiz', liveQuizSchema);

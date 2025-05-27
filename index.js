@@ -10,6 +10,7 @@ const studentRoutes = require('./routes/student');
 const liveQuizRoutes = require('./routes/liveQuiz');
 const LiveQuiz = require('./models/LiveQuiz');
 const Question = require('./models/Question');
+const QuizAttempt = require('./models/QuizAttempt');
 
 dotenv.config();
 
@@ -51,97 +52,115 @@ io.on('connection', (socket) => {
     console.error('Socket error:', err);
   });
 
-  // ✅ Join room and send first question
+  // ✅ Join room and send participant-specific first question
   socket.on('joinRoom', async ({ quizId, userId }) => {
     try {
+      const attempt = await QuizAttempt.findOne({ student: userId, quiz: quizId });
+      if (attempt) {
+        return socket.emit('alreadyAttempted', { message: 'You already attempted this quiz.' });
+      }
       socket.join(quizId);
       console.log(`User ${userId} joined room ${quizId}`);
 
-      const quiz = await LiveQuiz.find({quiz: quizId}).populate('quiz');
-      if (!quiz) return socket.emit('error', { message: 'Live quiz not found' });
-      //console.log(quiz[0]?.quiz,'quiz')
-      const questions = await Question.find({ quiz: quiz[0]?.quiz });
-      const index = quiz.currentQuestionIndex || 0;
-      const question = questions[index];
+      const liveQuizArr = await LiveQuiz.find({ quiz: quizId }).populate('quiz');
+      const liveQuiz = liveQuizArr[0];
+      if (!liveQuiz) return socket.emit('error', { message: 'Live quiz not found' });
+
+      // Check if participant already exists
+      let participant = liveQuiz.participants.find(p => p.user.toString() === userId);
+      if (!participant) {
+        participant = {
+          user: userId,
+          score: 0,
+          coinsEarned: 0,
+          answers: [],
+          currentQuestionIndex: 0
+        };
+        liveQuiz.participants.push(participant);
+        await liveQuiz.save();
+      }
+
+      const questions = await Question.find({ quiz: liveQuiz.quiz._id });
+      const question = questions[participant.currentQuestionIndex || 0];
 
       if (question) {
-        io.to(quizId).emit('question', { question });
+        socket.emit('question', { question });
       } else {
-        io.to(quizId).emit('quizEnd', { message: 'No questions available' });
+        socket.emit('quizEnd', { message: 'No questions available' });
       }
+
     } catch (err) {
       console.error('Error in joinRoom:', err);
       socket.emit('error', { message: 'Error joining room' });
     }
   });
 
-  // ✅ Submit answer and update leaderboard
+  // ✅ Handle answer submission per participant
   socket.on('submitAnswer', async ({ quizId, userId, questionId, answer }) => {
-    try {
-      const liveQuizArr = await LiveQuiz.find({ quiz: quizId }).populate('quiz');
-      const liveQuiz = liveQuizArr[0];
-      if (!liveQuiz) return socket.emit('error', { message: 'Live quiz not found' });
+  try {
+    const liveQuizArr = await LiveQuiz.find({ quiz: quizId }).populate('quiz');
+    const liveQuiz = liveQuizArr[0];
+    if (!liveQuiz) return socket.emit('error', { message: 'Live quiz not found' });
 
-      const question = await mongoose.model('Question').findById(questionId);
-      if (!question) return;
+    const question = await mongoose.model('Question').findById(questionId);
+    if (!question) return;
 
-      const isCorrect = question.options[question.correctAnswerIndex] === answer;
+    const isCorrect = question.options[question.correctAnswerIndex] === answer;
 
-      // Find participant index
-      let participantIndex = liveQuiz.participants.findIndex(
-        (p) => p.user.toString() === userId
-      );
+    // Get participant index
+    const participantIndex = liveQuiz.participants.findIndex(p => p.user.toString() === userId);
+    if (participantIndex === -1) return socket.emit('error', { message: 'Participant not found' });
 
-      if (participantIndex === -1) {
-        // New participant, start at question 0
-        liveQuiz.participants.push({
-          user: userId,
-          score: isCorrect ? 1 : 0,
-          coinsEarned: isCorrect ? 10 : 0,
-          currentQuestionIndex: 0, // initialize here
-          answers: [{ questionId, answer }],
-        });
+    const participant = liveQuiz.participants[participantIndex];
 
-        if (isCorrect) {
-          await mongoose.model('User').findByIdAndUpdate(userId, { $inc: { coins: 10 } });
-        }
+    // Avoid duplicate answers
+    const alreadyAnswered = participant.answers.some(a => a.questionId.toString() === questionId);
+    if (!alreadyAnswered) {
+      participant.answers.push({ questionId, answer });
 
-        participantIndex = liveQuiz.participants.length - 1; // newly added participant index
-      } 
+      if (isCorrect) {
+        participant.score += 1;
+        participant.coinsEarned = (participant.coinsEarned || 0) + 10;
 
-      const participant = liveQuiz.participants[participantIndex];
-
-      // Check if already answered this question
-      const alreadyAnswered = participant.answers.some(
-        (a) => a.questionId.toString() === questionId
-      );
-
-      if (!alreadyAnswered) {
-        participant.answers.push({ questionId, answer });
-
-        if (isCorrect) {
-          participant.score += 1;
-          participant.coinsEarned = (participant.coinsEarned || 0) + 10;
-
-          await mongoose.model('User').findByIdAndUpdate(userId, { $inc: { coins: 10 } });
-        }
+        await mongoose.model('User').findByIdAndUpdate(userId, { $inc: { coins: 10 } });
       }
 
-      // Increment participant's current question index
       participant.currentQuestionIndex = (participant.currentQuestionIndex || 0) + 1;
 
+      // Update participant in array and mark modified for nested array update
+      liveQuiz.participants[participantIndex] = participant;
       liveQuiz.markModified('participants');
       await liveQuiz.save();
+    }
 
-      const questions = await mongoose.model('Question').find({ quiz: liveQuiz.quiz._id });
+    const questions = await Question.find({ quiz: liveQuiz.quiz._id });
+    const nextQuestion = questions[participant.currentQuestionIndex];
 
-      const nextQuestion = questions[participant.currentQuestionIndex];
+    if (nextQuestion) {
+      // Send next question only to this participant
+      socket.emit('question', { question: nextQuestion });
+    } else {
+      // Quiz completed by this participant - save attempt record
+      await QuizAttempt.create({
+        student: userId,
+        quiz: liveQuiz.quiz._id,
+        answers: participant.answers,
+        score: participant.score,
+        attemptedAt: new Date()
+      });
 
-      if (nextQuestion) {
-        // Emit next question only to this participant
-        socket.emit('question', { question: nextQuestion });
-      } else {
-        // Participant finished quiz, send final leaderboard to all participants
+      // Notify participant that quiz ended
+      socket.emit('quizEnd', {
+        message: 'You have completed the quiz!',
+        score: participant.score,
+        coinsEarned: participant.coinsEarned || 0,
+      });
+
+      // Check if all participants finished the quiz
+      const allDone = liveQuiz.participants.every(p => p.currentQuestionIndex >= questions.length);
+
+      if (allDone) {
+        // Build leaderboard
         const leaderboard = await Promise.all(
           liveQuiz.participants.map(async (p) => {
             const user = await mongoose.model('User').findById(p.user);
@@ -156,16 +175,16 @@ io.on('connection', (socket) => {
 
         leaderboard.sort((a, b) => b.score - a.score);
 
-        io.to(quizId).emit('quizEnd', {
-          message: 'Quiz ended!',
-          leaderboard,
-        });
+        // Broadcast final leaderboard to all in the room
+        io.to(quizId).emit('quizEnd', { message: 'Quiz ended!', leaderboard });
       }
-    } catch (error) {
-      console.error('Error submitting answer:', error);
-      socket.emit('error', { message: 'Error submitting answer' });
     }
-  });
+
+  } catch (error) {
+    console.error('Error submitting answer:', error);
+    socket.emit('error', { message: 'Error submitting answer' });
+  }
+});
 
 
   // ✅ Optional: allow admin to manually start quiz
@@ -190,6 +209,7 @@ io.on('connection', (socket) => {
     console.log('Client disconnected');
   });
 });
+
 app.get('/', (req, res) => {
   res.send('🚀 API is Running...');
 });
