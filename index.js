@@ -11,6 +11,7 @@ const liveQuizRoutes = require('./routes/liveQuiz');
 const LiveQuiz = require('./models/LiveQuiz');
 const Question = require('./models/Question');
 const QuizAttempt = require('./models/QuizAttempt');
+const User = require('./models/User');
 
 dotenv.config();
 
@@ -44,6 +45,23 @@ const io = new Server(server, {
     methods: ["GET", "POST"],
   }
 });
+async function addParticipantIfNotExists(quizId, userId) {
+  const liveQuiz = await LiveQuiz.findOne({ quiz: quizId });
+  if (!liveQuiz) throw new Error('Live quiz not found');
+
+  const exists = liveQuiz.participants.some(p => p.user.toString() === userId);
+  if (!exists) {
+    liveQuiz.participants.push({
+      user: userId,
+      score: 0,
+      coinsEarned: 0,
+      currentQuestionIndex: 0,
+      completed: false,
+      answers: [],
+    });
+    await liveQuiz.save();
+  }
+}
 
 io.on('connection', (socket) => {
   console.log('New client connected:', socket.id);
@@ -55,6 +73,7 @@ io.on('connection', (socket) => {
   // ✅ Join room and send participant-specific first question
   socket.on('joinRoom', async ({ quizId, userId }) => {
     try {
+      //await addParticipantIfNotExists(quizId, userId);
       // Check if user already attempted the quiz
       const attempt = await QuizAttempt.findOne({ student: userId, quiz: quizId }).populate('student', 'name');
       if (attempt) {
@@ -118,92 +137,92 @@ io.on('connection', (socket) => {
 
 
   // ✅ Handle answer submission per participant
+
+
   socket.on('submitAnswer', async ({ quizId, userId, questionId, answer }) => {
     try {
-      const liveQuizArr = await LiveQuiz.find({ quiz: quizId }).populate('quiz');
-      const liveQuiz = liveQuizArr[0];
+      const liveQuiz = await LiveQuiz.findOne({ quiz: quizId }).populate('quiz');
       if (!liveQuiz) return socket.emit('error', { message: 'Live quiz not found' });
 
-      const question = await mongoose.model('Question').findById(questionId);
-      if (!question) return;
-
-      const isCorrect = question.options[question.correctAnswerIndex] === answer;
-
-      // Get participant index
       const participantIndex = liveQuiz.participants.findIndex(p => p.user.toString() === userId);
-      if (participantIndex === -1) return socket.emit('error', { message: 'Participant not found' });
+      if (participantIndex === -1) {
+        return socket.emit('error', { message: 'Participant not found. Please join the quiz again.' });
+      }
 
       const participant = liveQuiz.participants[participantIndex];
 
-      // Avoid duplicate answers
+      // Prevent duplicate answer
       const alreadyAnswered = participant.answers.some(a => a.questionId.toString() === questionId);
       if (!alreadyAnswered) {
         participant.answers.push({ questionId, answer });
 
-        if (isCorrect) {
+        const question = await Question.findById(questionId);
+        if (question && question.options[question.correctAnswerIndex] === answer) {
           participant.score += 1;
           participant.coinsEarned = (participant.coinsEarned || 0) + 10;
-          await mongoose.model('User').findByIdAndUpdate(userId, { $inc: { coins: 10 } });
+
+          // Update user coins
+          await User.findByIdAndUpdate(userId, { $inc: { coins: 10 } });
         }
-
-        participant.currentQuestionIndex = (participant.currentQuestionIndex || 0) + 1;
-
-        // Update participant in array and mark modified for nested array update
-        liveQuiz.participants[participantIndex] = participant;
-        liveQuiz.markModified('participants');
-        await liveQuiz.save();
       }
 
-      const questions = await Question.find({ quiz: liveQuiz.quiz._id });
-      const nextQuestion = questions[participant.currentQuestionIndex];
+      participant.currentQuestionIndex += 1;
+
+      // Check if completed
+      const totalQuestions = await Question.countDocuments({ quiz: liveQuiz.quiz._id });
+      if (participant.currentQuestionIndex >= totalQuestions) {
+        participant.completed = true;
+      }
+
+      // Save updated participant
+      liveQuiz.participants[participantIndex] = participant;
+      liveQuiz.markModified('participants');
+      await liveQuiz.save();
+
+      // Send next question or end message
+      const nextQuestion = await Question.findOne({ quiz: liveQuiz.quiz._id }).skip(participant.currentQuestionIndex);
 
       if (nextQuestion) {
-        // Send next question only to this participant
         socket.emit('question', { question: nextQuestion });
       } else {
-        // Quiz completed by this participant - save attempt record
-        await QuizAttempt.create({
-          student: userId,
-          quiz: liveQuiz.quiz._id,
-          answers: participant.answers,
-          score: participant.score,
-          coinsEarned: participant.coinsEarned,
-          attemptedAt: new Date()
-        });
+        const existingAttempt = await QuizAttempt.findOne({ student: userId, quiz: quizId });
+        if (!existingAttempt) {
+          await QuizAttempt.create({
+            student: userId,
+            quiz: quizId,
+            score: participant.score,
+            coinsEarned: participant.coinsEarned || 0,
+            answers: participant.answers,
+            attemptedAt: new Date()
+          });
+        }
 
-        // Notify participant that quiz ended
         socket.emit('quizEnd', {
           message: 'You have completed the quiz!',
           score: participant.score,
-          coinsEarned: participant.coinsEarned || 0,
+          coinsEarned: participant.coinsEarned || 0
         });
 
-        // Check if all participants finished the quiz
-        const allDone = liveQuiz.participants.every(p => p.currentQuestionIndex >= questions.length);
-
-        if (allDone) {
-          // Build leaderboard
+        // Leaderboard if all done
+        const allCompleted = liveQuiz.participants.every(p => p.completed);
+        if (allCompleted) {
           const leaderboard = await Promise.all(
             liveQuiz.participants.map(async (p) => {
-              const user = await mongoose.model('User').findById(p.user);
+              const user = await User.findById(p.user);
               return {
                 userId: user._id,
                 name: user.name,
                 score: p.score,
-                coinsEarned: p.coinsEarned || 0,
+                coinsEarned: p.coinsEarned || 0
               };
             })
           );
-
           leaderboard.sort((a, b) => b.score - a.score);
-
-          // Broadcast final leaderboard to all in the room
           io.to(quizId).emit('quizEnd', { message: 'Quiz ended!', leaderboard });
         }
       }
-
-    } catch (error) {
-      console.error('Error submitting answer:', error);
+    } catch (err) {
+      console.error('Error in submitAnswer:', err);
       socket.emit('error', { message: 'Error submitting answer' });
     }
   });

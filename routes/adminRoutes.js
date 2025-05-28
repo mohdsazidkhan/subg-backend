@@ -143,18 +143,18 @@ router.get('/questions', protect, adminOnly, async (req, res) => {
 
 // CREATE question
 router.post('/questions', protect, adminOnly, async (req, res) => {
-  const { quiz, questionText, options, correctAnswerIndex } = req.body;
-  const question = new Question({ quiz, questionText, options, correctAnswerIndex });
+  const { quiz, questionText, options, correctAnswerIndex, timeLimit } = req.body;
+  const question = new Question({ quiz, questionText, options, correctAnswerIndex, timeLimit });
   await question.save();
   res.status(201).json(question);
 });
 
 // UPDATE question by id
 router.put('/questions/:id', protect, adminOnly, async (req, res) => {
-  const { quiz, questionText, options, correctAnswer } = req.body;
+  const { quiz, questionText, options, correctAnswer, timeLimit } = req.body;
   const question = await Question.findByIdAndUpdate(
     req.params.id,
-    { quiz, questionText, options, correctAnswer },
+    { quiz, questionText, options, correctAnswer, timeLimit },
     { new: true }
   );
   if (!question) return res.status(404).json({ message: 'Question not found' });
