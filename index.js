@@ -12,6 +12,7 @@ const LiveQuiz = require('./models/LiveQuiz');
 const Question = require('./models/Question');
 const QuizAttempt = require('./models/QuizAttempt');
 const User = require('./models/User');
+const paymentRoutes = require('./routes/payment');
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/student', studentRoutes);
 app.use('/api/live-quizzes', liveQuizRoutes);
+app.use('/api/payment', paymentRoutes);
 
 const server = http.createServer(app);
 
@@ -45,23 +47,6 @@ const io = new Server(server, {
     methods: ["GET", "POST"],
   }
 });
-async function addParticipantIfNotExists(quizId, userId) {
-  const liveQuiz = await LiveQuiz.findOne({ quiz: quizId });
-  if (!liveQuiz) throw new Error('Live quiz not found');
-
-  const exists = liveQuiz.participants.some(p => p.user.toString() === userId);
-  if (!exists) {
-    liveQuiz.participants.push({
-      user: userId,
-      score: 0,
-      coinsEarned: 0,
-      currentQuestionIndex: 0,
-      completed: false,
-      answers: [],
-    });
-    await liveQuiz.save();
-  }
-}
 
 io.on('connection', (socket) => {
   console.log('New client connected:', socket.id);
@@ -73,7 +58,6 @@ io.on('connection', (socket) => {
   // ✅ Join room and send participant-specific first question
   socket.on('joinRoom', async ({ quizId, userId }) => {
     try {
-      //await addParticipantIfNotExists(quizId, userId);
       // Check if user already attempted the quiz
       const attempt = await QuizAttempt.findOne({ student: userId, quiz: quizId }).populate('student', 'name');
       if (attempt) {
@@ -100,6 +84,7 @@ io.on('connection', (socket) => {
 
       // User hasn't attempted, proceed to join room
       socket.join(quizId);
+
       console.log(`User ${userId} joined room ${quizId}`);
 
       const liveQuizArr = await LiveQuiz.find({ quiz: quizId }).populate('quiz');

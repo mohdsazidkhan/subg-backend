@@ -4,11 +4,12 @@ const LiveQuiz = require('../models/LiveQuiz');
 const Quiz = require('../models/Quiz');
 const { protect, adminOnly } = require('../middleware/auth');
 const Question = require('../models/Question');
+const PaymentOrder = require('../models/PaymentOrder');
 
 // ✅ Create a live quiz
 router.post('/', protect, adminOnly, async (req, res) => {
   try {
-    const { quizId } = req.body;
+    const { quizId, isPro, amount } = req.body;
 
     if (!quizId) return res.status(400).json({ error: 'quizId is required' });
 
@@ -19,16 +20,18 @@ router.post('/', protect, adminOnly, async (req, res) => {
       quiz: quizId,
       host: req.user.id,
       isActive: false,
-      participants: [],
       currentQuestionIndex: 0,
+      participants: [],
+      accessType: isPro ? "pro" : "free",
+      amount
     });
-
     res.status(201).json(liveQuiz);
   } catch (err) {
     console.error('Error creating live quiz:', err);
     res.status(500).json({ error: 'Server error' });
   }
 });
+
 
 router.get('/all', async (req, res) => {
   try {
@@ -50,15 +53,23 @@ router.get('/active', async (req, res) => {
           { path: 'subcategory', select: 'name' },
         ],
       });
-      
+
     const quizzesWithDetails = await Promise.all(
       liveQuizzes.map(async (lq) => {
         if (!lq.quiz || !lq.quiz._id) {
-          console.warn('Quiz not populated for liveQuiz:', lq.quiz._id);
+          console.warn('Quiz not populated for liveQuiz:', lq._id);
           return null;
         }
 
         const questionCount = await Question.countDocuments({ quiz: lq.quiz._id });
+
+        // ✅ Get list of paid users for this live quiz
+        const paidOrders = await PaymentOrder.find({
+          liveQuizId: lq._id,
+          status: 'paid',
+        }).select('user');
+
+        const paidUsers = paidOrders.map(order => order.user); // Array of ObjectIds
 
         return {
           _id: lq._id,
@@ -73,21 +84,24 @@ router.get('/active', async (req, res) => {
           },
           host: lq.host,
           isActive: lq.isActive,
+          amount: lq.amount,
+          accessType: lq.accessType,
           currentQuestionIndex: lq.currentQuestionIndex,
           participants: lq.participants,
+          paidUsers, // ✅ New field
           createdAt: lq.createdAt,
           updatedAt: lq.updatedAt,
         };
       })
     );
 
-    // Filter out nulls if any quiz was missing
     res.json(quizzesWithDetails.filter(q => q !== null));
   } catch (err) {
     console.error('Error fetching live quizzes:', err);
     res.status(500).json({ error: 'Server error' });
   }
 });
+
 
 
 // ✅ Join a live quiz
