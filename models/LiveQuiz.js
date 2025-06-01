@@ -1,27 +1,36 @@
 // models/LiveQuiz.js
 const mongoose = require('mongoose');
-
+const { v4: uuidv4 } = require('uuid');
 const liveQuizSchema = new mongoose.Schema({
+  publicId: {
+    type: String,
+    unique: true,
+    default: uuidv4,
+  },
   quiz: { type: mongoose.Schema.Types.ObjectId, ref: 'Quiz', required: true },
   host: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-  isActive: { type: Boolean, default: false },
+  status: {
+    type: String,
+    enum: ['not_started', 'started', 'ended'],
+    default: 'not_started'
+  },
   currentQuestionIndex: { type: Number, default: 0 }, // global quiz progress (for live mode)
-  participants: [{
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    score: { type: Number, default: 0 },
-    coinsEarned: { type: Number, default: 0 },
-    currentQuestionIndex: { type: Number, default: 0 },
-    completed: { type: Boolean, default: false }, // ✅ NEW
-    answers: [{ questionId: mongoose.Schema.Types.ObjectId, answer: String }],
-  }],
   accessType: {
     type: String,
     enum: ['free', 'pro'],
     default: 'free'
   },
-  amount: {
+  coinsToPlay: {
     type: Number,
-    default: 0, // default is 0
+    default: 0,
+  },
+  startTime: {
+    type: String,
+    default: null,
+  },
+  endTime: { 
+    type: String, 
+    default: null 
   }
 }, { timestamps: true });
 

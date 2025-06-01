@@ -13,6 +13,8 @@ const Question = require('./models/Question');
 const QuizAttempt = require('./models/QuizAttempt');
 const User = require('./models/User');
 const paymentRoutes = require('./routes/payment');
+const LiveQuizParticipant = require('./models/LiveQuizParticipant');
+const Leaderboard = require('./models/Leaderboard');
 
 dotenv.config();
 
@@ -29,52 +31,56 @@ app.use('/api/payment', paymentRoutes);
 
 const server = http.createServer(app);
 
-const allowedOrigins = [
-  "http://localhost:3000",
-  "http://127.0.0.1:3000",
-  "https://subg-frontend.vercel.app"
-];
-
 const io = new Server(server, {
   cors: {
     origin: (origin, callback) => {
+      const allowedOrigins = [
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "https://subg-frontend.vercel.app"
+      ];
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
-        callback(new Error("Not allowed by CORS"));
+        callback(new Error("CORS policy violation"), false);
       }
     },
-    methods: ["GET", "POST"],
-  }
+    methods: ["GET", "POST"]
+  },
+  pingInterval: 25000,
+  pingTimeout: 60000,
+  transports: ['websocket']
 });
 
-io.on('connection', (socket) => {
-  console.log('New client connected:', socket.id);
+io.on("connection", (socket) => {
+  console.log("Client connected: " + socket.id);
 
-  socket.on('error', (err) => {
-    console.error('Socket error:', err);
-  });
-
-  // ✅ Join room and send participant-specific first question
-  socket.on('joinRoom', async ({ quizId, userId }) => {
+  socket.on("joinRoom", async ({ quizId, userId }) => {
     try {
-      // Check if user already attempted the quiz
-      const attempt = await QuizAttempt.findOne({ student: userId, quiz: quizId }).populate('student', 'name');
+      const user = await User.findOne({ publicId: userId });
+      if (!user) return socket.emit("error", "User not found");
+      const userIdDb = user._id;
+
+      const attempt = await QuizAttempt.findOne({ student: userIdDb, quiz: quizId }).populate("student", "name publicId");
       if (attempt) {
-        // Build leaderboard from QuizAttempt collection
-        const attempts = await QuizAttempt.find({ quiz: quizId }).populate('student', 'name');
-        const leaderboard = attempts.map(a => ({
-          userId: a.student._id,
-          name: a.student.name,
-          score: a.score,
-          coinsEarned: a.coinsEarned || 0 // if you track coins in QuizAttempt
-        })).sort((a, b) => b.score - a.score);
+        const leaderboardDoc = await Leaderboard.findOne({ liveQuiz: await LiveQuiz.findOne({ quiz: quizId }).select("_id") });
 
-        // Find user rank
-        const userRank = leaderboard.findIndex(entry => entry.userId.toString() === userId.toString()) + 1;
+        let leaderboard = [];
+        let userRank = 0;
 
-        return socket.emit('alreadyAttempted', {
-          message: 'You already attempted this quiz.',
+        if (leaderboardDoc) {
+          leaderboard = leaderboardDoc.entries.map(entry => ({
+            userId: entry.userId.toString(),
+            name: entry.name,
+            score: entry.score,
+            coinsEarned: entry.coinsEarned
+          }));
+
+          userRank = leaderboard.findIndex(entry => entry.userId === userIdDb.toString()) + 1;
+        }
+
+        return socket.emit("alreadyAttempted", {
+          message: "You already attempted this quiz.",
           score: attempt.score,
           coinsEarned: attempt.coinsEarned || 0,
           rank: userRank,
@@ -82,98 +88,83 @@ io.on('connection', (socket) => {
         });
       }
 
-      // User hasn't attempted, proceed to join room
+
       socket.join(quizId);
+      console.log("User joined room: " + quizId);
 
-      console.log(`User ${userId} joined room ${quizId}`);
+      const liveQuiz = await LiveQuiz.findOne({ quiz: quizId }).populate("quiz");
+      if (!liveQuiz) return socket.emit("error", "Live quiz not found");
 
-      const liveQuizArr = await LiveQuiz.find({ quiz: quizId }).populate('quiz');
-      const liveQuiz = liveQuizArr[0];
-      if (!liveQuiz) return socket.emit('error', { message: 'Live quiz not found' });
-
-      // Check if participant already exists
-      let participant = liveQuiz.participants.find(p => p.user.toString() === userId);
+      let participant = await LiveQuizParticipant.findOne({ liveQuiz: liveQuiz._id, user: userIdDb });
       if (!participant) {
-        participant = {
-          user: userId,
+        participant = await LiveQuizParticipant.create({
+          liveQuiz: liveQuiz._id,
+          user: userIdDb,
           score: 0,
           coinsEarned: 0,
           answers: [],
-          currentQuestionIndex: 0
-        };
-        liveQuiz.participants.push(participant);
-        await liveQuiz.save();
+          currentQuestionIndex: 0,
+          completed: false
+        });
       }
 
       const questions = await Question.find({ quiz: liveQuiz.quiz._id });
-      const question = questions[participant.currentQuestionIndex || 0];
+      const question = questions[participant.currentQuestionIndex];
 
-      if (question) {
-        socket.emit('question', { question });
-      } else {
-        socket.emit('quizEnd', { message: 'No questions available' });
+      if (!question) {
+        return socket.emit("error", "No questions available");
       }
 
-    } catch (err) {
-      console.error('Error in joinRoom:', err);
-      socket.emit('error', { message: 'Error joining room' });
+      socket.emit("question", { question });
+    } catch (error) {
+      console.error("joinRoom error:", error);
+      socket.emit("error", "Something went wrong");
     }
   });
 
-
-  // ✅ Handle answer submission per participant
-
-
-  socket.on('submitAnswer', async ({ quizId, userId, questionId, answer }) => {
+  socket.on("submitAnswer", async ({ quizId, userId, questionId, answer }) => {
     try {
-      const liveQuiz = await LiveQuiz.findOne({ quiz: quizId }).populate('quiz');
-      if (!liveQuiz) return socket.emit('error', { message: 'Live quiz not found' });
+      const user = await User.findOne({ publicId: userId });
+      if (!user) return socket.emit("error", "User not found");
+      const userIdDb = user._id;
 
-      const participantIndex = liveQuiz.participants.findIndex(p => p.user.toString() === userId);
-      if (participantIndex === -1) {
-        return socket.emit('error', { message: 'Participant not found. Please join the quiz again.' });
-      }
+      const liveQuiz = await LiveQuiz.findOne({ quiz: quizId }).populate("quiz");
+      if (!liveQuiz) return socket.emit("error", "Live quiz not found");
 
-      const participant = liveQuiz.participants[participantIndex];
+      const participant = await LiveQuizParticipant.findOne({ liveQuiz: liveQuiz._id, user: userIdDb });
+      if (!participant) return socket.emit("error", "Please join the quiz again.");
 
-      // Prevent duplicate answer
       const alreadyAnswered = participant.answers.some(a => a.questionId.toString() === questionId);
+
       if (!alreadyAnswered) {
         participant.answers.push({ questionId, answer });
 
         const question = await Question.findById(questionId);
-        if (question && question.options[question.correctAnswerIndex] === answer) {
+        if (question.options[question.correctAnswerIndex] === answer) {
           participant.score += 1;
-          participant.coinsEarned = (participant.coinsEarned || 0) + 10;
-
-          // Update user coins
-          await User.findByIdAndUpdate(userId, { $inc: { coins: 10 } });
+          participant.coinsEarned = (participant.coinsEarned || 0) + 100;
+          await User.findByIdAndUpdate(userIdDb, { $inc: { coins: 100 } });
         }
       }
 
       participant.currentQuestionIndex += 1;
-
-      // Check if completed
       const totalQuestions = await Question.countDocuments({ quiz: liveQuiz.quiz._id });
+
       if (participant.currentQuestionIndex >= totalQuestions) {
         participant.completed = true;
       }
 
-      // Save updated participant
-      liveQuiz.participants[participantIndex] = participant;
-      liveQuiz.markModified('participants');
-      await liveQuiz.save();
+      await participant.save();
 
-      // Send next question or end message
       const nextQuestion = await Question.findOne({ quiz: liveQuiz.quiz._id }).skip(participant.currentQuestionIndex);
 
       if (nextQuestion) {
-        socket.emit('question', { question: nextQuestion });
+        socket.emit("question", { question: nextQuestion });
       } else {
-        const existingAttempt = await QuizAttempt.findOne({ student: userId, quiz: quizId });
+        const existingAttempt = await QuizAttempt.findOne({ student: userIdDb, quiz: quizId });
         if (!existingAttempt) {
           await QuizAttempt.create({
-            student: userId,
+            student: userIdDb,
             quiz: quizId,
             score: participant.score,
             coinsEarned: participant.coinsEarned || 0,
@@ -182,59 +173,126 @@ io.on('connection', (socket) => {
           });
         }
 
-        socket.emit('quizEnd', {
-          message: 'You have completed the quiz!',
-          score: participant.score,
-          coinsEarned: participant.coinsEarned || 0
+        const correctAnswers = participant.score;
+        const wrongAnswers = totalQuestions - correctAnswers;
+
+        const answeredQuestionIds = participant.answers.map(a => a.questionId);
+        const answeredQuestions = await Question.find({ _id: { $in: answeredQuestionIds } });
+
+        const questionBreakdown = answeredQuestions.map(q => {
+          const userAnswer = participant.answers.find(a => a.questionId.toString() === q._id.toString())?.answer;
+          const correctAnswer = q.options[q.correctAnswerIndex];
+          const isCorrect = userAnswer === correctAnswer;
+
+          return {
+            questionText: q.questionText,
+            options: q.options,
+            userAnswer,
+            correctAnswer,
+            isCorrect
+          };
         });
 
-        // Leaderboard if all done
-        const allCompleted = liveQuiz.participants.every(p => p.completed);
+        socket.emit("quizEnd", {
+          message: "You have completed the quiz!",
+          totalQuestions,
+          correctAnswers,
+          wrongAnswers,
+          score: correctAnswers,
+          coinsEarned: participant.coinsEarned || 0,
+          questionBreakdown
+        });
+
+        const allParticipants = await LiveQuizParticipant.find({ liveQuiz: liveQuiz._id }).populate("user");
+        const allCompleted = allParticipants.every(p => p.completed);
+
         if (allCompleted) {
-          const leaderboard = await Promise.all(
-            liveQuiz.participants.map(async (p) => {
-              const user = await User.findById(p.user);
-              return {
-                userId: user._id,
-                name: user.name,
-                score: p.score,
-                coinsEarned: p.coinsEarned || 0
-              };
-            })
-          );
-          leaderboard.sort((a, b) => b.score - a.score);
-          io.to(quizId).emit('quizEnd', { message: 'Quiz ended!', leaderboard });
+          const leaderboardEntries = allParticipants.map(p => ({
+            userId: p.user._id,
+            name: p.user.name,
+            score: p.score,
+            coinsEarned: 0
+          })).sort((a, b) => b.score - a.score);
+
+          for (let i = 0; i < leaderboardEntries.length; i++) {
+            const entry = leaderboardEntries[i];
+            const rank = i + 1;
+
+            // Only top 5 get coins
+            const coinsEarned = rank <= 5 ? entry.score * 100 : 0;
+
+            entry.rank = rank;
+            entry.coinsEarned = coinsEarned;
+
+            await LiveQuizParticipant.findOneAndUpdate(
+              { liveQuiz: liveQuiz._id, user: entry.userId },
+              { rank, coinsEarned }
+            );
+
+            if (coinsEarned > 0) {
+              await User.findByIdAndUpdate(entry.userId, {
+                $inc: {
+                  coins: coinsEarned,
+                  balance: coinsEarned / 10
+                }
+              });
+            }
+          }
+
+          // Save leaderboard data
+          const leaderboardDoc = new Leaderboard({
+            liveQuiz: liveQuiz._id,
+            entries: leaderboardEntries
+          });
+          await leaderboardDoc.save();
+
+          // Emit leaderboard to room
+          io.to(quizId).emit("quizEnd", {
+            message: "Quiz ended!",
+            leaderboard: leaderboardEntries
+          });
         }
+
+
       }
-    } catch (err) {
-      console.error('Error in submitAnswer:', err);
-      socket.emit('error', { message: 'Error submitting answer' });
+    } catch (error) {
+      console.error("submitAnswer error:", error);
+      socket.emit("error", "Something went wrong");
     }
   });
 
-
-  // ✅ Optional: allow admin to manually start quiz
-  socket.on('startQuiz', async (quizId) => {
+  socket.on("startQuiz", async ({ quizId }) => {
     try {
-      const quiz = await LiveQuiz.findById(quizId).populate('quiz');
-      const questions = await Question.find({ quiz: quiz.quiz._id });
-      const question = questions[0];
-
-      if (question) {
-        io.to(quizId).emit('question', { question });
-      } else {
-        io.to(quizId).emit('quizEnd', { message: 'No questions available' });
-      }
-    } catch (err) {
-      console.error('Error starting quiz:', err);
-      socket.emit('error', { message: 'Failed to start quiz' });
+      const liveQuiz = await LiveQuiz.findById(quizId);
+      if (!liveQuiz) return socket.emit("error", "Live quiz not found");
+      liveQuiz.status = "started";
+      await liveQuiz.save();
+      io.to(quizId).emit("quizStarted", { message: "Quiz started", quizId });
+    } catch (error) {
+      console.error("startQuiz error:", error);
+      socket.emit("error", "Something went wrong");
     }
   });
 
-  socket.on('disconnect', () => {
-    console.log('Client disconnected');
+  socket.on("endQuiz", async ({ quizId }) => {
+    try {
+      const liveQuiz = await LiveQuiz.findById(quizId);
+      if (!liveQuiz) return socket.emit("error", "Live quiz not found");
+      liveQuiz.status = "ended";
+      await liveQuiz.save();
+      io.to(quizId).emit("quizEnded", { message: "Quiz ended", quizId });
+    } catch (error) {
+      console.error("endQuiz error:", error);
+      socket.emit("error", "Something went wrong");
+    }
+  });
+
+  socket.on("disconnect", (reason) => {
+    console.log("Client disconnected:", reason);
   });
 });
+
+
 
 app.get('/', (req, res) => {
   res.send('🚀 API is Running...');

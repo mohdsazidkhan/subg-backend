@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
-
+const { v4: uuidv4 } = require('uuid');
 const paymentOrderSchema = new mongoose.Schema({
+  publicId: {
+    type: String,
+    unique: true,
+    default: uuidv4,
+  },
   orderId: { type: String, required: true, unique: true }, // razorpay order id
   paymentId: { type: String, unique: true, default: "" }, // razorpay order id
   amount: { type: Number, required: true }, // amount in paise

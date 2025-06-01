@@ -1,19 +1,48 @@
+const dotenv = require('dotenv');
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const WalletTransaction = require('../models/WalletTransaction');
+dotenv.config();
 
 exports.register = async (req, res) => {
-  const { name, email, phone, password, role = 'student' } = req.body; // default role student
+  const { name, email, phone, password, role = 'student' } = req.body;
+  const defaultCoins = process.env.SIGNUP_COINS;
+  const defaultINR = process.env.SIGNUP_INR;
   try {
     const existingUser = await User.findOne({ email });
     if (existingUser) return res.status(400).json({ error: 'Email already exists' });
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = await User.create({ name, email, phone, password: hashedPassword, role });
+
+    const user = await User.create({
+      name,
+      email,
+      phone,
+      password: hashedPassword,
+      role,
+      balance: defaultINR,
+      coins: defaultCoins
+    });
+
+    // Optional: record signup bonus in wallet transaction
+    await WalletTransaction.create({
+      user: user._id,
+      type: 'earn_coins',
+      amount: defaultCoins,
+      currency: 'COINS',
+      description: 'Signup Bonus'
+    });
 
     res.status(201).json({
-      message: 'User registered successfully',
-      user: { id: user._id, name: user.name, email: user.email, role: user.role }
+      message: '🎉 Registered Successfully!',
+      user: {
+        publicId: user.publicId,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        coins: user.coins
+      }
     });
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -31,9 +60,9 @@ exports.login = async (req, res) => {
 
     const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1d' });
     res.json({
-      message: 'Login successful',
+      message: '🎉 Login Successful!',
       token,
-      user: { id: user._id, name: user.name, email: user.email, role: user.role, coins: user.coins, badges: user.badges }
+      user: { publicId: user.publicId, name: user.name, email: user.email, role: user.role, coins: user.coins, balance: user.balance, badges: user.badges }
     });
   } catch (err) {
     res.status(500).json({ error: err.message });
