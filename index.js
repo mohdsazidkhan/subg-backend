@@ -261,38 +261,55 @@ io.on("connection", (socket) => {
     }
   });
 
-  socket.on("startQuiz", async ({ quizId }) => {
-    try {
-      const liveQuiz = await LiveQuiz.findById(quizId);
-      if (!liveQuiz) return socket.emit("error", "Live quiz not found");
-      liveQuiz.status = "started";
-      await liveQuiz.save();
-      io.to(quizId).emit("quizStarted", { message: "Quiz started", quizId });
-    } catch (error) {
-      console.error("startQuiz error:", error);
-      socket.emit("error", "Something went wrong");
-    }
-  });
-
-  socket.on("endQuiz", async ({ quizId }) => {
-    try {
-      const liveQuiz = await LiveQuiz.findById(quizId);
-      if (!liveQuiz) return socket.emit("error", "Live quiz not found");
-      liveQuiz.status = "ended";
-      await liveQuiz.save();
-      io.to(quizId).emit("quizEnded", { message: "Quiz ended", quizId });
-    } catch (error) {
-      console.error("endQuiz error:", error);
-      socket.emit("error", "Something went wrong");
-    }
-  });
+  
 
   socket.on("disconnect", (reason) => {
     console.log("Client disconnected:", reason);
   });
 });
+const updateQuizStatuses = async () => {
+  
+  const now = new Date();
+  const currentMinutes = now.getHours() * 60 + now.getMinutes();
+  const quizzes = await LiveQuiz.find({
+    $or: [{ status: 'not_started' }, { status: 'started' }],
+  });
+  
+  for (const quiz of quizzes) {
+    const [startHour, startMinute] = quiz.startTime.split(':').map(Number);
+    const [endHour, endMinute] = quiz.endTime.split(':').map(Number);
 
+    const startMinutes = startHour * 60 + startMinute;
+    const endMinutes = endHour * 60 + endMinute;
 
+    const spansMidnight = endMinutes <= startMinutes;
+
+    // Start quiz
+    if (currentMinutes === startMinutes && quiz.status === 'not_started') {
+      console.log(quiz._id,'started');
+      quiz.status = 'started';
+      await quiz.save();
+      io.emit('quizStarted', { quizId: quiz._id });
+    }
+
+    // End quiz
+    if (
+      quiz.status === 'started' &&
+      (
+        (!spansMidnight && currentMinutes === endMinutes) ||
+        (spansMidnight && (currentMinutes === endMinutes))
+      )
+    ) {
+      console.log(quiz._id,'ended');
+      quiz.status = 'ended';
+      await quiz.save();
+      io.emit('quizEnded', { quizId: quiz._id });
+    }
+  }
+};
+
+// Call every 30 seconds
+setInterval(updateQuizStatuses, 30 * 1000);
 
 app.get('/', (req, res) => {
   res.send('🚀 API is Running...');
