@@ -1,3 +1,5 @@
+const { default: mongoose } = require('mongoose');
+const Leaderboard = require('../models/Leaderboard');
 const LiveQuiz = require('../models/LiveQuiz');
 const LiveQuizParticipant = require('../models/LiveQuizParticipant');
 const Question = require('../models/Question');
@@ -14,6 +16,63 @@ exports.getAllLiveQuizzes = async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 };
+
+exports.getPlayedQuizzesByUser = async (req, res) => {
+  const { userId } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(userId)) {
+    return res.status(400).json({
+      success: false,
+      message: 'Invalid user ID',
+    });
+  }
+
+  try {
+    const playedQuizzes = await LiveQuizParticipant.find({ user: userId })
+      .populate({
+        path: 'liveQuiz',
+        populate: {
+          path: 'quiz',
+          model: 'Quiz',
+        },
+      })
+      .populate('answers.questionId');
+
+    const dataWithRanksAndLeaderboard = await Promise.all(
+      playedQuizzes.map(async (participant) => {
+        const leaderboard = await Leaderboard.findOne({ liveQuiz: participant.liveQuiz._id })
+          .populate('entries.userId', 'name email');
+
+        let userRank = null;
+
+        if (leaderboard) {
+          const entry = leaderboard.entries.find(
+            (e) => e.userId && e.userId._id.toString() === userId
+          );
+          userRank = entry?.rank ?? null;
+        }
+
+        return {
+          ...participant.toObject(),
+          rank: userRank, // ✅ Rank outside leaderboard
+          leaderboard: leaderboard ? leaderboard.toObject() : null,
+        };
+      })
+    );
+
+    res.status(200).json({
+      success: true,
+      data: dataWithRanksAndLeaderboard,
+    });
+  } catch (err) {
+    console.error('Error fetching played quizzes with leaderboard:', err);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch played quizzes',
+    });
+  }
+};
+
 
 exports.getLiveQuizzes = async (req, res) => {
   try {

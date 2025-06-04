@@ -214,14 +214,25 @@ io.on("connection", (socket) => {
             coinsEarned: 0
           })).sort((a, b) => b.score - a.score);
 
+          let coinsDistributed = 0;
+          let lastScore = null;
+
           for (let i = 0; i < leaderboardEntries.length; i++) {
             const entry = leaderboardEntries[i];
             const rank = i + 1;
-
-            // Only top 5 get coins
-            const coinsEarned = rank <= 5 ? entry.score * 100 : 0;
-
             entry.rank = rank;
+
+            let coinsEarned = 0;
+
+            // Only allow coins to top 5 people (by score, max 5 people total)
+            if (coinsDistributed < 5) {
+              if (lastScore === null || entry.score !== lastScore || coinsDistributed < 5) {
+                coinsEarned = entry.score * 100;
+                coinsDistributed++;
+                lastScore = entry.score;
+              }
+            }
+
             entry.coinsEarned = coinsEarned;
 
             await LiveQuizParticipant.findOneAndUpdate(
@@ -253,7 +264,6 @@ io.on("connection", (socket) => {
           });
         }
 
-
       }
     } catch (error) {
       console.error("submitAnswer error:", error);
@@ -261,20 +271,18 @@ io.on("connection", (socket) => {
     }
   });
 
-  
-
   socket.on("disconnect", (reason) => {
     console.log("Client disconnected:", reason);
   });
 });
 const updateQuizStatuses = async () => {
-  
+
   const now = new Date();
   const currentMinutes = now.getHours() * 60 + now.getMinutes();
   const quizzes = await LiveQuiz.find({
     $or: [{ status: 'not_started' }, { status: 'started' }],
   });
-  
+
   for (const quiz of quizzes) {
     const [startHour, startMinute] = quiz.startTime.split(':').map(Number);
     const [endHour, endMinute] = quiz.endTime.split(':').map(Number);
@@ -286,7 +294,7 @@ const updateQuizStatuses = async () => {
 
     // Start quiz
     if (currentMinutes === startMinutes && quiz.status === 'not_started') {
-      console.log(quiz._id,'started');
+      console.log(quiz._id, 'started');
       quiz.status = 'started';
       await quiz.save();
       io.emit('quizStarted', { quizId: quiz._id });
@@ -300,7 +308,7 @@ const updateQuizStatuses = async () => {
         (spansMidnight && (currentMinutes === endMinutes))
       )
     ) {
-      console.log(quiz._id,'ended');
+      console.log(quiz._id, 'ended');
       quiz.status = 'ended';
       await quiz.save();
       io.emit('quizEnded', { quizId: quiz._id });
