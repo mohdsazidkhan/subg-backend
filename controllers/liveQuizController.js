@@ -6,6 +6,7 @@ const Question = require('../models/Question');
 const QuizAttempt = require('../models/QuizAttempt');
 const User = require('../models/User');
 const WalletTransaction = require('../models/WalletTransaction');
+const { getISTDayRangeInUTC } = require('../utils/dateUtils');
 
 exports.getAllLiveQuizzes = async (req, res) => {
   try {
@@ -73,10 +74,15 @@ exports.getPlayedQuizzesByUser = async (req, res) => {
   }
 };
 
-
 exports.getLiveQuizzes = async (req, res) => {
   try {
-    const liveQuizzes = await LiveQuiz.find({}).populate({
+    // Get today's date range in UTC based on IST
+    const { startOfDayUTC, endOfDayUTC } = getISTDayRangeInUTC();
+
+    // Fetch live quizzes created today (IST)
+    const liveQuizzes = await LiveQuiz.find({
+      createdAt: { $gte: startOfDayUTC, $lte: endOfDayUTC }
+    }).populate({
       path: 'quiz',
       populate: [
         { path: 'category', select: 'name' },
@@ -86,19 +92,22 @@ exports.getLiveQuizzes = async (req, res) => {
 
     const quizzesWithDetails = await Promise.all(
       liveQuizzes.map(async (lq) => {
-        
         if (!lq.quiz || !lq.quiz._id) return null;
 
         const questionCount = await Question.countDocuments({ quiz: lq.quiz._id });
-        // Fetch the wallet transactions, populate user to get publicId
-const paidOrders = await WalletTransaction.find({ liveQuizId: lq._id, type: 'spend_coins' })
-  .populate('user', 'publicId')  // populate 'user' field, only publicId needed
 
-// Extract publicIds from populated users
-const paidUsers = paidOrders.map(order => order.user?.publicId).filter(Boolean);
+        const paidOrders = await WalletTransaction.find({
+          liveQuizId: lq._id,
+          type: 'spend_coins'
+        }).populate('user', 'publicId');
 
-        const quizAttemptsNew = await QuizAttempt.find({ quiz: lq.quiz._id }).populate('student', 'publicId');
+        const paidUsers = paidOrders.map(order => order.user?.publicId).filter(Boolean);
+
+        const quizAttemptsNew = await QuizAttempt.find({ quiz: lq.quiz._id })
+          .populate('student', 'publicId');
+
         const attemptedUsers = quizAttemptsNew.map(attempt => attempt.student?.publicId);
+
         return {
           _id: lq._id,
           quiz: {
@@ -128,7 +137,7 @@ const paidUsers = paidOrders.map(order => order.user?.publicId).filter(Boolean);
 
     res.json(quizzesWithDetails.filter(q => q !== null));
   } catch (err) {
-    console.error('Error fetching active quizzes:', err);
+    console.error('Error fetching today\'s quizzes:', err);
     res.status(500).json({ error: 'Server error' });
   }
 };
