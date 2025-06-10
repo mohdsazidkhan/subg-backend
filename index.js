@@ -15,6 +15,8 @@ const User = require('./models/User');
 const paymentRoutes = require('./routes/payment');
 const LiveQuizParticipant = require('./models/LiveQuizParticipant');
 const Leaderboard = require('./models/Leaderboard');
+const walletTransactionRoutes = require('./routes/walletTransactionRoutes');
+
 
 dotenv.config();
 
@@ -28,6 +30,8 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/student', studentRoutes);
 app.use('/api/live-quizzes', liveQuizRoutes);
 app.use('/api/payment', paymentRoutes);
+app.use('/api/wallet', walletTransactionRoutes);
+
 
 const server = http.createServer(app);
 

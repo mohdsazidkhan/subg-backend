@@ -30,6 +30,7 @@ exports.getPlayedQuizzesByUser = async (req, res) => {
 
   try {
     const playedQuizzes = await LiveQuizParticipant.find({ user: userId })
+      .sort({ createdAt: -1 })
       .populate({
         path: 'liveQuiz',
         populate: {
