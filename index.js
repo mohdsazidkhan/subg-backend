@@ -92,8 +92,8 @@ io.on("connection", (socket) => {
         });
       }
 
-
       socket.join(quizId);
+      
       console.log("User joined room: " + quizId);
 
       const liveQuiz = await LiveQuiz.findOne({ quiz: quizId }).populate("quiz");
@@ -279,6 +279,7 @@ io.on("connection", (socket) => {
     console.log("Client disconnected:", reason);
   });
 });
+
 // Convert time to minutes for easy comparison
 function getCurrentMinutesIST() {
   const nowIST = new Date().toLocaleString('en-GB', { timeZone: 'Asia/Kolkata' });
