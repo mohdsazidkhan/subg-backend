@@ -4,6 +4,7 @@ const Quiz = require('../models/Quiz');
 const Question = require('../models/Question');
 const User = require('../models/User');
 const LiveQuiz = require('../models/LiveQuiz');
+const { generateQuestions } = require('../utils/openai');
 
 exports.getStats = async (req, res) => {
   const categories = await Category.countDocuments();
@@ -79,6 +80,38 @@ exports.createQuiz = async (req, res) => {
   const quiz = new Quiz({ title, category, subcategory, totalMarks, timeLimit });
   await quiz.save();
   res.status(201).json(quiz);
+};
+
+exports.createOPENAIQuiz = async (req, res) => {
+  try {
+    const { title, category, subcategory, totalMarks, timeLimit, numQuestions = 5 } = req.body;
+
+    // 1. Create quiz entry
+    const quiz = new Quiz({ title, category, subcategory, totalMarks, timeLimit });
+    await quiz.save();
+
+    // 2. Generate questions using OpenAI
+    const questions = await generateQuestions(title, numQuestions);
+
+    // 3. Map and save questions
+    const questionDocs = questions.map(q => ({
+      quiz: quiz._id,
+      questionText: q.questionText,
+      options: q.options,
+      correctAnswerIndex: q.correctAnswerIndex
+    }));
+
+    await Question.insertMany(questionDocs);
+
+    res.status(201).json({
+      message: 'Quiz and AI-generated questions created successfully',
+      quizId: quiz._id,
+      totalQuestions: questionDocs.length
+    });
+  } catch (err) {
+    console.error("Error creating AI quiz:", err);
+    res.status(500).json({ error: err.message });
+  }
 };
 
 exports.updateQuiz = async (req, res) => {

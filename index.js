@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const http = require('http');
 const { Server } = require('socket.io');
+const cron = require('node-cron');
 const authRoutes = require('./routes/authRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const studentRoutes = require('./routes/student');
@@ -57,8 +58,7 @@ const io = new Server(server, {
 });
 
 io.on("connection", (socket) => {
-  console.log("Client connected: " + socket.id);
-
+  //console.log("Client connected: " + socket.id);
   socket.on("joinRoom", async ({ quizId, userId }) => {
     try {
       const user = await User.findOne({ publicId: userId });
@@ -279,10 +279,17 @@ io.on("connection", (socket) => {
     console.log("Client disconnected:", reason);
   });
 });
+// Convert time to minutes for easy comparison
+function getCurrentMinutesIST() {
+  const nowIST = new Date().toLocaleString('en-GB', { timeZone: 'Asia/Kolkata' });
+  const [dateStr, timeStr] = nowIST.split(', ');
+  const [hour, minute] = timeStr.split(':').map(Number);
+  return hour * 60 + minute;
+}
+
 const updateQuizStatuses = async () => {
 
-  const now = new Date();
-  const currentMinutes = now.getHours() * 60 + now.getMinutes();
+  const currentMinutes = getCurrentMinutesIST();
   const quizzes = await LiveQuiz.find({
     $or: [{ status: 'not_started' }, { status: 'started' }],
   });
@@ -298,7 +305,7 @@ const updateQuizStatuses = async () => {
 
     // Start quiz
     if (currentMinutes === startMinutes && quiz.status === 'not_started') {
-      console.log(quiz._id, 'started');
+      console.log(`[Quiz ${quiz._id}] started`);
       quiz.status = 'started';
       await quiz.save();
       io.emit('quizStarted', { quizId: quiz._id });
@@ -309,10 +316,10 @@ const updateQuizStatuses = async () => {
       quiz.status === 'started' &&
       (
         (!spansMidnight && currentMinutes === endMinutes) ||
-        (spansMidnight && (currentMinutes === endMinutes))
+        (spansMidnight && currentMinutes === endMinutes)
       )
     ) {
-      console.log(quiz._id, 'ended');
+      console.log(`[Quiz ${quiz._id}] ended`);
       quiz.status = 'ended';
       await quiz.save();
       io.emit('quizEnded', { quizId: quiz._id });
@@ -320,8 +327,8 @@ const updateQuizStatuses = async () => {
   }
 };
 
-// Call every 30 seconds
-setInterval(updateQuizStatuses, 30 * 1000);
+// Run every minute
+cron.schedule('* * * * *', updateQuizStatuses);
 
 app.get('/', (req, res) => {
   res.send('🚀 API is Running...');
