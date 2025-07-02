@@ -1,0 +1,331 @@
+2025-07-01T13:05:35.543Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T13:05:35.552Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T13:05:41.951Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T13:05:41.959Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T13:07:14.483Z [INFO]: true isMatch 
+2025-07-01T13:10:03.748Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T13:10:03.762Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T13:15:18.521Z [INFO]: true isMatch 
+2025-07-01T13:16:40.139Z [INFO]: true isMatch 
+2025-07-01T13:17:14.155Z [INFO]: true isMatch 
+2025-07-01T13:20:01.457Z [INFO]: true isMatch 
+2025-07-01T13:23:45.025Z [INFO]: true isMatch 
+2025-07-01T17:08:39.300Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T17:08:39.311Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T17:09:32.987Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-01T17:09:33.127Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-01T17:17:18.696Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T17:17:18.705Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T17:17:23.906Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-01T17:17:24.045Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-01T17:17:29.245Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-01T17:23:46.884Z [INFO]: true isMatch 
+2025-07-01T17:25:10.707Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T17:25:10.715Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T17:26:02.052Z [INFO]: true isMatch 
+2025-07-01T17:28:14.371Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T17:28:14.381Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T17:31:19.153Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T17:31:19.161Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T17:32:23.460Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T17:32:23.471Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T17:33:14.107Z [INFO]: true isMatch 
+2025-07-01T17:35:53.014Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-01T17:35:53.106Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-01T17:35:59.266Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-01T17:35:59.371Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-01T17:37:57.778Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T17:37:57.788Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T17:39:41.333Z [ERROR]: Registration error: MongoServerError: E11000 duplicate key error collection: subg.wallettransactions index: publicId_1 dup key: { publicId: null } 
+2025-07-01T17:40:46.926Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T17:40:46.933Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T17:41:48.963Z [ERROR]: Registration error: MongoServerError: E11000 duplicate key error collection: subg.wallettransactions index: publicId_1 dup key: { publicId: null } 
+2025-07-01T17:43:15.459Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T17:43:15.468Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T17:43:22.668Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T17:43:22.679Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T17:43:27.897Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T17:43:27.906Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T17:43:34.150Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T17:43:34.158Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T17:43:38.922Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T17:43:38.930Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T17:43:45.957Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T17:43:45.965Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T17:43:54.183Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T17:43:54.241Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T17:44:23.890Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T17:44:23.901Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T17:44:29.497Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T17:44:29.510Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T17:44:38.848Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T17:44:38.858Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T17:44:50.618Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T17:44:50.629Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T17:44:59.248Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T17:44:59.258Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T17:45:07.176Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T17:45:07.187Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T17:45:15.073Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T17:45:15.084Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T17:45:23.149Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T17:45:23.158Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T17:47:59.422Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T17:47:59.429Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T17:48:04.180Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T17:48:04.193Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T17:48:45.813Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T17:48:45.821Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T17:49:05.775Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T17:49:05.783Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T17:49:13.144Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T17:49:13.152Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T18:02:38.116Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T18:02:38.125Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T18:02:42.327Z [INFO]: true isMatch 
+2025-07-01T18:04:20.541Z [ERROR]: Error creating category: MongoServerError: E11000 duplicate key error collection: subg.categories index: publicId_1 dup key: { publicId: null } 
+2025-07-01T18:04:31.328Z [ERROR]: Error creating subcategory: MongoServerError: E11000 duplicate key error collection: subg.subcategories index: publicId_1 dup key: { publicId: null } 
+2025-07-01T18:04:57.842Z [ERROR]: Error creating category: MongoServerError: E11000 duplicate key error collection: subg.categories index: publicId_1 dup key: { publicId: null } 
+2025-07-01T18:06:20.527Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T18:06:20.538Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T18:06:23.014Z [ERROR]: Error creating category: MongoServerError: E11000 duplicate key error collection: subg.categories index: publicId_1 dup key: { publicId: null } 
+2025-07-01T18:10:16.683Z [ERROR]: Error creating subcategory: MongoServerError: E11000 duplicate key error collection: subg.subcategories index: publicId_1 dup key: { publicId: null } 
+2025-07-01T18:11:32.744Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-01T18:11:32.753Z [INFO]: 🚀 Server running on port 5000 
+2025-07-01T18:15:30.060Z [ERROR]: Error creating question: ValidationError: text: Path `text` is required. 
+2025-07-01T18:16:24.192Z [ERROR]: Error creating question: ValidationError: text: Path `text` is required. 
+2025-07-01T18:16:25.497Z [ERROR]: Error creating question: ValidationError: text: Path `text` is required. 
+2025-07-01T18:16:35.113Z [ERROR]: Error creating question: ValidationError: text: Path `text` is required. 
+2025-07-02T04:19:46.893Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T04:19:46.904Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T04:20:45.704Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-02T04:20:45.757Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-02T04:24:11.936Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T04:24:11.947Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T04:24:47.223Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T04:24:47.233Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T04:31:44.377Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T04:31:44.385Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T04:31:47.164Z [INFO]: true isMatch 
+2025-07-02T04:36:06.752Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T04:36:06.762Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T04:36:56.265Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T04:36:56.275Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T04:48:59.216Z [ERROR]: Error creating question: ValidationError: text: Path `text` is required. 
+2025-07-02T04:49:11.143Z [ERROR]: Error creating question: ValidationError: text: Path `text` is required. 
+2025-07-02T04:50:49.217Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T04:50:49.227Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T04:53:11.246Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T04:53:11.256Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T04:53:16.300Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T04:53:16.309Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T04:54:10.152Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T04:54:10.162Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T04:55:36.201Z [INFO]: true isMatch 
+2025-07-02T04:57:08.618Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-02T04:57:08.659Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-02T04:58:42.566Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T04:58:42.578Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T04:58:51.061Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T04:58:51.068Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T04:58:54.429Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T04:58:54.437Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T04:59:55.462Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T04:59:55.471Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T05:00:00.307Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T05:00:00.318Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T05:01:40.561Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T05:01:40.571Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T05:07:32.705Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-02T05:07:32.774Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-02T05:08:19.155Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T05:08:19.163Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T05:08:30.500Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T05:08:30.511Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T05:08:36.410Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T05:08:36.421Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T05:08:42.734Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T05:08:42.747Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T05:08:49.858Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T05:08:49.867Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T05:08:57.647Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T05:08:57.654Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T05:09:07.957Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T05:09:07.967Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T05:13:07.986Z [ERROR]: Error fetching quizzes by level: TypeError: Invalid sort value: { requiredLevel: 0 } 
+2025-07-02T05:13:08.055Z [ERROR]: Error fetching quizzes by level: TypeError: Invalid sort value: { requiredLevel: 0 } 
+2025-07-02T05:13:58.075Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T05:13:58.085Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T05:14:04.631Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T05:14:04.639Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T05:14:47.041Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T05:14:47.048Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T05:15:10.954Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T05:15:10.964Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T05:23:05.525Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T05:23:05.535Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T05:24:03.785Z [INFO]: true isMatch 
+2025-07-02T05:30:14.403Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T05:30:14.412Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T05:36:36.737Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T05:36:36.746Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T05:43:19.882Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T05:43:19.890Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T05:49:10.357Z [INFO]: true isMatch 
+2025-07-02T05:51:41.156Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T05:51:41.164Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T05:52:00.355Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T05:52:00.364Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T05:52:11.871Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T05:52:11.879Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T05:52:21.743Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T05:52:21.751Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T05:53:07.079Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": {
+    "$in": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "category": "6864b9cc320373eda2aef756"
+} 
+2025-07-02T05:53:07.080Z [INFO]: User level: 0 
+2025-07-02T05:53:07.081Z [INFO]: Accessible levels: 0,1,2,3 
+2025-07-02T05:53:07.150Z [INFO]: Found quizzes: 1 
+2025-07-02T05:53:07.319Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": {
+    "$in": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "category": "6864b9cc320373eda2aef756"
+} 
+2025-07-02T05:53:07.319Z [INFO]: User level: 0 
+2025-07-02T05:53:07.320Z [INFO]: Accessible levels: 0,1,2,3 
+2025-07-02T05:53:07.597Z [INFO]: Found quizzes: 1 
+2025-07-02T05:53:14.400Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": {
+    "$in": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "subcategory": "6864b9e2320373eda2aef764"
+} 
+2025-07-02T05:53:14.401Z [INFO]: User level: 0 
+2025-07-02T05:53:14.401Z [INFO]: Accessible levels: 0,1,2,3 
+2025-07-02T05:53:14.575Z [INFO]: Found quizzes: 1 
+2025-07-02T05:53:14.711Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": {
+    "$in": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "subcategory": "6864b9e2320373eda2aef764"
+} 
+2025-07-02T05:53:14.712Z [INFO]: User level: 0 
+2025-07-02T05:53:14.712Z [INFO]: Accessible levels: 0,1,2,3 
+2025-07-02T05:53:14.792Z [INFO]: Found quizzes: 1 
+2025-07-02T05:53:26.062Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": {
+    "$in": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "subcategory": "6864b9e2320373eda2aef764"
+} 
+2025-07-02T05:53:26.063Z [INFO]: User level: 0 
+2025-07-02T05:53:26.063Z [INFO]: Accessible levels: 0,1,2,3 
+2025-07-02T05:53:26.124Z [INFO]: Found quizzes: 1 
+2025-07-02T05:53:26.254Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": {
+    "$in": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "subcategory": "6864b9e2320373eda2aef764"
+} 
+2025-07-02T05:53:26.255Z [INFO]: User level: 0 
+2025-07-02T05:53:26.255Z [INFO]: Accessible levels: 0,1,2,3 
+2025-07-02T05:53:26.328Z [INFO]: Found quizzes: 1 
+2025-07-02T05:53:48.708Z [ERROR]: Quiz leaderboard fetch error: StrictPopulateError: Cannot populate path `student` because it is not in your schema. Set the `strictPopulate` option to false to override. 
+2025-07-02T05:56:01.868Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T05:56:01.876Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T05:56:10.549Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T05:56:10.557Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T05:56:22.693Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T05:56:22.701Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T05:56:48.342Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T05:56:48.353Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T05:57:52.509Z [INFO]: true isMatch 
+2025-07-02T05:59:29.024Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T05:59:29.034Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T05:59:50.348Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T05:59:50.360Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T05:59:53.882Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T06:00:02.848Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T06:00:10.645Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T06:00:10.655Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T06:00:50.175Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T06:00:50.183Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T06:02:48.004Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T06:02:48.014Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T06:18:19.777Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T06:18:19.788Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T06:18:30.265Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T06:18:30.275Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T06:18:32.673Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T06:18:41.043Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T06:18:41.054Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T06:19:11.042Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T06:21:04.279Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T06:21:04.287Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T10:26:37.615Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T10:26:37.623Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T10:39:53.486Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T10:39:53.516Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T10:40:15.550Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T10:40:15.560Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T10:40:31.260Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T10:40:31.271Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T10:40:39.180Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T10:40:39.190Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T10:41:07.491Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T10:41:07.498Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T10:43:18.926Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T10:43:18.934Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T10:43:28.243Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T10:43:28.251Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T10:43:31.901Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T10:43:31.910Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T10:43:37.980Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T10:43:37.989Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T10:44:00.502Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T10:44:00.513Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T10:44:21.844Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T10:44:21.851Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T10:44:48.563Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-02T10:44:48.571Z [INFO]: 🚀 Server running on port 5000 
+2025-07-02T10:47:39.105Z [INFO]: true isMatch 

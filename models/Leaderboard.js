@@ -1,13 +1,16 @@
 const mongoose = require('mongoose');
+
 const leaderboardSchema = new mongoose.Schema({
-  liveQuiz: { type: mongoose.Schema.Types.ObjectId, ref: 'LiveQuiz', required: true },
+  quiz: { type: mongoose.Schema.Types.ObjectId, ref: 'Quiz', required: true },
   entries: [{
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    name: String,
-    score: Number,
-    rank: Number,
-    coinsEarned: Number,
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    name: { type: String, required: true },
+    score: { type: Number, required: true },
+    rank: { type: Number },
+    completedAt: { type: Date, default: Date.now }
   }],
-}, { timestamps: true });
+  createdAt: { type: Date, default: Date.now }
+});
+
 module.exports = mongoose.model('Leaderboard', leaderboardSchema);
 

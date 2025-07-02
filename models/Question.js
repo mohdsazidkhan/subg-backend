@@ -1,13 +1,7 @@
 const mongoose = require('mongoose');
-const { v4: uuidv4 } = require('uuid');
 const questionSchema = new mongoose.Schema({
-  publicId: {
-    type: String,
-    unique: true,
-    default: uuidv4,
-  },
+  questionText: { type: String, required: true },
   quiz: { type: mongoose.Schema.Types.ObjectId, ref: 'Quiz', required: true },
-  questionText: String,
   options: [String],
   correctAnswerIndex: Number,
   timeLimit: {

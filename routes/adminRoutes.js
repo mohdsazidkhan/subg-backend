@@ -21,7 +21,6 @@ router.delete('/subcategories/:id', protect, adminOnly, adminCtrl.deleteSubcateg
 // QUIZ
 router.get('/quizzes', protect, adminOnly, adminCtrl.getQuizzes);
 router.post('/quizzes', protect, adminOnly, adminCtrl.createQuiz);
-router.post('/quizzes/ai', protect, adminOnly, adminCtrl.createOPENAIQuiz);
 router.put('/quizzes/:id', protect, adminOnly, adminCtrl.updateQuiz);
 router.delete('/quizzes/:id', protect, adminOnly, adminCtrl.deleteQuiz);
 
@@ -39,8 +38,7 @@ router.delete('/students/:id', protect, adminOnly, adminCtrl.deleteStudent);
 // BADGES
 router.post('/assign-badge', protect, adminOnly, adminCtrl.assignBadge);
 
-router.post('/live-quiz/create', protect, adminOnly, adminCtrl.createLiveQuiz);
-router.patch('/live-quiz/start/:id', protect, adminOnly, adminCtrl.startLiveQuiz);
-router.patch('/live-quiz/end/:id', protect, adminOnly, adminCtrl.endLiveQuiz);
+// MIGRATION
+router.post('/migrate-users-to-free', protect, adminOnly, adminCtrl.migrateUsersToFree);
 
 module.exports = router;

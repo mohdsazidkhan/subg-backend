@@ -1,0 +1,31 @@
+2025-07-01T17:09:32.987Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-01T17:09:33.127Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-01T17:17:23.906Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-01T17:17:24.045Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-01T17:17:29.245Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-01T17:35:53.014Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-01T17:35:53.106Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-01T17:35:59.266Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-01T17:35:59.371Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-01T17:39:41.333Z [ERROR]: Registration error: MongoServerError: E11000 duplicate key error collection: subg.wallettransactions index: publicId_1 dup key: { publicId: null } 
+2025-07-01T17:41:48.963Z [ERROR]: Registration error: MongoServerError: E11000 duplicate key error collection: subg.wallettransactions index: publicId_1 dup key: { publicId: null } 
+2025-07-01T18:04:20.541Z [ERROR]: Error creating category: MongoServerError: E11000 duplicate key error collection: subg.categories index: publicId_1 dup key: { publicId: null } 
+2025-07-01T18:04:31.328Z [ERROR]: Error creating subcategory: MongoServerError: E11000 duplicate key error collection: subg.subcategories index: publicId_1 dup key: { publicId: null } 
+2025-07-01T18:04:57.842Z [ERROR]: Error creating category: MongoServerError: E11000 duplicate key error collection: subg.categories index: publicId_1 dup key: { publicId: null } 
+2025-07-01T18:06:23.014Z [ERROR]: Error creating category: MongoServerError: E11000 duplicate key error collection: subg.categories index: publicId_1 dup key: { publicId: null } 
+2025-07-01T18:10:16.683Z [ERROR]: Error creating subcategory: MongoServerError: E11000 duplicate key error collection: subg.subcategories index: publicId_1 dup key: { publicId: null } 
+2025-07-01T18:15:30.060Z [ERROR]: Error creating question: ValidationError: text: Path `text` is required. 
+2025-07-01T18:16:24.192Z [ERROR]: Error creating question: ValidationError: text: Path `text` is required. 
+2025-07-01T18:16:25.497Z [ERROR]: Error creating question: ValidationError: text: Path `text` is required. 
+2025-07-01T18:16:35.113Z [ERROR]: Error creating question: ValidationError: text: Path `text` is required. 
+2025-07-02T04:20:45.704Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-02T04:20:45.757Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-02T04:48:59.216Z [ERROR]: Error creating question: ValidationError: text: Path `text` is required. 
+2025-07-02T04:49:11.143Z [ERROR]: Error creating question: ValidationError: text: Path `text` is required. 
+2025-07-02T04:57:08.618Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-02T04:57:08.659Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-02T05:07:32.705Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-02T05:07:32.774Z [ERROR]: Error fetching home page data: ValidationError: level.levelProgress: Cast to Number failed for value "NaN" (type number) at path "level.levelProgress" 
+2025-07-02T05:13:07.986Z [ERROR]: Error fetching quizzes by level: TypeError: Invalid sort value: { requiredLevel: 0 } 
+2025-07-02T05:13:08.055Z [ERROR]: Error fetching quizzes by level: TypeError: Invalid sort value: { requiredLevel: 0 } 
+2025-07-02T05:53:48.708Z [ERROR]: Quiz leaderboard fetch error: StrictPopulateError: Cannot populate path `student` because it is not in your schema. Set the `strictPopulate` option to false to override. 
