@@ -329,3 +329,29 @@
 2025-07-02T10:44:48.563Z [INFO]: ✅ Database Connected to MongoDB 
 2025-07-02T10:44:48.571Z [INFO]: 🚀 Server running on port 5000 
 2025-07-02T10:47:39.105Z [INFO]: true isMatch 
+2025-07-03T12:49:29.578Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-03T12:49:29.585Z [INFO]: 🚀 Server running on port 5000 
+2025-07-03T12:53:20.610Z [INFO]: true isMatch 
+2025-07-03T13:16:26.087Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": 1
+} 
+2025-07-03T13:16:26.088Z [INFO]: User level: 0 
+2025-07-03T13:16:26.089Z [INFO]: Accessible levels: 0,1,2,3 
+2025-07-03T13:16:26.164Z [INFO]: Found quizzes: 1 
+2025-07-03T13:16:26.306Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": 1
+} 
+2025-07-03T13:16:26.307Z [INFO]: User level: 0 
+2025-07-03T13:16:26.308Z [INFO]: Accessible levels: 0,1,2,3 
+2025-07-03T13:16:26.376Z [INFO]: Found quizzes: 1 
+2025-07-03T13:17:49.751Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-03T13:17:49.760Z [INFO]: 🚀 Server running on port 5000 
+2025-07-04T06:13:26.851Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-04T06:13:26.858Z [INFO]: 🚀 Server running on port 5000 
+2025-07-04T06:14:20.913Z [INFO]: true isMatch 
+2025-07-04T06:20:58.071Z [INFO]: true isMatch 
+2025-07-04T06:30:57.513Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-04T06:30:57.522Z [INFO]: 🚀 Server running on port 5000 
+2025-07-04T06:46:02.307Z [INFO]: true isMatch 

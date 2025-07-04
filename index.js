@@ -14,6 +14,7 @@ const paymentRoutes = require('./routes/payment');
 const walletTransactionRoutes = require('./routes/walletTransactionRoutes');
 const subscriptionRoutes = require('./routes/subscription');
 const userLevelRoutes = require('./routes/userLevel');
+const contactRoutes = require('./routes/contact');
 const winston = require('winston');
 const morgan = require('morgan');
 
@@ -92,6 +93,7 @@ app.use('/api/payment', paymentRoutes);
 app.use('/api/wallet', walletTransactionRoutes);
 app.use('/api/subscription', subscriptionRoutes);
 app.use('/api/levels', userLevelRoutes);
+app.use('/api/contacts', contactRoutes);
 
 const server = http.createServer(app);
 
