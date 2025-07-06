@@ -29,3 +29,29 @@
 2025-07-02T05:13:07.986Z [ERROR]: Error fetching quizzes by level: TypeError: Invalid sort value: { requiredLevel: 0 } 
 2025-07-02T05:13:08.055Z [ERROR]: Error fetching quizzes by level: TypeError: Invalid sort value: { requiredLevel: 0 } 
 2025-07-02T05:53:48.708Z [ERROR]: Quiz leaderboard fetch error: StrictPopulateError: Cannot populate path `student` because it is not in your schema. Set the `strictPopulate` option to false to override. 
+2025-07-06T12:03:35.557Z [ERROR]: ❌ Subscription order creation error: [object Object] 
+2025-07-06T12:04:07.327Z [ERROR]: ❌ Subscription order creation error: [object Object] 
+2025-07-06T12:09:57.764Z [ERROR]: ❌ Subscription order creation error: [object Object] 
+2025-07-06T12:12:15.786Z [ERROR]: ❌ Subscription order creation error: [object Object] 
+2025-07-06T12:13:36.782Z [ERROR]: ❌ Subscription order creation error: {
+  "statusCode": 401,
+  "error": {
+    "code": "BAD_REQUEST_ERROR",
+    "description": "Authentication failed"
+  }
+} 
+2025-07-06T12:17:21.039Z [ERROR]: ❌ Subscription order creation error: {
+  "statusCode": 401,
+  "error": {
+    "code": "BAD_REQUEST_ERROR",
+    "description": "Authentication failed"
+  }
+} 
+2025-07-06T12:18:35.044Z [ERROR]: ❌ Subscription order creation error: {
+  "statusCode": 401,
+  "error": {
+    "description": "Authentication failed",
+    "code": "BAD_REQUEST_ERROR"
+  }
+} 
+2025-07-06T12:25:31.217Z [ERROR]: ❌ Invalid signature 

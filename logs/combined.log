@@ -359,3 +359,173 @@
 2025-07-05T04:25:25.998Z [INFO]: 🚀 Server running on port 5000 
 2025-07-05T04:27:10.811Z [INFO]: ✅ Database Connected to MongoDB 
 2025-07-05T04:27:10.823Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T11:46:41.304Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T11:46:41.313Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T11:48:21.006Z [INFO]: true isMatch 
+2025-07-06T12:02:42.374Z [INFO]: true isMatch 
+2025-07-06T12:03:13.865Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:03:13.874Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:03:35.334Z [INFO]: 📦 Creating subscription order with data: [object Object] 
+2025-07-06T12:03:35.380Z [INFO]: ✅ User found: Mohd Sazid Khan 
+2025-07-06T12:03:35.381Z [INFO]: ✅ Plan found: [object Object] 
+2025-07-06T12:03:35.383Z [INFO]: 🔧 Creating Razorpay order with options: [object Object] 
+2025-07-06T12:03:35.557Z [ERROR]: ❌ Subscription order creation error: [object Object] 
+2025-07-06T12:04:07.183Z [INFO]: 📦 Creating subscription order with data: [object Object] 
+2025-07-06T12:04:07.214Z [INFO]: ✅ User found: Mohd Sazid Khan 
+2025-07-06T12:04:07.215Z [INFO]: ✅ Plan found: [object Object] 
+2025-07-06T12:04:07.216Z [INFO]: 🔧 Creating Razorpay order with options: [object Object] 
+2025-07-06T12:04:07.327Z [ERROR]: ❌ Subscription order creation error: [object Object] 
+2025-07-06T12:08:40.685Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:08:40.694Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:09:47.894Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:09:47.904Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:09:57.522Z [INFO]: 📦 Creating subscription order with data: [object Object] 
+2025-07-06T12:09:57.601Z [INFO]: ✅ User found: Mohd Sazid Khan 
+2025-07-06T12:09:57.602Z [INFO]: ✅ Plan found: [object Object] 
+2025-07-06T12:09:57.603Z [INFO]: 🔧 Creating Razorpay order with options: [object Object] 
+2025-07-06T12:09:57.764Z [ERROR]: ❌ Subscription order creation error: [object Object] 
+2025-07-06T12:12:12.516Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:12:12.526Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:12:15.595Z [INFO]: 📦 Creating subscription order with data: [object Object] 
+2025-07-06T12:12:15.652Z [INFO]: ✅ User found: Mohd Sazid Khan 
+2025-07-06T12:12:15.652Z [INFO]: ✅ Plan found: [object Object] 
+2025-07-06T12:12:15.653Z [INFO]: 🔧 Creating Razorpay order with options: [object Object] 
+2025-07-06T12:12:15.786Z [ERROR]: ❌ Subscription order creation error: [object Object] 
+2025-07-06T12:13:30.983Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:13:30.993Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:13:36.559Z [INFO]: 📦 Creating subscription order with data: [object Object] 
+2025-07-06T12:13:36.630Z [INFO]: ✅ User found: Mohd Sazid Khan 
+2025-07-06T12:13:36.631Z [INFO]: ✅ Plan found: [object Object] 
+2025-07-06T12:13:36.632Z [INFO]: 🔧 Creating Razorpay order with options: [object Object] 
+2025-07-06T12:13:36.782Z [ERROR]: ❌ Subscription order creation error: {
+  "statusCode": 401,
+  "error": {
+    "code": "BAD_REQUEST_ERROR",
+    "description": "Authentication failed"
+  }
+} 
+2025-07-06T12:14:51.580Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:14:51.592Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:15:01.438Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:15:01.446Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:15:40.529Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:15:40.539Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:16:09.737Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:16:09.745Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:16:15.727Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:16:15.735Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:16:44.622Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:16:44.630Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:16:58.355Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:16:58.364Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:17:06.004Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:17:06.013Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:17:10.392Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:17:10.400Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:17:20.849Z [INFO]: 📦 Creating subscription order with data: [object Object] 
+2025-07-06T12:17:20.888Z [INFO]: ✅ User found: Mohd Sazid Khan 
+2025-07-06T12:17:20.889Z [INFO]: ✅ Plan found: [object Object] 
+2025-07-06T12:17:20.891Z [INFO]: 🔧 Creating Razorpay order with options: [object Object] 
+2025-07-06T12:17:21.039Z [ERROR]: ❌ Subscription order creation error: {
+  "statusCode": 401,
+  "error": {
+    "code": "BAD_REQUEST_ERROR",
+    "description": "Authentication failed"
+  }
+} 
+2025-07-06T12:18:30.983Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:18:30.996Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:18:34.837Z [INFO]: 📦 Creating subscription order with data: [object Object] 
+2025-07-06T12:18:34.905Z [INFO]: ✅ User found: Mohd Sazid Khan 
+2025-07-06T12:18:34.906Z [INFO]: ✅ Plan found: [object Object] 
+2025-07-06T12:18:34.907Z [INFO]: rzp_test_your_razorpay_key_id process.env.RAZORPAY_KEY_ID 
+2025-07-06T12:18:34.908Z [INFO]: 🔧 Creating Razorpay order with options: [object Object] 
+2025-07-06T12:18:35.044Z [ERROR]: ❌ Subscription order creation error: {
+  "statusCode": 401,
+  "error": {
+    "description": "Authentication failed",
+    "code": "BAD_REQUEST_ERROR"
+  }
+} 
+2025-07-06T12:18:56.372Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:18:56.380Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:19:05.474Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:19:05.483Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:20:26.685Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:20:26.693Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:21:29.891Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:21:29.902Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:24:24.626Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:24:24.637Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:25:11.074Z [INFO]: 📦 Creating subscription order with data: [object Object] 
+2025-07-06T12:25:11.143Z [INFO]: ✅ User found: Mohd Sazid Khan 
+2025-07-06T12:25:11.144Z [INFO]: ✅ Plan found: [object Object] 
+2025-07-06T12:25:11.145Z [INFO]: 🔧 Creating Razorpay order with options: [object Object] 
+2025-07-06T12:25:11.993Z [INFO]: ✅ Razorpay order created: order_QpmTYhPhrUQUcR 
+2025-07-06T12:25:12.060Z [INFO]: ✅ Payment order saved to database 
+2025-07-06T12:25:31.214Z [INFO]: 🔍 Payment verification request: [object Object] 
+2025-07-06T12:25:31.216Z [INFO]: 🔐 Signature verification: [object Object] 
+2025-07-06T12:25:31.217Z [ERROR]: ❌ Invalid signature 
+2025-07-06T12:26:18.655Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:26:18.666Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:26:36.803Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:26:36.811Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:26:49.245Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:26:49.260Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:26:50.030Z [INFO]: true isMatch 
+2025-07-06T12:27:01.147Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:27:01.159Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:39:46.375Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:39:46.386Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:40:38.950Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:40:38.961Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:40:43.304Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:40:43.313Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:42:01.356Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:42:01.378Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:43:43.715Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:43:43.725Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:44:21.692Z [INFO]: true isMatch 
+2025-07-06T12:44:38.266Z [INFO]: true isMatch 
+2025-07-06T12:46:24.402Z [INFO]: true isMatch 
+2025-07-06T12:51:07.757Z [INFO]: true isMatch 
+2025-07-06T12:53:48.565Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T12:53:48.575Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T12:53:51.174Z [INFO]: true isMatch 
+2025-07-06T12:55:05.302Z [INFO]: true isMatch 
+2025-07-06T12:59:31.864Z [INFO]: true isMatch 
+2025-07-06T12:59:35.834Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": 1
+} 
+2025-07-06T12:59:35.835Z [INFO]: User level: 0 
+2025-07-06T12:59:35.836Z [INFO]: Accessible levels: 0,1,2,3 
+2025-07-06T12:59:35.906Z [INFO]: Found quizzes: 1 
+2025-07-06T12:59:36.055Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": 1
+} 
+2025-07-06T12:59:36.057Z [INFO]: User level: 0 
+2025-07-06T12:59:36.057Z [INFO]: Accessible levels: 0,1,2,3 
+2025-07-06T12:59:36.134Z [INFO]: Found quizzes: 1 
+2025-07-06T12:59:44.690Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": 1
+} 
+2025-07-06T12:59:44.692Z [INFO]: User level: 0 
+2025-07-06T12:59:44.692Z [INFO]: Accessible levels: 0,1,2,3 
+2025-07-06T12:59:44.757Z [INFO]: Found quizzes: 1 
+2025-07-06T12:59:44.899Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": 1
+} 
+2025-07-06T12:59:44.900Z [INFO]: User level: 0 
+2025-07-06T12:59:44.901Z [INFO]: Accessible levels: 0,1,2,3 
+2025-07-06T12:59:44.970Z [INFO]: Found quizzes: 1 
+2025-07-06T13:00:30.382Z [INFO]: true isMatch 
+2025-07-06T13:03:34.394Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T13:03:34.405Z [INFO]: 🚀 Server running on port 5000 
+2025-07-06T13:31:19.081Z [INFO]: true isMatch 
+2025-07-06T13:39:27.965Z [INFO]: true isMatch 
+2025-07-06T13:41:30.708Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-06T13:41:30.717Z [INFO]: 🚀 Server running on port 5000 

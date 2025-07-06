@@ -30,10 +30,6 @@ router.get('/quizzes/:quizid/result', protect, quizController.getQuizResult);
 router.get('/profile', protect, studentController.getProfile);
 router.get('/leaderboard', protect, studentController.getLeaderboard);
 router.get('/leaderboard/quiz/:quizId', protect, studentController.getQuizLeaderboard);
-// UNUSED ENDPOINTS - commented out as not used in frontend
-// router.get('/wallet', protect, studentController.getWallet);
-// router.post('/badge/add', protect, studentController.addBadge);
-// router.post('/badge/remove', protect, studentController.removeBadge);
 
 // GET all categories
 router.get('/categories', async (req, res) => {

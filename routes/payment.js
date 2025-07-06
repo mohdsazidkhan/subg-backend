@@ -45,53 +45,7 @@ router.post("/create-order", async (req, res) => {
   }
 });
 
-// UNUSED ENDPOINT - commented out as not used in frontend
-// Create subscription payment order
-// router.post("/create-subscription-order", async (req, res) => {
-//   const { subscriptionId, userId } = req.body;
-//   
-//   try {
-//     const user = await User.findOne({publicId: userId});
-//     if (!user) {
-//       return res.status(404).json({ success: false, message: "User not found" });
-//     }
 
-//     const subscription = await Subscription.findOne({ publicId: subscriptionId });
-//     if (!subscription) {
-//       return res.status(404).json({ success: false, message: "Subscription not found" });
-//     }
-
-//     const options = {
-//       amount: subscription.amount * 100, // paise
-//       currency: "INR",
-//       receipt: `subscription_${subscriptionId}_${Date.now()}`,
-//     };
-
-//     const order = await razorpay.orders.create(options);
-    
-//     // Save order details in DB
-//     const paymentOrder = new PaymentOrder({
-//       orderId: order.id,
-//       amount: (order.amount / 100),
-//       currency: order.currency,
-//       receipt: order.receipt,
-//       user: user._id,
-//       paymentId: "",
-//       subscriptionId: subscription._id
-//     });
-
-//     await paymentOrder.save();
-
-//     res.status(200).json({
-//       ...order,
-//       key: process.env.RAZORPAY_KEY_ID,
-//       subscriptionId: subscriptionId
-//     });
-//   } catch (err) {
-//     console.error("Subscription order creation error:", err);
-//     res.status(500).json({ success: false, message: "Failed to create subscription order" });
-//   }
-// });
 
 // 2. Verify payment
 router.post("/verify", async (req, res) => {

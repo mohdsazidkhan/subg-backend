@@ -1,35 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const subscriptionController = require('../controllers/subscriptionController');
-const walletTransactionController = require('../controllers/walletTransactionController');
-const { protect } = require('../middleware/auth');
+const dotenv = require('dotenv');
 const razorpay = require("../config/razorpay");
 const crypto = require("crypto");
 const PaymentOrder = require('../models/PaymentOrder');
-const Subscription = require('../models/Subscription');
 const User = require('../models/User');
 const WalletTransaction = require('../models/WalletTransaction');
-
-// UNUSED ENDPOINTS - commented out as not used in frontend
-// Get current subscription (protected)
-// router.get('/current', protect, subscriptionController.getCurrentSubscription);
-
-// Get subscription plans (public)
-// router.get('/plans', subscriptionController.getSubscriptionPlans);
-
-// Create subscription order (protected)
-// router.post('/create-order', protect, subscriptionController.createSubscriptionOrder);
-
-// Activate subscription after payment (protected)
-// router.post('/activate', protect, subscriptionController.activateSubscription);
-
-// Check feature access (public)
-// router.get('/check-access/:feature/:userId', subscriptionController.checkFeatureAccess);
-
-// Get subscription history (protected)
-// router.get('/history', protect, subscriptionController.getSubscriptionHistory);
-
-// FRONTEND USED ENDPOINTS - added to match frontend expectations
+dotenv.config();
 // Get subscription status for a user
 router.get('/status/:userId', async (req, res) => {
   try {
@@ -131,7 +108,6 @@ router.post('/create-order', async (req, res) => {
       console.error('❌ Razorpay configuration missing');
       return res.status(500).json({ success: false, message: "Payment gateway not configured" });
     }
-
     const options = {
       amount: plan.amount * 100, // paise
       currency: "INR",
@@ -163,7 +139,7 @@ router.post('/create-order', async (req, res) => {
       planId: planId
     });
   } catch (err) {
-    console.error("❌ Subscription order creation error:", err);
+    console.error('❌ Subscription order creation error:', JSON.stringify(err, null, 2));
     res.status(500).json({ success: false, message: "Failed to create subscription order", error: err.message });
   }
 });
