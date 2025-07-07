@@ -15,6 +15,9 @@ router.get('/user-level', protect, userLevelController.getUserLevel);
 // Get all levels information (public)
 router.get('/all', userLevelController.getAllLevels);
 
+// Get all levels with quiz counts (public)
+router.get('/all-with-quiz-count', userLevelController.getAllLevelsWithQuizCount);
+
 // Get leaderboard by level (public)
 router.get('/leaderboard/:level', userLevelController.getLevelLeaderboard);
 

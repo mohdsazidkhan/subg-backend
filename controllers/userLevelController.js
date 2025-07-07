@@ -603,6 +603,36 @@ exports.getLevelQuizzes = async (req, res) => {
   }
 };
 
+// Get all levels with quiz counts
+exports.getAllLevelsWithQuizCount = async (req, res) => {
+  try {
+    const levels = [];
+    const config = User.LEVEL_CONFIG;
+    for (let i = 0; i <= 10; i++) {
+      const quizCount = await Quiz.countDocuments({ requiredLevel: i, isActive: true });
+      levels.push({
+        level: i,
+        name: config[i].name,
+        description: config[i].description,
+        quizzesRequired: config[i].quizzesRequired,
+        quizCount,
+        emoji: getLevelEmoji(i)
+      });
+    }
+    res.status(200).json({
+      success: true,
+      data: levels
+    });
+  } catch (error) {
+    console.error('Error fetching all levels with quiz count:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch levels with quiz count',
+      error: error.message
+    });
+  }
+};
+
 // Helper functions
 function getLevelEmoji(level) {
   const emojis = {
