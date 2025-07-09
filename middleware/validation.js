@@ -37,9 +37,8 @@ const validateUserRegistration = (req, res, next) => {
 // User login validation
 const validateUserLogin = (req, res, next) => {
   const schema = Joi.object({
-    email: Joi.string().email().required().messages({
-      'string.email': 'Please provide a valid email address',
-      'any.required': 'Email is required'
+    identifier: Joi.string().required().messages({
+      'any.required': 'Email or phone is required'
     }),
     password: Joi.string().required().messages({
       'any.required': 'Password is required'

@@ -146,17 +146,25 @@ exports.register = async (req, res) => {
 };
 
 exports.login = async (req, res) => {
-  const { email, password } = req.body;
+  const { identifier, password } = req.body;
   try {
-    const user = await User.findOne({ email }).populate('currentSubscription');
+    let user;
+    // Check if identifier is an email
+    const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+    const phoneRegex = /^\d{10,15}$/;
+    if (emailRegex.test(identifier)) {
+      user = await User.findOne({ email: identifier }).populate('currentSubscription');
+    } else if (phoneRegex.test(identifier)) {
+      user = await User.findOne({ phone: identifier }).populate('currentSubscription');
+    } else {
+      return res.status(400).json({ message: 'Please provide a valid email or phone number.' });
+    }
     if (!user) return res.status(404).json({ message: 'User Not Found!' });
 
     const isMatch = await bcrypt.compare(password, user.password);
-    console.log(isMatch, 'isMatch');
     if (!isMatch) return res.status(401).json({ message: 'Invalid Credentials' });
 
     const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1d' });
-    
     // Get level information
     const levelInfo = user.getLevelInfo();
 
@@ -168,6 +176,7 @@ exports.login = async (req, res) => {
         _id: user._id,
         name: user.name,
         email: user.email,
+        phone: user.phone,
         role: user.role,
         subscriptionStatus: user.subscriptionStatus,
         subscriptionExpiry: user.subscriptionExpiry,
