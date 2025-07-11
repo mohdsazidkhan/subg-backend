@@ -587,3 +587,10 @@
 2025-07-11T11:34:43.528Z [INFO]: 🚀 Server running on port 5000 
 2025-07-11T11:35:10.430Z [INFO]: ✅ Database Connected to MongoDB 
 2025-07-11T11:35:10.437Z [INFO]: 🚀 Server running on port 5000 
+2025-07-11T12:29:05.892Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-11T12:29:05.901Z [INFO]: 🚀 Server running on port 5000 
+2025-07-11T12:29:10.456Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-11T12:29:10.465Z [INFO]: 🚀 Server running on port 5000 
+2025-07-11T12:30:49.447Z [ERROR]: Error creating question: ValidationError: timeLimit: Path `timeLimit` (2) is less than minimum allowed value (5). 
+2025-07-11T12:32:02.383Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-11T12:32:02.392Z [INFO]: 🚀 Server running on port 5000 

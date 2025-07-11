@@ -108,7 +108,7 @@ exports.createCategory = async (req, res) => {
     res.status(201).json({message: "🎉 Category Created Successfully!", category: category});
   } catch (error) {
     console.error('Error creating category:', error);
-    res.status(500).json({ error: 'Failed to create category' });
+    res.status(500).json({ error: 'Failed to create category', details: error.message });
   }
 };
 
@@ -197,7 +197,7 @@ exports.createSubcategory = async (req, res) => {
     res.status(201).json({ message: "🎉 Subcategory Created Successfully!", subcategory });
   } catch (error) {
     console.error('Error creating subcategory:', error);
-    res.status(500).json({ error: 'Failed to create subcategory' });
+    res.status(500).json({ error: 'Failed to create subcategory', details: error.message });
   }
 };
 
@@ -424,7 +424,7 @@ exports.createQuestion = async (req, res) => {
     res.status(201).json({ message: "🎉 Question Created Successfully!", question });
   } catch (error) {
     console.error('Error creating question:', error);
-    res.status(500).json({ error: 'Failed to create question' });
+    res.status(500).json({ error: 'Failed to create question', details: error.message });
   }
 };
 
