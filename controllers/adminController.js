@@ -53,12 +53,27 @@ exports.getCategories = async (req, res) => {
       .sort({ createdAt: -1 })
       .skip(skip)
       .limit(limit);
-    
+
+    // Get subcategory count for each category
+    const categoryIds = categories.map(cat => cat._id);
+    const subcategoryCounts = await Subcategory.aggregate([
+      { $match: { category: { $in: categoryIds } } },
+      { $group: { _id: '$category', count: { $sum: 1 } } }
+    ]);
+    const subcategoryCountMap = {};
+    subcategoryCounts.forEach(sc => { subcategoryCountMap[sc._id.toString()] = sc.count; });
+
+    const categoriesWithSubcategoryCount = categories.map(cat => {
+      const catObj = cat.toObject();
+      catObj.subcategoryCount = subcategoryCountMap[cat._id.toString()] || 0;
+      return catObj;
+    });
+
     const total = await Category.countDocuments(searchQuery);
     const totalPages = Math.ceil(total / limit);
-    
+
     res.json({
-      categories,
+      categories: categoriesWithSubcategoryCount,
       pagination: {
         page,
         limit,
@@ -131,12 +146,28 @@ exports.getSubcategories = async (req, res) => {
       .sort({ createdAt: -1 })
       .skip(skip)
       .limit(limit);
-    
+
+    // Get quiz count for each subcategory
+    const subcategoryIds = subcategories.map(sc => sc._id);
+    const quizCounts = await Quiz.aggregate([
+      { $match: { subcategory: { $in: subcategoryIds } } },
+      { $group: { _id: '$subcategory', count: { $sum: 1 } } }
+    ]);
+    const quizCountMap = {};
+    quizCounts.forEach(qc => { quizCountMap[qc._id.toString()] = qc.count; });
+
+    // Add quizCount inside each subcategory object (ensure plain object)
+    const subcategoriesWithQuizCount = subcategories.map(sc => {
+      const scObj = sc.toObject();
+      scObj.quizCount = quizCountMap[sc._id.toString()] || 0;
+      return scObj;
+    });
+
     const total = await Subcategory.countDocuments(searchQuery);
     const totalPages = Math.ceil(total / limit);
-    
+
     res.json({
-      subcategories,
+      subcategories: subcategoriesWithQuizCount,
       pagination: {
         page,
         limit,
@@ -205,12 +236,27 @@ exports.getQuizzes = async (req, res) => {
       .sort({ createdAt: -1 })
       .skip(skip)
       .limit(limit);
-    
+
+    // Get question count for each quiz
+    const quizIds = quizzes.map(q => q._id);
+    const questionCounts = await Question.aggregate([
+      { $match: { quiz: { $in: quizIds } } },
+      { $group: { _id: '$quiz', count: { $sum: 1 } } }
+    ]);
+    const questionCountMap = {};
+    questionCounts.forEach(qc => { questionCountMap[qc._id.toString()] = qc.count; });
+
+    const quizzesWithQuestionCount = quizzes.map(q => {
+      const qObj = q.toObject();
+      qObj.questionCount = questionCountMap[q._id.toString()] || 0;
+      return qObj;
+    });
+
     const total = await Quiz.countDocuments(searchQuery);
     const totalPages = Math.ceil(total / limit);
-    
+
     res.json({
-      quizzes,
+      quizzes: quizzesWithQuestionCount,
       pagination: {
         page,
         limit,
