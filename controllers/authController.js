@@ -5,7 +5,58 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const WalletTransaction = require('../models/WalletTransaction');
 dotenv.config();
+const crypto = require('crypto');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const { sendBrevoEmail } = require('../utils/email');
+// ...existing code...
 
+// Forgot Password: Send reset link
+exports.forgotPassword = async (req, res) => {
+  const { email } = req.body;
+  if (!email) return res.status(400).json({ message: 'Email is required' });
+  const user = await User.findOne({ email });
+  if (!user) return res.status(404).json({ message: 'User not found' });
+
+  // Generate reset token (JWT or random string)
+  const resetToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '15m' });
+  user.resetPasswordToken = resetToken;
+  user.resetPasswordExpires = Date.now() + 15 * 60 * 1000; // 15 minutes
+  await user.save();
+
+  // Send email with reset link using Brevo
+  const resetUrl = `https://subgquiz.com/reset-password?token=${resetToken}`;
+  const emailSent = await sendBrevoEmail({
+    to: user.email,
+    subject: 'Password Reset Request',
+    html: `<p>Hello ${user.name || ''},</p><p>You requested a password reset for your SubgQuiz account.</p><p><a href="${resetUrl}">Click here to reset your password</a></p><p>This link will expire in 15 minutes.</p>`
+  });
+  if (!emailSent) {
+    return res.status(500).json({ message: 'Failed to send reset email. Please try again later.' });
+  }
+  res.json({ success: true, message: 'Password reset link sent to your email.' });
+};
+
+// Reset Password: Set new password
+exports.resetPassword = async (req, res) => {
+  const { token, newPassword } = req.body;
+  if (!token || !newPassword) return res.status(400).json({ message: 'Token and new password are required' });
+  let payload;
+  try {
+    payload = jwt.verify(token, process.env.JWT_SECRET);
+  } catch (err) {
+    return res.status(400).json({ message: 'Invalid or expired token' });
+  }
+  const user = await User.findById(payload.id);
+  if (!user || user.resetPasswordToken !== token || Date.now() > user.resetPasswordExpires) {
+    return res.status(400).json({ message: 'Invalid or expired token' });
+  }
+  user.password = await bcrypt.hash(newPassword, 10);
+  user.resetPasswordToken = undefined;
+  user.resetPasswordExpires = undefined;
+  await user.save();
+  res.json({ success: true, message: 'Password has been reset successfully.' });
+};
 // Function to create free subscription for new users
 const createFreeSubscription = async (userId, isAdmin = false) => {
   try {

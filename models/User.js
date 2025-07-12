@@ -37,6 +37,8 @@ const userSchema = new mongoose.Schema({
     default: 'free' 
   },
   subscriptionExpiry: { type: Date },
+  resetPasswordToken: { type: String },
+  resetPasswordExpires: { type: Date },
   
   // Legacy fields for backward compatibility (will be deprecated)
 }, { timestamps: true });
