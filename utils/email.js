@@ -1,4 +1,3 @@
-const nodemailer = require('nodemailer');
 const SibApiV3Sdk = require('sib-api-v3-sdk');
 
 const apiKey = process.env.BREVO_EMAIL_API_KEY;
