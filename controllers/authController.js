@@ -6,8 +6,6 @@ const jwt = require('jsonwebtoken');
 const WalletTransaction = require('../models/WalletTransaction');
 dotenv.config();
 const crypto = require('crypto');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
 const { sendBrevoEmail } = require('../utils/email');
 // ...existing code...
 
