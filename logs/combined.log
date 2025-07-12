@@ -594,3 +594,57 @@
 2025-07-11T12:30:49.447Z [ERROR]: Error creating question: ValidationError: timeLimit: Path `timeLimit` (2) is less than minimum allowed value (5). 
 2025-07-11T12:32:02.383Z [INFO]: ✅ Database Connected to MongoDB 
 2025-07-11T12:32:02.392Z [INFO]: 🚀 Server running on port 5000 
+2025-07-11T12:32:06.626Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-11T12:32:06.634Z [INFO]: 🚀 Server running on port 5000 
+2025-07-12T06:04:42.801Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-12T06:04:42.814Z [INFO]: 🚀 Server running on port 5000 
+2025-07-12T06:05:53.147Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzUyMjQwOTI0LCJleHAiOjE3NTIzMjczMjR9.qelAeuB4v8PU58MTTOT_OaMrFV4gRYF-mMELyYPBs_E 
+2025-07-12T06:05:53.197Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzUyMjQwOTI0LCJleHAiOjE3NTIzMjczMjR9.qelAeuB4v8PU58MTTOT_OaMrFV4gRYF-mMELyYPBs_E 
+2025-07-12T06:06:12.718Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-12T06:06:12.728Z [INFO]: 🚀 Server running on port 5000 
+2025-07-12T06:06:23.551Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzUyMjQwOTI0LCJleHAiOjE3NTIzMjczMjR9.qelAeuB4v8PU58MTTOT_OaMrFV4gRYF-mMELyYPBs_E 
+2025-07-12T06:06:23.597Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzUyMjQwOTI0LCJleHAiOjE3NTIzMjczMjR9.qelAeuB4v8PU58MTTOT_OaMrFV4gRYF-mMELyYPBs_E 
+2025-07-12T06:27:15.779Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-12T06:27:15.788Z [INFO]: 🚀 Server running on port 5000 
+2025-07-12T07:09:00.330Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-12T07:09:00.337Z [INFO]: 🚀 Server running on port 5000 
+2025-07-12T07:21:34.540Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-12T07:21:34.547Z [INFO]: 🚀 Server running on port 5000 
+2025-07-12T07:31:13.524Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-12T07:31:13.532Z [INFO]: 🚀 Server running on port 5000 
+2025-07-12T07:40:02.012Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-12T07:40:02.019Z [INFO]: 🚀 Server running on port 5000 
+2025-07-12T07:48:36.926Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-12T07:48:36.933Z [INFO]: 🚀 Server running on port 5000 
+2025-07-12T07:57:38.181Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-12T07:57:38.189Z [INFO]: 🚀 Server running on port 5000 
+2025-07-12T08:00:26.583Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": {
+    "$in": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "category": "6864c2fc5907db0b48cb39dd"
+} 
+2025-07-12T08:00:26.584Z [INFO]: User level: 1 
+2025-07-12T08:00:26.585Z [INFO]: Accessible levels: 0,1,2,3 
+2025-07-12T08:00:26.661Z [INFO]: Found quizzes: 7 
+2025-07-12T08:00:26.806Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": {
+    "$in": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "category": "6864c2fc5907db0b48cb39dd"
+} 
+2025-07-12T08:00:26.807Z [INFO]: User level: 1 
+2025-07-12T08:00:26.807Z [INFO]: Accessible levels: 0,1,2,3 
+2025-07-12T08:00:26.883Z [INFO]: Found quizzes: 7 

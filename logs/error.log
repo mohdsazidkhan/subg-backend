@@ -56,3 +56,7 @@
 } 
 2025-07-06T12:25:31.217Z [ERROR]: ❌ Invalid signature 
 2025-07-11T12:30:49.447Z [ERROR]: Error creating question: ValidationError: timeLimit: Path `timeLimit` (2) is less than minimum allowed value (5). 
+2025-07-12T06:05:53.147Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzUyMjQwOTI0LCJleHAiOjE3NTIzMjczMjR9.qelAeuB4v8PU58MTTOT_OaMrFV4gRYF-mMELyYPBs_E 
+2025-07-12T06:05:53.197Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzUyMjQwOTI0LCJleHAiOjE3NTIzMjczMjR9.qelAeuB4v8PU58MTTOT_OaMrFV4gRYF-mMELyYPBs_E 
+2025-07-12T06:06:23.551Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzUyMjQwOTI0LCJleHAiOjE3NTIzMjczMjR9.qelAeuB4v8PU58MTTOT_OaMrFV4gRYF-mMELyYPBs_E 
+2025-07-12T06:06:23.597Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzUyMjQwOTI0LCJleHAiOjE3NTIzMjczMjR9.qelAeuB4v8PU58MTTOT_OaMrFV4gRYF-mMELyYPBs_E 
