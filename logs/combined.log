@@ -648,3 +648,143 @@
 2025-07-12T08:00:26.807Z [INFO]: User level: 1 
 2025-07-12T08:00:26.807Z [INFO]: Accessible levels: 0,1,2,3 
 2025-07-12T08:00:26.883Z [INFO]: Found quizzes: 7 
+2025-07-13T11:12:27.795Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-13T11:12:27.807Z [INFO]: 🚀 Server running on port 5000 
+2025-07-13T11:12:33.556Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-13T11:12:33.564Z [INFO]: 🚀 Server running on port 5000 
+2025-07-13T11:12:36.993Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": 1
+} 
+2025-07-13T11:12:36.997Z [INFO]: User level: 2 
+2025-07-13T11:12:37.004Z [INFO]: Accessible levels: 0,1,2,3 
+2025-07-13T11:12:37.099Z [INFO]: Found quizzes: 9 
+2025-07-13T11:12:37.321Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": 1
+} 
+2025-07-13T11:12:37.323Z [INFO]: User level: 2 
+2025-07-13T11:12:37.323Z [INFO]: Accessible levels: 0,1,2,3 
+2025-07-13T11:12:37.393Z [INFO]: Found quizzes: 9 
+2025-07-13T11:14:18.968Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-13T11:14:18.976Z [INFO]: 🚀 Server running on port 5000 
+2025-07-13T11:14:27.708Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-13T11:14:27.717Z [INFO]: 🚀 Server running on port 5000 
+2025-07-13T11:14:46.500Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": 1
+} 
+2025-07-13T11:14:46.501Z [INFO]: User level: 2 
+2025-07-13T11:14:46.503Z [INFO]: Accessible levels: 0,1,2,3 
+2025-07-13T11:14:46.590Z [INFO]: Found quizzes: 9 
+2025-07-13T11:14:46.780Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": 1
+} 
+2025-07-13T11:14:46.781Z [INFO]: User level: 2 
+2025-07-13T11:14:46.781Z [INFO]: Accessible levels: 0,1,2,3 
+2025-07-13T11:14:46.861Z [INFO]: Found quizzes: 9 
+2025-07-13T11:17:52.954Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": {
+    "$in": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "category": "6864b70006368392f3acc235"
+} 
+2025-07-13T11:17:52.955Z [INFO]: User level: 2 
+2025-07-13T11:17:52.955Z [INFO]: Accessible levels: 0,1,2,3 
+2025-07-13T11:17:53.027Z [INFO]: Found quizzes: 9 
+2025-07-13T11:17:53.314Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": {
+    "$in": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "category": "6864b70006368392f3acc235"
+} 
+2025-07-13T11:17:53.315Z [INFO]: User level: 2 
+2025-07-13T11:17:53.316Z [INFO]: Accessible levels: 0,1,2,3 
+2025-07-13T11:17:53.386Z [INFO]: Found quizzes: 9 
+2025-07-13T11:20:17.545Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": 2
+} 
+2025-07-13T11:20:17.546Z [INFO]: User level: 2 
+2025-07-13T11:20:17.546Z [INFO]: Accessible levels: 0,1,2,3 
+2025-07-13T11:20:17.613Z [INFO]: Found quizzes: 9 
+2025-07-13T11:20:17.777Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": 2
+} 
+2025-07-13T11:20:17.778Z [INFO]: User level: 2 
+2025-07-13T11:20:17.778Z [INFO]: Accessible levels: 0,1,2,3 
+2025-07-13T11:20:17.847Z [INFO]: Found quizzes: 9 
+2025-07-13T11:20:26.669Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": {
+    "$in": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "category": "687221094937020e7ee7c3d4"
+} 
+2025-07-13T11:20:26.670Z [INFO]: User level: 2 
+2025-07-13T11:20:26.671Z [INFO]: Accessible levels: 0,1,2,3 
+2025-07-13T11:20:26.739Z [INFO]: Found quizzes: 9 
+2025-07-13T11:20:26.906Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": {
+    "$in": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "category": "687221094937020e7ee7c3d4"
+} 
+2025-07-13T11:20:26.907Z [INFO]: User level: 2 
+2025-07-13T11:20:26.907Z [INFO]: Accessible levels: 0,1,2,3 
+2025-07-13T11:20:26.974Z [INFO]: Found quizzes: 9 
+2025-07-13T11:20:29.398Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": {
+    "$in": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "subcategory": "687221994937020e7ee7c40f"
+} 
+2025-07-13T11:20:29.399Z [INFO]: User level: 2 
+2025-07-13T11:20:29.400Z [INFO]: Accessible levels: 0,1,2,3 
+2025-07-13T11:20:29.497Z [INFO]: Found quizzes: 3 
+2025-07-13T11:20:29.683Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": {
+    "$in": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "subcategory": "687221994937020e7ee7c40f"
+} 
+2025-07-13T11:20:29.684Z [INFO]: User level: 2 
+2025-07-13T11:20:29.685Z [INFO]: Accessible levels: 0,1,2,3 
+2025-07-13T11:20:29.749Z [INFO]: Found quizzes: 3 

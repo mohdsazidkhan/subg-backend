@@ -332,10 +332,18 @@ exports.getQuizzesByLevel = async (req, res) => {
     const attemptedQuizzes = await QuizAttempt.find({ user: userId })
       .distinct('quiz');
 
+    // Get question counts for all quizzes in parallel
+    const quizIds = quizzes.map(q => q._id);
+    const questionCounts = await Question.aggregate([
+      { $match: { quiz: { $in: quizIds } } },
+      { $group: { _id: '$quiz', count: { $sum: 1 } } }
+    ]);
+    const questionCountMap = {};
+    questionCounts.forEach(qc => { questionCountMap[qc._id.toString()] = qc.count; });
+
     const quizzesWithAttemptStatus = quizzes.map(quiz => {
       const attemptStatus = user.getQuizAttemptStatus(quiz._id);
-      
-      return {
+      const quizObj = {
         ...quiz.toObject(),
         attemptStatus: {
           hasAttempted: attemptStatus.hasAttempted,
@@ -354,6 +362,8 @@ exports.getQuizzesByLevel = async (req, res) => {
                       quiz.requiredLevel <= Math.min(10, userLevel + 1)
         }
       };
+      quizObj.questionCount = questionCountMap[quiz._id.toString()] || 0;
+      return quizObj;
     });
 
     res.json({
