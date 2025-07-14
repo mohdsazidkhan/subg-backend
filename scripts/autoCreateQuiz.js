@@ -131,9 +131,6 @@ async function autoCreateQuizzes() {
     console.log('All levels 1-10 are already present for all subcategories.');
   }
 }
-
-
-
 // For manual run/testing
 if (require.main === module) {
   (async () => {
