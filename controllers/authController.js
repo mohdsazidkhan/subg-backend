@@ -43,11 +43,11 @@ exports.forgotPassword = async (req, res) => {
         </div>
         <div style="background:#f7f7f7;padding:18px 0;text-align:center;">
           <span style="font-size:15px;color:#555;margin-bottom:8px;display:block;">Connect with us:</span>
-          <a href="https://x.com/subgquiz" style="margin:0 8px;display:inline-block;" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X" style="height:24px;width:24px;"></a>
-          <a href="https://youtube.com/@subgquiz" style="margin:0 8px;display:inline-block;" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" style="height:24px;width:24px;"></a>
-          <a href="https://linkedin.com/company/subgquiz" style="margin:0 8px;display:inline-block;" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" style="height:24px;width:24px;"></a>
-          <a href="https://instagram.com/subgquiz" style="margin:0 8px;display:inline-block;" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" style="height:24px;width:24px;"></a>
-          <a href="https://facebook.com/subgquizz" style="margin:0 8px;display:inline-block;" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" style="height:24px;width:24px;"></a>
+          <a href="https://x.com/subgquiz" style="margin:0 8px;display:inline-block;" target="_blank"><img src="https://subgquiz.com/x.png" alt="X" style="height:24px;width:24px;"></a>
+          <a href="https://youtube.com/@subgquiz" style="margin:0 8px;display:inline-block;" target="_blank"><img src="https://subgquiz.com/youtube.png" alt="YouTube" style="height:24px;width:24px;"></a>
+          <a href="https://linkedin.com/company/subgquiz" style="margin:0 8px;display:inline-block;" target="_blank"><img src="https://subgquiz.com/linkedin.png" alt="LinkedIn" style="height:24px;width:24px;"></a>
+          <a href="https://instagram.com/subgquiz" style="margin:0 8px;display:inline-block;" target="_blank"><img src="https://subgquiz.com/instagram.png" alt="Instagram" style="height:24px;width:24px;"></a>
+          <a href="https://facebook.com/subgquizz" style="margin:0 8px;display:inline-block;" target="_blank"><img src="https://subgquiz.com/facebook.png" alt="Facebook" style="height:24px;width:24px;"></a>
           <div style="margin-top:10px;font-size:13px;color:#aaa;">&copy; ${new Date().getFullYear()} SubgQuiz. All rights reserved.</div>
         </div>
       </div>
