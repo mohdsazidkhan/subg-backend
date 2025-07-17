@@ -27,7 +27,31 @@ exports.forgotPassword = async (req, res) => {
   const emailSent = await sendBrevoEmail({
     to: user.email,
     subject: 'Password Reset Request',
-    html: `<p>Hello ${user.name || ''},</p><p>You requested a password reset for your SubgQuiz account.</p><p><a href="${resetUrl}">Click here to reset your password</a></p><p>This link will expire in 15 minutes.</p>`
+    html: `
+      <div style="max-width:500px;margin:auto;font-family:Arial,sans-serif;background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.08);overflow:hidden;">
+        <div style="background:#f7f7f7;padding:24px 0;text-align:center;">
+          <img src="https://subgquiz.com/logo.png" alt="SubgQuiz Logo" style="height:60px;">
+        </div>
+        <div style="padding:32px 24px 24px 24px;">
+          <h2 style="color:#222;margin-bottom:16px;">Password Reset Request</h2>
+          <p style="font-size:16px;color:#444;">Hello ${user.name || ''},</p>
+          <p style="font-size:16px;color:#444;">You requested a password reset for your SubgQuiz account.</p>
+          <p style="margin:24px 0;text-align:center;">
+            <a href="${resetUrl}" style="display:inline-block;padding:12px 28px;background:#007bff;color:#fff;text-decoration:none;border-radius:6px;font-weight:bold;font-size:16px;">Click here to reset your password</a>
+          </p>
+          <p style="font-size:14px;color:#888;">This link will expire in 15 minutes.</p>
+        </div>
+        <div style="background:#f7f7f7;padding:18px 0;text-align:center;">
+          <span style="font-size:15px;color:#555;margin-bottom:8px;display:block;">Connect with us:</span>
+          <a href="https://x.com/subgquiz" style="margin:0 8px;display:inline-block;" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X" style="height:24px;width:24px;"></a>
+          <a href="https://youtube.com/@subgquiz" style="margin:0 8px;display:inline-block;" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" style="height:24px;width:24px;"></a>
+          <a href="https://linkedin.com/company/subgquiz" style="margin:0 8px;display:inline-block;" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" style="height:24px;width:24px;"></a>
+          <a href="https://instagram.com/subgquiz" style="margin:0 8px;display:inline-block;" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" style="height:24px;width:24px;"></a>
+          <a href="https://facebook.com/subgquizz" style="margin:0 8px;display:inline-block;" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" style="height:24px;width:24px;"></a>
+          <div style="margin-top:10px;font-size:13px;color:#aaa;">&copy; ${new Date().getFullYear()} SubgQuiz. All rights reserved.</div>
+        </div>
+      </div>
+    `
   });
   if (!emailSent) {
     return res.status(500).json({ message: 'Failed to send reset email. Please try again later.' });
