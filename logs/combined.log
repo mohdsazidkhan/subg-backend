@@ -788,3 +788,5 @@
 2025-07-13T11:20:29.684Z [INFO]: User level: 2 
 2025-07-13T11:20:29.685Z [INFO]: Accessible levels: 0,1,2,3 
 2025-07-13T11:20:29.749Z [INFO]: Found quizzes: 3 
+2025-07-17T04:47:06.201Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-17T04:47:06.209Z [INFO]: 🚀 Server running on port 5000 

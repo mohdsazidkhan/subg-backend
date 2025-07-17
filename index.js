@@ -96,6 +96,9 @@ app.use('/api/wallet', walletTransactionRoutes);
 app.use('/api/subscription', subscriptionRoutes);
 app.use('/api/levels', userLevelRoutes);
 app.use('/api/contacts', contactRoutes);
+// Register public routes
+const publicRoutes = require('./routes/public');
+app.use('/api/public', publicRoutes);
 
 const server = http.createServer(app);
 
