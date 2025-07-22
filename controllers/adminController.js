@@ -5,6 +5,7 @@ const Question = require('../models/Question');
 const User = require('../models/User');
 const Subscription = require('../models/Subscription');
 const WalletTransaction = require('../models/WalletTransaction');
+const BankDetail = require('../models/BankDetail');
 
 // Helper function for pagination
 const getPaginationOptions = (req) => {
@@ -36,7 +37,8 @@ exports.getStats = async (req, res) => {
     const quizzes = await Quiz.countDocuments();
     const questions = await Question.countDocuments();
     const students = await User.countDocuments({ role: 'student' });
-    res.json({ categories, subcategories, quizzes, questions, students });
+    const bankDetails = await BankDetail.countDocuments();
+    res.json({ categories, subcategories, quizzes, questions, students, bankDetails });
   } catch (error) {
     console.error('Error getting stats:', error);
     res.status(500).json({ error: 'Failed to get stats' });
@@ -533,6 +535,43 @@ exports.assignBadge = async (req, res) => {
   } catch (error) {
     console.error('Error assigning badge:', error);
     res.status(500).json({ error: 'Failed to assign badge' });
+  }
+};
+
+// Get all bank details with pagination
+exports.getBankDetails = async (req, res) => {
+  try {
+    const { page, limit, skip } = getPaginationOptions(req);
+    const searchQuery = getSearchQuery(req, ['accountHolderName', 'bankName', 'ifscCode']);
+    
+    const bankDetails = await BankDetail.find(searchQuery)
+      .populate('user', 'name email phone level.currentLevel subscriptionStatus')
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
+    
+    const total = await BankDetail.countDocuments(searchQuery);
+    const totalPages = Math.ceil(total / limit);
+    
+    res.json({
+      success: true,
+      bankDetails,
+      pagination: {
+        page,
+        limit,
+        total,
+        totalPages,
+        hasNext: page < totalPages,
+        hasPrev: page > 1
+      }
+    });
+  } catch (error) {
+    console.error('Error getting bank details:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to fetch bank details.', 
+      error: error.message 
+    });
   }
 };
 

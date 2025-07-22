@@ -38,6 +38,9 @@ router.delete('/students/:id', protect, adminOnly, adminCtrl.deleteStudent);
 // BADGES
 router.post('/assign-badge', protect, adminOnly, adminCtrl.assignBadge);
 
+// BANK DETAILS
+router.get('/bank-details', protect, adminOnly, adminCtrl.getBankDetails);
+
 // MIGRATION
 router.post('/migrate-users-to-free', protect, adminOnly, adminCtrl.migrateUsersToFree);
 

@@ -15,6 +15,7 @@ const walletTransactionRoutes = require('./routes/walletTransactionRoutes');
 const subscriptionRoutes = require('./routes/subscription');
 const userLevelRoutes = require('./routes/userLevel');
 const contactRoutes = require('./routes/contact');
+const bankDetailRoutes = require('./routes/bankDetailRoutes');
 const winston = require('winston');
 const morgan = require('morgan');
 
@@ -96,6 +97,7 @@ app.use('/api/wallet', walletTransactionRoutes);
 app.use('/api/subscription', subscriptionRoutes);
 app.use('/api/levels', userLevelRoutes);
 app.use('/api/contacts', contactRoutes);
+app.use('/api/bank-details', bankDetailRoutes);
 // Register public routes
 const publicRoutes = require('./routes/public');
 app.use('/api/public', publicRoutes);
