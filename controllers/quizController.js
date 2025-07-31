@@ -246,102 +246,80 @@ exports.getQuizzesByLevel = async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    // Ensure level progress is calculated correctly
     user.updateLevel();
     await user.save();
 
     const userLevel = user.level.currentLevel;
     const { category, subcategory, difficulty, level, limit = 20, page = 1 } = req.query;
 
-    // Check user's level access permissions
     const levelAccess = user.canAccessLevel(userLevel);
     if (!levelAccess.canAccess) {
-      return res.status(403).json({ 
+      return res.status(403).json({
         message: `You need a ${levelAccess.requiredPlan} subscription to access level ${userLevel} quizzes`,
         requiredPlan: levelAccess.requiredPlan,
         accessibleLevels: levelAccess.accessibleLevels
       });
     }
 
-    // Build query for level-appropriate quizzes
-    let query = {
-      isActive: true
-    };
+    let query = { isActive: true };
 
-    // If specific level is requested, filter by that level
+    // Allow only accessible levels based on role and query
     if (level && level !== '') {
       const requestedLevel = parseInt(level);
-      
-      // Check if user has access to the requested level
       if (user.role !== 'admin' && !levelAccess.accessibleLevels.includes(requestedLevel)) {
-        return res.status(403).json({ 
+        return res.status(403).json({
           message: `You need a ${levelAccess.requiredPlan} subscription to access level ${requestedLevel} quizzes`,
           requiredPlan: levelAccess.requiredPlan,
           accessibleLevels: levelAccess.accessibleLevels
         });
       }
-      
       query.requiredLevel = requestedLevel;
     } else {
-      // Default behavior: show quizzes within user's accessible level range
       if (user.role !== 'admin') {
-        // For regular users, only show quizzes from accessible levels
         query.requiredLevel = { $in: levelAccess.accessibleLevels };
       }
-      // For admin users, show all quizzes (no level restriction)
     }
 
-    // Add category filter if provided
-    if (category && category.trim() !== '') {
-      query.category = category;
-    }
-
-    // Add subcategory filter if provided
-    if (subcategory && subcategory.trim() !== '') {
-      query.subcategory = subcategory;
-    }
-
-    // Add difficulty filter if provided
-    if (difficulty && ['beginner', 'intermediate', 'advanced', 'expert'].includes(difficulty)) {
+    if (category?.trim()) query.category = category;
+    if (subcategory?.trim()) query.subcategory = subcategory;
+    if (['beginner', 'intermediate', 'advanced', 'expert'].includes(difficulty)) {
       query.difficulty = difficulty;
     }
 
-    const skip = (parseInt(page) - 1) * parseInt(limit);
+    // ✅ Ensure only quizzes above user's current level
+    query.requiredLevel = { ...query.requiredLevel, $gt: userLevel };
 
-    // Debug logging
-    console.log('Quiz query:', JSON.stringify(query, null, 2));
-    console.log('User level:', userLevel);
-    console.log('Accessible levels:', levelAccess.accessibleLevels);
-
-    const quizzes = await Quiz.find(query)
+    const allQuizzes = await Quiz.find(query)
       .populate('category', 'name')
       .populate('subcategory', 'name')
-      .sort({ 
-        // Sort by creation date (newest first)
-        createdAt: -1
-      })
-      .skip(skip)
-      .limit(parseInt(limit));
+      .sort({ createdAt: -1 });
 
-    console.log('Found quizzes:', quizzes.length);
+    const attemptedQuizIds = await QuizAttempt.find({ user: userId }).distinct('quiz');
+    const attemptedQuizIdStrings = attemptedQuizIds.map(id => id.toString());
 
-    // Get total count for pagination
-    const totalQuizzes = await Quiz.countDocuments(query);
+    // ✅ Filter out attempted quizzes
+    const filteredQuizzes = allQuizzes.filter(
+      quiz => !attemptedQuizIdStrings.includes(quiz._id.toString())
+    );
 
-    // Check which quizzes user has already attempted
-    const attemptedQuizzes = await QuizAttempt.find({ user: userId })
-      .distinct('quiz');
-
-    // Get question counts for all quizzes in parallel
-    const quizIds = quizzes.map(q => q._id);
+    // Get question count per quiz
+    const quizIds = filteredQuizzes.map(q => q._id);
     const questionCounts = await Question.aggregate([
       { $match: { quiz: { $in: quizIds } } },
       { $group: { _id: '$quiz', count: { $sum: 1 } } }
     ]);
     const questionCountMap = {};
-    questionCounts.forEach(qc => { questionCountMap[qc._id.toString()] = qc.count; });
+    questionCounts.forEach(qc => {
+      questionCountMap[qc._id.toString()] = qc.count;
+    });
 
-    const quizzesWithAttemptStatus = quizzes.map(quiz => {
+    // Pagination
+    const filteredCount = filteredQuizzes.length;
+    const totalPages = Math.ceil(filteredCount / limit);
+    const skip = (parseInt(page) - 1) * parseInt(limit);
+    const paginatedQuizzes = filteredQuizzes.slice(skip, skip + parseInt(limit));
+
+    const quizzesWithAttemptStatus = paginatedQuizzes.map(quiz => {
       const attemptStatus = user.getQuizAttemptStatus(quiz._id);
       const quizObj = {
         ...quiz.toObject(),
@@ -353,13 +331,13 @@ exports.getQuizzesByLevel = async (req, res) => {
           canAttempt: attemptStatus.canAttempt,
           attemptsUsed: attemptStatus.attemptsUsed || 0
         },
-        isRecommended: level && level !== '' 
-          ? quiz.requiredLevel === parseInt(level) 
+        isRecommended: level && level !== ''
+          ? quiz.requiredLevel === parseInt(level)
           : quiz.requiredLevel === userLevel,
         levelMatch: {
           exact: quiz.requiredLevel === userLevel,
-          withinRange: quiz.requiredLevel >= Math.max(0, userLevel - 1) && 
-                      quiz.requiredLevel <= Math.min(10, userLevel + 1)
+          withinRange: quiz.requiredLevel >= Math.max(0, userLevel - 1) &&
+                       quiz.requiredLevel <= Math.min(10, userLevel + 1)
         }
       };
       quizObj.questionCount = questionCountMap[quiz._id.toString()] || 0;
@@ -371,9 +349,9 @@ exports.getQuizzesByLevel = async (req, res) => {
       data: quizzesWithAttemptStatus,
       pagination: {
         currentPage: parseInt(page),
-        totalPages: Math.ceil(totalQuizzes / limit),
-        totalQuizzes,
-        hasNextPage: skip + quizzes.length < totalQuizzes,
+        totalPages,
+        totalQuizzes: filteredCount,
+        hasNextPage: skip + paginatedQuizzes.length < filteredCount,
         hasPrevPage: page > 1
       },
       userLevel: {
@@ -391,6 +369,7 @@ exports.getQuizzesByLevel = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
 
 // Get recommended quizzes for user's level
 exports.getRecommendedQuizzes = async (req, res) => {

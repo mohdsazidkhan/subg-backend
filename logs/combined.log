@@ -790,3 +790,165 @@
 2025-07-13T11:20:29.749Z [INFO]: Found quizzes: 3 
 2025-07-17T04:47:06.201Z [INFO]: ✅ Database Connected to MongoDB 
 2025-07-17T04:47:06.209Z [INFO]: 🚀 Server running on port 5000 
+2025-07-30T12:39:00.043Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-30T12:39:00.051Z [INFO]: 🚀 Server running on port 5000 
+2025-07-30T13:43:41.475Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-30T13:43:41.485Z [INFO]: 🚀 Server running on port 5000 
+2025-07-31T05:17:35.023Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-31T05:17:35.030Z [INFO]: 🚀 Server running on port 5000 
+2025-07-31T05:17:45.473Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": {
+    "$in": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "category": "6864b70006368392f3acc235"
+} 
+2025-07-31T05:17:45.474Z [INFO]: User level: 5 
+2025-07-31T05:17:45.475Z [INFO]: Accessible levels: 0,1,2,3,4,5,6 
+2025-07-31T05:17:45.545Z [INFO]: Found quizzes: 9 
+2025-07-31T05:17:45.720Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": {
+    "$in": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "category": "6864b70006368392f3acc235"
+} 
+2025-07-31T05:17:45.721Z [INFO]: User level: 5 
+2025-07-31T05:17:45.721Z [INFO]: Accessible levels: 0,1,2,3,4,5,6 
+2025-07-31T05:17:45.792Z [INFO]: Found quizzes: 9 
+2025-07-31T05:19:12.228Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-31T05:19:12.240Z [INFO]: 🚀 Server running on port 5000 
+2025-07-31T05:19:18.500Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": {
+    "$in": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "category": "6864b70006368392f3acc235"
+} 
+2025-07-31T05:19:18.501Z [INFO]: User level: 5 
+2025-07-31T05:19:18.501Z [INFO]: Accessible levels: 0,1,2,3,4,5,6 
+2025-07-31T05:19:18.587Z [INFO]: Total quizzes fetched before filter: 9 
+2025-07-31T05:19:18.777Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": {
+    "$in": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "category": "6864b70006368392f3acc235"
+} 
+2025-07-31T05:19:18.779Z [INFO]: User level: 5 
+2025-07-31T05:19:18.780Z [INFO]: Accessible levels: 0,1,2,3,4,5,6 
+2025-07-31T05:19:18.862Z [INFO]: Total quizzes fetched before filter: 9 
+2025-07-31T05:19:25.718Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": {
+    "$in": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "subcategory": "6864b906320373eda2aef724"
+} 
+2025-07-31T05:19:25.719Z [INFO]: User level: 5 
+2025-07-31T05:19:25.719Z [INFO]: Accessible levels: 0,1,2,3,4,5,6 
+2025-07-31T05:19:25.805Z [INFO]: Total quizzes fetched before filter: 9 
+2025-07-31T05:19:25.994Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": {
+    "$in": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "subcategory": "6864b906320373eda2aef724"
+} 
+2025-07-31T05:19:25.995Z [INFO]: User level: 5 
+2025-07-31T05:19:25.995Z [INFO]: Accessible levels: 0,1,2,3,4,5,6 
+2025-07-31T05:19:26.060Z [INFO]: Total quizzes fetched before filter: 9 
+2025-07-31T05:20:20.835Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": {
+    "$in": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "category": "6864b70006368392f3acc235"
+} 
+2025-07-31T05:20:20.836Z [INFO]: User level: 5 
+2025-07-31T05:20:20.837Z [INFO]: Accessible levels: 0,1,2,3,4,5,6 
+2025-07-31T05:20:20.932Z [INFO]: Total quizzes fetched before filter: 9 
+2025-07-31T05:20:21.110Z [INFO]: Quiz query: {
+  "isActive": true,
+  "requiredLevel": {
+    "$in": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "category": "6864b70006368392f3acc235"
+} 
+2025-07-31T05:20:21.111Z [INFO]: User level: 5 
+2025-07-31T05:20:21.111Z [INFO]: Accessible levels: 0,1,2,3,4,5,6 
+2025-07-31T05:20:21.186Z [INFO]: Total quizzes fetched before filter: 9 
+2025-07-31T05:24:19.510Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-31T05:24:19.519Z [INFO]: 🚀 Server running on port 5000 
+2025-07-31T05:32:54.597Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-31T05:32:54.605Z [INFO]: 🚀 Server running on port 5000 
+2025-07-31T05:42:06.753Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-31T05:42:06.761Z [INFO]: 🚀 Server running on port 5000 
+2025-07-31T05:43:26.024Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-31T05:43:26.032Z [INFO]: 🚀 Server running on port 5000 
+2025-07-31T05:46:08.499Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-31T05:46:08.526Z [INFO]: 🚀 Server running on port 5000 
