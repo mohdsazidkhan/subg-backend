@@ -287,7 +287,7 @@ exports.getQuizzesByLevel = async (req, res) => {
     }
 
     // ✅ Ensure only quizzes above user's current level
-    query.requiredLevel = { ...query.requiredLevel, $gt: userLevel };
+    query.requiredLevel = { ...query.requiredLevel, $eq: userLevel };
 
     const allQuizzes = await Quiz.find(query)
       .populate('category', 'name')

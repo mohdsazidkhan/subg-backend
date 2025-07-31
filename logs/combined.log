@@ -952,3 +952,15 @@
 2025-07-31T05:43:26.032Z [INFO]: 🚀 Server running on port 5000 
 2025-07-31T05:46:08.499Z [INFO]: ✅ Database Connected to MongoDB 
 2025-07-31T05:46:08.526Z [INFO]: 🚀 Server running on port 5000 
+2025-07-31T12:29:23.278Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-31T12:29:23.286Z [INFO]: 🚀 Server running on port 5000 
+2025-07-31T12:33:16.741Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzUzOTY1MDI3LCJleHAiOjE3NTQwNTE0Mjd9.2cK222wlAoVv74vYac1YTz9EaGLVCWqDSg73oXst45k 
+2025-07-31T12:33:16.808Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzUzOTY1MDI3LCJleHAiOjE3NTQwNTE0Mjd9.2cK222wlAoVv74vYac1YTz9EaGLVCWqDSg73oXst45k 
+2025-07-31T12:35:46.055Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-31T12:35:46.063Z [INFO]: 🚀 Server running on port 5000 
+2025-07-31T12:44:07.589Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-31T12:44:07.600Z [INFO]: 🚀 Server running on port 5000 
+2025-07-31T13:05:54.390Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-31T13:05:54.399Z [INFO]: 🚀 Server running on port 5000 
+2025-07-31T13:17:09.760Z [INFO]: ✅ Database Connected to MongoDB 
+2025-07-31T13:17:09.768Z [INFO]: 🚀 Server running on port 5000 
