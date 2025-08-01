@@ -4,10 +4,10 @@ const User = require('../models/User');
 // Save or update bank details for a user
 exports.saveBankDetails = async (req, res) => {
   try {
-    const userId = req.user._id;
+    const userId = req.user.id;
     const { accountHolderName, accountNumber, bankName, ifscCode, branchName } = req.body;
-
     // Check if user is eligible (level 10 or pro subscription)
+    console.log(req.user.id, 'req.user');
     const user = await User.findById(userId);
     const isLevelTen = user.level && user.level.currentLevel === 10;
     const isProPlan = user.subscriptionStatus === 'pro';

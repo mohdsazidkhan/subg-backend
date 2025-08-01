@@ -970,3 +970,38 @@
 2025-07-31T16:08:36.938Z [INFO]: 🚀 Server running on port 5000 
 2025-07-31T16:17:15.532Z [INFO]: ✅ Database Connected to MongoDB 
 2025-07-31T16:17:15.544Z [INFO]: 🚀 Server running on port 5000 
+2025-08-01T04:19:55.337Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-01T04:19:55.348Z [INFO]: 🚀 Server running on port 5000 
+2025-08-01T04:26:42.109Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-01T04:26:42.121Z [INFO]: 🚀 Server running on port 5000 
+2025-08-01T04:26:50.509Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-01T04:26:50.519Z [INFO]: 🚀 Server running on port 5000 
+2025-08-01T04:27:04.983Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-01T04:27:04.991Z [INFO]: 🚀 Server running on port 5000 
+2025-08-01T04:34:59.929Z [ERROR]: Error saving bank details: TypeError: Cannot read properties of null (reading 'level') 
+2025-08-01T04:36:23.035Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-01T04:36:23.044Z [INFO]: 🚀 Server running on port 5000 
+2025-08-01T04:36:35.309Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-01T04:36:35.320Z [INFO]: 🚀 Server running on port 5000 
+2025-08-01T04:36:42.016Z [INFO]:  user 
+2025-08-01T04:36:42.019Z [ERROR]: Error saving bank details: TypeError: Cannot read properties of null (reading 'level') 
+2025-08-01T04:37:14.719Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-01T04:37:14.731Z [INFO]: 🚀 Server running on port 5000 
+2025-08-01T04:37:21.044Z [INFO]:  userId 
+2025-08-01T04:37:21.165Z [ERROR]: Error saving bank details: TypeError: Cannot read properties of null (reading 'level') 
+2025-08-01T04:39:03.030Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-01T04:39:03.040Z [INFO]: 🚀 Server running on port 5000 
+2025-08-01T04:39:03.625Z [INFO]: [object Object] req.user 
+2025-08-01T04:39:03.686Z [ERROR]: Error saving bank details: TypeError: Cannot read properties of null (reading 'level') 
+2025-08-01T04:39:30.176Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-01T04:39:30.184Z [INFO]: 🚀 Server running on port 5000 
+2025-08-01T04:39:33.035Z [ERROR]: Error saving bank details: SyntaxError: "[object Object]" is not valid JSON 
+2025-08-01T04:40:04.421Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-01T04:40:04.429Z [INFO]: 🚀 Server running on port 5000 
+2025-08-01T04:40:06.156Z [INFO]:  req.user 
+2025-08-01T04:40:06.208Z [ERROR]: Error saving bank details: TypeError: Cannot read properties of null (reading 'level') 
+2025-08-01T04:40:14.787Z [INFO]:  req.user 
+2025-08-01T04:40:14.827Z [ERROR]: Error saving bank details: TypeError: Cannot read properties of null (reading 'level') 
+2025-08-01T04:42:16.033Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-01T04:42:16.044Z [INFO]: 🚀 Server running on port 5000 
+2025-08-01T04:42:20.485Z [INFO]: 686a6fa36580063952214011 req.user 

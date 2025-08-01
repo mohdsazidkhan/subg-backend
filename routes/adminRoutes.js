@@ -20,6 +20,7 @@ router.delete('/subcategories/:id', protect, adminOnly, adminCtrl.deleteSubcateg
 
 // QUIZ
 router.get('/quizzes', protect, adminOnly, adminCtrl.getQuizzes);
+router.get('/allquizzes', protect, adminOnly, adminCtrl.getAllAdminQuizzes);
 router.post('/quizzes', protect, adminOnly, adminCtrl.createQuiz);
 router.put('/quizzes/:id', protect, adminOnly, adminCtrl.updateQuiz);
 router.delete('/quizzes/:id', protect, adminOnly, adminCtrl.deleteQuiz);

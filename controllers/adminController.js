@@ -225,6 +225,41 @@ exports.deleteSubcategory = async (req, res) => {
     res.status(500).json({ error: 'Failed to delete subcategory' });
   }
 };
+// ---------------- Get All Quizzes ----------------
+exports.getAllAdminQuizzes = async (req, res) => {
+  try {
+    const searchQuery = getSearchQuery(req, ['title', 'description', 'tags']);
+
+    const quizzes = await Quiz.find(searchQuery)
+      .populate('category', 'name')
+      .populate('subcategory', 'name')
+      .sort({ createdAt: -1 });
+
+    const quizIds = quizzes.map(q => q._id);
+    const questionCounts = await Question.aggregate([
+      { $match: { quiz: { $in: quizIds } } },
+      { $group: { _id: '$quiz', count: { $sum: 1 } } }
+    ]);
+    const questionCountMap = {};
+    questionCounts.forEach(qc => {
+      questionCountMap[qc._id.toString()] = qc.count;
+    });
+
+    const quizzesWithQuestionCount = quizzes.map(q => {
+      const qObj = q.toObject();
+      qObj.questionCount = questionCountMap[q._id.toString()] || 0;
+      return qObj;
+    });
+
+    res.json({
+      quizzes: quizzesWithQuestionCount,
+      total: quizzes.length
+    });
+  } catch (error) {
+    console.error('Error getting all quizzes:', error);
+    res.status(500).json({ error: 'Failed to get all quizzes' });
+  }
+};
 
 // ---------------- Quiz ----------------
 exports.getQuizzes = async (req, res) => {
