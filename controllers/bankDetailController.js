@@ -68,7 +68,7 @@ exports.saveBankDetails = async (req, res) => {
 // Get bank details for the logged-in user
 exports.getBankDetails = async (req, res) => {
   try {
-    const userId = req.user._id;
+    const userId = req.user.id;
     
     const bankDetail = await BankDetail.findOne({ user: userId });
     
