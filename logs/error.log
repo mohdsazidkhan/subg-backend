@@ -76,3 +76,5 @@
 2025-08-03T07:47:32.997Z [ERROR]: Search Error: MongoServerError: text index required for $text query 
 2025-08-03T07:48:05.945Z [ERROR]: Search Error: MongoServerError: text index required for $text query 
 2025-08-03T07:51:45.431Z [ERROR]: Search Error: MongoServerError: text index required for $text query 
+2025-08-03T16:02:27.219Z [ERROR]: Search Error: ReferenceError: QuizAttempt is not defined 
+2025-08-03T16:02:27.283Z [ERROR]: Search Error: ReferenceError: QuizAttempt is not defined 
