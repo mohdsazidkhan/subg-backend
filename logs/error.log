@@ -69,3 +69,10 @@
 2025-08-01T04:39:33.035Z [ERROR]: Error saving bank details: SyntaxError: "[object Object]" is not valid JSON 
 2025-08-01T04:40:06.208Z [ERROR]: Error saving bank details: TypeError: Cannot read properties of null (reading 'level') 
 2025-08-01T04:40:14.827Z [ERROR]: Error saving bank details: TypeError: Cannot read properties of null (reading 'level') 
+2025-08-03T05:42:11.869Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU0MTA4NTc3LCJleHAiOjE3NTQxOTQ5Nzd9.eG5JUO68yeZgdQS2Xn5EEmBlp7q4VA76kC4LoKKx3y4 
+2025-08-03T05:42:11.961Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU0MTA4NTc3LCJleHAiOjE3NTQxOTQ5Nzd9.eG5JUO68yeZgdQS2Xn5EEmBlp7q4VA76kC4LoKKx3y4 
+2025-08-03T07:43:42.658Z [ERROR]: Search Error: CastError: Cast to Number failed for value "NaN" (type number) at path "requiredLevel" for model "Quiz" 
+2025-08-03T07:46:48.249Z [ERROR]: Search Error: CastError: Cast to Number failed for value "NaN" (type number) at path "requiredLevel" for model "Quiz" 
+2025-08-03T07:47:32.997Z [ERROR]: Search Error: MongoServerError: text index required for $text query 
+2025-08-03T07:48:05.945Z [ERROR]: Search Error: MongoServerError: text index required for $text query 
+2025-08-03T07:51:45.431Z [ERROR]: Search Error: MongoServerError: text index required for $text query 

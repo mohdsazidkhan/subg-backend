@@ -18,6 +18,7 @@ const contactRoutes = require('./routes/contact');
 const bankDetailRoutes = require('./routes/bankDetailRoutes');
 const winston = require('winston');
 const morgan = require('morgan');
+const searchRoutes = require('./routes/search');
 
 dotenv.config();
 
@@ -98,6 +99,7 @@ app.use('/api/subscription', subscriptionRoutes);
 app.use('/api/levels', userLevelRoutes);
 app.use('/api/contacts', contactRoutes);
 app.use('/api/bank-details', bankDetailRoutes);
+app.use('/api', searchRoutes);
 // Register public routes
 const publicRoutes = require('./routes/public');
 app.use('/api/public', publicRoutes);

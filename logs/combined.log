@@ -1005,3 +1005,877 @@
 2025-08-01T04:42:16.033Z [INFO]: ✅ Database Connected to MongoDB 
 2025-08-01T04:42:16.044Z [INFO]: 🚀 Server running on port 5000 
 2025-08-01T04:42:20.485Z [INFO]: 686a6fa36580063952214011 req.user 
+2025-08-03T05:41:27.366Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-03T05:41:27.378Z [INFO]: 🚀 Server running on port 5000 
+2025-08-03T05:42:11.869Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU0MTA4NTc3LCJleHAiOjE3NTQxOTQ5Nzd9.eG5JUO68yeZgdQS2Xn5EEmBlp7q4VA76kC4LoKKx3y4 
+2025-08-03T05:42:11.961Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU0MTA4NTc3LCJleHAiOjE3NTQxOTQ5Nzd9.eG5JUO68yeZgdQS2Xn5EEmBlp7q4VA76kC4LoKKx3y4 
+2025-08-03T05:49:31.603Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-03T05:49:31.613Z [INFO]: 🚀 Server running on port 5000 
+2025-08-03T05:49:38.359Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-03T05:49:38.367Z [INFO]: 🚀 Server running on port 5000 
+2025-08-03T05:51:56.711Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-03T05:51:56.722Z [INFO]: 🚀 Server running on port 5000 
+2025-08-03T05:52:09.768Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-03T05:52:09.779Z [INFO]: 🚀 Server running on port 5000 
+2025-08-03T07:43:34.543Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-03T07:43:34.553Z [INFO]: 🚀 Server running on port 5000 
+2025-08-03T07:43:42.658Z [ERROR]: Search Error: CastError: Cast to Number failed for value "NaN" (type number) at path "requiredLevel" for model "Quiz" 
+2025-08-03T07:46:27.335Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-03T07:46:27.343Z [INFO]: 🚀 Server running on port 5000 
+2025-08-03T07:46:43.953Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-03T07:46:43.962Z [INFO]: 🚀 Server running on port 5000 
+2025-08-03T07:46:48.217Z [INFO]: {
+  level: {
+    currentLevel: 6,
+    levelName: 'Mastermind',
+    quizzesPlayed: 99,
+    highScoreQuizzes: 64,
+    totalScore: 375,
+    averageScore: 4,
+    levelProgress: 100,
+    lastLevelUp: 2025-08-02T14:29:59.497Z
+  },
+  _id: new ObjectId('686a6fa36580063952214011'),
+  name: 'Mohd Sajid Khan',
+  email: 'sajidpahat786@gmail.com',
+  phone: '7678131912',
+  password: '$2b$10$WPdXSD3DsDrGwWSO2C8uuOaVL4YBnLuOyzww71/NquX/limQ2gpaS',
+  role: 'student',
+  badges: [
+    'Student',
+    'Rookie Badge',
+    'Explorer Badge',
+    'Thinker Badge',
+    'Strategist Badge',
+    'Perfect Scorer',
+    'Achiever Badge',
+    'Mastermind Badge'
+  ],
+  subscriptionStatus: 'pro',
+  quizBestScores: [
+    {
+      quizId: new ObjectId('6864ba0a320373eda2aef779'),
+      bestScore: 2,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-07-06T12:54:44.964Z,
+      _id: new ObjectId('686a72141f0bc9e0a39325b4')
+    },
+    {
+      quizId: new ObjectId('686a923fd0ed6e850923b8a6'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-07-07T00:32:04.123Z,
+      _id: new ObjectId('686b1584fa465f06707290ed')
+    },
+    {
+      quizId: new ObjectId('6871088cab20aa48c7c15dcf'),
+      bestScore: 4,
+      bestScorePercentage: 80,
+      isHighScore: true,
+      lastAttemptDate: 2025-07-12T14:57:24.764Z,
+      _id: new ObjectId('687277d4e8be9ed9fc85f161')
+    },
+    {
+      quizId: new ObjectId('6871074aab20aa48c7c15d8e'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-07-12T14:58:38.893Z,
+      _id: new ObjectId('6872781ee8be9ed9fc85f208')
+    },
+    {
+      quizId: new ObjectId('68725173b7b878ed8d971ef3'),
+      bestScore: 4,
+      bestScorePercentage: 80,
+      isHighScore: true,
+      lastAttemptDate: 2025-07-14T13:53:20.953Z,
+      _id: new ObjectId('68750bd06bcccd87731c2dce')
+    },
+    {
+      quizId: new ObjectId('6872516cb7b878ed8d971ed9'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-07-14T13:54:52.607Z,
+      _id: new ObjectId('68750c2c6bcccd87731c2e35')
+    },
+    {
+      quizId: new ObjectId('6874a1bb6a1950e6d5072c7d'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-07-14T13:57:54.836Z,
+      _id: new ObjectId('68750ce26bcccd87731c2ee4')
+    },
+    {
+      quizId: new ObjectId('6874d6076a1950e6d507a479'),
+      bestScore: 4,
+      bestScorePercentage: 80,
+      isHighScore: true,
+      lastAttemptDate: 2025-07-14T13:59:49.842Z,
+      _id: new ObjectId('68750d556bcccd87731c2f6c')
+    },
+    {
+      quizId: new ObjectId('6874d3506a1950e6d5079e61'),
+      bestScore: 4,
+      bestScorePercentage: 80,
+      isHighScore: true,
+      lastAttemptDate: 2025-07-14T16:55:03.910Z,
+      _id: new ObjectId('687536676bcccd87731c3550')
+    },
+    {
+      quizId: new ObjectId('6874aebd6a1950e6d5075089'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-07-14T17:09:57.994Z,
+      _id: new ObjectId('687539e56bcccd87731c35be')
+    },
+    {
+      quizId: new ObjectId('6874d3426a1950e6d5079e47'),
+      bestScore: 4,
+      bestScorePercentage: 80,
+      isHighScore: true,
+      lastAttemptDate: 2025-07-14T17:11:22.230Z,
+      _id: new ObjectId('68753a3a6bcccd87731c3630')
+    },
+    {
+      quizId: new ObjectId('6874d2296a1950e6d5079b41'),
+      bestScore: 3,
+      bestScorePercentage: 60,
+      isHighScore: false,
+      lastAttemptDate: 2025-07-14T17:13:18.624Z,
+      _id: new ObjectId('68753aae6bcccd87731c36a6')
+    },
+    {
+      quizId: new ObjectId('687253461663d1d64e671998'),
+      bestScore: 3,
+      bestScorePercentage: 60,
+      isHighScore: false,
+      lastAttemptDate: 2025-07-14T17:15:45.454Z,
+      _id: new ObjectId('68753b416bcccd87731c3720')
+    },
+    {
+      quizId: new ObjectId('6874be276a1950e6d5077a7d'),
+      bestScore: 3,
+      bestScorePercentage: 60,
+      isHighScore: false,
+      lastAttemptDate: 2025-07-14T17:21:01.626Z,
+      _id: new ObjectId('68753c7d6bcccd87731c37f9')
+    },
+    {
+      quizId: new ObjectId('687253411663d1d64e67198b'),
+      bestScore: 2,
+      bestScorePercentage: 40,
+      isHighScore: false,
+      lastAttemptDate: 2025-07-27T04:14:17.412Z,
+      _id: new ObjectId('6885a7999a17c4b4a8998183')
+    },
+    {
+      quizId: new ObjectId('687253491663d1d64e6719a5'),
+      bestScore: 2,
+      bestScorePercentage: 40,
+      isHighScore: false,
+      lastAttemptDate: 2025-07-27T05:20:20.664Z,
+      _id: new ObjectId('6885b7149a17c4b4a899857b')
+    },
+    {
+      quizId: new ObjectId('6872534c1663d1d64e6719b2'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-07-30T18:28:44.251Z,
+      _id: new ObjectId('688a645c9a17c4b4a8999d02')
+    },
+    {
+      quizId: new ObjectId('6872534f1663d1d64e6719bf'),
+      bestScore: 3,
+      bestScorePercentage: 60,
+      isHighScore: false,
+      lastAttemptDate: 2025-07-30T18:29:56.088Z,
+      _id: new ObjectId('688a64a49a17c4b4a8999d6a')
+    },
+    {
+      quizId: new ObjectId('687253621663d1d64e6719f3'),
+      bestScore: 4,
+      bestScorePercentage: 80,
+      isHighScore: true,
+      lastAttemptDate: 2025-07-30T18:31:12.106Z,
+      _id: new ObjectId('688a64f09a17c4b4a8999dc3')
+    },
+    {
+      quizId: new ObjectId('6872535f1663d1d64e6719e6'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-07-30T18:32:34.926Z,
+      _id: new ObjectId('688a65429a17c4b4a8999e2a')
+    },
+    {
+      quizId: new ObjectId('6872535c1663d1d64e6719d9'),
+      bestScore: 1,
+      bestScorePercentage: 20,
+      isHighScore: false,
+      lastAttemptDate: 2025-07-30T18:33:48.819Z,
+      _id: new ObjectId('688a658c9a17c4b4a8999e98')
+    },
+    {
+      quizId: new ObjectId('687253691663d1d64e671a0d'),
+      bestScore: 4,
+      bestScorePercentage: 80,
+      isHighScore: true,
+      lastAttemptDate: 2025-07-30T18:35:37.303Z,
+      _id: new ObjectId('688a65f99a17c4b4a8999ef7')
+    },
+    {
+      quizId: new ObjectId('6874d57e6a1950e6d507a304'),
+      bestScore: 3,
+      bestScorePercentage: 60,
+      isHighScore: false,
+      lastAttemptDate: 2025-07-30T18:41:12.894Z,
+      _id: new ObjectId('688a67489a17c4b4a899a24c')
+    },
+    {
+      quizId: new ObjectId('6874a61c6a1950e6d5073919'),
+      bestScore: 2,
+      bestScorePercentage: 40,
+      isHighScore: false,
+      lastAttemptDate: 2025-07-30T18:43:32.795Z,
+      _id: new ObjectId('688a67d49a17c4b4a899a2cc')
+    },
+    {
+      quizId: new ObjectId('6874b42b6a1950e6d5075e5c'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-07-30T18:46:14.093Z,
+      _id: new ObjectId('688a68769a17c4b4a899a371')
+    },
+    {
+      quizId: new ObjectId('6874b32a6a1950e6d5075b99'),
+      bestScore: 3,
+      bestScorePercentage: 60,
+      isHighScore: false,
+      lastAttemptDate: 2025-08-01T03:45:31.221Z,
+      _id: new ObjectId('688c385bfaa57aab9eefee21')
+    },
+    {
+      quizId: new ObjectId('687257cf1927e7e0118fd122'),
+      bestScore: 3,
+      bestScorePercentage: 60,
+      isHighScore: false,
+      lastAttemptDate: 2025-08-01T03:46:59.649Z,
+      _id: new ObjectId('688c38b3faa57aab9eefee9f')
+    },
+    {
+      quizId: new ObjectId('687257c71927e7e0118fd108'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-01T14:01:03.102Z,
+      _id: new ObjectId('688cc89fb3e7bc147244068e')
+    },
+    {
+      quizId: new ObjectId('687257e21927e7e0118fd163'),
+      bestScore: 3,
+      bestScorePercentage: 60,
+      isHighScore: false,
+      lastAttemptDate: 2025-08-01T14:02:41.275Z,
+      _id: new ObjectId('688cc901b3e7bc1472440719')
+    },
+    {
+      quizId: new ObjectId('687257e51927e7e0118fd170'),
+      bestScore: 3,
+      bestScorePercentage: 60,
+      isHighScore: false,
+      lastAttemptDate: 2025-08-01T14:04:38.032Z,
+      _id: new ObjectId('688cc976b3e7bc1472440783')
+    },
+    {
+      quizId: new ObjectId('687257d21927e7e0118fd12f'),
+      bestScore: 4,
+      bestScorePercentage: 80,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-01T14:05:47.094Z,
+      _id: new ObjectId('688cc9bbb3e7bc14724407ef')
+    },
+    {
+      quizId: new ObjectId('687257ed1927e7e0118fd18a'),
+      bestScore: 0,
+      bestScorePercentage: 0,
+      isHighScore: false,
+      lastAttemptDate: 2025-08-01T14:06:48.698Z,
+      _id: new ObjectId('688cc9f8b3e7bc1472440863')
+    },
+    {
+      quizId: new ObjectId('687257d51927e7e0118fd13c'),
+      bestScore: 2,
+      bestScorePercentage: 40,
+      isHighScore: false,
+      lastAttemptDate: 2025-08-01T14:09:40.760Z,
+      _id: new ObjectId('688ccaa4b3e7bc147244094e')
+    },
+    {
+      quizId: new ObjectId('687257f41927e7e0118fd1a4'),
+      bestScore: 4,
+      bestScorePercentage: 80,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-01T14:11:14.069Z,
+      _id: new ObjectId('688ccb02b3e7bc14724409c0')
+    },
+    {
+      quizId: new ObjectId('687257de1927e7e0118fd156'),
+      bestScore: 2,
+      bestScorePercentage: 40,
+      isHighScore: false,
+      lastAttemptDate: 2025-08-01T14:12:29.280Z,
+      _id: new ObjectId('688ccb4db3e7bc1472440a3a')
+    },
+    {
+      quizId: new ObjectId('6874a1e26a1950e6d5072cf5'),
+      bestScore: 4,
+      bestScorePercentage: 80,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-01T14:13:47.657Z,
+      _id: new ObjectId('688ccb9bb3e7bc1472440b0f')
+    },
+    {
+      quizId: new ObjectId('6874a1db6a1950e6d5072ce8'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-01T14:14:39.498Z,
+      _id: new ObjectId('688ccbcfb3e7bc1472440bff')
+    },
+    {
+      quizId: new ObjectId('6874a1d86a1950e6d5072cdb'),
+      bestScore: 4,
+      bestScorePercentage: 80,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-01T14:15:24.101Z,
+      _id: new ObjectId('688ccbfcb3e7bc1472440d02')
+    },
+    {
+      quizId: new ObjectId('6874a30b6a1950e6d5073009'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-01T14:17:02.992Z,
+      _id: new ObjectId('688ccc5eb3e7bc1472440de3')
+    },
+    {
+      quizId: new ObjectId('687257fa1927e7e0118fd1be'),
+      bestScore: 3,
+      bestScorePercentage: 60,
+      isHighScore: false,
+      lastAttemptDate: 2025-08-01T14:18:12.556Z,
+      _id: new ObjectId('688ccca4b3e7bc1472440e8f')
+    },
+    {
+      quizId: new ObjectId('6874a3896a1950e6d5073199'),
+      bestScore: 3,
+      bestScorePercentage: 60,
+      isHighScore: false,
+      lastAttemptDate: 2025-08-01T14:19:20.199Z,
+      _id: new ObjectId('688ccce8b3e7bc1472440f72')
+    },
+    {
+      quizId: new ObjectId('6874a3866a1950e6d507318c'),
+      bestScore: 4,
+      bestScorePercentage: 80,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-01T14:20:14.845Z,
+      _id: new ObjectId('688ccd1eb3e7bc1472441059')
+    },
+    {
+      quizId: new ObjectId('6874a3826a1950e6d507317f'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-01T14:21:13.339Z,
+      _id: new ObjectId('688ccd59b3e7bc147244114a')
+    },
+    {
+      quizId: new ObjectId('6874a3066a1950e6d5072ffc'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-01T14:22:18.137Z,
+      _id: new ObjectId('688ccd9ab3e7bc147244126b')
+    },
+    {
+      quizId: new ObjectId('6874e0d26a1950e6d507c111'),
+      bestScore: 3,
+      bestScorePercentage: 60,
+      isHighScore: false,
+      lastAttemptDate: 2025-08-01T14:24:52.372Z,
+      _id: new ObjectId('688cce34b3e7bc14724414bc')
+    },
+    {
+      quizId: new ObjectId('6874b44c6a1950e6d5075eb9'),
+      bestScore: 4,
+      bestScorePercentage: 80,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-01T14:25:52.728Z,
+      _id: new ObjectId('688cce70b3e7bc14724415b3')
+    },
+    {
+      quizId: new ObjectId('6874b4486a1950e6d5075eac'),
+      bestScore: 4,
+      bestScorePercentage: 80,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-01T14:26:48.594Z,
+      _id: new ObjectId('688ccea8b3e7bc14724416b4')
+    },
+    {
+      quizId: new ObjectId('6874b4446a1950e6d5075e9f'),
+      bestScore: 4,
+      bestScorePercentage: 80,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T03:06:27.723Z,
+      _id: new ObjectId('688d80b3b3e7bc147244279e')
+    },
+    {
+      quizId: new ObjectId('6872583f1927e7e0118fd2a8'),
+      bestScore: 4,
+      bestScorePercentage: 80,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T03:07:30.270Z,
+      _id: new ObjectId('688d80f2b3e7bc14724428a7')
+    },
+    {
+      quizId: new ObjectId('6874b3ba6a1950e6d5075d29'),
+      bestScore: 3,
+      bestScorePercentage: 60,
+      isHighScore: false,
+      lastAttemptDate: 2025-08-02T03:09:25.129Z,
+      _id: new ObjectId('688d8165b3e7bc14724429b4')
+    },
+    {
+      quizId: new ObjectId('6874c2476a1950e6d50785bd'),
+      bestScore: 4,
+      bestScorePercentage: 80,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T03:10:50.627Z,
+      _id: new ObjectId('688d81bab3e7bc1472442abf')
+    },
+    {
+      quizId: new ObjectId('6874c2446a1950e6d50785b0'),
+      bestScore: 3,
+      bestScorePercentage: 60,
+      isHighScore: false,
+      lastAttemptDate: 2025-08-02T03:19:39.915Z,
+      _id: new ObjectId('688d83cbb3e7bc1472442bd4')
+    },
+    {
+      quizId: new ObjectId('6874c23d6a1950e6d50785a3'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T03:20:47.222Z,
+      _id: new ObjectId('688d840fb3e7bc1472442ce7')
+    },
+    {
+      quizId: new ObjectId('6874c2536a1950e6d50785e5'),
+      bestScore: 3,
+      bestScorePercentage: 60,
+      isHighScore: false,
+      lastAttemptDate: 2025-08-02T03:26:31.915Z,
+      _id: new ObjectId('688d8567b3e7bc147244301d')
+    },
+    {
+      quizId: new ObjectId('6874c24f6a1950e6d50785d8'),
+      bestScore: 4,
+      bestScorePercentage: 80,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T03:28:03.898Z,
+      _id: new ObjectId('688d85c3b3e7bc1472443138')
+    },
+    {
+      quizId: new ObjectId('687259399a316e2de960ea19'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T03:28:52.635Z,
+      _id: new ObjectId('688d85f4b3e7bc14724431dc')
+    },
+    {
+      quizId: new ObjectId('687259419a316e2de960ea33'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T03:29:52.999Z,
+      _id: new ObjectId('688d8630b3e7bc14724432d5')
+    },
+    {
+      quizId: new ObjectId('687259529a316e2de960ea74'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T03:30:38.684Z,
+      _id: new ObjectId('688d865eb3e7bc14724433b7')
+    },
+    {
+      quizId: new ObjectId('687259459a316e2de960ea40'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T03:31:17.737Z,
+      _id: new ObjectId('688d8685b3e7bc147244349c')
+    },
+    {
+      quizId: new ObjectId('687259489a316e2de960ea4d'),
+      bestScore: 2,
+      bestScorePercentage: 40,
+      isHighScore: false,
+      lastAttemptDate: 2025-08-02T03:32:03.087Z,
+      _id: new ObjectId('688d86b3b3e7bc1472443584')
+    },
+    {
+      quizId: new ObjectId('687259559a316e2de960ea81'),
+      bestScore: 3,
+      bestScorePercentage: 60,
+      isHighScore: false,
+      lastAttemptDate: 2025-08-02T03:33:06.141Z,
+      _id: new ObjectId('688d86f2b3e7bc147244362c')
+    },
+    {
+      quizId: new ObjectId('6874c24c6a1950e6d50785cb'),
+      bestScore: 4,
+      bestScorePercentage: 80,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T03:34:30.310Z,
+      _id: new ObjectId('688d8746b3e7bc1472443763')
+    },
+    {
+      quizId: new ObjectId('68725a069a316e2de960ecfe'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T03:35:46.275Z,
+      _id: new ObjectId('688d8792b3e7bc14724438f7')
+    },
+    {
+      quizId: new ObjectId('6874c2da6a1950e6d5078775'),
+      bestScore: 1,
+      bestScorePercentage: 20,
+      isHighScore: false,
+      lastAttemptDate: 2025-08-02T03:36:59.247Z,
+      _id: new ObjectId('688d87dbb3e7bc1472443a7c')
+    },
+    {
+      quizId: new ObjectId('6872594f9a316e2de960ea67'),
+      bestScore: 2,
+      bestScorePercentage: 40,
+      isHighScore: false,
+      lastAttemptDate: 2025-08-02T03:38:30.251Z,
+      _id: new ObjectId('688d8836b3e7bc1472443b2c')
+    },
+    {
+      quizId: new ObjectId('687259619a316e2de960eab5'),
+      bestScore: 3,
+      bestScorePercentage: 60,
+      isHighScore: false,
+      lastAttemptDate: 2025-08-02T03:40:23.159Z,
+      _id: new ObjectId('688d88a7b3e7bc1472443c85')
+    },
+    {
+      quizId: new ObjectId('6874c2d66a1950e6d5078768'),
+      bestScore: 3,
+      bestScorePercentage: 60,
+      isHighScore: false,
+      lastAttemptDate: 2025-08-02T03:41:44.178Z,
+      _id: new ObjectId('688d88f8b3e7bc1472443dd0')
+    },
+    {
+      quizId: new ObjectId('6874b4596a1950e6d5075ee1'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T03:42:41.510Z,
+      _id: new ObjectId('688d8931b3e7bc1472443f25')
+    },
+    {
+      quizId: new ObjectId('6874b4556a1950e6d5075ed4'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T03:43:38.911Z,
+      _id: new ObjectId('688d896ab3e7bc14724440c8')
+    },
+    {
+      quizId: new ObjectId('6874b4506a1950e6d5075ec7'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T04:24:27.822Z,
+      _id: new ObjectId('688d92fbb3e7bc1472444578')
+    },
+    {
+      quizId: new ObjectId('687259aa9a316e2de960ebb9'),
+      bestScore: 4,
+      bestScorePercentage: 80,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T04:26:19.688Z,
+      _id: new ObjectId('688d936bb3e7bc1472444903')
+    },
+    {
+      quizId: new ObjectId('6874a6406a1950e6d5073991'),
+      bestScore: 0,
+      bestScorePercentage: 0,
+      isHighScore: false,
+      lastAttemptDate: 2025-08-02T04:42:22.774Z,
+      _id: new ObjectId('688d972eb3e7bc14724450fd')
+    },
+    {
+      quizId: new ObjectId('6874a1ef6a1950e6d5072d1d'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T04:48:42.873Z,
+      _id: new ObjectId('688d98aab3e7bc14724453c1')
+    },
+    {
+      quizId: new ObjectId('6874a5be6a1950e6d50737e7'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T04:51:48.524Z,
+      _id: new ObjectId('688d9964b3e7bc14724455e3')
+    },
+    {
+      quizId: new ObjectId('6874a3926a1950e6d50731b4'),
+      bestScore: 3,
+      bestScorePercentage: 60,
+      isHighScore: false,
+      lastAttemptDate: 2025-08-02T04:53:15.660Z,
+      _id: new ObjectId('688d99bbb3e7bc14724458ac')
+    },
+    {
+      quizId: new ObjectId('6874a63c6a1950e6d5073984'),
+      bestScore: 4,
+      bestScorePercentage: 80,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T04:54:31.764Z,
+      _id: new ObjectId('688d9a07b3e7bc1472445b45')
+    },
+    {
+      quizId: new ObjectId('6874d63f6a1950e6d507a50c'),
+      bestScore: 3,
+      bestScorePercentage: 60,
+      isHighScore: false,
+      lastAttemptDate: 2025-08-02T05:10:44.644Z,
+      _id: new ObjectId('688d9dd4b3e7bc1472446e8f')
+    },
+    {
+      quizId: new ObjectId('6874b6096a1950e6d5076391'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T13:34:04.273Z,
+      _id: new ObjectId('688e13ccb3e7bc147244aacc')
+    },
+    {
+      quizId: new ObjectId('6874b6036a1950e6d5076384'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T13:34:52.553Z,
+      _id: new ObjectId('688e13fcb3e7bc147244abe7')
+    },
+    {
+      quizId: new ObjectId('6874b5ff6a1950e6d5076377'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T13:35:57.156Z,
+      _id: new ObjectId('688e143db3e7bc147244ad5c')
+    },
+    {
+      quizId: new ObjectId('687259b59a316e2de960ebe0'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T13:53:32.600Z,
+      _id: new ObjectId('688e185cb3e7bc147244b09c')
+    },
+    {
+      quizId: new ObjectId('6874a1ec6a1950e6d5072d10'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T14:08:19.885Z,
+      _id: new ObjectId('688e1bd3b3e7bc147244b3b2')
+    },
+    {
+      quizId: new ObjectId('6874a1e76a1950e6d5072d03'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T14:08:50.340Z,
+      _id: new ObjectId('688e1bf2b3e7bc147244b4de')
+    },
+    {
+      quizId: new ObjectId('6874a3186a1950e6d5073031'),
+      bestScore: 4,
+      bestScorePercentage: 80,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T14:10:15.286Z,
+      _id: new ObjectId('688e1c47b3e7bc147244b728')
+    },
+    {
+      quizId: new ObjectId('6874a3146a1950e6d5073024'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T14:11:02.792Z,
+      _id: new ObjectId('688e1c76b3e7bc147244b7fa')
+    },
+    {
+      quizId: new ObjectId('6874a30f6a1950e6d5073017'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T14:11:52.818Z,
+      _id: new ObjectId('688e1ca8b3e7bc147244b924')
+    },
+    {
+      quizId: new ObjectId('6874ba606a1950e6d5077011'),
+      bestScore: 3,
+      bestScorePercentage: 60,
+      isHighScore: false,
+      lastAttemptDate: 2025-08-02T14:14:04.620Z,
+      _id: new ObjectId('688e1d2cb3e7bc147244bc03')
+    },
+    {
+      quizId: new ObjectId('6874ba5b6a1950e6d5077004'),
+      bestScore: 4,
+      bestScorePercentage: 80,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T14:15:30.398Z,
+      _id: new ObjectId('688e1d82b3e7bc147244bcd5')
+    },
+    {
+      quizId: new ObjectId('6874ba576a1950e6d5076ff7'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T14:16:32.219Z,
+      _id: new ObjectId('688e1dc0b3e7bc147244bdaf')
+    },
+    {
+      quizId: new ObjectId('687259d39a316e2de960ec48'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T14:17:35.217Z,
+      _id: new ObjectId('688e1dffb3e7bc147244bee5')
+    },
+    {
+      quizId: new ObjectId('6874be586a1950e6d5077af5'),
+      bestScore: 4,
+      bestScorePercentage: 80,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T14:19:07.933Z,
+      _id: new ObjectId('688e1e5bb3e7bc147244c0f1')
+    },
+    {
+      quizId: new ObjectId('6874be526a1950e6d5077ae8'),
+      bestScore: 2,
+      bestScorePercentage: 40,
+      isHighScore: false,
+      lastAttemptDate: 2025-08-02T14:20:06.627Z,
+      _id: new ObjectId('688e1e96b3e7bc147244c1d1')
+    },
+    {
+      quizId: new ObjectId('6874be4e6a1950e6d5077adb'),
+      bestScore: 4,
+      bestScorePercentage: 80,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T14:21:13.070Z,
+      _id: new ObjectId('688e1ed9b3e7bc147244c2ad')
+    },
+    {
+      quizId: new ObjectId('687259ed9a316e2de960eca3'),
+      bestScore: 4,
+      bestScorePercentage: 80,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T14:22:08.907Z,
+      _id: new ObjectId('688e1f10b3e7bc147244c391')
+    },
+    {
+      quizId: new ObjectId('6874c0106a1950e6d5077fa5'),
+      bestScore: 2,
+      bestScorePercentage: 40,
+      isHighScore: false,
+      lastAttemptDate: 2025-08-02T14:23:42.771Z,
+      _id: new ObjectId('688e1f6eb3e7bc147244c5b9')
+    },
+    {
+      quizId: new ObjectId('6874c3606a1950e6d5078905'),
+      bestScore: 2,
+      bestScorePercentage: 40,
+      isHighScore: false,
+      lastAttemptDate: 2025-08-02T14:25:09.058Z,
+      _id: new ObjectId('688e1fc5b3e7bc147244c8be')
+    },
+    {
+      quizId: new ObjectId('6874c35b6a1950e6d50788f8'),
+      bestScore: 4,
+      bestScorePercentage: 80,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T14:27:16.587Z,
+      _id: new ObjectId('688e2044b3e7bc147244c9a2')
+    },
+    {
+      quizId: new ObjectId('6874c3566a1950e6d50788eb'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T14:28:32.478Z,
+      _id: new ObjectId('688e2090b3e7bc147244cbe6')
+    },
+    {
+      quizId: new ObjectId('6874c3e36a1950e6d5078a95'),
+      bestScore: 5,
+      bestScorePercentage: 100,
+      isHighScore: true,
+      lastAttemptDate: 2025-08-02T14:29:59.270Z,
+      _id: new ObjectId('688e20e7b3e7bc147244cf19')
+    }
+  ],
+  createdAt: 2025-07-06T12:44:19.678Z,
+  updatedAt: 2025-08-02T14:29:59.732Z,
+  __v: 99,
+  currentSubscription: new ObjectId('688b5e3e479f3cff7d807097'),
+  subscriptionExpiry: 2026-07-31T12:14:54.014Z
+} useruseruseruseruser 
+2025-08-03T07:46:48.249Z [ERROR]: Search Error: CastError: Cast to Number failed for value "NaN" (type number) at path "requiredLevel" for model "Quiz" 
+2025-08-03T07:47:23.437Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-03T07:47:23.446Z [INFO]: 🚀 Server running on port 5000 
+2025-08-03T07:47:30.651Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-03T07:47:30.662Z [INFO]: 🚀 Server running on port 5000 
+2025-08-03T07:47:32.960Z [INFO]: 7 nextLevel 
+2025-08-03T07:47:32.997Z [ERROR]: Search Error: MongoServerError: text index required for $text query 
+2025-08-03T07:47:58.905Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-03T07:47:58.913Z [INFO]: 🚀 Server running on port 5000 
+2025-08-03T07:48:05.908Z [INFO]: 7 history nextLevel 
+2025-08-03T07:48:05.945Z [ERROR]: Search Error: MongoServerError: text index required for $text query 
+2025-08-03T07:51:39.953Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-03T07:51:39.961Z [INFO]: 🚀 Server running on port 5000 
+2025-08-03T07:51:45.394Z [INFO]: 7 history nextLevel 
+2025-08-03T07:51:45.431Z [ERROR]: Search Error: MongoServerError: text index required for $text query 
+2025-08-03T07:53:23.170Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-03T07:53:23.178Z [INFO]: 🚀 Server running on port 5000 
+2025-08-03T07:53:36.070Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-03T07:53:36.078Z [INFO]: 🚀 Server running on port 5000 
+2025-08-03T08:10:37.556Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-03T08:10:37.566Z [INFO]: 🚀 Server running on port 5000 
+2025-08-03T08:12:35.778Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-03T08:12:35.786Z [INFO]: 🚀 Server running on port 5000 
+2025-08-03T08:17:34.908Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-03T08:17:34.916Z [INFO]: 🚀 Server running on port 5000 
+2025-08-03T08:30:21.355Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-03T08:30:21.364Z [INFO]: 🚀 Server running on port 5000 
