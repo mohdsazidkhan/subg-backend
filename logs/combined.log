@@ -1885,3 +1885,5 @@
 2025-08-03T16:02:27.283Z [ERROR]: Search Error: ReferenceError: QuizAttempt is not defined 
 2025-08-03T16:03:11.459Z [INFO]: ✅ Database Connected to MongoDB 
 2025-08-03T16:03:11.470Z [INFO]: 🚀 Server running on port 5000 
+2025-08-04T13:31:47.067Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-04T13:31:47.077Z [INFO]: 🚀 Server running on port 5000 
