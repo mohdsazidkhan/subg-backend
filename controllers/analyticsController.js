@@ -318,16 +318,29 @@ exports.getQuizAnalytics = async (req, res) => {
       avgScore,
       categoryStats,
       difficultyStats,
+      levelStats,
       topQuizzes,
       quizPerformance,
       recentQuizzes
     ] = await Promise.all([
+      // Total active quizzes
       Quiz.countDocuments(quizFilter),
+
+      // Total quiz attempts in time range
       QuizAttempt.countDocuments(attemptFilter),
+
+      // Average score
       QuizAttempt.aggregate([
         { $match: attemptFilter },
-        { $group: { _id: null, avgScore: { $avg: '$scorePercentage' } } }
+        {
+          $group: {
+            _id: null,
+            avgScore: { $avg: '$scorePercentage' }
+          }
+        }
       ]),
+
+      // Category stats
       Quiz.aggregate([
         { $match: quizFilter },
         {
@@ -348,6 +361,8 @@ exports.getQuizAnalytics = async (req, res) => {
           }
         }
       ]),
+
+      // Difficulty stats
       Quiz.aggregate([
         { $match: quizFilter },
         {
@@ -359,6 +374,27 @@ exports.getQuizAnalytics = async (req, res) => {
           }
         }
       ]),
+
+      // ✅ Level stats with levelName (e.g. "Level 1")
+      Quiz.aggregate([
+        { $match: quizFilter },
+        {
+          $group: {
+            _id: '$requiredLevel',
+            count: { $sum: 1 }
+          }
+        },
+        {
+          $addFields: {
+            levelName: {
+              $concat: ['Level ', { $toString: '$_id' }]
+            }
+          }
+        },
+        { $sort: { _id: 1 } }
+      ]),
+
+      // Top 10 most attempted quizzes
       QuizAttempt.aggregate([
         { $match: attemptFilter },
         {
@@ -382,6 +418,8 @@ exports.getQuizAnalytics = async (req, res) => {
         { $sort: { attemptCount: -1 } },
         { $limit: 10 }
       ]),
+
+      // Performance grouped by quiz and difficulty
       QuizAttempt.aggregate([
         { $match: attemptFilter },
         {
@@ -408,6 +446,8 @@ exports.getQuizAnalytics = async (req, res) => {
           }
         }
       ]),
+
+      // Recent quizzes
       Quiz.find(quizFilter)
         .populate('category', 'name')
         .populate('subcategory', 'name')
@@ -426,6 +466,7 @@ exports.getQuizAnalytics = async (req, res) => {
         },
         categoryStats,
         difficultyStats,
+        levelStats,
         topQuizzes,
         quizPerformance,
         recentQuizzes
@@ -440,6 +481,7 @@ exports.getQuizAnalytics = async (req, res) => {
     });
   }
 };
+
 
 // Financial Analytics
 exports.getFinancialAnalytics = async (req, res) => {

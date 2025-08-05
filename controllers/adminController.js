@@ -18,16 +18,36 @@ const getPaginationOptions = (req) => {
 // Helper function for search
 const getSearchQuery = (req, searchFields) => {
   const search = req.query.search;
-  if (!search) return {};
-  
-  const searchRegex = new RegExp(search, 'i');
-  const searchQuery = {};
-  
-  searchFields.forEach(field => {
-    searchQuery[field] = searchRegex;
+  if (!search || !search.trim()) return {};
+
+  const searchRegex = new RegExp(search.trim(), 'i');
+
+  return {
+    $or: searchFields.map(field => ({
+      [field]: searchRegex
+    }))
+  };
+};
+
+const getFilterQuizQuery = (req, filterFields) => {
+  const filterQuery = {};
+
+  filterFields.forEach(field => {
+    const value = req.query[field];
+    if (value !== undefined && value !== '') {
+      if (value === 'true') {
+        filterQuery[field] = true;
+      } else if (value === 'false') {
+        filterQuery[field] = false;
+      } else if (['level', 'requiredLevel'].includes(field)) {
+        filterQuery[field] = Number(value); // ✅ Cast to number
+      } else {
+        filterQuery[field] = value;
+      }
+    }
   });
-  
-  return searchQuery;
+
+  return filterQuery;
 };
 
 exports.getStats = async (req, res) => {
@@ -50,7 +70,7 @@ exports.getCategories = async (req, res) => {
   try {
     const { page, limit, skip } = getPaginationOptions(req);
     const searchQuery = getSearchQuery(req, ['name', 'description']);
-    
+    //console.log(searchQuery, ':searchQuery');
     const categories = await Category.find(searchQuery)
       .sort({ createdAt: -1 })
       .skip(skip)
@@ -265,23 +285,34 @@ exports.getAllAdminQuizzes = async (req, res) => {
 exports.getQuizzes = async (req, res) => {
   try {
     const { page, limit, skip } = getPaginationOptions(req);
+
     const searchQuery = getSearchQuery(req, ['title', 'description', 'tags']);
-    
-    const quizzes = await Quiz.find(searchQuery)
+    const filterQuery = getFilterQuizQuery(req, [
+      'difficulty',
+      'category',
+      'subcategory',
+      'isActive',
+      'requiredLevel'
+    ]);
+
+    const finalQuery = { ...searchQuery, ...filterQuery };
+
+    const quizzes = await Quiz.find(finalQuery)
       .populate('category', 'name')
       .populate('subcategory', 'name')
       .sort({ createdAt: -1 })
       .skip(skip)
       .limit(limit);
 
-    // Get question count for each quiz
     const quizIds = quizzes.map(q => q._id);
     const questionCounts = await Question.aggregate([
       { $match: { quiz: { $in: quizIds } } },
       { $group: { _id: '$quiz', count: { $sum: 1 } } }
     ]);
     const questionCountMap = {};
-    questionCounts.forEach(qc => { questionCountMap[qc._id.toString()] = qc.count; });
+    questionCounts.forEach(qc => {
+      questionCountMap[qc._id.toString()] = qc.count;
+    });
 
     const quizzesWithQuestionCount = quizzes.map(q => {
       const qObj = q.toObject();
@@ -289,7 +320,7 @@ exports.getQuizzes = async (req, res) => {
       return qObj;
     });
 
-    const total = await Quiz.countDocuments(searchQuery);
+    const total = await Quiz.countDocuments(finalQuery);
     const totalPages = Math.ceil(total / limit);
 
     res.json({
@@ -308,6 +339,7 @@ exports.getQuizzes = async (req, res) => {
     res.status(500).json({ error: 'Failed to get quizzes' });
   }
 };
+
 
 exports.createQuiz = async (req, res) => {
   try {

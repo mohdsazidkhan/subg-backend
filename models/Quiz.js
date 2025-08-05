@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { v4: uuidv4 } = require('uuid');
 const quizSchema = new mongoose.Schema({
   title: { type: String, required: true },
   category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' },

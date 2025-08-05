@@ -78,3 +78,28 @@
 2025-08-03T07:51:45.431Z [ERROR]: Search Error: MongoServerError: text index required for $text query 
 2025-08-03T16:02:27.219Z [ERROR]: Search Error: ReferenceError: QuizAttempt is not defined 
 2025-08-03T16:02:27.283Z [ERROR]: Search Error: ReferenceError: QuizAttempt is not defined 
+2025-08-05T05:07:30.788Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2Zjc2ZGQzYTkwMjc5ZGIzZGEzMCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NDMxNDQxMSwiZXhwIjoxNzU0NDAwODExfQ.gholYYAGWgrmFSddrWldRhLA48kFAcIIVss80_MtlQc 
+2025-08-05T05:07:30.831Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2Zjc2ZGQzYTkwMjc5ZGIzZGEzMCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NDMxNDQxMSwiZXhwIjoxNzU0NDAwODExfQ.gholYYAGWgrmFSddrWldRhLA48kFAcIIVss80_MtlQc 
+2025-08-05T05:14:58.989Z [ERROR]: Error getting categories: TypeError: getPaginationOptions is not a function 
+2025-08-05T05:16:36.298Z [ERROR]: Error getting categories: TypeError: getPaginationOptions is not a function 
+2025-08-05T05:16:36.311Z [ERROR]: Error getting categories: TypeError: getPaginationOptions is not a function 
+2025-08-05T05:19:26.224Z [ERROR]: Error getting categories: TypeError: getPaginationOptions is not a function 
+2025-08-05T05:19:26.249Z [ERROR]: Error getting categories: TypeError: getPaginationOptions is not a function 
+2025-08-05T05:21:59.539Z [ERROR]: Error getting categories: TypeError: Cannot convert object to primitive value 
+2025-08-05T05:21:59.772Z [ERROR]: Error getting categories: TypeError: Cannot convert object to primitive value 
+2025-08-05T05:22:30.698Z [ERROR]: Error getting categories: TypeError: Cannot convert object to primitive value 
+2025-08-05T05:22:35.952Z [ERROR]: Error getting categories: TypeError: Cannot convert object to primitive value 
+2025-08-05T05:22:35.962Z [ERROR]: Error getting categories: TypeError: Cannot convert object to primitive value 
+2025-08-05T05:23:33.714Z [ERROR]: Error getting categories: TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'Socket'
+    |     property 'parser' -> object with constructor 'HTTPParser'
+    --- property 'socket' closes the circle 
+2025-08-05T05:23:33.726Z [ERROR]: Error getting categories: TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'Socket'
+    |     property 'parser' -> object with constructor 'HTTPParser'
+    --- property 'socket' closes the circle 
+2025-08-05T05:23:56.991Z [ERROR]: Error getting categories: TypeError: Cannot convert object to primitive value 
+2025-08-05T05:23:57.004Z [ERROR]: Error getting categories: TypeError: Cannot convert object to primitive value 
+2025-08-05T05:24:02.348Z [ERROR]: Error getting categories: TypeError: Cannot convert object to primitive value 
+2025-08-05T05:24:02.395Z [ERROR]: Error getting categories: TypeError: Cannot convert object to primitive value 
+2025-08-05T05:43:24.546Z [ERROR]: Error getting quizzes: CastError: Cast to Boolean failed for value "" (type string) at path "isActive" for model "Quiz" 

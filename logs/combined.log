@@ -1887,3 +1887,164 @@
 2025-08-03T16:03:11.470Z [INFO]: 🚀 Server running on port 5000 
 2025-08-04T13:31:47.067Z [INFO]: ✅ Database Connected to MongoDB 
 2025-08-04T13:31:47.077Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:06:40.149Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:06:40.160Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:07:30.788Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2Zjc2ZGQzYTkwMjc5ZGIzZGEzMCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NDMxNDQxMSwiZXhwIjoxNzU0NDAwODExfQ.gholYYAGWgrmFSddrWldRhLA48kFAcIIVss80_MtlQc 
+2025-08-05T05:07:30.831Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2Zjc2ZGQzYTkwMjc5ZGIzZGEzMCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NDMxNDQxMSwiZXhwIjoxNzU0NDAwODExfQ.gholYYAGWgrmFSddrWldRhLA48kFAcIIVss80_MtlQc 
+2025-08-05T05:13:09.338Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:13:09.349Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:13:15.300Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:13:15.310Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:13:26.281Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:13:26.289Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:13:33.283Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:13:33.290Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:14:44.945Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:14:44.957Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:14:58.989Z [ERROR]: Error getting categories: TypeError: getPaginationOptions is not a function 
+2025-08-05T05:15:55.131Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:15:55.141Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:16:03.974Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:16:03.983Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:16:07.486Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:16:07.506Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:16:17.749Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:16:17.758Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:16:23.276Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:16:23.283Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:16:36.298Z [ERROR]: Error getting categories: TypeError: getPaginationOptions is not a function 
+2025-08-05T05:16:36.311Z [ERROR]: Error getting categories: TypeError: getPaginationOptions is not a function 
+2025-08-05T05:16:52.083Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:16:52.092Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:16:58.764Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:16:58.773Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:17:13.054Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:17:13.064Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:17:34.018Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:17:34.028Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:17:37.940Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:17:37.951Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:18:03.700Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:18:03.708Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:18:08.699Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:18:08.708Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:18:52.167Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:18:52.176Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:19:00.852Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:19:00.860Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:19:21.894Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:19:21.903Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:19:26.224Z [ERROR]: Error getting categories: TypeError: getPaginationOptions is not a function 
+2025-08-05T05:19:26.249Z [ERROR]: Error getting categories: TypeError: getPaginationOptions is not a function 
+2025-08-05T05:20:02.931Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:20:02.942Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:20:07.124Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:20:07.134Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:20:10.656Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:20:10.664Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:20:38.913Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:20:38.921Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:20:42.319Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:21:43.685Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:21:43.692Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:21:59.539Z [ERROR]: Error getting categories: TypeError: Cannot convert object to primitive value 
+2025-08-05T05:21:59.772Z [ERROR]: Error getting categories: TypeError: Cannot convert object to primitive value 
+2025-08-05T05:22:18.990Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:22:18.999Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:22:27.396Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:22:27.404Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:22:30.698Z [ERROR]: Error getting categories: TypeError: Cannot convert object to primitive value 
+2025-08-05T05:22:35.952Z [ERROR]: Error getting categories: TypeError: Cannot convert object to primitive value 
+2025-08-05T05:22:35.962Z [ERROR]: Error getting categories: TypeError: Cannot convert object to primitive value 
+2025-08-05T05:23:02.111Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:23:02.118Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:23:05.771Z [INFO]: [object Object] queryqueryquery 
+2025-08-05T05:23:05.772Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:23:05.905Z [INFO]: [object Object] queryqueryquery 
+2025-08-05T05:23:05.906Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:23:29.185Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:23:29.193Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:23:33.714Z [ERROR]: Error getting categories: TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'Socket'
+    |     property 'parser' -> object with constructor 'HTTPParser'
+    --- property 'socket' closes the circle 
+2025-08-05T05:23:33.726Z [ERROR]: Error getting categories: TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'Socket'
+    |     property 'parser' -> object with constructor 'HTTPParser'
+    --- property 'socket' closes the circle 
+2025-08-05T05:23:54.073Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:23:54.083Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:23:56.991Z [ERROR]: Error getting categories: TypeError: Cannot convert object to primitive value 
+2025-08-05T05:23:57.004Z [ERROR]: Error getting categories: TypeError: Cannot convert object to primitive value 
+2025-08-05T05:24:02.348Z [ERROR]: Error getting categories: TypeError: Cannot convert object to primitive value 
+2025-08-05T05:24:02.395Z [ERROR]: Error getting categories: TypeError: Cannot convert object to primitive value 
+2025-08-05T05:25:41.128Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:25:41.135Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:25:45.055Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:25:45.183Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:25:55.045Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:25:55.335Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:25:55.456Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:25:55.655Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:26:43.589Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:26:43.597Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:26:51.721Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:27:06.085Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:27:10.035Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:27:14.636Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:27:14.768Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:27:14.994Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:27:16.250Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:27:16.406Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:27:16.592Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:27:17.281Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:27:17.569Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:27:17.690Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:27:17.888Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:27:17.944Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:27:18.581Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:27:18.777Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:27:19.718Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:27:20.118Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:27:20.320Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:27:20.449Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:27:20.622Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:30:17.320Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:30:29.714Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:30:34.469Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:30:37.616Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:30:38.798Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:30:39.391Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:30:40.024Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:30:41.765Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:31:05.152Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:31:08.371Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:31:14.518Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:31:18.407Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:31:20.545Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:31:20.653Z [INFO]: [object Object] :searchQuery 
+2025-08-05T05:33:19.015Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:33:19.026Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:42:58.040Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:42:58.049Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:43:09.141Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:43:09.150Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:43:24.546Z [ERROR]: Error getting quizzes: CastError: Cast to Boolean failed for value "" (type string) at path "isActive" for model "Quiz" 
+2025-08-05T05:44:52.688Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:44:52.697Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:46:47.131Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:46:47.143Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:47:01.330Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:47:01.340Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:47:04.898Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:47:04.909Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:47:09.436Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:47:09.445Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:47:53.668Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:47:53.676Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:48:07.971Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:48:07.981Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:48:16.839Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:48:16.847Z [INFO]: 🚀 Server running on port 5000 
+2025-08-05T05:48:21.281Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-05T05:48:21.289Z [INFO]: 🚀 Server running on port 5000 

@@ -102,7 +102,7 @@ No markdown, no explanation.`;
 
   // ✅ Create new quiz
   const quiz = await Quiz.create({
-    title: `${subcat.name} - Advanced Quiz (Level 10)}`,
+    title: `${subcat.name} - Advanced Quiz (Level 10) ${Date.now()}`,
     category: subcat.category,
     subcategory: subcat._id,
     totalMarks: filtered.length,
