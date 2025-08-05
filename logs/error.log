@@ -103,3 +103,5 @@
 2025-08-05T05:24:02.348Z [ERROR]: Error getting categories: TypeError: Cannot convert object to primitive value 
 2025-08-05T05:24:02.395Z [ERROR]: Error getting categories: TypeError: Cannot convert object to primitive value 
 2025-08-05T05:43:24.546Z [ERROR]: Error getting quizzes: CastError: Cast to Boolean failed for value "" (type string) at path "isActive" for model "Quiz" 
+2025-08-05T11:35:14.801Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2Zjc2ZGQzYTkwMjc5ZGIzZGEzMCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NDM5MjQ4MiwiZXhwIjoxNzU0NDc4ODgyfQ.D3g9wWeGdTNC15pyoV4cP61L4gYaykhxiEI5VIUXeP0 
+2025-08-05T11:35:14.836Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2Zjc2ZGQzYTkwMjc5ZGIzZGEzMCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NDM5MjQ4MiwiZXhwIjoxNzU0NDc4ODgyfQ.D3g9wWeGdTNC15pyoV4cP61L4gYaykhxiEI5VIUXeP0 

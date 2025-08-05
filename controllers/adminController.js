@@ -6,6 +6,7 @@ const User = require('../models/User');
 const Subscription = require('../models/Subscription');
 const WalletTransaction = require('../models/WalletTransaction');
 const BankDetail = require('../models/BankDetail');
+const Contact = require('../models/Contact');
 
 // Helper function for pagination
 const getPaginationOptions = (req) => {
@@ -340,7 +341,6 @@ exports.getQuizzes = async (req, res) => {
   }
 };
 
-
 exports.createQuiz = async (req, res) => {
   try {
     const { 
@@ -586,6 +586,75 @@ exports.deleteStudent = async (req, res) => {
   } catch (error) {
     console.error('Error deleting student:', error);
     res.status(500).json({ error: 'Failed to delete student' });
+  }
+};
+
+// ---------------- Contacts -----------------
+exports.getContacts = async (req, res) => {
+  try {
+    const { page, limit, skip } = getPaginationOptions(req);
+    const searchQuery = getSearchQuery(req, ['name', 'email', 'message']);
+
+    const contacts = await Contact.find(searchQuery)
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
+
+    const total = await Contact.countDocuments(searchQuery);
+    const totalPages = Math.ceil(total / limit);
+
+    res.status(200).json({
+      success: true,
+      contacts,
+      pagination: {
+        page,
+        limit,
+        total,
+        totalPages,
+        hasNext: page < totalPages,
+        hasPrev: page > 1
+      }
+    });
+  } catch (error) {
+    console.error('Error fetching contacts:', error);
+    res.status(500).json({ success: false, message: 'Failed to fetch contacts.' });
+  }
+};
+exports.updateContact = async (req, res) => {
+  try {
+    const { name, email, message } = req.body;
+    const contact = await Contact.findById(req.params.id);
+
+    if (!contact) {
+      return res.status(404).json({ success: false, message: 'Contact not found' });
+    }
+
+    contact.name = name || contact.name;
+    contact.email = email || contact.email;
+    contact.message = message || contact.message;
+
+    await contact.save();
+
+    res.json({ success: true, message: '📬 Contact updated successfully!', contact });
+  } catch (error) {
+    console.error('Error updating contact:', error);
+    res.status(500).json({ success: false, message: 'Failed to update contact' });
+  }
+};
+exports.deleteContact = async (req, res) => {
+  try {
+    const contact = await Contact.findById(req.params.id);
+
+    if (!contact) {
+      return res.status(404).json({ success: false, message: 'Contact not found' });
+    }
+
+    await contact.remove();
+
+    res.json({ success: true, message: '🗑️ Contact deleted successfully!' });
+  } catch (error) {
+    console.error('Error deleting contact:', error);
+    res.status(500).json({ success: false, message: 'Failed to delete contact' });
   }
 };
 

@@ -36,6 +36,11 @@ router.get('/students', protect, adminOnly, adminCtrl.getStudents);
 router.put('/students/:id', protect, adminOnly, adminCtrl.updateStudent);
 router.delete('/students/:id', protect, adminOnly, adminCtrl.deleteStudent);
 
+// CONTACTS
+router.get('/contacts', protect, adminOnly, adminCtrl.getContacts);
+router.put('/contacts/:id', protect, adminOnly, adminCtrl.updateContact);
+router.delete('/contacts/:id', protect, adminOnly, adminCtrl.deleteContact);
+
 // BADGES
 router.post('/assign-badge', protect, adminOnly, adminCtrl.assignBadge);
 
