@@ -530,16 +530,22 @@ exports.getStudents = async (req, res) => {
     const { page, limit, skip } = getPaginationOptions(req);
     const searchQuery = getSearchQuery(req, ['name', 'email', 'phone']);
     searchQuery.role = 'student';
-    
+
+    // Extract and apply optional filters
+    const { status, level } = req.query;
+
+    if (status) searchQuery.status = status;
+    if (level) searchQuery.level = level;
+
     const students = await User.find(searchQuery)
       .select('-password')
       .sort({ createdAt: -1 })
       .skip(skip)
       .limit(limit);
-    
+
     const total = await User.countDocuments(searchQuery);
     const totalPages = Math.ceil(total / limit);
-    
+
     res.json({
       students,
       pagination: {
@@ -556,6 +562,7 @@ exports.getStudents = async (req, res) => {
     res.status(500).json({ error: 'Failed to get students' });
   }
 };
+
 
 exports.updateStudent = async (req, res) => {
   try {

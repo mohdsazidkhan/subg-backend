@@ -2054,3 +2054,9 @@
 2025-08-05T11:35:14.836Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2Zjc2ZGQzYTkwMjc5ZGIzZGEzMCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NDM5MjQ4MiwiZXhwIjoxNzU0NDc4ODgyfQ.D3g9wWeGdTNC15pyoV4cP61L4gYaykhxiEI5VIUXeP0 
 2025-08-05T11:45:59.832Z [INFO]: ✅ Database Connected to MongoDB 
 2025-08-05T11:45:59.839Z [INFO]: 🚀 Server running on port 5000 
+2025-08-07T07:25:56.574Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-07T07:25:56.591Z [INFO]: 🚀 Server running on port 5000 
+2025-08-07T07:31:08.545Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-07T07:31:08.554Z [INFO]: 🚀 Server running on port 5000 
+2025-08-07T07:44:25.694Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-07T07:44:25.703Z [INFO]: 🚀 Server running on port 5000 
