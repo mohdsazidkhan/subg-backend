@@ -220,11 +220,15 @@ exports.register = async (req, res) => {
 
 exports.login = async (req, res) => {
   const { identifier, password } = req.body;
+
   try {
     let user;
-    // Check if identifier is an email
+
+    // Validation regex
     const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
     const phoneRegex = /^\d{10,15}$/;
+
+    // Find user by email or phone
     if (emailRegex.test(identifier)) {
       user = await User.findOne({ email: identifier }).populate('currentSubscription');
     } else if (phoneRegex.test(identifier)) {
@@ -232,19 +236,38 @@ exports.login = async (req, res) => {
     } else {
       return res.status(400).json({ message: 'Please provide a valid email or phone number.' });
     }
-    if (!user) return res.status(404).json({ message: 'User Not Found!' });
 
+    // User not found
+    if (!user) {
+      return res.status(404).json({ message: 'User Not Found!' });
+    }
+
+    // Compare passwords
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(401).json({ message: 'Invalid Credentials' });
+    if (!isMatch) {
+      return res.status(401).json({ message: 'Invalid Credentials' });
+    }
 
-    const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1d' });
+    // Generate token with expiry from .env
+    const token = jwt.sign(
+      { id: user._id, role: user.role },
+      process.env.JWT_SECRET,
+      { expiresIn: process.env.JWT_EXPIRES_IN || '1d' } // fallback to 1d
+    );
+
+    // Decode token to get expiry time
+    const decoded = jwt.decode(token);
+    const expiresAt = new Date(decoded.exp * 1000); // Convert from seconds to ms
+
     // Get level information
     const levelInfo = user.getLevelInfo();
 
+    // Response
     res.status(200).json({
       success: true,
       message: '🎉 Login Successful!',
       token,
+      expiresAt, // Send expiry timestamp to frontend
       user: {
         _id: user._id,
         name: user.name,
@@ -258,8 +281,10 @@ exports.login = async (req, res) => {
         level: levelInfo
       }
     });
+
   } catch (err) {
     console.error('Login error:', err);
     res.status(500).json({ message: err.message });
   }
 };
+
