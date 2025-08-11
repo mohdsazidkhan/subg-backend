@@ -4,6 +4,7 @@ const Subscription = require('../models/Subscription');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const WalletTransaction = require('../models/WalletTransaction');
+const { v4: uuidv4 } = require('uuid');
 dotenv.config();
 const crypto = require('crypto');
 const { sendBrevoEmail } = require('../utils/email');

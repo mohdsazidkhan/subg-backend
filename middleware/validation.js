@@ -21,7 +21,8 @@ const validateUserRegistration = (req, res, next) => {
       'string.pattern.base': 'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character',
       'any.required': 'Password is required'
     }),
-    role: Joi.string().valid('student', 'admin').default('student')
+    role: Joi.string().valid('student', 'admin').default('student'),
+    referredBy: Joi.string().optional()
   });
 
   const { error } = schema.validate(req.body);

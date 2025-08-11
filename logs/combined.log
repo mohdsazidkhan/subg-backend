@@ -2082,3 +2082,23 @@
 2025-08-11T12:20:37.001Z [INFO]: 🚀 Server running on port 5000 
 2025-08-11T12:20:47.765Z [INFO]: ✅ Database Connected to MongoDB 
 2025-08-11T12:20:47.773Z [INFO]: 🚀 Server running on port 5000 
+2025-08-11T12:36:13.289Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-11T12:36:13.300Z [INFO]: 🚀 Server running on port 5000 
+2025-08-11T12:36:44.091Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-11T12:36:44.098Z [INFO]: 🚀 Server running on port 5000 
+2025-08-11T12:37:56.108Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-11T12:37:56.115Z [INFO]: 🚀 Server running on port 5000 
+2025-08-11T12:38:33.834Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-11T12:38:33.841Z [INFO]: 🚀 Server running on port 5000 
+2025-08-11T12:41:41.797Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-11T12:41:53.420Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-11T12:41:53.427Z [INFO]: 🚀 Server running on port 5000 
+2025-08-11T12:43:46.485Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-11T12:43:46.492Z [INFO]: 🚀 Server running on port 5000 
+2025-08-11T12:44:59.881Z [ERROR]: Registration error: ReferenceError: uuidv4 is not defined 
+2025-08-11T12:45:51.784Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-11T12:45:51.795Z [INFO]: 🚀 Server running on port 5000 
+2025-08-11T12:46:01.743Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-11T12:46:01.750Z [INFO]: 🚀 Server running on port 5000 
+2025-08-11T12:46:13.817Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-11T12:46:13.826Z [INFO]: 🚀 Server running on port 5000 
