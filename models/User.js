@@ -7,6 +7,10 @@ const userSchema = new mongoose.Schema({
   password: { type: String },
   role: { type: String, enum: ['admin', 'student'], default: 'student' },
   badges: { type: [String], default: ['Student'] },
+  // Referral system fields
+  referralCode: { type: String, unique: true, default: function() { return uuidv4().slice(0,8).toUpperCase(); } },
+  referredBy: { type: String, default: null }, // referralCode of the referrer
+  referralCount: { type: Number, default: 0 },
   
   // User Level System
   level: {

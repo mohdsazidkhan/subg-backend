@@ -118,7 +118,8 @@ const createFreeSubscription = async (userId, isAdmin = false) => {
 };
 
 exports.register = async (req, res) => {
-  const { name, email, phone, password, role = 'student' } = req.body;
+
+  const { name, email, phone, password, role = 'student', referredBy } = req.body;
   
   try {
     // Additional validation
@@ -152,16 +153,63 @@ exports.register = async (req, res) => {
       phone,
       password: hashedPassword,
       role,
-      subscriptionStatus: 'free'
+      subscriptionStatus: 'free',
+      referredBy: referredBy || null
     });
 
     // Save user first to get the _id
     await user.save();
 
+    // Referral logic
+    if (referredBy) {
+      // Find referrer by referralCode
+      const referrer = await User.findOne({ referralCode: referredBy });
+      if (referrer) {
+        referrer.referralCount = (referrer.referralCount || 0) + 1;
+
+        // Check for milestones and create subscription if needed
+        let milestone = null;
+        let plan = null;
+        let amount = null;
+        if (referrer.referralCount === 10) {
+          milestone = 10;
+          plan = 'basic';
+          amount = 99;
+        } else if (referrer.referralCount === 50) {
+          milestone = 50;
+          plan = 'premium';
+          amount = 499;
+        } else if (referrer.referralCount === 100) {
+          milestone = 100;
+          plan = 'pro';
+          amount = 999;
+        }
+        if (milestone && plan && amount) {
+          // Create subscription entry for referrer
+          const now = new Date();
+          const endDate = new Date(now);
+          endDate.setFullYear(endDate.getFullYear() + 1); // 1 year validity
+          const sub = await Subscription.create({
+            user: referrer._id,
+            plan,
+            status: 'active',
+            startDate: now,
+            endDate,
+            amount,
+            currency: 'INR',
+            metadata: { referralMilestone: milestone }
+          });
+          referrer.currentSubscription = sub._id;
+          referrer.subscriptionStatus = plan;
+          referrer.subscriptionExpiry = endDate;
+        }
+        await referrer.save();
+      }
+    }
+
     // Create free subscription for new user (1 year for regular users, lifetime for admin)
     const isAdmin = role === 'admin';
     const freeSubscription = await createFreeSubscription(user._id, isAdmin);
-    
     // Update user with subscription details
     user.currentSubscription = freeSubscription._id;
     user.subscriptionExpiry = freeSubscription.endDate;
@@ -194,6 +242,7 @@ exports.register = async (req, res) => {
         name: user.name,
         email: user.email,
         role: user.role,
+        referralCode: user.referralCode,
         subscriptionStatus: user.subscriptionStatus,
         subscriptionExpiry: user.subscriptionExpiry,
         currentSubscription: freeSubscription,
