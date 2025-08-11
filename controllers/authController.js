@@ -117,6 +117,22 @@ const createFreeSubscription = async (userId, isAdmin = false) => {
   }
 };
 
+// Helper: Referral code generate karo
+function generateReferralCode() {
+  return uuidv4().replace(/-/g, '').substring(0, 8).toUpperCase();
+}
+
+// Helper: Unique referral code find karo
+async function getUniqueReferralCode() {
+  let code;
+  let exists = true;
+  while (exists) {
+    code = generateReferralCode();
+    exists = await User.exists({ referralCode: code });
+  }
+  return code;
+}
+
 exports.register = async (req, res) => {
 
   const { name, email, phone, password, role = 'student', referredBy } = req.body;
@@ -147,6 +163,9 @@ exports.register = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    // Unique referralCode generate karo
+    const referralCode = await getUniqueReferralCode();
+
     const user = new User({
       name,
       email,
@@ -154,7 +173,8 @@ exports.register = async (req, res) => {
       password: hashedPassword,
       role,
       subscriptionStatus: 'free',
-      referredBy: referredBy || null
+      referredBy: referredBy || null,
+      referralCode
     });
 
     // Save user first to get the _id
