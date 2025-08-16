@@ -2102,3 +2102,19 @@
 2025-08-11T12:46:01.750Z [INFO]: 🚀 Server running on port 5000 
 2025-08-11T12:46:13.817Z [INFO]: ✅ Database Connected to MongoDB 
 2025-08-11T12:46:13.826Z [INFO]: 🚀 Server running on port 5000 
+2025-08-16T05:08:42.875Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-16T05:08:42.908Z [INFO]: 🚀 Server running on port 5000 
+2025-08-16T05:12:48.193Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-16T05:12:48.201Z [INFO]: 🚀 Server running on port 5000 
+2025-08-16T05:13:19.417Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-16T05:13:19.430Z [INFO]: 🚀 Server running on port 5000 
+2025-08-16T05:28:48.770Z [ERROR]: JWT verification failed in protect: jwt expired Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU1MzIyMDY3LCJleHAiOjE3NTUzMjIxMjd9.4C_GfTGCGqIQxRrnhNf4D0z1bejufF8kf8qV0wY8RZw 
+2025-08-16T05:30:21.662Z [ERROR]: JWT verification failed in protect: jwt expired Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU1MzIyMTMxLCJleHAiOjE3NTUzMjIxOTF9.ElYRyrkNoxPRzO0Fm7U1HHZdqUJfWkL8v3dKMH9mStE 
+2025-08-16T05:31:23.094Z [ERROR]: JWT verification failed in protect: jwt expired Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU1MzIyMjIzLCJleHAiOjE3NTUzMjIyODN9.kDg9BRNWe5UGotnLeBnfUB1lcVm-IFI8PmQaegNvhJ4 
+2025-08-16T05:32:30.069Z [ERROR]: JWT verification failed in protect: jwt expired Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU1MzIyMjg4LCJleHAiOjE3NTUzMjIzNDh9.Z3cpUXK6ie04xqWH7P8BVgjqFqGXcmn8_vVpqOeyRD8 
+2025-08-16T05:32:56.908Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-16T05:32:56.917Z [INFO]: 🚀 Server running on port 5000 
+2025-08-16T05:34:03.692Z [ERROR]: JWT verification failed in protect: jwt expired Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU1MzIyMzc3LCJleHAiOjE3NTUzMjI0Mzd9.OcnnpfALikYNvQTociELgFGbN_GIt9XmVyXsfO1we9A 
+2025-08-16T05:35:33.406Z [ERROR]: JWT verification failed in protect: jwt expired Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU1MzIyNDYxLCJleHAiOjE3NTUzMjI1MjF9.7G8VOQEQ4s2tk2yZHS_ZcBKj4HF-K7dqThNz8bpy_8s 
+2025-08-16T05:36:13.703Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-16T05:36:13.711Z [INFO]: 🚀 Server running on port 5000 
