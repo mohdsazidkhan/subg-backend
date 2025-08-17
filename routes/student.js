@@ -4,14 +4,9 @@ const router = express.Router();
 const { protect } = require('../middleware/auth');
 const studentController = require('../controllers/studentController');
 const quizController = require('../controllers/quizController');
-const Category = require('../models/Category');
-const Subcategory = require('../models/Subcategory');
-const Quiz = require('../models/Quiz');
 
 // Test route to verify student routes are working
-router.get('/test', (req, res) => {
-  res.json({ message: 'Student routes are working!' });
-});
+router.get('/test', studentController.test);
 
 router.post('/quizzes/:quizid/attempt', protect, quizController.attemptQuiz);
 
@@ -32,46 +27,12 @@ router.get('/leaderboard', protect, studentController.getLeaderboard);
 router.get('/leaderboard/quiz/:quizId', protect, studentController.getQuizLeaderboard);
 
 // GET all categories
-router.get('/categories', async (req, res) => {
-  try {
-    const categories = await Category.find();
-    res.json(categories);
-  } catch (error) {
-    console.error('Error fetching categories:', error);
-    res.status(500).json({ success: false, message: 'Failed to fetch categories' });
-  }
-});
+router.get('/categories', studentController.getCategories);
 
 // GET all subcategories
-router.get('/subcategories', async (req, res) => {
-  try {
-    const { category } = req.query;
-    let query = {};
-    
-    // If category parameter is provided, filter by category
-    if (category) {
-      query.category = category;
-    }
-    
-    const subs = await Subcategory.find(query).populate('category', 'name');
-    res.json(subs);
-  } catch (error) {
-    console.error('Error fetching subcategories:', error);
-    res.status(500).json({ success: false, message: 'Failed to fetch subcategories' });
-  }
-});
+router.get('/subcategories', studentController.getSubcategories);
 
 // GET all quizzes (keeping for backward compatibility)
-router.get('/quizzes', async (req, res) => {
-  try {
-    const quizzes = await Quiz.find()
-      .populate('category', 'name')
-      .populate('subcategory', 'name');
-    res.json(quizzes);
-  } catch (error) {
-    console.error('Error fetching quizzes:', error);
-    res.status(500).json({ success: false, message: 'Failed to fetch quizzes' });
-  }
-});
+router.get('/quizzes', studentController.getAllQuizzes);
 
 module.exports = router;

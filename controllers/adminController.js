@@ -688,7 +688,7 @@ exports.getBankDetails = async (req, res) => {
     const searchQuery = getSearchQuery(req, ['accountHolderName', 'bankName', 'ifscCode']);
     
     const bankDetails = await BankDetail.find(searchQuery)
-      .populate('user', 'name email phone level.currentLevel subscriptionStatus')
+      .populate('user', 'name email phone level subscriptionStatus')
       .sort({ createdAt: -1 })
       .skip(skip)
       .limit(limit);

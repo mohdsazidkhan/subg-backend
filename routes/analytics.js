@@ -18,7 +18,4 @@ router.get('/financial', protect, admin, analyticsController.getFinancialAnalyti
 // Performance analytics
 router.get('/performance', protect, admin, analyticsController.getPerformanceAnalytics);
 
-// Individual user performance analytics
-router.get('/users/:userId/performance', protect, admin, analyticsController.getUserPerformanceAnalytics);
-
 module.exports = router; 

@@ -2,6 +2,8 @@
 const User = require('../models/User');
 const QuizAttempt = require('../models/QuizAttempt');
 const Quiz = require('../models/Quiz');
+const Category = require('../models/Category');
+const Subcategory = require('../models/Subcategory');
 
 exports.getProfile = async (req, res) => {
   try {
@@ -191,4 +193,48 @@ exports.getQuizLeaderboard = async (req, res) => {
     console.error('Quiz leaderboard fetch error:', err);
     res.status(500).json({ success: false, error: err.message });
   }
+};
+
+exports.getCategories = async (req, res) => {
+  try {
+    const categories = await Category.find();
+    res.json(categories);
+  } catch (error) {
+    console.error('Error fetching categories:', error);
+    res.status(500).json({ success: false, message: 'Failed to fetch categories' });
+  }
+};
+
+exports.getSubcategories = async (req, res) => {
+  try {
+    const { category } = req.query;
+    let query = {};
+    
+    // If category parameter is provided, filter by category
+    if (category) {
+      query.category = category;
+    }
+    
+    const subs = await Subcategory.find(query).populate('category', 'name');
+    res.json(subs);
+  } catch (error) {
+    console.error('Error fetching subcategories:', error);
+    res.status(500).json({ success: false, message: 'Failed to fetch subcategories' });
+  }
+};
+
+exports.getAllQuizzes = async (req, res) => {
+  try {
+    const quizzes = await Quiz.find()
+      .populate('category', 'name')
+      .populate('subcategory', 'name');
+    res.json(quizzes);
+  } catch (error) {
+    console.error('Error fetching quizzes:', error);
+    res.status(500).json({ success: false, message: 'Failed to fetch quizzes' });
+  }
+};
+
+exports.test = (req, res) => {
+  res.json({ message: 'Student routes are working!' });
 };
