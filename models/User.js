@@ -3,10 +3,15 @@ const { v4: uuidv4 } = require('uuid');
 const userSchema = new mongoose.Schema({
   name: String,
   email: { type: String, unique: true },
-  phone: { type: String, unique: true },
+  phone: { type: String, unique: true, sparse: true }, // Made sparse to allow null for Google users
   password: { type: String },
   role: { type: String, enum: ['admin', 'student'], default: 'student' },
   badges: { type: [String], default: ['Student'] },
+  
+  // Google OAuth fields
+  googleId: { type: String, sparse: true }, // Google OAuth ID
+  profilePicture: { type: String }, // Profile picture URL from Google
+  
   // Referral system fields
   referralCode: { type: String, unique: true, default: () => uuidv4().replace(/-/g, '').substring(0, 8).toUpperCase() },
   referredBy: { type: String, default: null }, // referralCode of the referrer

@@ -358,3 +358,179 @@ exports.login = async (req, res) => {
   }
 };
 
+// Google OAuth Authentication
+exports.googleAuth = async (req, res) => {
+  try {
+    const { googleId, email, name, picture } = req.body;
+    
+    if (!googleId || !email || !name) {
+      return res.status(400).json({ 
+        message: 'Google authentication data is incomplete' 
+      });
+    }
+
+    // Check if user exists by email
+    let user = await User.findOne({ email });
+    
+    if (!user) {
+      // Create new user with Google data
+      const referralCode = await getUniqueReferralCode();
+      
+      user = new User({
+        name,
+        email,
+        googleId,
+        profilePicture: picture,
+        role: 'student',
+        subscriptionStatus: 'free',
+        referralCode,
+        // Phone will be null for Google users initially
+        phone: null
+      });
+      
+      // Create free subscription for new Google user
+      const freeSubscription = await createFreeSubscription(user._id, false);
+      user.currentSubscription = freeSubscription._id;
+      user.subscriptionExpiry = freeSubscription.endDate;
+      
+      await user.save();
+      
+      console.log('✅ New Google user created:', user.email);
+    } else {
+      // Update existing user's Google ID if not set
+      if (!user.googleId) {
+        user.googleId = googleId;
+        user.profilePicture = picture;
+        await user.save();
+        console.log('✅ Existing user linked with Google:', user.email);
+      }
+    }
+    
+    // Generate JWT token
+    const token = jwt.sign(
+      { id: user._id, role: user.role },
+      process.env.JWT_SECRET,
+      { expiresIn: process.env.JWT_EXPIRES_IN || '1d' }
+    );
+    
+    // Get level information
+    const levelInfo = user.getLevelInfo();
+    
+    res.json({
+      success: true,
+      message: '🎉 Google login successful!',
+      token,
+      user: {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+        role: user.role,
+        profilePicture: user.profilePicture,
+        referralCode: user.referralCode,
+        subscriptionStatus: user.subscriptionStatus,
+        subscriptionExpiry: user.subscriptionExpiry,
+        currentSubscription: user.currentSubscription,
+        badges: user.badges,
+        level: levelInfo
+      }
+    });
+    
+  } catch (error) {
+    console.error('❌ Google auth error:', error);
+    res.status(500).json({ 
+      message: 'Google authentication failed. Please try again.' 
+    });
+  }
+};
+
+// Update Profile
+exports.updateProfile = async (req, res) => {
+  try {
+    const { name, phone, email } = req.body;
+    const userId = req.user.id;
+
+    // Validation
+    if (!name || !phone || !email) {
+      return res.status(400).json({ 
+        message: 'All fields are required: name, phone, email' 
+      });
+    }
+
+    // Validate phone number format
+    if (!/^[0-9]{10}$/.test(phone)) {
+      return res.status(400).json({ 
+        message: 'Phone number must be exactly 10 digits' 
+      });
+    }
+
+    // Validate email format
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      return res.status(400).json({ 
+        message: 'Please provide a valid email address' 
+      });
+    }
+
+    // Find user
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Check if email is already taken by another user
+    if (email !== user.email) {
+      const existingUser = await User.findOne({ email, _id: { $ne: userId } });
+      if (existingUser) {
+        return res.status(400).json({ 
+          message: 'Email already exists. Please use a different email address.' 
+        });
+      }
+    }
+
+    // Check if phone is already taken by another user
+    if (phone !== user.phone) {
+      const existingUser = await User.findOne({ phone, _id: { $ne: userId } });
+      if (existingUser) {
+        return res.status(400).json({ 
+          message: 'Phone number already exists. Please use a different phone number.' 
+        });
+      }
+    }
+
+    // Update user data
+    user.name = name;
+    user.phone = phone;
+    user.email = email;
+    
+    await user.save();
+
+    // Get updated level information
+    const levelInfo = user.getLevelInfo();
+
+    res.json({
+      success: true,
+      message: 'Profile updated successfully!',
+      user: {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+        role: user.role,
+        profilePicture: user.profilePicture,
+        referralCode: user.referralCode,
+        subscriptionStatus: user.subscriptionStatus,
+        subscriptionExpiry: user.subscriptionExpiry,
+        currentSubscription: user.currentSubscription,
+        badges: user.badges,
+        level: levelInfo
+      }
+    });
+
+  } catch (error) {
+    console.error('Profile update error:', error);
+    res.status(500).json({ 
+      message: 'Failed to update profile. Please try again later.' 
+    });
+  }
+};
+
