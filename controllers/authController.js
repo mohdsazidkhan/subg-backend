@@ -361,7 +361,7 @@ exports.login = async (req, res) => {
 // Google OAuth Authentication
 exports.googleAuth = async (req, res) => {
   try {
-    const { googleId, email, name, picture } = req.body;
+    const { googleId, email, name, picture, referralCode } = req.body;
     
     if (!googleId || !email || !name) {
       return res.status(400).json({ 
@@ -374,7 +374,44 @@ exports.googleAuth = async (req, res) => {
     
     if (!user) {
       // Create new user with Google data
-      const referralCode = await getUniqueReferralCode();
+      const newReferralCode = await getUniqueReferralCode();
+      
+      // If referral code is provided, validate it
+      let referredBy = null;
+      if (referralCode) {
+        const referrer = await User.findOne({ referralCode: referralCode.toUpperCase() });
+        if (referrer) {
+          referredBy = referrer._id;
+          console.log('✅ Referral code validated:', referralCode, 'for user:', referrer.email);
+          
+          // Increment referrer's referral count
+          referrer.referralCount = (referrer.referralCount || 0) + 1;
+          
+          // Check for referral milestones and award badges
+          if (referrer.referralCount === 10) {
+            if (!referrer.badges.includes('Referral Master')) {
+              referrer.badges.push('Referral Master');
+              console.log('🏆 Referral Master badge awarded to:', referrer.email);
+            }
+          } else if (referrer.referralCount === 50) {
+            if (!referrer.badges.includes('Referral Legend')) {
+              referrer.badges.push('Referral Legend');
+              console.log('🏆 Referral Legend badge awarded to:', referrer.email);
+            }
+          } else if (referrer.referralCount === 100) {
+            if (!referrer.badges.includes('Referral God')) {
+              referrer.badges.push('Referral God');
+              console.log('🏆 Referral God badge awarded to:', referrer.email);
+            }
+          }
+          
+          await referrer.save();
+          console.log('✅ Referrer referral count updated:', referrer.referralCount);
+        } else {
+          console.log('⚠️ Invalid referral code provided:', referralCode);
+          // Don't fail the registration, just log the invalid code
+        }
+      }
       
       user = new User({
         name,
@@ -383,7 +420,8 @@ exports.googleAuth = async (req, res) => {
         profilePicture: picture,
         role: 'student',
         subscriptionStatus: 'free',
-        referralCode,
+        referralCode: newReferralCode,
+        referredBy: referredBy,
         // Phone will be null for Google users initially
         phone: null
       });
@@ -396,6 +434,9 @@ exports.googleAuth = async (req, res) => {
       await user.save();
       
       console.log('✅ New Google user created:', user.email);
+      if (referredBy) {
+        console.log('✅ User registered with referral code:', referralCode);
+      }
     } else {
       // Update existing user's Google ID if not set
       if (!user.googleId) {
