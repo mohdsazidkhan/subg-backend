@@ -5,6 +5,7 @@ const User = require('../models/User');
 const QuizAttempt = require('../models/QuizAttempt');
 const Category = require('../models/Category');
 const Subcategory = require('../models/Subcategory');
+const { checkAndLockReward } = require('../utils/rewardUtils');
 
 exports.attemptQuiz = async (req, res) => {
   try {
@@ -106,6 +107,19 @@ exports.attemptQuiz = async (req, res) => {
     levelUpdate = user.addQuizCompletion(score, questions.length);
     
     await user.save();
+
+    // Check for reward locking after level update
+    if (levelUpdate.levelIncreased) {
+      try {
+        // Check if user should receive locked rewards for Level 6 or 9
+        if (levelUpdate.newLevel === 6 || levelUpdate.newLevel === 9) {
+          await checkAndLockReward(studentId, levelUpdate.newLevel);
+        }
+      } catch (rewardError) {
+        console.error('Error checking rewards after level up:', rewardError);
+        // Don't fail the quiz completion if reward checking fails
+      }
+    }
 
     // Add badge for perfect score (if user has pro subscription)
     if (score === questions.length && user.subscriptionStatus === 'pro') {

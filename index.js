@@ -6,6 +6,9 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const http = require('http');
 const { Server } = require('socket.io');
+const cron = require('node-cron');
+const User = require('./models/User');
+const { unlockRewards } = require('./controllers/rewardsController');
 const authRoutes = require('./routes/authRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const studentRoutes = require('./routes/student');
@@ -17,6 +20,7 @@ const bankDetailRoutes = require('./routes/bankDetailRoutes');
 const winston = require('winston');
 const morgan = require('morgan');
 const searchRoutes = require('./routes/search');
+const rewardsRoutes = require('./routes/rewards');
 
 dotenv.config();
 
@@ -96,40 +100,10 @@ app.use('/api/levels', userLevelRoutes);
 app.use('/api/contacts', contactRoutes);
 app.use('/api/bank-details', bankDetailRoutes);
 app.use('/api', searchRoutes);
+app.use('/api/rewards', rewardsRoutes);
 // Register public routes
 const publicRoutes = require('./routes/public');
 app.use('/api/public', publicRoutes);
-
-const server = http.createServer(app);
-
-const io = new Server(server, {
-  cors: {
-    origin: (origin, callback) => {
-      const allowedOrigins = [
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-        "https://subg-frontend.vercel.app"
-      ];
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("CORS policy violation"), false);
-      }
-    },
-    methods: ["GET", "POST"]
-  },
-  pingInterval: 25000,
-  pingTimeout: 60000,
-  transports: ['websocket']
-});
-
-io.on("connection", (socket) => {
-  console.log("Client connected: " + socket.id);
-  
-  socket.on("disconnect", () => {
-    console.log("Client disconnected: " + socket.id);
-  });
-});
 
 app.get('/', (req, res) => {
   res.send('🚀 API is Running...');
@@ -165,13 +139,83 @@ if (process.env.NODE_ENV === 'production') {
 console.log = (...args) => logger.info(args.join(' '));
 console.error = (...args) => logger.error(args.join(' '));
 
+// Create HTTP server
 const PORT = process.env.PORT || 5000;
+const server = http.createServer(app);
+
+// Initialize Socket.IO with the server
+const io = new Server(server, {
+  cors: {
+    origin: (origin, callback) => {
+      const allowedOrigins = [
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "https://subg-frontend.vercel.app"
+      ];
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("CORS policy violation"), false);
+      }
+    },
+    methods: ["GET", "POST"]
+  },
+  pingInterval: 25000,
+  pingTimeout: 60000,
+  transports: ['websocket']
+});
+
+io.on("connection", (socket) => {
+  console.log("Client connected: " + socket.id);
+  
+  socket.on("disconnect", () => {
+    console.log("Client disconnected: " + socket.id);
+  });
+});
+
+// Initialize rewards processing CRON job
+const initializeRewardsProcessing = () => {
+  try {
+    // Schedule rewards processing to run daily at 2 AM IST
+    cron.schedule('0 2 * * *', async () => {
+      console.log('⏰ Running scheduled Level 10 rewards processing...');
+      try {
+        // Get Top 3 users from Level 10
+        const level10Users = await User.find({
+          role: 'student',
+          'level.currentLevel': 10
+        })
+          .select('_id level')
+          .sort({ 'level.averageScore': -1, 'level.highScoreQuizzes': -1 })
+          .limit(3);
+
+        for (const user of level10Users) {
+          await unlockRewards(user._id);
+        }
+
+        console.log('✅ Scheduled rewards processing completed successfully');
+      } catch (error) {
+        console.error('❌ Error in scheduled rewards processing:', error);
+      }
+    }, {
+      scheduled: true,
+      timezone: "Asia/Kolkata"
+    });
+    
+    console.log('✅ Rewards processing CRON job scheduled for daily at 2 AM IST');
+  } catch (error) {
+    console.error('❌ Failed to initialize rewards processing CRON job:', error);
+  }
+};
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log('✅ Database Connected to MongoDB');
     server.listen(PORT, () => {
       console.log(`🚀 Server running on port ${PORT}`);
+      
+      // Initialize rewards processing CRON job
+      initializeRewardsProcessing();
     });
   })
   .catch(err => {

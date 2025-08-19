@@ -112,3 +112,4 @@
 2025-08-16T05:32:30.069Z [ERROR]: JWT verification failed in protect: jwt expired Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU1MzIyMjg4LCJleHAiOjE3NTUzMjIzNDh9.Z3cpUXK6ie04xqWH7P8BVgjqFqGXcmn8_vVpqOeyRD8 
 2025-08-16T05:34:03.692Z [ERROR]: JWT verification failed in protect: jwt expired Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU1MzIyMzc3LCJleHAiOjE3NTUzMjI0Mzd9.OcnnpfALikYNvQTociELgFGbN_GIt9XmVyXsfO1we9A 
 2025-08-16T05:35:33.406Z [ERROR]: JWT verification failed in protect: jwt expired Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU1MzIyNDYxLCJleHAiOjE3NTUzMjI1MjF9.7G8VOQEQ4s2tk2yZHS_ZcBKj4HF-K7dqThNz8bpy_8s 
+2025-08-19T07:00:40.180Z [ERROR]: ❌ Failed to connect to MongoDB: ReferenceError: PORT is not defined 

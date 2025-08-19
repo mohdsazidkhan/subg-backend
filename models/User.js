@@ -50,6 +50,46 @@ const userSchema = new mongoose.Schema({
   resetPasswordExpires: { type: Date },
   
   // Legacy fields for backward compatibility (will be deprecated)
+  lockedRewards: [{
+    level: {
+      type: Number,
+      required: true,
+      enum: [6, 9, 10]
+    },
+    amount: {
+      type: Number,
+      required: true
+    },
+    isUnlocked: {
+      type: Boolean,
+      default: false
+    },
+    dateLocked: {
+      type: Date,
+      default: Date.now
+    },
+    dateUnlocked: {
+      type: Date
+    },
+    isClaimed: {
+      type: Boolean,
+      default: false
+    },
+    dateClaimed: {
+      type: Date
+    }
+  }],
+  
+  claimableRewards: {
+    type: Number,
+    default: 0
+  },
+  
+  totalQuizzesPlayed: {
+    type: Number,
+    default: 0
+  }
+  
 }, { timestamps: true });
 
 // Level configuration
@@ -134,6 +174,10 @@ userSchema.methods.addQuizCompletion = function(score, totalQuestions) {
   
   // --- FIX: Always recalculate highScoreQuizzes from quizBestScores ---
   this.level.highScoreQuizzes = this.quizBestScores.filter(q => q.isHighScore).length || 0;
+  
+  // Update totalQuizzesPlayed to match highScoreQuizzes for rewards system
+  // This ensures rewards are based on level progression (high-score quizzes only)
+  this.totalQuizzesPlayed = this.level.highScoreQuizzes;
   
   const levelUpdate = this.updateLevel();
   
