@@ -244,8 +244,7 @@ module.exports = {
   claimReward,
   processLevel10Leaderboard,
   isUserInTop3,
-  hasCompletedRequiredQuizzes,
-  getAdminRewardUsers
+  hasCompletedRequiredQuizzes
 };
 
 // Admin: List users with rewards summary (pagination + search)

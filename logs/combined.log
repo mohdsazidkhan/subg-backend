@@ -2317,3 +2317,17 @@
 2025-08-19T18:19:07.893Z [INFO]: ✅ Database Connected to MongoDB 
 2025-08-19T18:19:07.902Z [INFO]: 🚀 Server running on port 5000 
 2025-08-19T18:19:07.961Z [INFO]: ✅ Rewards processing CRON job scheduled for daily at 2 AM IST 
+2025-08-20T07:45:28.129Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-20T07:45:28.137Z [INFO]: 🚀 Server running on port 5000 
+2025-08-20T07:45:28.142Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-20T07:45:28.340Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-20T07:45:28.340Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-20T07:45:28.341Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-20T07:45:28.341Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-20T07:45:28.342Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-20T07:45:28.360Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-20T07:45:28.361Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-20T07:45:28.361Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-20T07:45:28.362Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-20T07:45:28.362Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-20T07:45:28.368Z [INFO]: ✅ Database Connected to MongoDB 
