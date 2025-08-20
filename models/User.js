@@ -29,6 +29,20 @@ const userSchema = new mongoose.Schema({
     lastLevelUp: { type: Date, default: Date.now }
   },
   
+  // Level completion tracking for annual rewards
+  level6: {
+    completed: { type: Boolean, default: false },
+    completedAt: { type: Date }
+  },
+  level9: {
+    completed: { type: Boolean, default: false },
+    completedAt: { type: Date }
+  },
+  level10: {
+    completed: { type: Boolean, default: false },
+    completedAt: { type: Date }
+  },
+  
   // Track best scores for each quiz (single attempt system)
   quizBestScores: [{
     quizId: { type: mongoose.Schema.Types.ObjectId, ref: 'Quiz' },
@@ -185,6 +199,18 @@ userSchema.methods.addQuizCompletion = function(score, totalQuestions) {
   if (levelUpdate.levelIncreased) {
     const levelConfig = this.constructor.LEVEL_CONFIG[levelUpdate.newLevel];
     this.badges.push(`${levelConfig.name} Badge`);
+    
+    // Track level completion for annual rewards
+    if (levelUpdate.newLevel === 6 && !this.level6.completed) {
+      this.level6.completed = true;
+      this.level6.completedAt = new Date();
+    } else if (levelUpdate.newLevel === 9 && !this.level9.completed) {
+      this.level9.completed = true;
+      this.level9.completedAt = new Date();
+    } else if (levelUpdate.newLevel === 10 && !this.level10.completed) {
+      this.level10.completed = true;
+      this.level10.completedAt = new Date();
+    }
   }
   
   return {

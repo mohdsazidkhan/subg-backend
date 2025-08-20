@@ -173,38 +173,18 @@ io.on("connection", (socket) => {
   });
 });
 
-// Initialize rewards processing CRON job
-const initializeRewardsProcessing = () => {
+// Initialize annual rewards processing CRON job
+const initializeAnnualRewards = () => {
   try {
-    // Schedule rewards processing to run daily at 2 AM IST
-    cron.schedule('0 2 * * *', async () => {
-      console.log('⏰ Running scheduled Level 10 rewards processing...');
-      try {
-        // Get Top 3 users from Level 10
-        const level10Users = await User.find({
-          role: 'student',
-          'level.currentLevel': 10
-        })
-          .select('_id level')
-          .sort({ 'level.averageScore': -1, 'level.highScoreQuizzes': -1 })
-          .limit(3);
-
-        for (const user of level10Users) {
-          await unlockRewards(user._id);
-        }
-
-        console.log('✅ Scheduled rewards processing completed successfully');
-      } catch (error) {
-        console.error('❌ Error in scheduled rewards processing:', error);
-      }
-    }, {
-      scheduled: true,
-      timezone: "Asia/Kolkata"
-    });
+    // Import annual rewards functions
+    const { scheduleAnnualRewards } = require('./scripts/annualRewards');
     
-    console.log('✅ Rewards processing CRON job scheduled for daily at 2 AM IST');
+    // Schedule annual rewards processing
+    scheduleAnnualRewards();
+    
+    console.log('✅ Annual rewards processing CRON jobs scheduled successfully');
   } catch (error) {
-    console.error('❌ Failed to initialize rewards processing CRON job:', error);
+    console.error('❌ Failed to initialize annual rewards processing:', error);
   }
 };
 
@@ -214,8 +194,8 @@ mongoose.connect(process.env.MONGO_URI)
     server.listen(PORT, () => {
       console.log(`🚀 Server running on port ${PORT}`);
       
-      // Initialize rewards processing CRON job
-      initializeRewardsProcessing();
+      // Initialize annual rewards processing CRON job
+      initializeAnnualRewards();
     });
   })
   .catch(err => {

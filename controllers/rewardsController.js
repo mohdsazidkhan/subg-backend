@@ -37,6 +37,8 @@ const hasCompletedRequiredQuizzes = async (userId) => {
 };
 
 // Lock reward for user when they complete Level 6 or 9
+// Note: This function is now deprecated in favor of the annual rewards system
+// Rewards are automatically locked on August 1 (Level 6) and December 1 (Level 9)
 const lockReward = async (userId, level) => {
   try {
     const user = await User.findById(userId);
@@ -79,6 +81,7 @@ const lockReward = async (userId, level) => {
 };
 
 // Unlock rewards when user reaches Level 10 Top 3 and completes 1024 quizzes
+// Note: This function is now part of the annual rewards system (Phase 3 on March 31)
 const unlockRewards = async (userId) => {
   try {
     const user = await User.findById(userId);
@@ -242,8 +245,7 @@ module.exports = {
   processLevel10Leaderboard,
   isUserInTop3,
   hasCompletedRequiredQuizzes,
-  // Placeholder export for getAdminRewardUsers (added below)
-  getAdminRewardUsers: undefined
+  getAdminRewardUsers
 };
 
 // Admin: List users with rewards summary (pagination + search)

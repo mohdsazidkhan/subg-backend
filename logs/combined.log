@@ -2313,3 +2313,7 @@
 2025-08-19T18:05:09.592Z [INFO]: ✅ Database Connected to MongoDB 
 2025-08-19T18:05:09.602Z [INFO]: 🚀 Server running on port 5000 
 2025-08-19T18:05:09.737Z [INFO]: ✅ Rewards processing CRON job scheduled for daily at 2 AM IST 
+2025-08-19T18:14:14.239Z [ERROR]: Error getting user rewards: Error: read ECONNRESET 
+2025-08-19T18:19:07.893Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-19T18:19:07.902Z [INFO]: 🚀 Server running on port 5000 
+2025-08-19T18:19:07.961Z [INFO]: ✅ Rewards processing CRON job scheduled for daily at 2 AM IST 
