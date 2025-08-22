@@ -223,37 +223,62 @@ userSchema.methods.addQuizCompletion = function(score, totalQuestions) {
 
 // Method to get level info
 userSchema.methods.getLevelInfo = function() {
-  const config = this.constructor.LEVEL_CONFIG;
-  const currentLevel = this.level.currentLevel;
-  const nextLevel = Math.min(currentLevel + 1, 10);
-  
-  return {
-    currentLevel: {
-      number: currentLevel,
-      name: config[currentLevel].name,
-      description: config[currentLevel].description,
-      quizzesRequired: config[currentLevel].quizzesRequired
-    },
-    nextLevel: {
-      number: nextLevel,
-      name: config[nextLevel].name,
-      description: config[nextLevel].description,
-      quizzesRequired: config[nextLevel].quizzesRequired
-    },
-    progress: {
-      quizzesPlayed: this.level.quizzesPlayed || 0,
-      highScoreQuizzes: this.level.highScoreQuizzes || 0,
-      progressPercentage: isNaN(this.level.levelProgress) ? 0 : this.level.levelProgress,
-      quizzesToNextLevel: config[nextLevel].quizzesRequired - (this.level.highScoreQuizzes || 0),
-      highScoreQuizzesToNextLevel: config[nextLevel].quizzesRequired - (this.level.highScoreQuizzes || 0)
-    },
-    stats: {
-      totalScore: this.level.totalScore || 0,
-      averageScore: this.level.averageScore || 0,
-      lastLevelUp: this.level.lastLevelUp,
-      highScoreRate: (this.level.quizzesPlayed || 0) > 0 ? Math.round(((this.level.highScoreQuizzes || 0) / (this.level.quizzesPlayed || 1)) * 100) : 0
+  try {
+    const config = this.constructor.LEVEL_CONFIG;
+    const currentLevel = this.level?.currentLevel || 1;
+    const nextLevel = Math.min(currentLevel + 1, 10);
+    
+    // Ensure level object exists
+    if (!this.level) {
+      this.level = {
+        currentLevel: 1,
+        levelName: 'Beginner',
+        quizzesPlayed: 0,
+        highScoreQuizzes: 0,
+        totalScore: 0,
+        averageScore: 0,
+        levelProgress: 0,
+        lastLevelUp: new Date()
+      };
     }
-  };
+    
+    return {
+      currentLevel: {
+        number: currentLevel,
+        name: config[currentLevel]?.name || 'Beginner',
+        description: config[currentLevel]?.description || 'Starting your journey',
+        quizzesRequired: config[currentLevel]?.quizzesRequired || 0
+      },
+      nextLevel: {
+        number: nextLevel,
+        name: config[nextLevel]?.name || 'Novice',
+        description: config[nextLevel]?.description || 'Getting better',
+        quizzesRequired: config[nextLevel]?.quizzesRequired || 5
+      },
+      progress: {
+        quizzesPlayed: this.level.quizzesPlayed || 0,
+        highScoreQuizzes: this.level.highScoreQuizzes || 0,
+        progressPercentage: isNaN(this.level.levelProgress) ? 0 : this.level.levelProgress,
+        quizzesToNextLevel: (config[nextLevel]?.quizzesRequired || 5) - (this.level.highScoreQuizzes || 0),
+        highScoreQuizzesToNextLevel: (config[nextLevel]?.quizzesRequired || 5) - (this.level.highScoreQuizzes || 0)
+      },
+      stats: {
+        totalScore: this.level.totalScore || 0,
+        averageScore: this.level.averageScore || 0,
+        lastLevelUp: this.level.lastLevelUp,
+        highScoreRate: (this.level.quizzesPlayed || 0) > 0 ? Math.round(((this.level.highScoreQuizzes || 0) / (this.level.quizzesPlayed || 1)) * 100) : 0
+      }
+    };
+  } catch (error) {
+    console.error('Error in getLevelInfo:', error);
+    // Return default level info if there's an error
+    return {
+      currentLevel: { number: 1, name: 'Beginner', description: 'Starting your journey', quizzesRequired: 0 },
+      nextLevel: { number: 2, name: 'Novice', description: 'Getting better', quizzesRequired: 5 },
+      progress: { quizzesPlayed: 0, highScoreQuizzes: 0, progressPercentage: 0, quizzesToNextLevel: 5, highScoreQuizzesToNextLevel: 5 },
+      stats: { totalScore: 0, averageScore: 0, lastLevelUp: new Date(), highScoreRate: 0 }
+    };
+  }
 };
 
 // Method to check if user can attempt a quiz (single attempt system)

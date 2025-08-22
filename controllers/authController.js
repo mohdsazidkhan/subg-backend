@@ -8,7 +8,45 @@ const { v4: uuidv4 } = require('uuid');
 dotenv.config();
 const crypto = require('crypto');
 const { sendBrevoEmail } = require('../utils/email');
+const mongoose = require('mongoose'); // Added for database connection status check
 // ...existing code...
+
+// Health check for debugging
+exports.healthCheck = async (req, res) => {
+  try {
+    const health = {
+      timestamp: new Date().toISOString(),
+      environment: process.env.NODE_ENV || 'development',
+      database: {
+        state: mongoose.connection.readyState,
+        states: {
+          0: 'disconnected',
+          1: 'connected',
+          2: 'connecting',
+          3: 'disconnecting'
+        }
+      },
+      environment_variables: {
+        JWT_SECRET: !!process.env.JWT_SECRET,
+        MONGO_URI: !!process.env.MONGO_URI,
+        NODE_ENV: process.env.NODE_ENV
+      }
+    };
+    
+    res.json({
+      success: true,
+      message: 'Health check completed',
+      data: health
+    });
+  } catch (error) {
+    console.error('Health check error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Health check failed',
+      error: error.message
+    });
+  }
+};
 
 // Forgot Password: Send reset link
 exports.forgotPassword = async (req, res) => {
@@ -361,102 +399,212 @@ exports.login = async (req, res) => {
 // Google OAuth Authentication
 exports.googleAuth = async (req, res) => {
   try {
+    console.log('🔍 Google auth request received:', {
+      body: req.body,
+      headers: req.headers,
+      timestamp: new Date().toISOString()
+    });
+    
+    // Check database connection status
+    const dbState = mongoose.connection.readyState;
+    console.log('🗄️ Database connection state:', {
+      state: dbState,
+      states: {
+        0: 'disconnected',
+        1: 'connected',
+        2: 'connecting',
+        3: 'disconnecting'
+      }[dbState]
+    });
+    
+    if (dbState !== 1) {
+      console.error('❌ Database not connected, state:', dbState);
+      return res.status(500).json({
+        message: 'Database connection error. Please try again later.',
+        details: 'Database not connected'
+      });
+    }
+    
     const { googleId, email, name, picture, referralCode } = req.body;
     
     if (!googleId || !email || !name) {
+      console.log('❌ Missing required fields:', { googleId: !!googleId, email: !!email, name: !!name });
       return res.status(400).json({ 
         message: 'Google authentication data is incomplete' 
       });
     }
 
+    console.log('✅ Required fields validated, checking user existence...');
+    
     // Check if user exists by email
-    let user = await User.findOne({ email });
+    let user;
+    try {
+      user = await User.findOne({ email });
+      console.log('✅ Database query successful, user found:', !!user);
+    } catch (dbError) {
+      console.error('❌ Database query error:', dbError);
+      throw new Error('Database connection failed');
+    }
     
     if (!user) {
+      console.log('🆕 Creating new user with Google data...');
       // Create new user with Google data
-      const newReferralCode = await getUniqueReferralCode();
+      let newReferralCode;
+      try {
+        newReferralCode = await getUniqueReferralCode();
+        console.log('✅ Referral code generated:', newReferralCode);
+      } catch (refError) {
+        console.error('❌ Referral code generation error:', refError);
+        // Generate a simple fallback code
+        newReferralCode = 'GOOGLE' + Math.random().toString(36).substring(2, 8).toUpperCase();
+        console.log('⚠️ Using fallback referral code:', newReferralCode);
+      }
       
       // If referral code is provided, validate it
       let referredBy = null;
       if (referralCode) {
-        const referrer = await User.findOne({ referralCode: referralCode.toUpperCase() });
-        if (referrer) {
-          referredBy = referrer._id;
-          console.log('✅ Referral code validated:', referralCode, 'for user:', referrer.email);
-          
-          // Increment referrer's referral count
-          referrer.referralCount = (referrer.referralCount || 0) + 1;
-          
-          // Check for referral milestones and award badges
-          if (referrer.referralCount === 10) {
-            if (!referrer.badges.includes('Referral Master')) {
-              referrer.badges.push('Referral Master');
-              console.log('🏆 Referral Master badge awarded to:', referrer.email);
+        try {
+          console.log('🔍 Validating referral code:', referralCode);
+          const referrer = await User.findOne({ referralCode: referralCode.toUpperCase() });
+          if (referrer) {
+            referredBy = referrer._id;
+            console.log('✅ Referral code validated:', referralCode, 'for user:', referrer.email);
+            
+            // Increment referrer's referral count
+            referrer.referralCount = (referrer.referralCount || 0) + 1;
+            
+            // Check for referral milestones and award badges
+            if (referrer.referralCount === 10) {
+              if (!referrer.badges.includes('Referral Master')) {
+                referrer.badges.push('Referral Master');
+                console.log('🏆 Referral Master badge awarded to:', referrer.email);
+              }
+            } else if (referrer.referralCount === 50) {
+              if (!referrer.badges.includes('Referral Legend')) {
+                referrer.badges.push('Referral Legend');
+                console.log('🏆 Referral Legend badge awarded to:', referrer.email);
+              }
+            } else if (referrer.referralCount === 100) {
+              if (!referrer.badges.includes('Referral God')) {
+                referrer.badges.push('Referral God');
+                console.log('🏆 Referral God badge awarded to:', referrer.email);
+              }
             }
-          } else if (referrer.referralCount === 50) {
-            if (!referrer.badges.includes('Referral Legend')) {
-              referrer.badges.push('Referral Legend');
-              console.log('🏆 Referral Legend badge awarded to:', referrer.email);
+            
+            try {
+              await referrer.save();
+              console.log('✅ Referrer referral count updated:', referrer.referralCount);
+            } catch (refSaveError) {
+              console.error('❌ Failed to update referrer:', refSaveError);
+              // Don't fail the main registration for this
             }
-          } else if (referrer.referralCount === 100) {
-            if (!referrer.badges.includes('Referral God')) {
-              referrer.badges.push('Referral God');
-              console.log('🏆 Referral God badge awarded to:', referrer.email);
-            }
+          } else {
+            console.log('⚠️ Invalid referral code provided:', referralCode);
+            // Don't fail the registration, just log the invalid code
           }
-          
-          await referrer.save();
-          console.log('✅ Referrer referral count updated:', referrer.referralCount);
-        } else {
-          console.log('⚠️ Invalid referral code provided:', referralCode);
-          // Don't fail the registration, just log the invalid code
+        } catch (refValidationError) {
+          console.error('❌ Referral validation error:', refValidationError);
+          // Don't fail the registration for referral issues
         }
       }
       
-      user = new User({
-        name,
-        email,
-        googleId,
-        profilePicture: picture,
-        role: 'student',
-        subscriptionStatus: 'free',
-        referralCode: newReferralCode,
-        referredBy: referredBy,
-        // Phone will be null for Google users initially
-        phone: null
-      });
+      try {
+        user = new User({
+          name,
+          email,
+          googleId,
+          profilePicture: picture,
+          role: 'student',
+          subscriptionStatus: 'free',
+          referralCode: newReferralCode,
+          referredBy: referredBy,
+          // Phone will be null for Google users initially
+          phone: null
+        });
+        console.log('✅ User object created successfully');
+      } catch (userCreateError) {
+        console.error('❌ User creation error:', userCreateError);
+        throw new Error('Failed to create user object');
+      }
       
       // Create free subscription for new Google user
-      const freeSubscription = await createFreeSubscription(user._id, false);
+      console.log('📦 Creating free subscription for new user...');
+      let freeSubscription;
+      try {
+        freeSubscription = await createFreeSubscription(user._id, false);
+        console.log('✅ Free subscription created successfully');
+      } catch (subError) {
+        console.error('❌ Subscription creation error:', subError);
+        throw new Error('Failed to create user subscription');
+      }
+      
       user.currentSubscription = freeSubscription._id;
       user.subscriptionExpiry = freeSubscription.endDate;
       
-      await user.save();
+      console.log('💾 Saving new user to database...');
+      try {
+        await user.save();
+        console.log('✅ User saved successfully');
+      } catch (saveError) {
+        console.error('❌ User save error:', saveError);
+        throw new Error('Failed to save user data');
+      }
       
       console.log('✅ New Google user created:', user.email);
       if (referredBy) {
         console.log('✅ User registered with referral code:', referralCode);
       }
     } else {
+      console.log('🔄 Updating existing user with Google data...');
       // Update existing user's Google ID if not set
       if (!user.googleId) {
-        user.googleId = googleId;
-        user.profilePicture = picture;
-        await user.save();
-        console.log('✅ Existing user linked with Google:', user.email);
+        try {
+          user.googleId = googleId;
+          user.profilePicture = picture;
+          await user.save();
+          console.log('✅ Existing user linked with Google:', user.email);
+        } catch (updateError) {
+          console.error('❌ Failed to update existing user:', updateError);
+          throw new Error('Failed to update user with Google data');
+        }
+      } else {
+        console.log('ℹ️ User already has Google ID, no update needed');
       }
     }
     
+    console.log('🔑 Generating JWT token...');
     // Generate JWT token
-    const token = jwt.sign(
-      { id: user._id, role: user.role },
-      process.env.JWT_SECRET,
-      { expiresIn: process.env.JWT_EXPIRES_IN || '1d' }
-    );
+    let token;
+    try {
+      token = jwt.sign(
+        { id: user._id, role: user.role },
+        process.env.JWT_SECRET,
+        { expiresIn: process.env.JWT_EXPIRES_IN || '1d' }
+      );
+      console.log('✅ JWT token generated successfully');
+    } catch (jwtError) {
+      console.error('❌ JWT token generation error:', jwtError);
+      throw new Error('Failed to generate authentication token');
+    }
     
+    console.log('📊 Getting level information...');
     // Get level information
-    const levelInfo = user.getLevelInfo();
+    let levelInfo;
+    try {
+      levelInfo = user.getLevelInfo();
+      console.log('✅ Level info retrieved successfully');
+    } catch (levelError) {
+      console.error('❌ Level info retrieval error:', levelError);
+      // Don't fail the auth, just set default level info
+      levelInfo = {
+        currentLevel: { number: 1, name: 'Beginner', description: 'Starting your journey', quizzesRequired: 0 },
+        nextLevel: { number: 2, name: 'Novice', description: 'Getting better', quizzesRequired: 5 },
+        progress: { quizzesPlayed: 0, highScoreQuizzes: 0, progressPercentage: 0, quizzesToNextLevel: 5, highScoreQuizzesToNextLevel: 5 },
+        stats: { totalScore: 0, averageScore: 0, lastLevelUp: null, highScoreRate: 0 }
+      };
+    }
     
+    console.log('🎉 Google auth successful, sending response...');
     res.json({
       success: true,
       message: '🎉 Google login successful!',
@@ -479,8 +627,44 @@ exports.googleAuth = async (req, res) => {
     
   } catch (error) {
     console.error('❌ Google auth error:', error);
+    
+    // Log more specific error details
+    if (error.name === 'ValidationError') {
+      console.error('❌ Validation Error:', error.message);
+      return res.status(400).json({ 
+        message: 'Invalid user data provided',
+        details: error.message
+      });
+    }
+    
+    if (error.name === 'MongoError' || error.name === 'MongoServerError') {
+      console.error('❌ Database Error:', error.message);
+      return res.status(500).json({ 
+        message: 'Database connection error. Please try again later.',
+        details: error.message
+      });
+    }
+    
+    if (error.code === 11000) {
+      console.error('❌ Duplicate Key Error:', error.message);
+      return res.status(400).json({ 
+        message: 'User with this email already exists',
+        details: error.message
+      });
+    }
+    
+    // Check for missing environment variables
+    if (!process.env.JWT_SECRET) {
+      console.error('❌ Missing JWT_SECRET environment variable');
+      return res.status(500).json({ 
+        message: 'Server configuration error. Please contact support.',
+        details: 'Missing JWT configuration'
+      });
+    }
+    
     res.status(500).json({ 
-      message: 'Google authentication failed. Please try again.' 
+      message: 'Google authentication failed. Please try again.',
+      details: process.env.NODE_ENV === 'development' ? error.message : 'Internal server error'
     });
   }
 };
