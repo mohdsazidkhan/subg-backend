@@ -5,12 +5,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "rewards:populate": "node scripts/populateLevelCompletion.js",
-    "rewards:test": "node scripts/testAnnualRewards.js",
-    "rewards:phase1": "node scripts/annualRewards.js phase1",
-    "rewards:phase2": "node scripts/annualRewards.js phase2",
-    "rewards:phase3": "node scripts/annualRewards.js phase3"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
