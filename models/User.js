@@ -3,7 +3,7 @@ const { v4: uuidv4 } = require('uuid');
 const userSchema = new mongoose.Schema({
   name: String,
   email: { type: String, unique: true },
-  phone: { type: String, unique: true, sparse: true }, // Made sparse to allow null for Google users
+  phone: { type: String, required: false }, // Removed unique constraint for Google users
   password: { type: String },
   role: { type: String, enum: ['admin', 'student'], default: 'student' },
   badges: { type: [String], default: ['Student'] },

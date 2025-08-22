@@ -441,6 +441,15 @@ exports.googleAuth = async (req, res) => {
     try {
       user = await User.findOne({ email });
       console.log('✅ Database query successful, user found:', !!user);
+      
+      if (user && !user.googleId && user.password) {
+        console.log('⚠️ User exists with email/password but no Google ID');
+        // User exists with email/password, we can link Google account
+        // But we need to ensure phone field is handled properly
+        if (!user.phone) {
+          user.phone = undefined; // Remove phone field to avoid unique constraint issues
+        }
+      }
     } catch (dbError) {
       console.error('❌ Database query error:', dbError);
       throw new Error('Database connection failed');
@@ -518,8 +527,8 @@ exports.googleAuth = async (req, res) => {
           subscriptionStatus: 'free',
           referralCode: newReferralCode,
           referredBy: referredBy,
-          // Phone will be null for Google users initially
-          phone: null
+          // Phone will be undefined for Google users initially (not null)
+          phone: undefined
         });
         console.log('✅ User object created successfully');
       } catch (userCreateError) {
@@ -561,6 +570,10 @@ exports.googleAuth = async (req, res) => {
         try {
           user.googleId = googleId;
           user.profilePicture = picture;
+          // Ensure phone is not null if user already has a phone number
+          if (!user.phone) {
+            user.phone = undefined; // Use undefined instead of null to avoid unique constraint issues
+          }
           await user.save();
           console.log('✅ Existing user linked with Google:', user.email);
         } catch (updateError) {
@@ -660,6 +673,27 @@ exports.googleAuth = async (req, res) => {
         message: 'Server configuration error. Please contact support.',
         details: 'Missing JWT configuration'
       });
+    }
+    
+    // Handle duplicate key errors specifically
+    if (error.code === 11000) {
+      console.error('❌ Duplicate key error:', error.message);
+      if (error.message.includes('phone')) {
+        return res.status(400).json({
+          message: 'Phone number already exists. Please contact support.',
+          details: 'Phone number conflict'
+        });
+      } else if (error.message.includes('email')) {
+        return res.status(400).json({
+          message: 'Email already exists. Please use a different email.',
+          details: 'Email already registered'
+        });
+      } else {
+        return res.status(400).json({
+          message: 'User data conflict. Please try again.',
+          details: 'Duplicate data detected'
+        });
+      }
     }
     
     res.status(500).json({ 
