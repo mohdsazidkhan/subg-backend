@@ -527,7 +527,6 @@ exports.deleteQuestion = async (req, res) => {
 // ---------------- Students ----------------
 exports.getStudents = async (req, res) => {
   try {
-    const { page, limit, skip } = getPaginationOptions(req);
     const searchQuery = getSearchQuery(req, ['name', 'email', 'phone']);
     searchQuery.role = 'student';
 
@@ -537,26 +536,45 @@ exports.getStudents = async (req, res) => {
     if (status) searchQuery.status = status;
     if (level) searchQuery.level = level;
 
-    const students = await User.find(searchQuery)
-      .select('-password')
-      .sort({ createdAt: -1 })
-      .skip(skip)
-      .limit(limit);
+    // Check if pagination is requested
+    const { page, limit } = req.query;
+    
+    if (page && limit) {
+      // Handle pagination if parameters are provided
+      const pageNum = parseInt(page);
+      const limitNum = parseInt(limit);
+      const skip = (pageNum - 1) * limitNum;
+      
+      const students = await User.find(searchQuery)
+        .select('-password')
+        .sort({ createdAt: -1 })
+        .skip(skip)
+        .limit(limitNum);
 
-    const total = await User.countDocuments(searchQuery);
-    const totalPages = Math.ceil(total / limit);
+      const total = await User.countDocuments(searchQuery);
+      const totalPages = Math.ceil(total / limitNum);
 
-    res.json({
-      students,
-      pagination: {
-        page,
-        limit,
-        total,
-        totalPages,
-        hasNext: page < totalPages,
-        hasPrev: page > 1
-      }
-    });
+      return res.json({
+        students,
+        pagination: {
+          page: pageNum,
+          limit: limitNum,
+          total,
+          totalPages,
+          hasNext: pageNum < totalPages,
+          hasPrev: pageNum > 1
+        }
+      });
+    } else {
+      // Return all students without pagination
+      const students = await User.find(searchQuery)
+        .select('-password')
+        .sort({ createdAt: -1 });
+
+      res.json({
+        students
+      });
+    }
   } catch (error) {
     console.error('Error getting students:', error);
     res.status(500).json({ error: 'Failed to get students' });

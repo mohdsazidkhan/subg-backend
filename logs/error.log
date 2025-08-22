@@ -114,3 +114,5 @@
 2025-08-16T05:35:33.406Z [ERROR]: JWT verification failed in protect: jwt expired Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU1MzIyNDYxLCJleHAiOjE3NTUzMjI1MjF9.7G8VOQEQ4s2tk2yZHS_ZcBKj4HF-K7dqThNz8bpy_8s 
 2025-08-19T07:00:40.180Z [ERROR]: ❌ Failed to connect to MongoDB: ReferenceError: PORT is not defined 
 2025-08-19T18:14:14.239Z [ERROR]: Error getting user rewards: Error: read ECONNRESET 
+2025-08-22T05:47:58.547Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU1ODQxMDA5LCJleHAiOjE3NTU5Mjc0MDl9.sVeseXhR0egLL9LnZvj9yUFQ8mrzoLHKkDaJOjkJTEo 
+2025-08-22T05:47:58.649Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU1ODQxMDA5LCJleHAiOjE3NTU5Mjc0MDl9.sVeseXhR0egLL9LnZvj9yUFQ8mrzoLHKkDaJOjkJTEo 

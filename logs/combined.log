@@ -2331,3 +2331,103 @@
 2025-08-20T07:45:28.362Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
 2025-08-20T07:45:28.362Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
 2025-08-20T07:45:28.368Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-22T05:47:14.285Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-22T05:47:14.294Z [INFO]: 🚀 Server running on port 5000 
+2025-08-22T05:47:14.298Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-22T05:47:14.460Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-22T05:47:14.461Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-22T05:47:14.461Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-22T05:47:14.462Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-22T05:47:14.462Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-22T05:47:14.488Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-22T05:47:14.489Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-22T05:47:14.490Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-22T05:47:14.490Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-22T05:47:14.491Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-22T05:47:14.496Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-22T05:47:58.547Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU1ODQxMDA5LCJleHAiOjE3NTU5Mjc0MDl9.sVeseXhR0egLL9LnZvj9yUFQ8mrzoLHKkDaJOjkJTEo 
+2025-08-22T05:47:58.649Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU1ODQxMDA5LCJleHAiOjE3NTU5Mjc0MDl9.sVeseXhR0egLL9LnZvj9yUFQ8mrzoLHKkDaJOjkJTEo 
+2025-08-22T06:04:58.538Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-22T06:04:58.549Z [INFO]: 🚀 Server running on port 5000 
+2025-08-22T06:04:58.553Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-22T06:04:58.623Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-22T06:04:58.624Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-22T06:04:58.625Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-22T06:04:58.626Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-22T06:04:58.627Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-22T06:04:58.647Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-22T06:04:58.648Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-22T06:04:58.649Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-22T06:04:58.649Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-22T06:04:58.649Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-22T06:04:58.654Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-22T06:06:09.762Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-22T06:06:09.770Z [INFO]: 🚀 Server running on port 5000 
+2025-08-22T06:06:09.775Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-22T06:06:09.847Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-22T06:06:09.848Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-22T06:06:09.849Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-22T06:06:09.849Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-22T06:06:09.850Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-22T06:06:09.870Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-22T06:06:09.871Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-22T06:06:09.872Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-22T06:06:09.872Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-22T06:06:09.872Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-22T06:06:09.877Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-22T06:10:08.648Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-22T06:10:08.660Z [INFO]: 🚀 Server running on port 5000 
+2025-08-22T06:10:08.664Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-22T06:10:08.732Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-22T06:10:08.732Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-22T06:10:08.733Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-22T06:10:08.734Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-22T06:10:08.734Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-22T06:10:08.757Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-22T06:10:08.757Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-22T06:10:08.758Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-22T06:10:08.758Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-22T06:10:08.759Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-22T06:10:08.764Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-22T06:11:35.255Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-22T06:11:35.262Z [INFO]: 🚀 Server running on port 5000 
+2025-08-22T06:11:35.267Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-22T06:11:35.341Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-22T06:11:35.341Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-22T06:11:35.342Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-22T06:11:35.342Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-22T06:11:35.343Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-22T06:11:35.361Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-22T06:11:35.362Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-22T06:11:35.363Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-22T06:11:35.363Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-22T06:11:35.363Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-22T06:11:35.368Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-22T06:24:38.019Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-22T06:24:38.028Z [INFO]: 🚀 Server running on port 5000 
+2025-08-22T06:24:38.033Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-22T06:24:38.100Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-22T06:24:38.101Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-22T06:24:38.101Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-22T06:24:38.102Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-22T06:24:38.102Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-22T06:24:38.122Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-22T06:24:38.123Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-22T06:24:38.124Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-22T06:24:38.124Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-22T06:24:38.124Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-22T06:24:38.130Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-22T06:25:01.594Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-22T06:25:01.603Z [INFO]: 🚀 Server running on port 5000 
+2025-08-22T06:25:01.607Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-22T06:25:01.687Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-22T06:25:01.688Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-22T06:25:01.689Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-22T06:25:01.689Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-22T06:25:01.690Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-22T06:25:01.711Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-22T06:25:01.712Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-22T06:25:01.713Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-22T06:25:01.713Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-22T06:25:01.713Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-22T06:25:01.720Z [INFO]: ✅ Database Connected to MongoDB 
