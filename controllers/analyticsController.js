@@ -631,7 +631,7 @@ exports.getPerformanceAnalytics = async (req, res) => {
       User.find({ role: 'student' })
         .sort({ 'level.highScoreQuizzes': -1, 'level.averageScore': -1 })
         .limit(20)
-        .select('name level badges subscriptionStatus'),
+        .select('name email level badges subscriptionStatus'),
       QuizAttempt.aggregate([
         { $match: { attemptedAt: { $gte: startDate, $lte: endDate } } },
         {

@@ -16,6 +16,8 @@ exports.getTopPerformers = async (req, res) => {
   try {
     const { limit = 10, year } = req.query;
     
+    const currentUserId = req.user.id; // Get current user ID from auth middleware (optional)
+    
     // Calculate academic year (April 1st to March 31st)
     let academicYearStart, academicYearEnd;
     
@@ -41,49 +43,134 @@ exports.getTopPerformers = async (req, res) => {
       }
     }
     
-    // Get top performers based on high scores and average scores for current academic year
-    // Show students who have been active during the academic year (not just joined during)
-    const topPerformers = await User.find({ 
-      role: 'student',
-      'level.highScoreQuizzes': { $gt: 0 } // Only include students with high scores
+    // Get all users for ranking calculation
+    const allUsers = await User.find({ 
+      role: 'student'
     })
       .sort({ 
         'level.highScoreQuizzes': -1, 
         'level.averageScore': -1,
-        'level.totalScore': -1 
+        'level.quizzesPlayed': -1
       })
-      .limit(parseInt(limit))
       .select('_id name level createdAt')
       .lean();
 
+    // Ensure all users have level data, set defaults if missing
+    allUsers.forEach(user => {
+      if (!user.level) {
+        user.level = {
+          currentLevel: 0,
+          levelName: 'Zero Level',
+          quizzesPlayed: 0,
+          highScoreQuizzes: 0,
+          averageScore: 0
+        };
+      }
+    });
+
+    // Get top 10 performers
+    const topPerformers = allUsers.slice(0, parseInt(limit));
+
+    // Find current user's position and surrounding users
+    let currentUserData = null;
+    let surroundingUsers = [];
+    
+    console.log('🔍 Debug - Current User ID:', currentUserId);
+    console.log('🔍 Debug - Total Users Found:', allUsers.length);
+    
+    if (currentUserId) {
+      const currentUserIndex = allUsers.findIndex(user => user._id.toString() === currentUserId.toString());
+      console.log('🔍 Debug - Current User Index:', currentUserIndex);
+      
+      if (currentUserIndex !== -1) {
+        // Get exactly 3 users: 1 before + current + 1 after (when possible)
+        let surroundingUsersList = [];
+        
+        if (currentUserIndex === 0) {
+          // Current user is at position 1, get next 2 users
+          surroundingUsersList = allUsers.slice(1, 3);
+        } else if (currentUserIndex === allUsers.length - 1) {
+          // Current user is at last position, get previous 2 users
+          surroundingUsersList = allUsers.slice(currentUserIndex - 2, currentUserIndex);
+        } else {
+          // Current user is in middle: get 1 before + current + 1 after
+          surroundingUsersList = allUsers.slice(currentUserIndex - 1, currentUserIndex + 2);
+        }
+        
+        // Ensure we have exactly 3 users total
+        surroundingUsersList = surroundingUsersList.slice(0, 3);
+        
+        surroundingUsers = surroundingUsersList.map((user, index) => ({
+          ...user,
+          position: user.position || (allUsers.indexOf(user) + 1),
+          isCurrentUser: user._id.toString() === currentUserId.toString()
+        }));
+        
+        // Add current user data separately
+        currentUserData = {
+          ...allUsers[currentUserIndex],
+          position: currentUserIndex + 1,
+          isCurrentUser: true
+        };
+        
+        console.log('🔍 Debug - Surrounding Users Count:', surroundingUsers.length);
+        console.log('🔍 Debug - Current User Position:', currentUserData.position);
+        console.log('🔍 Debug - Surrounding Users Positions:', surroundingUsers.map(u => ({ name: u.name, position: u.position, isCurrentUser: u.isCurrentUser })));
+      } else {
+        console.log('❌ Current user not found in ranking list');
+      }
+    } else {
+      console.log('❌ No current user ID provided');
+    }
+
     // Format the data for frontend consumption
-    const formattedPerformers = topPerformers.map(user => ({
+    const formatUser = (user, position = null, isCurrentUser = false) => ({
       userId: user._id,
       name: user.name,
+      position: position,
+      isCurrentUser: isCurrentUser,
       level: {
         currentLevel: user.level?.currentLevel || 1,
         levelName: getLevelName(user.level?.currentLevel || 1),
         highScoreQuizzes: user.level?.highScoreQuizzes || 0,
         averageScore: user.level?.averageScore || 0,
-        totalScore: user.level?.totalScore || 0,
         quizzesPlayed: user.level?.quizzesPlayed || 0
       },
       joinedDate: user.createdAt
-    }));
+    });
+
+    const formattedTopPerformers = topPerformers.map((user, index) => 
+      formatUser(user, index + 1, user._id.toString() === currentUserId?.toString())
+    );
+
+    const formattedSurroundingUsers = surroundingUsers.map(user => 
+      formatUser(user, user.position, user.isCurrentUser)
+    );
 
     // Format academic year for display
     const academicYearDisplay = `${academicYearStart.getFullYear()}-${academicYearEnd.getFullYear()}`;
 
-    res.json({
+    const responseData = {
       success: true,
       data: {
-        topPerformers: formattedPerformers,
+        topPerformers: formattedTopPerformers,        // Top 10 users
+        currentUser: currentUserData ? formatUser(currentUserData, currentUserData.position, true) : null,  // Current user data with position
+        surroundingUsers: formattedSurroundingUsers,  // 1 before + current + 1 after (3 users total)
         academicYear: academicYearDisplay,
         academicYearStart: academicYearStart.toISOString(),
         academicYearEnd: academicYearEnd.toISOString(),
-        total: formattedPerformers.length
+        total: allUsers.length
       }
+    };
+
+    console.log('🔍 Debug - Response Data:', {
+      topPerformersCount: formattedTopPerformers.length,
+      currentUserExists: !!responseData.data.currentUser,
+      surroundingUsersCount: formattedSurroundingUsers.length,
+      totalUsers: allUsers.length
     });
+
+    res.json(responseData);
   } catch (error) {
     console.error('Error fetching top performers:', error);
     res.status(500).json({

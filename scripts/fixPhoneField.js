@@ -44,3 +44,4 @@ async function fixPhoneField() {
 
 // Run the script
 fixPhoneField();
+

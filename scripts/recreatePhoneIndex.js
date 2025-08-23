@@ -36,3 +36,4 @@ async function recreatePhoneIndex() {
 
 // Run the script
 recreatePhoneIndex();
+
