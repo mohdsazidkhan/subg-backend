@@ -3701,3 +3701,290 @@
 2025-08-23T05:39:56.167Z [INFO]: 🔍 Debug - Current User Position: 8 
 2025-08-23T05:39:56.167Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
 2025-08-23T05:39:56.168Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-23T06:07:12.963Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-23T06:07:12.972Z [INFO]: 🚀 Server running on port 5000 
+2025-08-23T06:07:12.978Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-23T06:07:13.128Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-23T06:07:13.129Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-23T06:07:13.129Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-23T06:07:13.130Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-23T06:07:13.130Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-23T06:07:13.158Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-23T06:07:13.159Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-23T06:07:13.160Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-23T06:07:13.160Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-23T06:07:13.161Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-23T06:07:13.168Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-23T06:07:46.317Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-23T06:07:46.324Z [INFO]: 🚀 Server running on port 5000 
+2025-08-23T06:07:46.328Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-23T06:07:46.410Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-23T06:07:46.411Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-23T06:07:46.411Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-23T06:07:46.412Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-23T06:07:46.412Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-23T06:07:46.429Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-23T06:07:46.430Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-23T06:07:46.431Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-23T06:07:46.431Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-23T06:07:46.432Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-23T06:07:46.436Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-23T06:08:05.374Z [INFO]: 🔍 Debug - Current User ID: 6899e61fc607714ebabb7569 
+2025-08-23T06:08:05.374Z [INFO]: 🔍 Debug - Total Users Found: 23 
+2025-08-23T06:08:05.375Z [INFO]: 🔍 Debug - Current User Index: 7 
+2025-08-23T06:08:05.375Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-23T06:08:05.375Z [INFO]: 🔍 Debug - Current User Position: 8 
+2025-08-23T06:08:05.376Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-23T06:08:05.377Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-23T06:08:05.415Z [INFO]: 🔍 Debug - Current User ID: 6899e61fc607714ebabb7569 
+2025-08-23T06:08:05.415Z [INFO]: 🔍 Debug - Total Users Found: 23 
+2025-08-23T06:08:05.416Z [INFO]: 🔍 Debug - Current User Index: 7 
+2025-08-23T06:08:05.416Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-23T06:08:05.417Z [INFO]: 🔍 Debug - Current User Position: 8 
+2025-08-23T06:08:05.417Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-23T06:08:05.418Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-23T06:09:51.478Z [INFO]: 🔍 Debug - Current User ID: 6899e61fc607714ebabb7569 
+2025-08-23T06:09:51.479Z [INFO]: 🔍 Debug - Total Users Found: 23 
+2025-08-23T06:09:51.480Z [INFO]: 🔍 Debug - Current User Index: 7 
+2025-08-23T06:09:51.480Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-23T06:09:51.480Z [INFO]: 🔍 Debug - Current User Position: 8 
+2025-08-23T06:09:51.481Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-23T06:09:51.481Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-23T06:12:41.800Z [INFO]: 🔍 Debug - Current User ID: 6899e61fc607714ebabb7569 
+2025-08-23T06:12:41.801Z [INFO]: 🔍 Debug - Total Users Found: 23 
+2025-08-23T06:12:41.801Z [INFO]: 🔍 Debug - Current User Index: 7 
+2025-08-23T06:12:41.801Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-23T06:12:41.802Z [INFO]: 🔍 Debug - Current User Position: 8 
+2025-08-23T06:12:41.802Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-23T06:12:41.803Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-23T06:13:06.539Z [INFO]: 🔍 Debug - Current User ID: 6899e61fc607714ebabb7569 
+2025-08-23T06:13:06.540Z [INFO]: 🔍 Debug - Total Users Found: 23 
+2025-08-23T06:13:06.540Z [INFO]: 🔍 Debug - Current User Index: 7 
+2025-08-23T06:13:06.541Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-23T06:13:06.541Z [INFO]: 🔍 Debug - Current User Position: 8 
+2025-08-23T06:13:06.541Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-23T06:13:06.542Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-23T06:13:20.852Z [INFO]: 🔍 Debug - Current User ID: 6899e61fc607714ebabb7569 
+2025-08-23T06:13:20.853Z [INFO]: 🔍 Debug - Total Users Found: 23 
+2025-08-23T06:13:20.853Z [INFO]: 🔍 Debug - Current User Index: 7 
+2025-08-23T06:13:20.853Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-23T06:13:20.854Z [INFO]: 🔍 Debug - Current User Position: 8 
+2025-08-23T06:13:20.854Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-23T06:13:20.854Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-23T06:13:55.231Z [INFO]: 🔍 Debug - Current User ID: 6899e61fc607714ebabb7569 
+2025-08-23T06:13:55.232Z [INFO]: 🔍 Debug - Total Users Found: 23 
+2025-08-23T06:13:55.232Z [INFO]: 🔍 Debug - Current User Index: 7 
+2025-08-23T06:13:55.233Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-23T06:13:55.233Z [INFO]: 🔍 Debug - Current User Position: 8 
+2025-08-23T06:13:55.233Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-23T06:13:55.234Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-23T06:14:16.547Z [INFO]: 🔍 Debug - Current User ID: 6899e61fc607714ebabb7569 
+2025-08-23T06:14:16.548Z [INFO]: 🔍 Debug - Total Users Found: 23 
+2025-08-23T06:14:16.548Z [INFO]: 🔍 Debug - Current User Index: 7 
+2025-08-23T06:14:16.549Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-23T06:14:16.549Z [INFO]: 🔍 Debug - Current User Position: 8 
+2025-08-23T06:14:16.550Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-23T06:14:16.550Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-23T06:14:29.530Z [INFO]: 🔍 Debug - Current User ID: 6899e61fc607714ebabb7569 
+2025-08-23T06:14:29.530Z [INFO]: 🔍 Debug - Total Users Found: 23 
+2025-08-23T06:14:29.531Z [INFO]: 🔍 Debug - Current User Index: 7 
+2025-08-23T06:14:29.531Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-23T06:14:29.531Z [INFO]: 🔍 Debug - Current User Position: 8 
+2025-08-23T06:14:29.531Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-23T06:14:29.532Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-23T06:15:42.587Z [INFO]: 🔍 Debug - Current User ID: 6899e61fc607714ebabb7569 
+2025-08-23T06:15:42.588Z [INFO]: 🔍 Debug - Total Users Found: 23 
+2025-08-23T06:15:42.589Z [INFO]: 🔍 Debug - Current User Index: 7 
+2025-08-23T06:15:42.589Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-23T06:15:42.590Z [INFO]: 🔍 Debug - Current User Position: 8 
+2025-08-23T06:15:42.590Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-23T06:15:42.590Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-23T06:16:47.528Z [INFO]: 🔍 Debug - Current User ID: 6899e61fc607714ebabb7569 
+2025-08-23T06:16:47.529Z [INFO]: 🔍 Debug - Total Users Found: 23 
+2025-08-23T06:16:47.529Z [INFO]: 🔍 Debug - Current User Index: 7 
+2025-08-23T06:16:47.530Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-23T06:16:47.530Z [INFO]: 🔍 Debug - Current User Position: 8 
+2025-08-23T06:16:47.530Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-23T06:16:47.530Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-23T06:17:05.270Z [INFO]: 🔍 Debug - Current User ID: 6899e61fc607714ebabb7569 
+2025-08-23T06:17:05.270Z [INFO]: 🔍 Debug - Total Users Found: 23 
+2025-08-23T06:17:05.271Z [INFO]: 🔍 Debug - Current User Index: 7 
+2025-08-23T06:17:05.271Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-23T06:17:05.271Z [INFO]: 🔍 Debug - Current User Position: 8 
+2025-08-23T06:17:05.272Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-23T06:17:05.272Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-23T06:17:50.600Z [INFO]: 🔍 Debug - Current User ID: 6899e61fc607714ebabb7569 
+2025-08-23T06:17:50.600Z [INFO]: 🔍 Debug - Total Users Found: 23 
+2025-08-23T06:17:50.601Z [INFO]: 🔍 Debug - Current User Index: 7 
+2025-08-23T06:17:50.601Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-23T06:17:50.601Z [INFO]: 🔍 Debug - Current User Position: 8 
+2025-08-23T06:17:50.602Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-23T06:17:50.602Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-23T06:18:01.551Z [INFO]: 🔍 Debug - Current User ID: 6899e61fc607714ebabb7569 
+2025-08-23T06:18:01.555Z [INFO]: 🔍 Debug - Total Users Found: 23 
+2025-08-23T06:18:01.556Z [INFO]: 🔍 Debug - Current User Index: 7 
+2025-08-23T06:18:01.556Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-23T06:18:01.557Z [INFO]: 🔍 Debug - Current User Position: 8 
+2025-08-23T06:18:01.557Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-23T06:18:01.558Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-23T06:18:09.003Z [INFO]: 🔍 Debug - Current User ID: 6899e61fc607714ebabb7569 
+2025-08-23T06:18:09.011Z [INFO]: 🔍 Debug - Total Users Found: 23 
+2025-08-23T06:18:09.011Z [INFO]: 🔍 Debug - Current User Index: 7 
+2025-08-23T06:18:09.012Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-23T06:18:09.012Z [INFO]: 🔍 Debug - Current User Position: 8 
+2025-08-23T06:18:09.013Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-23T06:18:09.013Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-23T06:18:58.802Z [INFO]: 🔍 Debug - Current User ID: 6899e61fc607714ebabb7569 
+2025-08-23T06:18:58.803Z [INFO]: 🔍 Debug - Total Users Found: 23 
+2025-08-23T06:18:58.803Z [INFO]: 🔍 Debug - Current User Index: 7 
+2025-08-23T06:18:58.803Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-23T06:18:58.804Z [INFO]: 🔍 Debug - Current User Position: 8 
+2025-08-23T06:18:58.804Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-23T06:18:58.804Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-23T06:19:51.328Z [INFO]: 🔍 Debug - Current User ID: 6899e61fc607714ebabb7569 
+2025-08-23T06:19:51.329Z [INFO]: 🔍 Debug - Total Users Found: 23 
+2025-08-23T06:19:51.329Z [INFO]: 🔍 Debug - Current User Index: 7 
+2025-08-23T06:19:51.329Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-23T06:19:51.330Z [INFO]: 🔍 Debug - Current User Position: 8 
+2025-08-23T06:19:51.330Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-23T06:19:51.330Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-23T06:20:00.815Z [INFO]: 🔍 Debug - Current User ID: 6899e61fc607714ebabb7569 
+2025-08-23T06:20:00.815Z [INFO]: 🔍 Debug - Total Users Found: 23 
+2025-08-23T06:20:00.816Z [INFO]: 🔍 Debug - Current User Index: 7 
+2025-08-23T06:20:00.816Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-23T06:20:00.817Z [INFO]: 🔍 Debug - Current User Position: 8 
+2025-08-23T06:20:00.817Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-23T06:20:00.817Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-23T06:20:31.236Z [INFO]: 🔍 Debug - Current User ID: 6899e61fc607714ebabb7569 
+2025-08-23T06:20:31.236Z [INFO]: 🔍 Debug - Total Users Found: 23 
+2025-08-23T06:20:31.237Z [INFO]: 🔍 Debug - Current User Index: 7 
+2025-08-23T06:20:31.237Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-23T06:20:31.237Z [INFO]: 🔍 Debug - Current User Position: 8 
+2025-08-23T06:20:31.238Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-23T06:20:31.238Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-23T06:21:25.790Z [INFO]: 🔍 Debug - Current User ID: 6899e61fc607714ebabb7569 
+2025-08-23T06:21:25.790Z [INFO]: 🔍 Debug - Total Users Found: 23 
+2025-08-23T06:21:25.791Z [INFO]: 🔍 Debug - Current User Index: 7 
+2025-08-23T06:21:25.791Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-23T06:21:25.791Z [INFO]: 🔍 Debug - Current User Position: 8 
+2025-08-23T06:21:25.792Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-23T06:21:25.792Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-23T06:21:58.651Z [INFO]: 🔍 Debug - Current User ID: 6899e61fc607714ebabb7569 
+2025-08-23T06:21:58.652Z [INFO]: 🔍 Debug - Total Users Found: 23 
+2025-08-23T06:21:58.652Z [INFO]: 🔍 Debug - Current User Index: 7 
+2025-08-23T06:21:58.653Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-23T06:21:58.653Z [INFO]: 🔍 Debug - Current User Position: 8 
+2025-08-23T06:21:58.653Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-23T06:21:58.654Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-23T06:22:12.699Z [INFO]: 🔍 Debug - Current User ID: 6899e61fc607714ebabb7569 
+2025-08-23T06:22:12.699Z [INFO]: 🔍 Debug - Total Users Found: 23 
+2025-08-23T06:22:12.700Z [INFO]: 🔍 Debug - Current User Index: 7 
+2025-08-23T06:22:12.701Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-23T06:22:12.701Z [INFO]: 🔍 Debug - Current User Position: 8 
+2025-08-23T06:22:12.701Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-23T06:22:12.702Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-23T06:22:20.644Z [INFO]: 🔍 Debug - Current User ID: 6899e61fc607714ebabb7569 
+2025-08-23T06:22:20.655Z [INFO]: 🔍 Debug - Total Users Found: 23 
+2025-08-23T06:22:20.659Z [INFO]: 🔍 Debug - Current User Index: 7 
+2025-08-23T06:22:20.659Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-23T06:22:20.660Z [INFO]: 🔍 Debug - Current User Position: 8 
+2025-08-23T06:22:20.661Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-23T06:22:20.667Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-23T06:31:33.000Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-23T06:31:33.010Z [INFO]: 🚀 Server running on port 5000 
+2025-08-23T06:31:33.014Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-23T06:31:33.079Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-23T06:31:33.080Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-23T06:31:33.081Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-23T06:31:33.081Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-23T06:31:33.082Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-23T06:31:33.099Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-23T06:31:33.100Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-23T06:31:33.101Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-23T06:31:33.101Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-23T06:31:33.101Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-23T06:31:33.106Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-24T09:12:50.594Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-24T09:12:50.602Z [INFO]: 🚀 Server running on port 5000 
+2025-08-24T09:12:50.607Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-24T09:12:50.771Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-24T09:12:50.772Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-24T09:12:50.773Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-24T09:12:50.773Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-24T09:12:50.774Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-24T09:12:50.793Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-24T09:12:50.793Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-24T09:12:50.794Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-24T09:12:50.794Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-24T09:12:50.796Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-24T09:12:50.801Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-24T09:14:39.154Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-24T09:14:39.162Z [INFO]: 🚀 Server running on port 5000 
+2025-08-24T09:14:39.167Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-24T09:14:39.243Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-24T09:14:39.243Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-24T09:14:39.244Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-24T09:14:39.244Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-24T09:14:39.244Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-24T09:14:39.273Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-24T09:14:39.273Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-24T09:14:39.274Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-24T09:14:39.274Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-24T09:14:39.274Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-24T09:14:39.280Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-24T09:16:05.649Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-24T09:16:05.656Z [INFO]: 🚀 Server running on port 5000 
+2025-08-24T09:16:05.660Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-24T09:16:05.720Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-24T09:16:05.721Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-24T09:16:05.721Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-24T09:16:05.722Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-24T09:16:05.722Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-24T09:16:05.740Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-24T09:16:05.741Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-24T09:16:05.741Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-24T09:16:05.741Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-24T09:16:05.742Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-24T09:16:05.748Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-24T09:24:51.145Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-24T09:24:51.153Z [INFO]: 🚀 Server running on port 5000 
+2025-08-24T09:24:51.158Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-24T09:24:51.230Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-24T09:24:51.231Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-24T09:24:51.232Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-24T09:24:51.232Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-24T09:24:51.233Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-24T09:24:51.255Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-24T09:24:51.257Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-24T09:24:51.257Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-24T09:24:51.257Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-24T09:24:51.258Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-24T09:24:51.263Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-24T09:25:04.735Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-24T09:25:04.742Z [INFO]: 🚀 Server running on port 5000 
+2025-08-24T09:25:04.746Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-24T09:25:04.812Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-24T09:25:04.812Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-24T09:25:04.813Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-24T09:25:04.814Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-24T09:25:04.814Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-24T09:25:04.841Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-24T09:25:04.842Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-24T09:25:04.843Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-24T09:25:04.843Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-24T09:25:04.843Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-24T09:25:04.850Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-24T09:38:26.475Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-24T09:38:26.482Z [INFO]: 🚀 Server running on port 5000 
+2025-08-24T09:38:26.486Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-24T09:38:26.552Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-24T09:38:26.552Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-24T09:38:26.553Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-24T09:38:26.553Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-24T09:38:26.554Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-24T09:38:26.573Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-24T09:38:26.574Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-24T09:38:26.575Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-24T09:38:26.575Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-24T09:38:26.575Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-24T09:38:26.581Z [INFO]: ✅ Database Connected to MongoDB 

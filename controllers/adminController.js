@@ -531,10 +531,9 @@ exports.getStudents = async (req, res) => {
     searchQuery.role = 'student';
 
     // Extract and apply optional filters
-    const { status, level } = req.query;
+    const { level } = req.query;
 
-    if (status) searchQuery.status = status;
-    if (level) searchQuery.level = level;
+    if (level) searchQuery['level.currentLevel'] = parseInt(level);
 
     // Check if pagination is requested
     const { page, limit } = req.query;
