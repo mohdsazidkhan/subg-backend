@@ -3988,3 +3988,719 @@
 2025-08-24T09:38:26.575Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
 2025-08-24T09:38:26.575Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
 2025-08-24T09:38:26.581Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-24T09:45:31.171Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-24T09:45:31.179Z [INFO]: 🚀 Server running on port 5000 
+2025-08-24T09:45:31.183Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-24T09:45:31.256Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-24T09:45:31.257Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-24T09:45:31.257Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-24T09:45:31.258Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-24T09:45:31.259Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-24T09:45:31.282Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-24T09:45:31.283Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-24T09:45:31.283Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-24T09:45:31.283Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-24T09:45:31.284Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-24T09:45:31.289Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-24T09:45:45.232Z [INFO]: 🔍 Debug - Current User ID: 686a6f76dd3a90279db3da30 
+2025-08-24T09:45:45.232Z [INFO]: 🔍 Debug - Total Users Found: 26 
+2025-08-24T09:45:45.233Z [INFO]: 🔍 Debug - Current User Index: -1 
+2025-08-24T09:45:45.233Z [INFO]: ❌ Current user not found in ranking list 
+2025-08-24T09:45:45.234Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-24T09:45:45.282Z [INFO]: 🔍 Debug - Current User ID: 686a6f76dd3a90279db3da30 
+2025-08-24T09:45:45.283Z [INFO]: 🔍 Debug - Total Users Found: 26 
+2025-08-24T09:45:45.283Z [INFO]: 🔍 Debug - Current User Index: -1 
+2025-08-24T09:45:45.284Z [INFO]: ❌ Current user not found in ranking list 
+2025-08-24T09:45:45.284Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-24T09:57:22.565Z [INFO]: 🔍 Debug - Current User ID: 686a6f76dd3a90279db3da30 
+2025-08-24T09:57:22.566Z [INFO]: 🔍 Debug - Total Users Found: 26 
+2025-08-24T09:57:22.567Z [INFO]: 🔍 Debug - Current User Index: -1 
+2025-08-24T09:57:22.567Z [INFO]: ❌ Current user not found in ranking list 
+2025-08-24T09:57:22.568Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-24T09:57:22.613Z [INFO]: 🔍 Debug - Current User ID: 686a6f76dd3a90279db3da30 
+2025-08-24T09:57:22.613Z [INFO]: 🔍 Debug - Total Users Found: 26 
+2025-08-24T09:57:22.614Z [INFO]: 🔍 Debug - Current User Index: -1 
+2025-08-24T09:57:22.614Z [INFO]: ❌ Current user not found in ranking list 
+2025-08-24T09:57:22.614Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-24T10:04:58.614Z [INFO]: 🔍 Debug - Current User ID: 686a6f76dd3a90279db3da30 
+2025-08-24T10:04:58.615Z [INFO]: 🔍 Debug - Total Users Found: 26 
+2025-08-24T10:04:58.615Z [INFO]: 🔍 Debug - Current User Index: -1 
+2025-08-24T10:04:58.616Z [INFO]: ❌ Current user not found in ranking list 
+2025-08-24T10:04:58.616Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-24T10:04:58.691Z [INFO]: 🔍 Debug - Current User ID: 686a6f76dd3a90279db3da30 
+2025-08-24T10:04:58.694Z [INFO]: 🔍 Debug - Total Users Found: 26 
+2025-08-24T10:04:58.697Z [INFO]: 🔍 Debug - Current User Index: -1 
+2025-08-24T10:04:58.702Z [INFO]: ❌ Current user not found in ranking list 
+2025-08-24T10:04:58.703Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-28T04:05:10.383Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:05:10.395Z [INFO]: 🚀 Server running on port 5000 
+2025-08-28T04:05:10.400Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:05:10.563Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:05:10.563Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:05:10.564Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:05:10.564Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:05:10.565Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:05:10.587Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:05:10.588Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:05:10.589Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:05:10.589Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:05:10.589Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-28T04:05:10.596Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:05:48.652Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:05:48.665Z [INFO]: 🚀 Server running on port 5000 
+2025-08-28T04:05:48.672Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:05:48.818Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:05:48.819Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:05:48.822Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:05:48.824Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:05:48.825Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:05:48.860Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:05:48.862Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:05:48.863Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:05:48.865Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:05:48.867Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-28T04:05:48.882Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:06:03.504Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:06:03.514Z [INFO]: 🚀 Server running on port 5000 
+2025-08-28T04:06:03.518Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:06:03.596Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:06:03.597Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:06:03.597Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:06:03.598Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:06:03.598Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:06:03.618Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:06:03.619Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:06:03.620Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:06:03.620Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:06:03.620Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-28T04:06:03.626Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:06:15.895Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU2MTg0ODQ0LCJleHAiOjE3NTYyNzEyNDR9.A-ZjjQRrnZ--kE8N7tLRrhlQ--LzyTtU1hjbOYngtQg 
+2025-08-28T04:06:16.044Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU2MTg0ODQ0LCJleHAiOjE3NTYyNzEyNDR9.A-ZjjQRrnZ--kE8N7tLRrhlQ--LzyTtU1hjbOYngtQg 
+2025-08-28T04:07:51.376Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:07:51.386Z [INFO]: 🚀 Server running on port 5000 
+2025-08-28T04:07:51.391Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:07:51.475Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:07:51.476Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:07:51.477Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:07:51.477Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:07:51.478Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:07:51.501Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:07:51.502Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:07:51.503Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:07:51.503Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:07:51.504Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-28T04:07:51.511Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:08:14.243Z [INFO]: 🔍 Debug - Current User ID: 686a6fa36580063952214011 
+2025-08-28T04:08:14.244Z [INFO]: 🔍 Debug - Total Users Found: 35 
+2025-08-28T04:08:14.245Z [INFO]: 🔍 Debug - Current User Index: 1 
+2025-08-28T04:08:14.246Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-28T04:08:14.246Z [INFO]: 🔍 Debug - Current User Position: 2 
+2025-08-28T04:08:14.246Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-28T04:08:14.248Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-28T04:08:14.294Z [INFO]: 🔍 Debug - Current User ID: 686a6fa36580063952214011 
+2025-08-28T04:08:14.296Z [INFO]: 🔍 Debug - Total Users Found: 35 
+2025-08-28T04:08:14.298Z [INFO]: 🔍 Debug - Current User Index: 1 
+2025-08-28T04:08:14.300Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-28T04:08:14.301Z [INFO]: 🔍 Debug - Current User Position: 2 
+2025-08-28T04:08:14.307Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-28T04:08:14.308Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-28T04:09:25.008Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:09:25.016Z [INFO]: 🚀 Server running on port 5000 
+2025-08-28T04:09:25.021Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:09:25.095Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:09:25.096Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:09:25.096Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:09:25.097Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:09:25.097Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:09:25.119Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:09:25.120Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:09:25.121Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:09:25.121Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:09:25.122Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-28T04:09:25.127Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:09:41.033Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:09:41.045Z [INFO]: 🚀 Server running on port 5000 
+2025-08-28T04:09:41.052Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:09:41.191Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:09:41.192Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:09:41.193Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:09:41.194Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:09:41.194Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:09:41.260Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:09:41.262Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:09:41.266Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:09:41.268Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:09:41.270Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-28T04:09:41.284Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:09:43.889Z [INFO]: 🔍 Debug - Current User ID: 686a6fa36580063952214011 
+2025-08-28T04:09:43.890Z [INFO]: 🔍 Debug - Total Users Found: 35 
+2025-08-28T04:09:43.891Z [INFO]: 🔍 Debug - Current User Index: 1 
+2025-08-28T04:09:43.891Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-28T04:09:43.892Z [INFO]: 🔍 Debug - Current User Position: 2 
+2025-08-28T04:09:43.893Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-28T04:09:43.894Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-28T04:09:54.308Z [INFO]: 🔍 Debug - Current User ID: 686a6fa36580063952214011 
+2025-08-28T04:09:54.309Z [INFO]: 🔍 Debug - Total Users Found: 35 
+2025-08-28T04:09:54.310Z [INFO]: 🔍 Debug - Current User Index: 1 
+2025-08-28T04:09:54.311Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-28T04:09:54.311Z [INFO]: 🔍 Debug - Current User Position: 2 
+2025-08-28T04:09:54.312Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-28T04:09:54.312Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-28T04:10:08.021Z [INFO]: 🔍 Debug - Current User ID: 686a6fa36580063952214011 
+2025-08-28T04:10:08.022Z [INFO]: 🔍 Debug - Total Users Found: 35 
+2025-08-28T04:10:08.023Z [INFO]: 🔍 Debug - Current User Index: 1 
+2025-08-28T04:10:08.024Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-28T04:10:08.024Z [INFO]: 🔍 Debug - Current User Position: 2 
+2025-08-28T04:10:08.025Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-28T04:10:08.025Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-28T04:14:36.293Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:14:36.305Z [INFO]: 🚀 Server running on port 5000 
+2025-08-28T04:14:36.310Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:14:36.401Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:14:36.402Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:14:36.402Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:14:36.403Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:14:36.403Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:14:36.435Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:14:36.437Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:14:36.439Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:14:36.444Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:14:36.445Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-28T04:14:36.454Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:14:42.642Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:14:42.654Z [INFO]: 🚀 Server running on port 5000 
+2025-08-28T04:14:42.660Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:14:42.740Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:14:42.741Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:14:42.742Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:14:42.742Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:14:42.743Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:14:42.769Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:14:42.770Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:14:42.771Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:14:42.773Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:14:42.773Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-28T04:14:42.781Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:15:01.849Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:15:01.859Z [INFO]: 🚀 Server running on port 5000 
+2025-08-28T04:15:01.864Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:15:01.957Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:15:01.958Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:15:01.959Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:15:01.959Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:15:01.959Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:15:01.981Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:15:01.983Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:15:01.984Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:15:01.984Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:15:01.985Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-28T04:15:01.990Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:15:41.655Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:15:41.664Z [INFO]: 🚀 Server running on port 5000 
+2025-08-28T04:15:41.669Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:15:41.742Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:15:41.743Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:15:41.744Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:15:41.744Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:15:41.745Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:15:41.764Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:15:41.765Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:15:41.766Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:15:41.766Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:15:41.766Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-28T04:15:41.771Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:19:53.923Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:19:53.932Z [INFO]: 🚀 Server running on port 5000 
+2025-08-28T04:19:53.936Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:19:54.020Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:19:54.020Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:19:54.021Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:19:54.021Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:19:54.022Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:19:54.047Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:19:54.048Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:19:54.050Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:19:54.050Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:19:54.051Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-28T04:19:54.062Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:20:12.556Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:20:12.565Z [INFO]: 🚀 Server running on port 5000 
+2025-08-28T04:20:12.571Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:20:12.638Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:20:12.638Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:20:12.639Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:20:12.640Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:20:12.640Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:20:12.660Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:20:12.662Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:20:12.663Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:20:12.663Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:20:12.663Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-28T04:20:12.669Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:21:51.448Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:21:51.457Z [INFO]: 🚀 Server running on port 5000 
+2025-08-28T04:21:51.462Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:21:51.550Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:21:51.550Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:21:51.551Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:21:51.552Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:21:51.552Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:21:51.579Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:21:51.580Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:21:51.580Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:21:51.581Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:21:51.581Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-28T04:21:51.587Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:22:05.740Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:22:05.748Z [INFO]: 🚀 Server running on port 5000 
+2025-08-28T04:22:05.752Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:22:05.832Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:22:05.833Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:22:05.834Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:22:05.834Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:22:05.834Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:22:05.854Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:22:05.855Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:22:05.855Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:22:05.856Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:22:05.856Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-28T04:22:05.861Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:22:31.494Z [INFO]: 🔍 Debug - Raw top performer data: {
+  "level": {
+    "currentLevel": 6,
+    "levelName": "Mastermind",
+    "quizzesPlayed": 141,
+    "highScoreQuizzes": 110,
+    "totalScore": 576,
+    "averageScore": 4,
+    "levelProgress": 100,
+    "lastLevelUp": "2025-08-03T18:59:27.761Z"
+  },
+  "_id": "686a8fc5d0ed6e850923b81e",
+  "name": "Asif Khan",
+  "email": "asifkhanconnect@gmail.com",
+  "badges": [
+    "Student",
+    "Rookie Badge",
+    "Explorer Badge",
+    "Thinker Badge",
+    "Strategist Badge",
+    "Achiever Badge",
+    "Mastermind Badge"
+  ],
+  "subscriptionStatus": "basic"
+} 
+2025-08-28T04:22:31.505Z [INFO]: 🔍 Debug - First formatted top performer: {
+  "level": {
+    "currentLevel": 6,
+    "levelName": "Mastermind",
+    "quizzesPlayed": 141,
+    "highScoreQuizzes": 110,
+    "totalScore": 576,
+    "averageScore": 4,
+    "levelProgress": 100,
+    "lastLevelUp": "2025-08-03T18:59:27.761Z",
+    "accuracy": 78
+  },
+  "_id": "686a8fc5d0ed6e850923b81e",
+  "name": "Asif Khan",
+  "email": "asifkhanconnect@gmail.com",
+  "badges": [
+    "Student",
+    "Rookie Badge",
+    "Explorer Badge",
+    "Thinker Badge",
+    "Strategist Badge",
+    "Achiever Badge",
+    "Mastermind Badge"
+  ],
+  "subscriptionStatus": "basic"
+} 
+2025-08-28T04:22:31.606Z [INFO]: 🔍 Debug - Raw top performer data: {
+  "level": {
+    "currentLevel": 6,
+    "levelName": "Mastermind",
+    "quizzesPlayed": 141,
+    "highScoreQuizzes": 110,
+    "totalScore": 576,
+    "averageScore": 4,
+    "levelProgress": 100,
+    "lastLevelUp": "2025-08-03T18:59:27.761Z"
+  },
+  "_id": "686a8fc5d0ed6e850923b81e",
+  "name": "Asif Khan",
+  "email": "asifkhanconnect@gmail.com",
+  "badges": [
+    "Student",
+    "Rookie Badge",
+    "Explorer Badge",
+    "Thinker Badge",
+    "Strategist Badge",
+    "Achiever Badge",
+    "Mastermind Badge"
+  ],
+  "subscriptionStatus": "basic"
+} 
+2025-08-28T04:22:31.633Z [INFO]: 🔍 Debug - First formatted top performer: {
+  "level": {
+    "currentLevel": 6,
+    "levelName": "Mastermind",
+    "quizzesPlayed": 141,
+    "highScoreQuizzes": 110,
+    "totalScore": 576,
+    "averageScore": 4,
+    "levelProgress": 100,
+    "lastLevelUp": "2025-08-03T18:59:27.761Z",
+    "accuracy": 78
+  },
+  "_id": "686a8fc5d0ed6e850923b81e",
+  "name": "Asif Khan",
+  "email": "asifkhanconnect@gmail.com",
+  "badges": [
+    "Student",
+    "Rookie Badge",
+    "Explorer Badge",
+    "Thinker Badge",
+    "Strategist Badge",
+    "Achiever Badge",
+    "Mastermind Badge"
+  ],
+  "subscriptionStatus": "basic"
+} 
+2025-08-28T04:22:39.317Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:22:39.328Z [INFO]: 🚀 Server running on port 5000 
+2025-08-28T04:22:39.334Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:22:39.444Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:22:39.444Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:22:39.445Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:22:39.445Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:22:39.446Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:22:39.476Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:22:39.479Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:22:39.480Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:22:39.480Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:22:39.482Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-28T04:22:39.496Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:22:50.160Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:22:50.167Z [INFO]: 🚀 Server running on port 5000 
+2025-08-28T04:22:50.172Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:22:50.239Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:22:50.239Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:22:50.240Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:22:50.240Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:22:50.241Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:22:50.262Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:22:50.263Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:22:50.264Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:22:50.264Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:22:50.265Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-28T04:22:50.270Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:23:03.799Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:23:03.810Z [INFO]: 🚀 Server running on port 5000 
+2025-08-28T04:23:03.816Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:23:03.915Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:23:03.916Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:23:03.920Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:23:03.922Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:23:03.927Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:23:03.977Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:23:03.979Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:23:03.980Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:23:03.981Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:23:03.982Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-28T04:23:03.993Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:23:15.070Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:23:15.080Z [INFO]: 🚀 Server running on port 5000 
+2025-08-28T04:23:15.084Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:23:15.169Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:23:15.170Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:23:15.171Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:23:15.171Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:23:15.172Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:23:15.192Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:23:15.193Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:23:15.194Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:23:15.194Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:23:15.194Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-28T04:23:15.203Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:23:26.732Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:23:26.740Z [INFO]: 🚀 Server running on port 5000 
+2025-08-28T04:23:26.744Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:23:26.828Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:23:26.828Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:23:26.829Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:23:26.830Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:23:26.830Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:23:26.848Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:23:26.849Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:23:26.850Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:23:26.850Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:23:26.850Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-28T04:23:26.855Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:23:41.683Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:23:41.695Z [INFO]: 🚀 Server running on port 5000 
+2025-08-28T04:23:41.700Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:23:41.804Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:23:41.805Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:23:41.807Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:23:41.807Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:23:41.808Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:23:41.836Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:23:41.837Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:23:41.838Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:23:41.838Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:23:41.838Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-28T04:23:41.845Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:23:53.605Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:23:53.614Z [INFO]: 🚀 Server running on port 5000 
+2025-08-28T04:23:53.619Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:23:53.697Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:23:53.697Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:23:53.698Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:23:53.699Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:23:53.699Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:23:53.722Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:23:53.723Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:23:53.723Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:23:53.723Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:23:53.724Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-28T04:23:53.730Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:24:00.622Z [INFO]: 🔍 Debug - Raw top performer data: {
+  "_id": "686a8fc5d0ed6e850923b81e",
+  "name": "Asif Khan",
+  "email": "asifkhanconnect@gmail.com",
+  "badges": [
+    "Student",
+    "Rookie Badge",
+    "Explorer Badge",
+    "Thinker Badge",
+    "Strategist Badge",
+    "Achiever Badge",
+    "Mastermind Badge"
+  ],
+  "level": {
+    "currentLevel": 6,
+    "levelName": "Mastermind",
+    "quizzesPlayed": 141,
+    "highScoreQuizzes": 110,
+    "totalScore": 576,
+    "averageScore": 4,
+    "levelProgress": 100,
+    "lastLevelUp": "2025-08-03T18:59:27.761Z"
+  },
+  "subscriptionStatus": "basic"
+} 
+2025-08-28T04:24:00.624Z [INFO]: 🔍 Debug - Raw user level data: {
+  "currentLevel": 6,
+  "levelName": "Mastermind",
+  "quizzesPlayed": 141,
+  "highScoreQuizzes": 110,
+  "totalScore": 576,
+  "averageScore": 4,
+  "levelProgress": 100,
+  "lastLevelUp": "2025-08-03T18:59:27.761Z"
+} 
+2025-08-28T04:24:00.625Z [INFO]: 🔍 Debug - First user accuracy calc: 110 / 141 * 100 = 78% 
+2025-08-28T04:24:00.626Z [INFO]: 🔍 Debug - First formatted top performer: {
+  "_id": "686a8fc5d0ed6e850923b81e",
+  "name": "Asif Khan",
+  "email": "asifkhanconnect@gmail.com",
+  "badges": [
+    "Student",
+    "Rookie Badge",
+    "Explorer Badge",
+    "Thinker Badge",
+    "Strategist Badge",
+    "Achiever Badge",
+    "Mastermind Badge"
+  ],
+  "level": {
+    "currentLevel": 6,
+    "levelName": "Mastermind",
+    "quizzesPlayed": 141,
+    "highScoreQuizzes": 110,
+    "totalScore": 576,
+    "averageScore": 4,
+    "levelProgress": 100,
+    "lastLevelUp": "2025-08-03T18:59:27.761Z",
+    "accuracy": 78
+  },
+  "subscriptionStatus": "basic"
+} 
+2025-08-28T04:24:00.627Z [INFO]: 🔍 Debug - Sample accuracy calculation: 78 
+2025-08-28T04:24:00.627Z [INFO]: 🔍 Debug - Formatted user level data: {
+  "currentLevel": 6,
+  "levelName": "Mastermind",
+  "quizzesPlayed": 141,
+  "highScoreQuizzes": 110,
+  "totalScore": 576,
+  "averageScore": 4,
+  "levelProgress": 100,
+  "lastLevelUp": "2025-08-03T18:59:27.761Z",
+  "accuracy": 78
+} 
+2025-08-28T04:24:00.696Z [INFO]: 🔍 Debug - Raw top performer data: {
+  "_id": "686a8fc5d0ed6e850923b81e",
+  "name": "Asif Khan",
+  "email": "asifkhanconnect@gmail.com",
+  "badges": [
+    "Student",
+    "Rookie Badge",
+    "Explorer Badge",
+    "Thinker Badge",
+    "Strategist Badge",
+    "Achiever Badge",
+    "Mastermind Badge"
+  ],
+  "level": {
+    "currentLevel": 6,
+    "levelName": "Mastermind",
+    "quizzesPlayed": 141,
+    "highScoreQuizzes": 110,
+    "totalScore": 576,
+    "averageScore": 4,
+    "levelProgress": 100,
+    "lastLevelUp": "2025-08-03T18:59:27.761Z"
+  },
+  "subscriptionStatus": "basic"
+} 
+2025-08-28T04:24:00.697Z [INFO]: 🔍 Debug - Raw user level data: {
+  "currentLevel": 6,
+  "levelName": "Mastermind",
+  "quizzesPlayed": 141,
+  "highScoreQuizzes": 110,
+  "totalScore": 576,
+  "averageScore": 4,
+  "levelProgress": 100,
+  "lastLevelUp": "2025-08-03T18:59:27.761Z"
+} 
+2025-08-28T04:24:00.698Z [INFO]: 🔍 Debug - First user accuracy calc: 110 / 141 * 100 = 78% 
+2025-08-28T04:24:00.698Z [INFO]: 🔍 Debug - First formatted top performer: {
+  "_id": "686a8fc5d0ed6e850923b81e",
+  "name": "Asif Khan",
+  "email": "asifkhanconnect@gmail.com",
+  "badges": [
+    "Student",
+    "Rookie Badge",
+    "Explorer Badge",
+    "Thinker Badge",
+    "Strategist Badge",
+    "Achiever Badge",
+    "Mastermind Badge"
+  ],
+  "level": {
+    "currentLevel": 6,
+    "levelName": "Mastermind",
+    "quizzesPlayed": 141,
+    "highScoreQuizzes": 110,
+    "totalScore": 576,
+    "averageScore": 4,
+    "levelProgress": 100,
+    "lastLevelUp": "2025-08-03T18:59:27.761Z",
+    "accuracy": 78
+  },
+  "subscriptionStatus": "basic"
+} 
+2025-08-28T04:24:00.699Z [INFO]: 🔍 Debug - Sample accuracy calculation: 78 
+2025-08-28T04:24:00.699Z [INFO]: 🔍 Debug - Formatted user level data: {
+  "currentLevel": 6,
+  "levelName": "Mastermind",
+  "quizzesPlayed": 141,
+  "highScoreQuizzes": 110,
+  "totalScore": 576,
+  "averageScore": 4,
+  "levelProgress": 100,
+  "lastLevelUp": "2025-08-03T18:59:27.761Z",
+  "accuracy": 78
+} 
+2025-08-28T04:24:53.708Z [INFO]: 🔍 Debug - Current User ID: 686a6fa36580063952214011 
+2025-08-28T04:24:53.710Z [INFO]: 🔍 Debug - Total Users Found: 35 
+2025-08-28T04:24:53.711Z [INFO]: 🔍 Debug - Current User Index: 1 
+2025-08-28T04:24:53.712Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-28T04:24:53.712Z [INFO]: 🔍 Debug - Current User Position: 2 
+2025-08-28T04:24:53.712Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-28T04:24:53.714Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-28T04:24:53.769Z [INFO]: 🔍 Debug - Current User ID: 686a6fa36580063952214011 
+2025-08-28T04:24:53.770Z [INFO]: 🔍 Debug - Total Users Found: 35 
+2025-08-28T04:24:53.773Z [INFO]: 🔍 Debug - Current User Index: 1 
+2025-08-28T04:24:53.777Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-28T04:24:53.778Z [INFO]: 🔍 Debug - Current User Position: 2 
+2025-08-28T04:24:53.778Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-28T04:24:53.779Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-28T04:25:13.175Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:25:13.184Z [INFO]: 🚀 Server running on port 5000 
+2025-08-28T04:25:13.190Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:25:13.272Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:25:13.272Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:25:13.273Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:25:13.273Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:25:13.274Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:25:13.297Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:25:13.299Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:25:13.299Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:25:13.299Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:25:13.300Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-28T04:25:13.306Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:25:30.766Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:25:30.775Z [INFO]: 🚀 Server running on port 5000 
+2025-08-28T04:25:30.779Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:25:30.853Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:25:30.855Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:25:30.856Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:25:30.857Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:25:30.858Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:25:30.877Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:25:30.878Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:25:30.878Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:25:30.879Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:25:30.879Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-28T04:25:30.884Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:25:50.165Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:25:50.177Z [INFO]: 🚀 Server running on port 5000 
+2025-08-28T04:25:50.183Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:25:50.277Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:25:50.277Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:25:50.278Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:25:50.278Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:25:50.279Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:25:50.308Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:25:50.313Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:25:50.316Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:25:50.317Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:25:50.323Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-28T04:25:50.334Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:27:21.887Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:27:21.900Z [INFO]: 🚀 Server running on port 5000 
+2025-08-28T04:27:21.906Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:27:21.994Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:27:21.995Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:27:21.995Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:27:21.996Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:27:21.996Z [INFO]: 📅 Scheduling annual rewards processing... 
+2025-08-28T04:27:22.029Z [INFO]: ✅ Annual rewards processing scheduled: 
+2025-08-28T04:27:22.030Z [INFO]:    - Phase 1 (Level 6): August 1 at 12:00 AM IST 
+2025-08-28T04:27:22.031Z [INFO]:    - Phase 2 (Level 9): December 1 at 12:00 AM IST 
+2025-08-28T04:27:22.031Z [INFO]:    - Phase 3 (Level 10): March 31 at 12:00 AM IST 
+2025-08-28T04:27:22.032Z [INFO]: ✅ Annual rewards processing CRON jobs scheduled successfully 
+2025-08-28T04:27:22.043Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-28T04:27:57.338Z [INFO]: 🔍 Debug - Current User ID: 686a6fa36580063952214011 
+2025-08-28T04:27:57.339Z [INFO]: 🔍 Debug - Total Users Found: 35 
+2025-08-28T04:27:57.339Z [INFO]: 🔍 Debug - Current User Index: 1 
+2025-08-28T04:27:57.340Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-28T04:27:57.340Z [INFO]: 🔍 Debug - Current User Position: 2 
+2025-08-28T04:27:57.340Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-28T04:27:57.341Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-28T04:28:05.312Z [INFO]: 🔍 Debug - Current User ID: 686a6fa36580063952214011 
+2025-08-28T04:28:05.313Z [INFO]: 🔍 Debug - Total Users Found: 35 
+2025-08-28T04:28:05.313Z [INFO]: 🔍 Debug - Current User Index: 1 
+2025-08-28T04:28:05.313Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-28T04:28:05.314Z [INFO]: 🔍 Debug - Current User Position: 2 
+2025-08-28T04:28:05.314Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-28T04:28:05.315Z [INFO]: 🔍 Debug - Response Data: [object Object] 
+2025-08-28T04:28:13.485Z [INFO]: 🔍 Debug - Current User ID: 686a6fa36580063952214011 
+2025-08-28T04:28:13.487Z [INFO]: 🔍 Debug - Total Users Found: 35 
+2025-08-28T04:28:13.488Z [INFO]: 🔍 Debug - Current User Index: 1 
+2025-08-28T04:28:13.488Z [INFO]: 🔍 Debug - Surrounding Users Count: 3 
+2025-08-28T04:28:13.488Z [INFO]: 🔍 Debug - Current User Position: 2 
+2025-08-28T04:28:13.489Z [INFO]: 🔍 Debug - Surrounding Users Positions: [object Object],[object Object],[object Object] 
+2025-08-28T04:28:13.489Z [INFO]: 🔍 Debug - Response Data: [object Object] 

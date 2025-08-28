@@ -232,7 +232,8 @@ exports.getUserAnalytics = async (req, res) => {
       User.find(filter)
         .sort({ 'level.highScoreQuizzes': -1, 'level.averageScore': -1 })
         .limit(20)
-        .select('name level badges subscriptionStatus createdAt'),
+        .select('name level badges subscriptionStatus createdAt')
+        .lean(),
       User.aggregate([
         { $match: filter },
         {
@@ -272,6 +273,21 @@ exports.getUserAnalytics = async (req, res) => {
       ])
     ]);
 
+    // Format top performers to include accuracy
+    const formattedTopPerformers = topPerformers.map(user => {
+      const highScoreQuizzes = user.level?.highScoreQuizzes || 0;
+      const quizzesPlayed = user.level?.quizzesPlayed || 0;
+      const accuracy = quizzesPlayed > 0 ? Math.round((highScoreQuizzes / quizzesPlayed) * 100) : 0;
+      
+      return {
+        ...user,
+        level: {
+          ...user.level,
+          accuracy: accuracy
+        }
+      };
+    });
+
     res.json({
       success: true,
       data: {
@@ -284,7 +300,7 @@ exports.getUserAnalytics = async (req, res) => {
         levelDistribution,
         subscriptionStats,
         userGrowth,
-        topPerformers,
+        topPerformers: formattedTopPerformers,
         userEngagement: userEngagement[0] || {},
         userRetention
       }
@@ -631,7 +647,8 @@ exports.getPerformanceAnalytics = async (req, res) => {
       User.find({ role: 'student' })
         .sort({ 'level.highScoreQuizzes': -1, 'level.averageScore': -1 })
         .limit(20)
-        .select('name email level badges subscriptionStatus'),
+        .select('name email level badges subscriptionStatus')
+        .lean(),
       QuizAttempt.aggregate([
         { $match: { attemptedAt: { $gte: startDate, $lte: endDate } } },
         {
@@ -712,11 +729,40 @@ exports.getPerformanceAnalytics = async (req, res) => {
       ])
     ]);
 
+    console.log('🔍 Debug - Raw top performer data:', JSON.stringify(topPerformers[0], null, 2));
+    console.log('🔍 Debug - Raw user level data:', JSON.stringify(topPerformers[0]?.level, null, 2));
+
+    // Calculate accuracy for first user to debug
+    const firstUser = topPerformers[0];
+    const firstUserHighScore = firstUser?.level?.highScoreQuizzes || 0;
+    const firstUserQuizzes = firstUser?.level?.quizzesPlayed || 0;
+    const firstUserAccuracy = firstUserQuizzes > 0 ? Math.round((firstUserHighScore / firstUserQuizzes) * 100) : 0;
+    console.log(`🔍 Debug - First user accuracy calc: ${firstUserHighScore} / ${firstUserQuizzes} * 100 = ${firstUserAccuracy}%`);
+
+    // Format top performers to include accuracy
+    const formattedTopPerformers = topPerformers.map(user => {
+      const highScoreQuizzes = user.level?.highScoreQuizzes || 0;
+      const quizzesPlayed = user.level?.quizzesPlayed || 0;
+      const accuracy = quizzesPlayed > 0 ? Math.round((highScoreQuizzes / quizzesPlayed) * 100) : 0;
+      
+      return {
+        ...user,
+        level: {
+          ...user.level,
+          accuracy: accuracy
+        }
+      };
+    });
+
+    console.log('🔍 Debug - First formatted top performer:', JSON.stringify(formattedTopPerformers[0], null, 2));
+    console.log('🔍 Debug - Sample accuracy calculation:', formattedTopPerformers[0]?.level?.accuracy);
+    console.log('🔍 Debug - Formatted user level data:', JSON.stringify(formattedTopPerformers[0]?.level, null, 2));
+
     res.json({
       success: true,
       data: {
         leaderboardStats,
-        topPerformers,
+        topPerformers: formattedTopPerformers,
         scoreDistribution,
         levelPerformance,
         categoryPerformance,

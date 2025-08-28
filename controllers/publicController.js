@@ -47,11 +47,6 @@ exports.getTopPerformers = async (req, res) => {
     const allUsers = await User.find({ 
       role: 'student'
     })
-      .sort({ 
-        'level.highScoreQuizzes': -1, 
-        'level.averageScore': -1,
-        'level.quizzesPlayed': -1
-      })
       .select('_id name level createdAt')
       .lean();
 
@@ -66,6 +61,29 @@ exports.getTopPerformers = async (req, res) => {
           averageScore: 0
         };
       }
+    });
+
+    // Custom sorting: First by high score (descending), then by total quizzes (ascending - fewer is better)
+    allUsers.sort((a, b) => {
+      const aHighScore = a.level?.highScoreQuizzes || 0;
+      const bHighScore = b.level?.highScoreQuizzes || 0;
+      const aTotalQuizzes = a.level?.quizzesPlayed || 0;
+      const bTotalQuizzes = b.level?.quizzesPlayed || 0;
+      
+      // First priority: High score (descending)
+      if (aHighScore !== bHighScore) {
+        return bHighScore - aHighScore;
+      }
+      
+      // Second priority: Total quizzes (ascending - fewer is better)
+      if (aTotalQuizzes !== bTotalQuizzes) {
+        return aTotalQuizzes - bTotalQuizzes;
+      }
+      
+      // Third priority: Average score (descending)
+      const aAvgScore = a.level?.averageScore || 0;
+      const bAvgScore = b.level?.averageScore || 0;
+      return bAvgScore - aAvgScore;
     });
 
     // Get top 10 performers
@@ -124,20 +142,27 @@ exports.getTopPerformers = async (req, res) => {
     }
 
     // Format the data for frontend consumption
-    const formatUser = (user, position = null, isCurrentUser = false) => ({
-      userId: user._id,
-      name: user.name,
-      position: position,
-      isCurrentUser: isCurrentUser,
-      level: {
-        currentLevel: user.level?.currentLevel || 1,
-        levelName: getLevelName(user.level?.currentLevel || 1),
-        highScoreQuizzes: user.level?.highScoreQuizzes || 0,
-        averageScore: user.level?.averageScore || 0,
-        quizzesPlayed: user.level?.quizzesPlayed || 0
-      },
-      joinedDate: user.createdAt
-    });
+    const formatUser = (user, position = null, isCurrentUser = false) => {
+      const highScoreQuizzes = user.level?.highScoreQuizzes || 0;
+      const quizzesPlayed = user.level?.quizzesPlayed || 0;
+      const accuracy = quizzesPlayed > 0 ? Math.round((highScoreQuizzes / quizzesPlayed) * 100) : 0;
+      
+      return {
+        userId: user._id,
+        name: user.name,
+        position: position,
+        isCurrentUser: isCurrentUser,
+        level: {
+          currentLevel: user.level?.currentLevel || 1,
+          levelName: getLevelName(user.level?.currentLevel || 1),
+          highScoreQuizzes: highScoreQuizzes,
+          averageScore: user.level?.averageScore || 0,
+          quizzesPlayed: quizzesPlayed,
+          accuracy: accuracy
+        },
+        joinedDate: user.createdAt
+      };
+    };
 
     const formattedTopPerformers = topPerformers.map((user, index) => 
       formatUser(user, index + 1, user._id.toString() === currentUserId?.toString())
