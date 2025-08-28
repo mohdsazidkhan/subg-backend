@@ -1,6 +1,6 @@
 # SUBG Backend
 
-A comprehensive quiz platform backend with advanced analytics, user level system, and subscription management.
+A comprehensive quiz platform backend with advanced analytics, user level system, subscription management, and monthly highscore rewards system.
 
 ## 🚀 Features
 
@@ -19,6 +19,9 @@ A comprehensive quiz platform backend with advanced analytics, user level system
 - **Admin Panel**: Full admin dashboard with analytics
 - **Security**: JWT authentication, input validation, rate limiting
 - **Analytics**: Dashboard, user, quiz, financial, and performance analytics
+- **Monthly Highscore System**: Monthly quiz competitions with prize distribution
+- **Referral System**: Smart referral rewards with subscription upgrades
+- **Migration Tools**: Comprehensive data migration and testing scripts
 
 ## 📋 Prerequisites
 
@@ -71,6 +74,7 @@ subg-backend/
 ├── middleware/       # Custom middleware
 ├── models/           # Database models
 ├── routes/           # API routes
+├── scripts/          # Database scripts and utilities
 ├── utils/            # Utility functions
 ├── index.js          # Main server file
 ├── package.json      # Project manifest
@@ -78,14 +82,13 @@ subg-backend/
 └── README.md         # Project documentation
 ```
 
-> **Note:** Legacy scripts and test files have been removed for clarity and maintainability. The backend is now clean and only contains necessary files for running the API server.
-
 ## 🔌 API Endpoints
 
 ### Authentication
-- `POST /api/auth/register` - User registration
+- `POST /api/auth/register` - User registration (with referral system)
 - `POST /api/auth/login` - User login
 - `POST /api/auth/logout` - User logout
+- `POST /api/auth/google` - Google OAuth registration
 
 ### Admin Routes
 - `GET /api/admin/dashboard` - Admin dashboard
@@ -123,6 +126,11 @@ subg-backend/
 - `POST /api/subscriptions` - Create subscription
 - `PUT /api/subscriptions/:id` - Update subscription
 
+### Public Routes
+- `GET /api/public/categories` - Get all categories
+- `GET /api/public/subcategories` - Get subcategories by category
+- `GET /api/public/search` - Search quizzes and categories
+
 ## 🗄️ Database Models
 
 ### User Model
@@ -130,6 +138,9 @@ subg-backend/
 - Level system (current level, progress, badges)
 - Quiz best scores (single attempt system)
 - Subscription status and expiry
+- Referral system (referralCode, referralCount, referredBy)
+- Monthly progress tracking
+- Migration tracking fields
 
 ### Quiz Model
 - Title, category, subcategory
@@ -142,6 +153,7 @@ subg-backend/
 - Payment information
 - Features and access levels
 - Expiry and renewal settings
+- Referral reward metadata
 
 ### Analytics Models
 - Quiz attempts and scores
@@ -198,32 +210,73 @@ subg-backend/
 ## 🎯 Level System
 
 ### Level Progression
-1. **Rookie** (Level 1) - 2 high-score quizzes (75%+) required
-2. **Explorer** (Level 2) - 4 high-score quizzes (75%+) required
-3. **Thinker** (Level 3) - 8 high-score quizzes (75%+) required
-4. **Strategist** (Level 4) - 16 high-score quizzes (75%+) required
-5. **Achiever** (Level 5) - 32 high-score quizzes (75%+) required
-6. **Mastermind** (Level 6) - 64 high-score quizzes (75%+) required
-7. **Champion** (Level 7) - 128 high-score quizzes (75%+) required
-8. **Prodigy** (Level 8) - 256 high-score quizzes (75%+) required
-9. **Quiz Wizard** (Level 9) - 512 high-score quizzes (75%+) required
-10. **Legend** (Level 10) - 1024 high-score quizzes (75%+) required
+1. **Starter** (Level 0) - 0 high-score quizzes (75%+) required
+2. **Rookie** (Level 1) - 2 high-score quizzes (75%+) required
+3. **Explorer** (Level 2) - 6 high-score quizzes (75%+) required
+4. **Thinker** (Level 3) - 12 high-score quizzes (75%+) required
+5. **Strategist** (Level 4) - 20 high-score quizzes (75%+) required
+6. **Achiever** (Level 5) - 30 high-score quizzes (75%+) required
+7. **Mastermind** (Level 6) - 42 high-score quizzes (75%+) required
+8. **Champion** (Level 7) - 56 high-score quizzes (75%+) required
+9. **Prodigy** (Level 8) - 72 high-score quizzes (75%+) required
+10. **Wizard** (Level 9) - 90 high-score quizzes (75%+) required
+11. **Legend** (Level 10) - 110 high-score quizzes (75%+) required
 
 **Note**: Level progression is based on high-score quizzes (75% or higher). All quiz attempts are tracked for analytics.
 
 ### Features
-- Automatic level calculation based on high-score quizzes (≥80%)
+- Automatic level calculation based on high-score quizzes (≥75%)
 - Level-specific badges and achievements
 - Progress tracking to next level
 - Subscription-based level access control
 
+## 🏆 Monthly Highscore System
+
+### Monthly Competition
+- **Duration**: Monthly (resets on last day of each month)
+- **Target**: 110 high-score quizzes (75%+ accuracy)
+- **Prize Pool**: ₹9,999 total
+- **Distribution**: Top 3 users in 3:2:1 ratio
+
+### Prize Distribution
+- **1st Place**: ₹4,999 (50% of pool)
+- **2nd Place**: ₹3,333 (33.33% of pool)
+- **3rd Place**: ₹1,667 (16.67% of pool)
+
+### Features
+- Automatic monthly reset via CRON job
+- Real-time progress tracking
+- Leaderboard updates
+- Reward distribution system
+- Progress persistence across months
+
+## 🎁 Referral System
+
+### Referral Rewards
+- **2 Referrals**: Basic Plan (₹9/month for 30 days)
+- **5 Referrals**: Premium Plan (₹49/month for 30 days)
+- **10 Referrals**: Pro Plan (₹99/month for 30 days)
+
+### Smart Upgrade Logic
+- **No Downgrades**: Users keep better existing plans
+- **Plan Hierarchy**: free < basic < premium < pro
+- **Automatic Upgrades**: Only when beneficial
+- **Badge System**: Referral Starter, Master, Legend badges
+
+### Features
+- Referral code generation
+- Referral tracking and counting
+- Automatic subscription upgrades
+- Badge awards
+- Both regular and Google OAuth support
+
 ## 💳 Subscription System
 
-### Plan Types
-- **Free**: Basic access to levels 1-3
-- **Basic**: Access to levels 1-6 - 99
-- **Premium**: Access to levels 1-9 - 499
-- **Pro**: Full access to all levels (1-10) 999
+### Plan Types & Pricing
+- **Free**: Basic access to levels 0-3 (₹0/month)
+- **Basic**: Access to levels 0-6 - ₹9/month
+- **Premium**: Access to levels 0-9 - ₹49/month
+- **Pro**: Full access to all levels (0-10) - ₹99/month
 
 ### Features
 - Automatic plan assignment
@@ -231,6 +284,7 @@ subg-backend/
 - Payment integration with Razorpay
 - Feature access control
 - Renewal notifications
+- Referral reward integration
 
 ## 🚀 Deployment
 
@@ -257,10 +311,51 @@ RAZORPAY_KEY_SECRET=your_razorpay_secret
 - `createAdmin.js` - Create admin user
 - `migrateExistingUsersToFree.js` - Migrate users to free subscription
 
-### Utility Scripts
+### Migration Scripts
+- `migrateToMonthlySystem.js` - Migrate users to new monthly system
+- `testMigration.js` - Test migration without executing
+- `backupDatabase.js` - Backup MongoDB database
+
+### Testing Scripts
+- `testReferralSystem.js` - Test referral system functionality
 - `check-database.js` - Database connection test
+
+### Utility Scripts
 - `createCustomAdmin.js` - Create custom admin user
 - `reset-admin-password.js` - Reset admin password
+
+## 🧪 Testing & Migration
+
+### Available Commands
+```bash
+# Test referral system
+npm run test:referral
+
+# Test migration (preview only)
+npm run migrate:test
+
+# Execute migration
+npm run migrate:run
+
+# Get migration help
+npm run migrate:help
+
+# Backup database
+npm run backup
+```
+
+### Migration Process
+1. **Test Migration**: Preview changes without affecting data
+2. **Backup Database**: Create backup before migration
+3. **Execute Migration**: Reset users to Level 0, clear progress
+4. **Verify Results**: Check migration success
+
+### Migration Features
+- **Fresh Start**: All users reset to Level 0
+- **Progress Reset**: Monthly progress cleared
+- **Subscription Reset**: All subscriptions reset to free
+- **Data Preservation**: Old data stored in migration details
+- **Safe Execution**: Rollback capability
 
 ## 🤝 Contributing
 
@@ -286,4 +381,6 @@ For support and questions:
 - **v1.0.0** - Initial release with basic quiz functionality
 - **v2.0.0** - Added level system and analytics
 - **v3.0.0** - Enhanced admin panel and security features
-- **v4.0.0** - Advanced analytics and subscription system 
+- **v4.0.0** - Advanced analytics and subscription system
+- **v5.0.0** - Monthly highscore system and referral rewards
+- **v6.0.0** - Smart referral system and migration tools 

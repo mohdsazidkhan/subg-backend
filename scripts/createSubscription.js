@@ -23,7 +23,7 @@ async function createSubscription(identifier, plan) {
     plan,
     status: 'active',
     startDate: new Date(),
-    endDate: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000) // 1 year validity
+    endDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000) // 1 month validity
   });
 
   await subscription.save();

@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
   // User Level System
   level: {
     currentLevel: { type: Number, default: 0 },
-    levelName: { type: String, default: 'Zero Level' },
+    levelName: { type: String, default: 'Starter' },
     quizzesPlayed: { type: Number, default: 0 },
     highScoreQuizzes: { type: Number, default: 0 }, // Quizzes with score >= 75%
     totalScore: { type: Number, default: 0 },
@@ -29,19 +29,7 @@ const userSchema = new mongoose.Schema({
     lastLevelUp: { type: Date, default: Date.now }
   },
   
-  // Level completion tracking for annual rewards
-  level6: {
-    completed: { type: Boolean, default: false },
-    completedAt: { type: Date }
-  },
-  level9: {
-    completed: { type: Boolean, default: false },
-    completedAt: { type: Date }
-  },
-  level10: {
-    completed: { type: Boolean, default: false },
-    completedAt: { type: Date }
-  },
+
   
   // Track best scores for each quiz (single attempt system)
   quizBestScores: [{
@@ -62,6 +50,18 @@ const userSchema = new mongoose.Schema({
   subscriptionExpiry: { type: Date },
   resetPasswordToken: { type: String },
   resetPasswordExpires: { type: Date },
+  
+  // Monthly progress tracking (resets every month)
+  monthlyProgress: {
+    month: { type: String, default: () => new Date().toISOString().slice(0, 7) }, // YYYY-MM
+    highScoreWins: { type: Number, default: 0 },
+    totalQuizAttempts: { type: Number, default: 0 },
+    accuracy: { type: Number, default: 0 }, // (wins / attempts) * 100
+    currentLevel: { type: Number, default: 0 },
+    rewardEligible: { type: Boolean, default: false },
+    rewardRank: { type: Number, default: null },
+
+  },
   
   // Legacy fields for backward compatibility (will be deprecated)
   lockedRewards: [{
@@ -102,40 +102,63 @@ const userSchema = new mongoose.Schema({
   totalQuizzesPlayed: {
     type: Number,
     default: 0
+  },
+  
+  // Migration tracking fields
+  migratedToMonthlySystem: {
+    type: Boolean,
+    default: false
+  },
+  migrationDate: {
+    type: Date
+  },
+  migrationDetails: {
+    oldHighScoreQuizzes: Number,
+    oldLevel: Number,
+    newLevel: Number,
+    oldClaimableRewards: Number,
+    oldSubscription: mongoose.Schema.Types.ObjectId,
+    oldSubscriptionStatus: String,
+    oldSubscriptionExpiry: Date,
+    monthlyCredit: Number,
+    migrationType: String,
+    resetReason: String
   }
   
 }, { timestamps: true });
 
-// Level configuration
+// Level configuration (monthly cumulative wins)
 userSchema.statics.LEVEL_CONFIG = {
-  0: { name: 'Zero Level', quizzesRequired: 0, description: 'Just registered - Start your journey!' },
+  0: { name: 'Starter', quizzesRequired: 0, description: 'Just registered - Start your journey!' },
   1: { name: 'Rookie', quizzesRequired: 2, description: 'Just getting started – Easy questions' },
-  2: { name: 'Explorer', quizzesRequired: 4, description: 'Discover new ideas – Slightly challenging' },
-  3: { name: 'Thinker', quizzesRequired: 8, description: 'Test your brain power – Moderate difficulty' },
-  4: { name: 'Strategist', quizzesRequired: 16, description: 'Mix of logic, memory, and speed' },
-  5: { name: 'Achiever', quizzesRequired: 32, description: 'Cross-topic challenges begin' },
-  6: { name: 'Mastermind', quizzesRequired: 64, description: 'For those who always aim to win' },
-  7: { name: 'Champion', quizzesRequired: 128, description: 'Beat the timer and the brain' },
-  8: { name: 'Prodigy', quizzesRequired: 256, description: 'Only a few reach here – high-level puzzles' },
-  9: { name: 'Quiz Wizard', quizzesRequired: 512, description: 'Complex questions across categories' },
-  10: { name: 'Legend', quizzesRequired: 1024, description: 'Final frontier — only the best reach here!' }
+  2: { name: 'Explorer', quizzesRequired: 6, description: 'Discover new ideas – Slightly challenging' },
+  3: { name: 'Thinker', quizzesRequired: 12, description: 'Test your brain power – Moderate difficulty' },
+  4: { name: 'Strategist', quizzesRequired: 20, description: 'Mix of logic, memory, and speed' },
+  5: { name: 'Achiever', quizzesRequired: 30, description: 'Cross-topic challenges begin' },
+  6: { name: 'Mastermind', quizzesRequired: 42, description: 'For those who always aim to win' },
+  7: { name: 'Champion', quizzesRequired: 56, description: 'Beat the timer and the brain' },
+  8: { name: 'Prodigy', quizzesRequired: 72, description: 'Only a few reach here – high-level puzzles' },
+  9: { name: 'Wizard', quizzesRequired: 90, description: 'Complex questions across categories' },
+  10: { name: 'Legend', quizzesRequired: 110, description: 'Final frontier — only the best reach here!' }
 };
 
 // Method to calculate and update user level
+// Update monthly level + global level fields for compatibility
 userSchema.methods.updateLevel = function() {
   const config = this.constructor.LEVEL_CONFIG;
   
-  // Ensure highScoreQuizzes is a valid number
-  if (typeof this.level.highScoreQuizzes !== 'number' || isNaN(this.level.highScoreQuizzes)) {
-    this.level.highScoreQuizzes = 0;
-  }
+  // Ensure monthlyProgress is for current month
+  this.ensureMonthlyProgress();
+
+  // Use monthly high-score wins for level calculation
+  const monthlyWins = Number(this.monthlyProgress.highScoreWins) || 0;
   
   let newLevel = this.level.currentLevel;
   let newLevelName = this.level.levelName;
   
-  // Find the highest level the user qualifies for based on HIGH-SCORE quizzes (75% or higher)
+  // Find level by current month's wins
   for (let level = 10; level >= 0; level--) {
-    if (this.level.highScoreQuizzes >= config[level].quizzesRequired) {
+    if (monthlyWins >= config[level].quizzesRequired) {
       newLevel = level;
       newLevelName = config[level].name;
       break;
@@ -149,7 +172,7 @@ userSchema.methods.updateLevel = function() {
   this.level.currentLevel = newLevel;
   this.level.levelName = newLevelName;
   
-  // Calculate progress to next level based on HIGH-SCORE quizzes
+  // Calculate progress to next level based on monthly wins
   const currentLevelQuizzes = config[newLevel].quizzesRequired;
   const nextLevelQuizzes = config[Math.min(newLevel + 1, 10)].quizzesRequired;
   
@@ -164,9 +187,9 @@ userSchema.methods.updateLevel = function() {
     // Prevent division by zero
     this.level.levelProgress = 0;
   } else {
-    // Calculate progress within the current level (how many high-score quizzes they have out of what's needed for current level)
-    const progress = Math.min(100, Math.round((this.level.highScoreQuizzes / currentLevelQuizzes) * 100));
-    // Ensure progress is a valid number
+    const span = Math.max(1, nextLevelQuizzes - currentLevelQuizzes);
+    const withinLevel = Math.max(0, monthlyWins - currentLevelQuizzes);
+    const progress = Math.min(100, Math.round((withinLevel / span) * 100));
     this.level.levelProgress = Math.max(0, isNaN(progress) ? 0 : progress);
   }
   
@@ -174,11 +197,49 @@ userSchema.methods.updateLevel = function() {
     this.level.lastLevelUp = new Date();
   }
   
+  // Sync monthly currentLevel
+  this.monthlyProgress.currentLevel = newLevel;
+
+  // Determine monthly eligibility
+  const accuracy = Number(this.monthlyProgress.accuracy) || 0;
+  const eligible = monthlyWins >= 110 && accuracy >= 75 && newLevel === 10;
+  this.monthlyProgress.rewardEligible = eligible;
+  
   return { levelIncreased, newLevel, newLevelName };
+};
+
+// Ensure monthly progress exists and is for the current month; reset if month changed
+userSchema.methods.ensureMonthlyProgress = function() {
+  const getMonthString = () => new Date().toISOString().slice(0, 7);
+  const currentMonth = getMonthString();
+  if (!this.monthlyProgress) {
+    this.monthlyProgress = {
+      month: currentMonth,
+      highScoreWins: 0,
+      totalQuizAttempts: 0,
+      accuracy: 0,
+      currentLevel: 0,
+      rewardEligible: false,
+      rewardRank: null,
+      rewardLocked: false
+    };
+    return;
+  }
+  if (this.monthlyProgress.month !== currentMonth) {
+    this.monthlyProgress.month = currentMonth;
+    this.monthlyProgress.highScoreWins = 0;
+    this.monthlyProgress.totalQuizAttempts = 0;
+    this.monthlyProgress.accuracy = 0;
+    this.monthlyProgress.currentLevel = 0;
+    this.monthlyProgress.rewardEligible = false;
+    this.monthlyProgress.rewardRank = null;
+    this.monthlyProgress.rewardLocked = false;
+  }
 };
 
 // Method to add quiz completion
 userSchema.methods.addQuizCompletion = function(score, totalQuestions) {
+  // Global legacy stats (kept for compatibility)
   this.level.quizzesPlayed += 1;
   this.level.totalScore += score;
   this.level.averageScore = Math.round(this.level.totalScore / this.level.quizzesPlayed) || 0;
@@ -186,38 +247,28 @@ userSchema.methods.addQuizCompletion = function(score, totalQuestions) {
   // Calculate score percentage
   const scorePercentage = (score / totalQuestions) * 100;
   
-  // --- FIX: Always recalculate highScoreQuizzes from quizBestScores ---
-  this.level.highScoreQuizzes = this.quizBestScores.filter(q => q.isHighScore).length || 0;
-  
-  // Update totalQuizzesPlayed to match highScoreQuizzes for rewards system
-  // This ensures rewards are based on level progression (high-score quizzes only)
-  this.totalQuizzesPlayed = this.level.highScoreQuizzes;
+  // Monthly tracking
+  this.monthlyProgress.totalQuizAttempts += 1;
+  if (scorePercentage >= 75) {
+    this.monthlyProgress.highScoreWins += 1;
+  }
+  this.monthlyProgress.accuracy = this.monthlyProgress.totalQuizAttempts > 0
+    ? Math.round((this.monthlyProgress.highScoreWins / this.monthlyProgress.totalQuizAttempts) * 100)
+    : 0;
   
   const levelUpdate = this.updateLevel();
-  
-  // Add level-specific badges
-  if (levelUpdate.levelIncreased) {
-    const levelConfig = this.constructor.LEVEL_CONFIG[levelUpdate.newLevel];
-    this.badges.push(`${levelConfig.name} Badge`);
-    
-    // Track level completion for annual rewards
-    if (levelUpdate.newLevel === 6 && !this.level6.completed) {
-      this.level6.completed = true;
-      this.level6.completedAt = new Date();
-    } else if (levelUpdate.newLevel === 9 && !this.level9.completed) {
-      this.level9.completed = true;
-      this.level9.completedAt = new Date();
-    } else if (levelUpdate.newLevel === 10 && !this.level10.completed) {
-      this.level10.completed = true;
-      this.level10.completedAt = new Date();
-    }
-  }
   
   return {
     ...levelUpdate,
     scorePercentage: Math.round(scorePercentage),
-    isHighScore: scorePercentage >= 75, // 75% threshold for high scores
-    highScoreQuizzes: this.level.highScoreQuizzes
+    isHighScore: scorePercentage >= 75,
+    monthly: {
+      highScoreWins: this.monthlyProgress.highScoreWins,
+      totalQuizAttempts: this.monthlyProgress.totalQuizAttempts,
+      accuracy: this.monthlyProgress.accuracy,
+      currentLevel: this.monthlyProgress.currentLevel,
+      rewardEligible: this.monthlyProgress.rewardEligible
+    }
   };
 };
 
@@ -225,14 +276,14 @@ userSchema.methods.addQuizCompletion = function(score, totalQuestions) {
 userSchema.methods.getLevelInfo = function() {
   try {
     const config = this.constructor.LEVEL_CONFIG;
-    const currentLevel = this.level?.currentLevel || 1;
+    const currentLevel = this.level?.currentLevel || 0;
     const nextLevel = Math.min(currentLevel + 1, 10);
     
     // Ensure level object exists
     if (!this.level) {
       this.level = {
-        currentLevel: 1,
-        levelName: 'Beginner',
+        currentLevel: 0,
+        levelName: 'Starter',
         quizzesPlayed: 0,
         highScoreQuizzes: 0,
         totalScore: 0,
@@ -245,37 +296,38 @@ userSchema.methods.getLevelInfo = function() {
     return {
       currentLevel: {
         number: currentLevel,
-        name: config[currentLevel]?.name || 'Beginner',
+        name: config[currentLevel]?.name || 'Starter',
         description: config[currentLevel]?.description || 'Starting your journey',
         quizzesRequired: config[currentLevel]?.quizzesRequired || 0
       },
       nextLevel: {
         number: nextLevel,
-        name: config[nextLevel]?.name || 'Novice',
+        name: config[nextLevel]?.name || 'Rookie',
         description: config[nextLevel]?.description || 'Getting better',
-        quizzesRequired: config[nextLevel]?.quizzesRequired || 5
+        quizzesRequired: config[nextLevel]?.quizzesRequired || 2
       },
       progress: {
         quizzesPlayed: this.level.quizzesPlayed || 0,
         highScoreQuizzes: this.level.highScoreQuizzes || 0,
-        progressPercentage: isNaN(this.level.levelProgress) ? 0 : this.level.levelProgress,
-        quizzesToNextLevel: (config[nextLevel]?.quizzesRequired || 5) - (this.level.highScoreQuizzes || 0),
-        highScoreQuizzesToNextLevel: (config[nextLevel]?.quizzesRequired || 5) - (this.level.highScoreQuizzes || 0)
+        progressPercentage: this.level.levelProgress || 0,
+        quizzesToNextLevel: config[nextLevel]?.quizzesRequired || 2,
+        highScoreQuizzesToNextLevel: config[nextLevel]?.quizzesRequired || 2
       },
       stats: {
         totalScore: this.level.totalScore || 0,
         averageScore: this.level.averageScore || 0,
-        lastLevelUp: this.level.lastLevelUp,
-        highScoreRate: (this.level.quizzesPlayed || 0) > 0 ? Math.round(((this.level.highScoreQuizzes || 0) / (this.level.quizzesPlayed || 1)) * 100) : 0
+        lastLevelUp: this.level.lastLevelUp || new Date(),
+        highScoreRate: this.level.quizzesPlayed > 0 ? Math.round((this.level.highScoreQuizzes / this.level.quizzesPlayed) * 100) : 0
       }
     };
   } catch (error) {
     console.error('Error in getLevelInfo:', error);
+    
     // Return default level info if there's an error
     return {
-      currentLevel: { number: 1, name: 'Beginner', description: 'Starting your journey', quizzesRequired: 0 },
-      nextLevel: { number: 2, name: 'Novice', description: 'Getting better', quizzesRequired: 5 },
-      progress: { quizzesPlayed: 0, highScoreQuizzes: 0, progressPercentage: 0, quizzesToNextLevel: 5, highScoreQuizzesToNextLevel: 5 },
+      currentLevel: { number: 0, name: 'Starter', description: 'Starting your journey', quizzesRequired: 0 },
+      nextLevel: { number: 1, name: 'Rookie', description: 'Begin your quiz journey', quizzesRequired: 2 },
+      progress: { quizzesPlayed: 0, highScoreQuizzes: 0, progressPercentage: 0, quizzesToNextLevel: 2, highScoreQuizzesToNextLevel: 2 },
       stats: { totalScore: 0, averageScore: 0, lastLevelUp: new Date(), highScoreRate: 0 }
     };
   }

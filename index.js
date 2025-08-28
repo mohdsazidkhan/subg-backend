@@ -8,7 +8,7 @@ const http = require('http');
 const { Server } = require('socket.io');
 const cron = require('node-cron');
 const User = require('./models/User');
-const { unlockRewards } = require('./controllers/rewardsController');
+const dayjs = require('dayjs');
 const authRoutes = require('./routes/authRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const studentRoutes = require('./routes/student');
@@ -20,7 +20,6 @@ const bankDetailRoutes = require('./routes/bankDetailRoutes');
 const winston = require('winston');
 const morgan = require('morgan');
 const searchRoutes = require('./routes/search');
-const rewardsRoutes = require('./routes/rewards');
 
 dotenv.config();
 
@@ -100,7 +99,7 @@ app.use('/api/levels', userLevelRoutes);
 app.use('/api/contacts', contactRoutes);
 app.use('/api/bank-details', bankDetailRoutes);
 app.use('/api', searchRoutes);
-app.use('/api/rewards', rewardsRoutes);
+// app.use('/api/rewards', rewardsRoutes); // deprecated: locked rewards removed in monthly system
 // Register public routes
 const publicRoutes = require('./routes/public');
 app.use('/api/public', publicRoutes);
@@ -173,18 +172,60 @@ io.on("connection", (socket) => {
   });
 });
 
-// Initialize annual rewards processing CRON job
-const initializeAnnualRewards = () => {
+// Initialize monthly reset CRON job (runs on 1st of every month at 00:00 IST)
+const initializeMonthlyReset = () => {
   try {
-    // Import annual rewards functions
-    const { scheduleAnnualRewards } = require('./scripts/annualRewards');
-    
-    // Schedule annual rewards processing
-    scheduleAnnualRewards();
-    
-    console.log('✅ Annual rewards processing CRON jobs scheduled successfully');
+    cron.schedule('0 0 1 * *', async () => {
+      try {
+        const month = dayjs().format('YYYY-MM');
+        console.log(`⏰ Monthly reset running for ${month} ...`);
+        // Reset monthly fields for all users
+        // First, process monthly rewards for top 3 eligible users
+        const topUsers = await User.find({
+          'monthlyProgress.rewardEligible': true,
+          'monthlyProgress.accuracy': { $gte: 75 }
+        })
+        .sort({ 'monthlyProgress.highScoreWins': -1, 'monthlyProgress.accuracy': -1 })
+        .limit(3);
+
+        // Process rewards for top 3 users with 3:2:1 ratio
+        const totalPrizePool = 9999; // Total prize pool ₹9,999
+        const ratios = [3, 2, 1]; // 3:2:1 ratio
+        const totalRatio = ratios.reduce((sum, ratio) => sum + ratio, 0);
+        
+        for (let i = 0; i < topUsers.length; i++) {
+          const user = topUsers[i];
+          // Calculate reward based on 3:2:1 ratio
+          const rewardAmount = Math.round((totalPrizePool * ratios[i]) / totalRatio);
+          
+          // Add to claimable rewards
+          user.claimableRewards = (user.claimableRewards || 0) + rewardAmount;
+          user.monthlyProgress.rewardRank = i + 1;
+          await user.save();
+          
+          console.log(`🏆 Monthly reward processed for ${user.name}: Rank ${i + 1}, Amount: ₹${rewardAmount}`);
+        }
+
+        // Reset monthly fields for all users
+        await User.updateMany({}, {
+          $set: {
+            'monthlyProgress.month': month,
+            'monthlyProgress.highScoreWins': 0,
+            'monthlyProgress.totalQuizAttempts': 0,
+            'monthlyProgress.accuracy': 0,
+            'monthlyProgress.currentLevel': 0,
+            'monthlyProgress.rewardEligible': false,
+            'monthlyProgress.rewardRank': null
+          }
+        });
+        console.log('✅ Monthly reset completed');
+      } catch (e) {
+        console.error('❌ Monthly reset failed:', e);
+      }
+    }, { scheduled: true, timezone: 'Asia/Kolkata' });
+    console.log('✅ Monthly reset CRON scheduled');
   } catch (error) {
-    console.error('❌ Failed to initialize annual rewards processing:', error);
+    console.error('❌ Failed to schedule monthly reset:', error);
   }
 };
 
@@ -194,8 +235,9 @@ mongoose.connect(process.env.MONGO_URI)
     server.listen(PORT, () => {
       console.log(`🚀 Server running on port ${PORT}`);
       
-      // Initialize annual rewards processing CRON job
-      initializeAnnualRewards();
+      // Initialize monthly reset CRON job
+      initializeMonthlyReset();
+      // Note: Annual rewards processing disabled for monthly system
     });
   })
   .catch(err => {

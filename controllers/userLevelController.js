@@ -347,7 +347,7 @@ exports.getHomeQuizzes = async (req, res) => {
           totalQuizzesPlayed: userLevelInfo.progress.quizzesPlayed
         } : {
           number: 0,
-          name: 'Zero Level',
+          name: 'Starter',
           description: 'Just registered - Start your journey!',
           progress: 0,
           highScoreQuizzes: 0,
@@ -654,7 +654,7 @@ function getLevelEmoji(level) {
 function calculateLevelAtTime(highScoreQuizzesPlayed) {
   const config = User.LEVEL_CONFIG;
   let level = 0;
-  let name = 'Zero Level';
+  let name = 'Starter';
 
   for (let i = 10; i >= 0; i--) {
     if (highScoreQuizzesPlayed >= config[i].quizzesRequired) {

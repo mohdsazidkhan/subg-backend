@@ -90,9 +90,9 @@ exports.createSubscriptionOrder = async (req, res) => {
 
     // Define subscription plans
     const plans = {
-      basic: { amount: 99, duration: 365, name: 'Basic Plan' },
-      premium: { amount: 499, duration: 365, name: 'Premium Plan' },
-      pro: { amount: 999, duration: 365, name: 'Pro Plan' }
+      basic: { amount: 9, duration: 30, name: 'Basic Plan' },
+      premium: { amount: 49, duration: 30, name: 'Premium Plan' },
+      pro: { amount: 99, duration: 30, name: 'Pro Plan' }
     };
 
     const plan = plans[planId];
@@ -202,9 +202,9 @@ exports.verifySubscriptionPayment = async (req, res) => {
 
     // Define subscription plans
     const plans = {
-      basic: { amount: 99, duration: 365, name: 'Basic Plan' },
-      premium: { amount: 499, duration: 365, name: 'Premium Plan' },
-      pro: { amount: 999, duration: 365, name: 'Pro Plan' }
+      basic: { amount: 9, duration: 30, name: 'Basic Plan' },
+      premium: { amount: 49, duration: 30, name: 'Premium Plan' },
+      pro: { amount: 99, duration: 30, name: 'Pro Plan' }
     };
 
     const plan = plans[planId];

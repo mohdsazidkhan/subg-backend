@@ -128,8 +128,8 @@ const createFreeSubscription = async (userId, isAdmin = false) => {
       // Admin gets lifetime subscription (expires in 2099)
       endDate.setFullYear(2099);
     } else {
-      // Regular users get 1 year free subscription
-      endDate.setDate(endDate.getDate() + 365);
+      // Regular users get 1 month free subscription
+      endDate.setMonth(endDate.getMonth() + 1); // 1 month validity
     }
 
     const subscription = await Subscription.create({
@@ -230,43 +230,61 @@ exports.register = async (req, res) => {
         let milestone = null;
         let plan = null;
         let amount = null;
-        if (referrer.referralCount === 10) {
-          milestone = 10;
+        let duration = null;
+        if (referrer.referralCount === 2) {
+          milestone = 2;
           plan = 'basic';
-          amount = 99;
-        } else if (referrer.referralCount === 50) {
-          milestone = 50;
+          amount = 9;
+          duration = 30; // 30 days
+        } else if (referrer.referralCount === 5) {
+          milestone = 5;
           plan = 'premium';
-          amount = 499;
-        } else if (referrer.referralCount === 100) {
-          milestone = 100;
+          amount = 49;
+          duration = 30; // 30 days
+        } else if (referrer.referralCount === 10) {
+          milestone = 10;
           plan = 'pro';
-          amount = 999;
+          amount = 99;
+          duration = 30; // 30 days
         }
         if (milestone && plan && amount) {
-          // Create subscription entry for referrer
-          const now = new Date();
-          const endDate = new Date(now);
-          endDate.setFullYear(endDate.getFullYear() + 1); // 1 year validity
-          const sub = await Subscription.create({
-            user: referrer._id,
-            plan,
-            status: 'active',
-            startDate: now,
-            endDate,
-            amount,
-            currency: 'INR',
-            metadata: { referralMilestone: milestone }
-          });
-          referrer.currentSubscription = sub._id;
-          referrer.subscriptionStatus = plan;
-          referrer.subscriptionExpiry = endDate;
+          // Check if user already has a better subscription before overriding
+          const currentPlan = referrer.subscriptionStatus || 'free';
+          const planHierarchy = { 'free': 0, 'basic': 1, 'premium': 2, 'pro': 3 };
+          const newPlanValue = planHierarchy[plan];
+          const currentPlanValue = planHierarchy[currentPlan];
+          
+          if (newPlanValue > currentPlanValue) {
+            // Only override if new plan is better than current plan
+            const now = new Date();
+            const endDate = new Date(now);
+            endDate.setDate(endDate.getDate() + duration); // Monthly validity
+            
+            const sub = await Subscription.create({
+              user: referrer._id,
+              plan,
+              status: 'active',
+              startDate: now,
+              endDate,
+              amount,
+              currency: 'INR',
+              metadata: { referralMilestone: milestone, referralReward: true }
+            });
+            
+            referrer.currentSubscription = sub._id;
+            referrer.subscriptionStatus = plan;
+            referrer.subscriptionExpiry = endDate;
+            
+            console.log(`🎁 Referral reward: ${plan.toUpperCase()} plan awarded for ${milestone} referrals! (Upgraded from ${currentPlan})`);
+          } else {
+            console.log(`ℹ️ Referral milestone ${milestone} reached but user already has ${currentPlan} plan (better than ${plan})`);
+          }
         }
         await referrer.save();
       }
     }
 
-    // Create free subscription for new user (1 year for regular users, lifetime for admin)
+    // Create free subscription for new user (1 month for regular users, lifetime for admin)
     const isAdmin = role === 'admin';
     const freeSubscription = await createFreeSubscription(user._id, isAdmin);
     // Update user with subscription details
@@ -275,7 +293,7 @@ exports.register = async (req, res) => {
     await user.save();
 
     // Record signup in wallet transaction
-    const subscriptionDuration = isAdmin ? 'lifetime' : '1 year';
+    const subscriptionDuration = isAdmin ? 'lifetime' : '1 month';
     const levelAccess = isAdmin ? 'all levels (0-10)' : 'levels 0-3';
     await WalletTransaction.create({
       user: user._id,
@@ -291,7 +309,7 @@ exports.register = async (req, res) => {
 
     const successMessage = isAdmin 
       ? '🎉 Admin Registered Successfully! You have lifetime free access to all levels (0-10)!'
-      : '🎉 Registered Successfully! You have 1 year free access to levels 0-3!';
+      : '🎉 Registered Successfully! You have 1 month free access to levels 0-3!';
 
     res.status(201).json({
       success: true,
@@ -483,20 +501,110 @@ exports.googleAuth = async (req, res) => {
             referrer.referralCount = (referrer.referralCount || 0) + 1;
             
             // Check for referral milestones and award badges
-            if (referrer.referralCount === 10) {
+            if (referrer.referralCount === 2) {
+              if (!referrer.badges.includes('Referral Starter')) {
+                referrer.badges.push('Referral Starter');
+                console.log('🏆 Referral Starter badge awarded to:', referrer.email);
+              }
+              
+              // Check if user should get Basic plan upgrade
+              const currentPlan = referrer.subscriptionStatus || 'free';
+              if (currentPlan === 'free') {
+                // Create Basic plan subscription for 2 referrals
+                const now = new Date();
+                const endDate = new Date(now);
+                endDate.setDate(endDate.getDate() + 30); // 30 days
+                
+                try {
+                  const sub = await Subscription.create({
+                    user: referrer._id,
+                    plan: 'basic',
+                    status: 'active',
+                    startDate: now,
+                    endDate,
+                    amount: 9,
+                    currency: 'INR',
+                    metadata: { referralMilestone: 2, referralReward: true }
+                  });
+                  
+                  referrer.currentSubscription = sub._id;
+                  referrer.subscriptionStatus = 'basic';
+                  referrer.subscriptionExpiry = endDate;
+                  
+                  console.log(`🎁 Referral reward: BASIC plan awarded for 2 referrals!`);
+                } catch (subError) {
+                  console.error('❌ Failed to create referral subscription:', subError);
+                }
+              }
+            } else if (referrer.referralCount === 5) {
               if (!referrer.badges.includes('Referral Master')) {
                 referrer.badges.push('Referral Master');
                 console.log('🏆 Referral Master badge awarded to:', referrer.email);
               }
-            } else if (referrer.referralCount === 50) {
+              
+              // Check if user should get Premium plan upgrade
+              const currentPlan = referrer.subscriptionStatus || 'free';
+              const planHierarchy = { 'free': 0, 'basic': 1, 'premium': 2, 'pro': 3 };
+              if (planHierarchy[currentPlan] < 2) { // Only upgrade if current plan is worse than premium
+                const now = new Date();
+                const endDate = new Date(now);
+                endDate.setDate(endDate.getDate() + 30); // 30 days
+                
+                try {
+                  const sub = await Subscription.create({
+                    user: referrer._id,
+                    plan: 'premium',
+                    status: 'active',
+                    startDate: now,
+                    endDate,
+                    amount: 49,
+                    currency: 'INR',
+                    metadata: { referralMilestone: 5, referralReward: true }
+                  });
+                  
+                  referrer.currentSubscription = sub._id;
+                  referrer.subscriptionStatus = 'premium';
+                  referrer.subscriptionExpiry = endDate;
+                  
+                  console.log(`🎁 Referral reward: PREMIUM plan awarded for 5 referrals!`);
+                } catch (subError) {
+                  console.error('❌ Failed to create referral subscription:', subError);
+                }
+              }
+            } else if (referrer.referralCount === 10) {
               if (!referrer.badges.includes('Referral Legend')) {
                 referrer.badges.push('Referral Legend');
                 console.log('🏆 Referral Legend badge awarded to:', referrer.email);
               }
-            } else if (referrer.referralCount === 100) {
-              if (!referrer.badges.includes('Referral God')) {
-                referrer.badges.push('Referral God');
-                console.log('🏆 Referral God badge awarded to:', referrer.email);
+              
+              // Check if user should get Pro plan upgrade
+              const currentPlan = referrer.subscriptionStatus || 'free';
+              const planHierarchy = { 'free': 0, 'basic': 1, 'premium': 2, 'pro': 3 };
+              if (planHierarchy[currentPlan] < 3) { // Only upgrade if current plan is worse than pro
+                const now = new Date();
+                const endDate = new Date(now);
+                endDate.setDate(endDate.getDate() + 30); // 30 days
+                
+                try {
+                  const sub = await Subscription.create({
+                    user: referrer._id,
+                    plan: 'pro',
+                    status: 'active',
+                    startDate: now,
+                    endDate,
+                    amount: 99,
+                    currency: 'INR',
+                    metadata: { referralMilestone: 10, referralReward: true }
+                  });
+                  
+                  referrer.currentSubscription = sub._id;
+                  referrer.subscriptionStatus = 'pro';
+                  referrer.subscriptionExpiry = endDate;
+                  
+                  console.log(`🎁 Referral reward: PRO plan awarded for 10 referrals!`);
+                } catch (subError) {
+                  console.error('❌ Failed to create referral subscription:', subError);
+                }
               }
             }
             

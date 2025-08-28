@@ -18,4 +18,10 @@ router.get('/financial', protect, admin, analyticsController.getFinancialAnalyti
 // Performance analytics
 router.get('/performance', protect, admin, analyticsController.getPerformanceAnalytics);
 
+// Monthly progress analytics
+router.get('/monthly-progress', protect, admin, analyticsController.getMonthlyProgressAnalytics);
+
+// Individual user performance analytics
+router.get('/users/:userId/performance', protect, admin, analyticsController.getUserPerformanceAnalytics);
+
 module.exports = router; 

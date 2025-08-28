@@ -5,7 +5,7 @@ const User = require('../models/User');
 const QuizAttempt = require('../models/QuizAttempt');
 const Category = require('../models/Category');
 const Subcategory = require('../models/Subcategory');
-// Rewards are now handled by the annual rewards system
+// Rewards are now handled by the monthly rewards system
 
 exports.attemptQuiz = async (req, res) => {
   try {
@@ -108,9 +108,8 @@ exports.attemptQuiz = async (req, res) => {
     
     await user.save();
 
-    // Note: Rewards are now handled by the annual rewards system
-    // Level 6 rewards are locked on August 1, Level 9 on December 1
-    // Level 10 rewards are unlocked on March 31 for Top 3 users
+    // Note: Rewards are now handled by the monthly rewards system
+    // Top 3 eligible users at Level 10 (110 wins + ≥75% accuracy) win ₹9,999 each month
 
     // Add badge for perfect score (if user has pro subscription)
     if (score === questions.length && user.subscriptionStatus === 'pro') {
@@ -141,7 +140,7 @@ exports.attemptQuiz = async (req, res) => {
         newLevel: levelUpdate.newLevel,
         newLevelName: levelUpdate.newLevelName,
         levelInfo: levelInfo,
-        highScoreQuizzes: levelUpdate.highScoreQuizzes
+        monthly: levelUpdate.monthly
       } : null,
       message: bestScoreUpdate.isNewBestScore 
         ? `Quiz completed! Score: ${scorePercentage}% (${score}/${answeredQuestions} answered correctly) - New best score! Counts towards level progression!` 

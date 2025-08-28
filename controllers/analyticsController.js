@@ -10,7 +10,7 @@ const Leaderboard = require('../models/Leaderboard');
 
 
 // Helper function to get date range
-const getDateRange = (period = 'month') => {
+const getDateRange = (period = 'current-month') => {
   const now = new Date();
   const startDate = new Date();
   
@@ -18,7 +18,12 @@ const getDateRange = (period = 'month') => {
     case 'week':
       startDate.setDate(now.getDate() - 7);
       break;
-    case 'month':
+    case 'current-month':
+      // Current month (from 1st to today)
+      startDate.setDate(1);
+      startDate.setHours(0, 0, 0, 0);
+      break;
+    case 'last-month':
       startDate.setMonth(now.getMonth() - 1);
       break;
     case 'quarter':
@@ -28,7 +33,9 @@ const getDateRange = (period = 'month') => {
       startDate.setFullYear(now.getFullYear() - 1);
       break;
     default:
-      startDate.setMonth(now.getMonth() - 1);
+      // Default to current month
+      startDate.setDate(1);
+      startDate.setHours(0, 0, 0, 0);
   }
   
   return { startDate, endDate: now };
@@ -37,7 +44,7 @@ const getDateRange = (period = 'month') => {
 // Dashboard Overview Analytics
 exports.getDashboardOverview = async (req, res) => {
   try {
-    const { period = 'month' } = req.query;
+    const { period = 'current-month' } = req.query;
     const { startDate, endDate } = getDateRange(period);
 
     const [
@@ -162,7 +169,7 @@ exports.getDashboardOverview = async (req, res) => {
 // User Analytics
 exports.getUserAnalytics = async (req, res) => {
   try {
-    const { period = 'month', level, subscription, dateRange } = req.query;
+    const { period = 'current-month', level, subscription, dateRange } = req.query;
     const { startDate, endDate } = getDateRange(period);
 
     // Build filter
@@ -318,7 +325,7 @@ exports.getUserAnalytics = async (req, res) => {
 // Quiz Analytics
 exports.getQuizAnalytics = async (req, res) => {
   try {
-    const { period = 'month', category, difficulty } = req.query;
+    const { period = 'current-month', category, difficulty } = req.query;
     const { startDate, endDate } = getDateRange(period);
 
     // Build filter
@@ -502,7 +509,7 @@ exports.getQuizAnalytics = async (req, res) => {
 // Financial Analytics
 exports.getFinancialAnalytics = async (req, res) => {
   try {
-    const { period = 'month' } = req.query;
+    const { period = 'current-month' } = req.query;
     const { startDate, endDate } = getDateRange(period);
 
     const [
@@ -620,7 +627,7 @@ exports.getFinancialAnalytics = async (req, res) => {
 // Performance Analytics
 exports.getPerformanceAnalytics = async (req, res) => {
   try {
-    const { period = 'month' } = req.query;
+    const { period = 'current-month' } = req.query;
     const { startDate, endDate } = getDateRange(period);
 
     const [
@@ -784,7 +791,7 @@ exports.getPerformanceAnalytics = async (req, res) => {
 exports.getUserPerformanceAnalytics = async (req, res) => {
   try {
     const { userId } = req.params;
-    const { period = 'month' } = req.query;
+    const { period = 'current-month' } = req.query;
     const { startDate, endDate } = getDateRange(period);
 
     const user = await User.findById(userId).select('-password');
@@ -900,6 +907,170 @@ exports.getUserPerformanceAnalytics = async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Failed to fetch user performance analytics',
+      error: error.message
+    });
+  }
+}; 
+
+// Monthly Progress Analytics
+exports.getMonthlyProgressAnalytics = async (req, res) => {
+  try {
+    const { month } = req.query;
+    const currentMonth = month || new Date().toISOString().slice(0, 7); // YYYY-MM
+
+    const [
+      monthlyStats,
+      levelDistribution,
+      topPerformers,
+      rewardEligibleUsers,
+      accuracyDistribution,
+      quizAttemptsTrend
+    ] = await Promise.all([
+      // Overall monthly statistics
+      User.aggregate([
+        { 
+          $match: { 
+            role: 'student',
+            'monthlyProgress.month': currentMonth
+          } 
+        },
+        {
+          $group: {
+            _id: null,
+            totalUsers: { $sum: 1 },
+            avgHighScoreWins: { $avg: '$monthlyProgress.highScoreWins' },
+            avgAccuracy: { $avg: '$monthlyProgress.accuracy' },
+            avgCurrentLevel: { $avg: '$monthlyProgress.currentLevel' },
+            totalQuizAttempts: { $sum: '$monthlyProgress.totalQuizAttempts' },
+            totalHighScoreWins: { $sum: '$monthlyProgress.highScoreWins' },
+            usersAtLevel10: { $sum: { $cond: [{ $eq: ['$monthlyProgress.currentLevel', 10] }, 1, 0] } },
+            eligibleForRewards: { $sum: { $cond: [{ $eq: ['$monthlyProgress.rewardEligible', true] }, 1, 0] } }
+          }
+        }
+      ]),
+      // Monthly level distribution
+      User.aggregate([
+        { 
+          $match: { 
+            role: 'student',
+            'monthlyProgress.month': currentMonth
+          } 
+        },
+        {
+          $group: {
+            _id: '$monthlyProgress.currentLevel',
+            count: { $sum: 1 },
+            avgHighScoreWins: { $avg: '$monthlyProgress.highScoreWins' },
+            avgAccuracy: { $avg: '$monthlyProgress.accuracy' },
+            avgQuizAttempts: { $avg: '$monthlyProgress.totalQuizAttempts' }
+          }
+        },
+        { $sort: { _id: 1 } }
+      ]),
+      // Top performers for the month
+      User.find({ 
+        role: 'student',
+        'monthlyProgress.month': currentMonth
+      })
+        .sort({ 'monthlyProgress.highScoreWins': -1, 'monthlyProgress.accuracy': -1 })
+        .limit(20)
+        .select('name monthlyProgress subscriptionStatus')
+        .lean(),
+      // Users eligible for monthly rewards
+      User.find({ 
+        role: 'student',
+        'monthlyProgress.month': currentMonth,
+        'monthlyProgress.rewardEligible': true
+      })
+        .sort({ 'monthlyProgress.highScoreWins': -1, 'monthlyProgress.accuracy': -1 })
+        .select('name monthlyProgress subscriptionStatus')
+        .lean(),
+      // Accuracy distribution
+      User.aggregate([
+        { 
+          $match: { 
+            role: 'student',
+            'monthlyProgress.month': currentMonth,
+            'monthlyProgress.accuracy': { $gte: 0 }
+          } 
+        },
+        {
+          $group: {
+            _id: {
+              $switch: {
+                branches: [
+                  { case: { $lt: ['$monthlyProgress.accuracy', 25] }, then: '0-25%' },
+                  { case: { $lt: ['$monthlyProgress.accuracy', 50] }, then: '25-50%' },
+                  { case: { $lt: ['$monthlyProgress.accuracy', 75] }, then: '50-75%' },
+                  { case: { $lt: ['$monthlyProgress.accuracy', 100] }, then: '75-100%' }
+                ],
+                default: '100%'
+              }
+            },
+            count: { $sum: 1 },
+            avgHighScoreWins: { $avg: '$monthlyProgress.highScoreWins' }
+          }
+        },
+        { $sort: { _id: 1 } }
+      ]),
+      // Quiz attempts trend for the month
+      QuizAttempt.aggregate([
+        { 
+          $match: { 
+            attemptedAt: { 
+              $gte: new Date(currentMonth + '-01'),
+              $lt: new Date(new Date(currentMonth + '-01').setMonth(new Date(currentMonth + '-01').getMonth() + 1))
+            }
+          } 
+        },
+        {
+          $group: {
+            _id: {
+              day: { $dayOfMonth: '$attemptedAt' },
+              hour: { $hour: '$attemptedAt' }
+            },
+            attemptCount: { $sum: 1 },
+            avgScore: { $avg: '$scorePercentage' }
+          }
+        },
+        { $sort: { '_id.day': 1, '_id.hour': 1 } }
+      ])
+    ]);
+
+    res.json({
+      success: true,
+      data: {
+        month: currentMonth,
+        overview: monthlyStats[0] || {
+          totalUsers: 0,
+          avgHighScoreWins: 0,
+          avgAccuracy: 0,
+          avgCurrentLevel: 0,
+          totalQuizAttempts: 0,
+          totalHighScoreWins: 0,
+          usersAtLevel10: 0,
+          eligibleForRewards: 0
+        },
+        levelDistribution,
+        topPerformers: topPerformers.map(user => ({
+          name: user.name,
+          subscriptionStatus: user.subscriptionStatus,
+          monthly: user.monthlyProgress
+        })),
+        rewardEligibleUsers: rewardEligibleUsers.map(user => ({
+          name: user.name,
+          subscriptionStatus: user.subscriptionStatus,
+          monthly: user.monthlyProgress
+        })),
+        accuracyDistribution,
+        quizAttemptsTrend
+      }
+    });
+  } catch (error) {
+    console.error('Error fetching monthly progress analytics:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch monthly progress analytics',
       error: error.message
     });
   }
