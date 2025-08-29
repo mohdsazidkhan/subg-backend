@@ -4986,3 +4986,29 @@
 2025-08-29T06:28:04.585Z [INFO]: 🔍 Debug - Raw monthly progress data:  
 2025-08-29T06:28:04.586Z [INFO]: 🔍 Debug - First formatted top performer:  
 2025-08-29T06:28:04.588Z [INFO]: 🔍 Debug - Sample monthly data:  
+2025-08-29T06:29:26.084Z [INFO]: 🔍 Debug - Raw top performer data:  
+2025-08-29T06:29:26.087Z [INFO]: 🔍 Debug - Raw monthly progress data:  
+2025-08-29T06:29:26.087Z [INFO]: 🔍 Debug - First formatted top performer:  
+2025-08-29T06:29:26.088Z [INFO]: 🔍 Debug - Sample monthly data:  
+2025-08-29T06:29:26.144Z [INFO]: 🔍 Debug - Raw top performer data:  
+2025-08-29T06:29:26.145Z [INFO]: 🔍 Debug - Raw monthly progress data:  
+2025-08-29T06:29:26.145Z [INFO]: 🔍 Debug - First formatted top performer:  
+2025-08-29T06:29:26.146Z [INFO]: 🔍 Debug - Sample monthly data:  
+2025-08-29T06:34:06.621Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-29T06:34:06.630Z [INFO]: 🚀 Server running on port 5000 
+2025-08-29T06:34:06.721Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-29T06:34:17.011Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-29T06:34:17.022Z [INFO]: 🚀 Server running on port 5000 
+2025-08-29T06:34:17.087Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-29T06:34:31.209Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-29T06:34:31.221Z [INFO]: 🚀 Server running on port 5000 
+2025-08-29T06:34:31.280Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-29T06:36:02.575Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-29T06:36:02.584Z [INFO]: 🚀 Server running on port 5000 
+2025-08-29T06:36:02.641Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-29T06:38:51.679Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-29T06:38:51.691Z [INFO]: 🚀 Server running on port 5000 
+2025-08-29T06:38:51.775Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-29T06:39:05.718Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-29T06:39:05.730Z [INFO]: 🚀 Server running on port 5000 
+2025-08-29T06:39:05.808Z [INFO]: ✅ Monthly reset CRON scheduled 

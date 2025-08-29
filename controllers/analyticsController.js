@@ -663,15 +663,13 @@ exports.getPerformanceAnalytics = async (req, res) => {
         { $sort: { totalEntries: -1 } },
         { $limit: 10 }
       ]),
-      // Use monthly progress for current month top performers
+      // Get top performers based on current level data (fallback to monthly progress if available)
       User.find({ 
-        role: 'student',
-        'monthlyProgress.month': currentMonth,
-        'monthlyProgress.rewardEligible': true
+        role: 'student'
       })
-        .sort({ 'monthlyProgress.highScoreWins': -1, 'monthlyProgress.accuracy': -1 })
+        .sort({ 'level.highScoreQuizzes': -1, 'level.averageScore': -1, 'level.quizzesPlayed': -1 })
         .limit(20)
-        .select('name email monthlyProgress subscriptionStatus')
+        .select('name email level monthlyProgress subscriptionStatus')
         .lean(),
       QuizAttempt.aggregate([
         { $match: { attemptedAt: { $gte: startDate, $lte: endDate } } },
@@ -693,21 +691,20 @@ exports.getPerformanceAnalytics = async (req, res) => {
           }
         }
       ]),
-      // Use monthly progress for level performance
+      // Use level data for level performance
       User.aggregate([
         { 
           $match: { 
-            role: 'student',
-            'monthlyProgress.month': currentMonth
+            role: 'student'
           } 
         },
         {
           $group: {
-            _id: '$monthlyProgress.currentLevel',
+            _id: '$level.currentLevel',
             userCount: { $sum: 1 },
-            avgScore: { $avg: '$monthlyProgress.accuracy' },
-            avgQuizzes: { $avg: '$monthlyProgress.totalQuizAttempts' },
-            avgHighScores: { $avg: '$monthlyProgress.highScoreWins' }
+            avgScore: { $avg: '$level.averageScore' },
+            avgQuizzes: { $avg: '$level.quizzesPlayed' },
+            avgHighScores: { $avg: '$level.highScoreQuizzes' }
           }
         },
         { $sort: { _id: 1 } }
@@ -762,20 +759,21 @@ exports.getPerformanceAnalytics = async (req, res) => {
     console.log('🔍 Debug - Raw top performer data:', JSON.stringify(topPerformers[0], null, 2));
     console.log('🔍 Debug - Raw monthly progress data:', JSON.stringify(topPerformers[0]?.monthlyProgress, null, 2));
 
-    // Format top performers to use monthly progress data
+    // Format top performers to use level data as primary, monthly progress as fallback
     const formattedTopPerformers = topPerformers.map(user => {
       const monthlyData = user.monthlyProgress || {};
+      const levelData = user.level || {};
       
       return {
         ...user,
         level: {
-          currentLevel: monthlyData.currentLevel || 0,
-          levelName: monthlyData.currentLevel === 10 ? 'Legend' : getLevelName(monthlyData.currentLevel || 0),
-          highScoreQuizzes: monthlyData.highScoreWins || 0,
-          quizzesPlayed: monthlyData.totalQuizAttempts || 0,
-          accuracy: monthlyData.accuracy || 0,
-          averageScore: monthlyData.accuracy || 0,
-          totalScore: monthlyData.totalScore || 0
+          currentLevel: levelData.currentLevel || monthlyData.currentLevel || 0,
+          levelName: levelData.currentLevel === 10 ? 'Legend' : getLevelName(levelData.currentLevel || monthlyData.currentLevel || 0),
+          highScoreQuizzes: levelData.highScoreQuizzes || monthlyData.highScoreWins || 0,
+          quizzesPlayed: levelData.quizzesPlayed || monthlyData.totalQuizAttempts || 0,
+          accuracy: levelData.averageScore || monthlyData.accuracy || 0,
+          averageScore: levelData.averageScore || monthlyData.accuracy || 0,
+          totalScore: levelData.totalScore || monthlyData.totalScore || 0
         }
       };
     });
