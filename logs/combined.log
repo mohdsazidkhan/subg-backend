@@ -5015,3 +5015,148 @@
 2025-08-29T07:08:22.424Z [INFO]: ✅ Database Connected to MongoDB 
 2025-08-29T07:08:22.435Z [INFO]: 🚀 Server running on port 5000 
 2025-08-29T07:08:22.500Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-29T12:27:50.500Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-29T12:27:50.509Z [INFO]: 🚀 Server running on port 5000 
+2025-08-29T12:27:50.653Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-29T12:32:41.682Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-29T12:32:41.691Z [INFO]: 🚀 Server running on port 5000 
+2025-08-29T12:32:41.765Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-29T12:43:57.696Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-29T12:43:57.706Z [INFO]: 🚀 Server running on port 5000 
+2025-08-29T12:43:57.808Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-29T12:44:02.103Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-29T12:44:02.114Z [INFO]: 🚀 Server running on port 5000 
+2025-08-29T12:44:02.183Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-29T12:44:10.008Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-29T12:44:10.021Z [INFO]: 🚀 Server running on port 5000 
+2025-08-29T12:44:10.094Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-29T12:44:21.286Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-29T12:44:21.296Z [INFO]: 🚀 Server running on port 5000 
+2025-08-29T12:44:21.368Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-29T12:44:59.680Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-29T12:44:59.689Z [INFO]: 🚀 Server running on port 5000 
+2025-08-29T12:44:59.754Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-29T13:34:07.831Z [INFO]: 🔍 Debug - Raw top performer data: {
+  "_id": "686a6fa36580063952214011",
+  "name": "Mohd Sajid Khan",
+  "email": "sajidpahat786@gmail.com",
+  "level": {
+    "currentLevel": 1,
+    "levelName": "Rookie",
+    "quizzesPlayed": 4,
+    "highScoreQuizzes": 0,
+    "totalScore": 20,
+    "averageScore": 5,
+    "levelProgress": 50,
+    "lastLevelUp": "2025-08-29T12:30:29.195Z"
+  },
+  "subscriptionStatus": "free",
+  "monthlyProgress": {
+    "accuracy": 100,
+    "currentLevel": 1,
+    "highScoreWins": 4,
+    "month": "2025-08",
+    "rewardEligible": false,
+    "rewardLocked": false,
+    "totalQuizAttempts": 4,
+    "rewardRank": null
+  }
+} 
+2025-08-29T13:34:07.835Z [INFO]: 🔍 Debug - Raw monthly progress data: {
+  "accuracy": 100,
+  "currentLevel": 1,
+  "highScoreWins": 4,
+  "month": "2025-08",
+  "rewardEligible": false,
+  "rewardLocked": false,
+  "totalQuizAttempts": 4,
+  "rewardRank": null
+} 
+2025-08-29T13:34:07.836Z [INFO]: 🔍 Debug - First formatted top performer: {
+  "_id": "686a6fa36580063952214011",
+  "name": "Mohd Sajid Khan",
+  "email": "sajidpahat786@gmail.com",
+  "level": {
+    "currentLevel": 1,
+    "levelName": "Rookie",
+    "highScoreQuizzes": 4,
+    "quizzesPlayed": 4,
+    "accuracy": 5,
+    "averageScore": 5,
+    "totalScore": 20
+  },
+  "subscriptionStatus": "free",
+  "monthlyProgress": {
+    "accuracy": 100,
+    "currentLevel": 1,
+    "highScoreWins": 4,
+    "month": "2025-08",
+    "rewardEligible": false,
+    "rewardLocked": false,
+    "totalQuizAttempts": 4,
+    "rewardRank": null
+  }
+} 
+2025-08-29T13:34:07.836Z [INFO]: 🔍 Debug - Sample monthly data: [object Object] 
+2025-08-29T13:34:07.883Z [INFO]: 🔍 Debug - Raw top performer data: {
+  "_id": "686a6fa36580063952214011",
+  "name": "Mohd Sajid Khan",
+  "email": "sajidpahat786@gmail.com",
+  "level": {
+    "currentLevel": 1,
+    "levelName": "Rookie",
+    "quizzesPlayed": 4,
+    "highScoreQuizzes": 0,
+    "totalScore": 20,
+    "averageScore": 5,
+    "levelProgress": 50,
+    "lastLevelUp": "2025-08-29T12:30:29.195Z"
+  },
+  "subscriptionStatus": "free",
+  "monthlyProgress": {
+    "accuracy": 100,
+    "currentLevel": 1,
+    "highScoreWins": 4,
+    "month": "2025-08",
+    "rewardEligible": false,
+    "rewardLocked": false,
+    "totalQuizAttempts": 4,
+    "rewardRank": null
+  }
+} 
+2025-08-29T13:34:07.885Z [INFO]: 🔍 Debug - Raw monthly progress data: {
+  "accuracy": 100,
+  "currentLevel": 1,
+  "highScoreWins": 4,
+  "month": "2025-08",
+  "rewardEligible": false,
+  "rewardLocked": false,
+  "totalQuizAttempts": 4,
+  "rewardRank": null
+} 
+2025-08-29T13:34:07.886Z [INFO]: 🔍 Debug - First formatted top performer: {
+  "_id": "686a6fa36580063952214011",
+  "name": "Mohd Sajid Khan",
+  "email": "sajidpahat786@gmail.com",
+  "level": {
+    "currentLevel": 1,
+    "levelName": "Rookie",
+    "highScoreQuizzes": 4,
+    "quizzesPlayed": 4,
+    "accuracy": 5,
+    "averageScore": 5,
+    "totalScore": 20
+  },
+  "subscriptionStatus": "free",
+  "monthlyProgress": {
+    "accuracy": 100,
+    "currentLevel": 1,
+    "highScoreWins": 4,
+    "month": "2025-08",
+    "rewardEligible": false,
+    "rewardLocked": false,
+    "totalQuizAttempts": 4,
+    "rewardRank": null
+  }
+} 
+2025-08-29T13:34:07.886Z [INFO]: 🔍 Debug - Sample monthly data: [object Object] 
