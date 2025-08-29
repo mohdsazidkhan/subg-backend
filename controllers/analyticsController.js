@@ -8,6 +8,15 @@ const Subscription = require('../models/Subscription');
 const PaymentOrder = require('../models/PaymentOrder');
 const Leaderboard = require('../models/Leaderboard');
 
+// Helper function to get level names
+const getLevelName = (level) => {
+  const levelNames = {
+    1: 'Rookie', 2: 'Explorer', 3: 'Thinker', 4: 'Strategist', 5: 'Achiever',
+    6: 'Mastermind', 7: 'Champion', 8: 'Prodigy', 9: 'Wizard', 10: 'Legend'
+  };
+  return levelNames[level] || 'Unknown';
+};
+
 
 // Helper function to get date range
 const getDateRange = (period = 'current-month') => {
@@ -629,6 +638,9 @@ exports.getPerformanceAnalytics = async (req, res) => {
   try {
     const { period = 'current-month' } = req.query;
     const { startDate, endDate } = getDateRange(period);
+    
+    // Get current month for monthly progress data
+    const currentMonth = new Date().toISOString().slice(0, 7); // YYYY-MM format
 
     const [
       leaderboardStats,
@@ -651,10 +663,15 @@ exports.getPerformanceAnalytics = async (req, res) => {
         { $sort: { totalEntries: -1 } },
         { $limit: 10 }
       ]),
-      User.find({ role: 'student' })
-        .sort({ 'level.highScoreQuizzes': -1, 'level.averageScore': -1 })
+      // Use monthly progress for current month top performers
+      User.find({ 
+        role: 'student',
+        'monthlyProgress.month': currentMonth,
+        'monthlyProgress.rewardEligible': true
+      })
+        .sort({ 'monthlyProgress.highScoreWins': -1, 'monthlyProgress.accuracy': -1 })
         .limit(20)
-        .select('name email level badges subscriptionStatus')
+        .select('name email monthlyProgress subscriptionStatus')
         .lean(),
       QuizAttempt.aggregate([
         { $match: { attemptedAt: { $gte: startDate, $lte: endDate } } },
@@ -676,15 +693,21 @@ exports.getPerformanceAnalytics = async (req, res) => {
           }
         }
       ]),
+      // Use monthly progress for level performance
       User.aggregate([
-        { $match: { role: 'student' } },
+        { 
+          $match: { 
+            role: 'student',
+            'monthlyProgress.month': currentMonth
+          } 
+        },
         {
           $group: {
-            _id: '$level.currentLevel',
+            _id: '$monthlyProgress.currentLevel',
             userCount: { $sum: 1 },
-            avgScore: { $avg: '$level.averageScore' },
-            avgQuizzes: { $avg: '$level.quizzesPlayed' },
-            avgHighScores: { $avg: '$level.highScoreQuizzes' }
+            avgScore: { $avg: '$monthlyProgress.accuracy' },
+            avgQuizzes: { $avg: '$monthlyProgress.totalQuizAttempts' },
+            avgHighScores: { $avg: '$monthlyProgress.highScoreWins' }
           }
         },
         { $sort: { _id: 1 } }
@@ -737,33 +760,28 @@ exports.getPerformanceAnalytics = async (req, res) => {
     ]);
 
     console.log('🔍 Debug - Raw top performer data:', JSON.stringify(topPerformers[0], null, 2));
-    console.log('🔍 Debug - Raw user level data:', JSON.stringify(topPerformers[0]?.level, null, 2));
+    console.log('🔍 Debug - Raw monthly progress data:', JSON.stringify(topPerformers[0]?.monthlyProgress, null, 2));
 
-    // Calculate accuracy for first user to debug
-    const firstUser = topPerformers[0];
-    const firstUserHighScore = firstUser?.level?.highScoreQuizzes || 0;
-    const firstUserQuizzes = firstUser?.level?.quizzesPlayed || 0;
-    const firstUserAccuracy = firstUserQuizzes > 0 ? Math.round((firstUserHighScore / firstUserQuizzes) * 100) : 0;
-    console.log(`🔍 Debug - First user accuracy calc: ${firstUserHighScore} / ${firstUserQuizzes} * 100 = ${firstUserAccuracy}%`);
-
-    // Format top performers to include accuracy
+    // Format top performers to use monthly progress data
     const formattedTopPerformers = topPerformers.map(user => {
-      const highScoreQuizzes = user.level?.highScoreQuizzes || 0;
-      const quizzesPlayed = user.level?.quizzesPlayed || 0;
-      const accuracy = quizzesPlayed > 0 ? Math.round((highScoreQuizzes / quizzesPlayed) * 100) : 0;
+      const monthlyData = user.monthlyProgress || {};
       
       return {
         ...user,
         level: {
-          ...user.level,
-          accuracy: accuracy
+          currentLevel: monthlyData.currentLevel || 0,
+          levelName: monthlyData.currentLevel === 10 ? 'Legend' : getLevelName(monthlyData.currentLevel || 0),
+          highScoreQuizzes: monthlyData.highScoreWins || 0,
+          quizzesPlayed: monthlyData.totalQuizAttempts || 0,
+          accuracy: monthlyData.accuracy || 0,
+          averageScore: monthlyData.accuracy || 0,
+          totalScore: monthlyData.totalScore || 0
         }
       };
     });
 
     console.log('🔍 Debug - First formatted top performer:', JSON.stringify(formattedTopPerformers[0], null, 2));
-    console.log('🔍 Debug - Sample accuracy calculation:', formattedTopPerformers[0]?.level?.accuracy);
-    console.log('🔍 Debug - Formatted user level data:', JSON.stringify(formattedTopPerformers[0]?.level, null, 2));
+    console.log('🔍 Debug - Sample monthly data:', formattedTopPerformers[0]?.level);
 
     res.json({
       success: true,
