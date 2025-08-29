@@ -12,4 +12,7 @@ router.get('/top-performers', protect, publicController.getTopPerformers);
 // GET /api/public/monthly-leaderboard - Monthly top eligible users (no auth required)
 router.get('/monthly-leaderboard', publicController.getMonthlyLeaderboard);
 
+// GET /api/public/top-performers-monthly - Top 10 performers for current month (no auth required)
+router.get('/top-performers-monthly', publicController.getTopPerformersMonthly);
+
 module.exports = router;
