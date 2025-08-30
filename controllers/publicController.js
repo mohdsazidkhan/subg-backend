@@ -1,4 +1,8 @@
 const Category = require('../models/Category');
+const Subcategory = require('../models/Subcategory');
+const Quiz = require('../models/Quiz');
+const Question = require('../models/Question');
+const QuizAttempt = require('../models/QuizAttempt');
 const User = require('../models/User');
 const dayjs = require('dayjs');
 
@@ -368,5 +372,145 @@ exports.getTopPerformersMonthly = async (req, res) => {
       message: 'Failed to fetch top performers monthly', 
       error: error.message 
     });
+  }
+};
+
+// GET /api/public/landing-stats - Public platform statistics for landing page
+exports.getLandingStats = async (req, res) => {
+  try {
+    const [
+      totalUsers,
+      totalQuizzes,
+      totalQuizAttempts,
+      totalCategories,
+      totalSubcategories,
+      totalQuestions
+    ] = await Promise.all([
+      User.countDocuments({ role: 'student' }),
+      Quiz.countDocuments({ isActive: true }),
+      QuizAttempt.countDocuments(),
+      Category.countDocuments(),
+      Subcategory.countDocuments(),
+      Question.countDocuments() // Remove isActive filter since Question model doesn't have it
+    ]);
+    
+    const stats = {
+      activeStudents: totalUsers,
+      quizCategories: totalCategories,
+      subcategories: totalSubcategories,
+      totalQuizzes: totalQuizzes,
+      totalQuestions: totalQuestions,
+      quizzesTaken: totalQuizAttempts,
+      monthlyPrizePool: '₹9,999'
+    };
+
+    res.json({ success: true, data: stats });
+  } catch (error) {
+    console.error('Error fetching landing stats:', error);
+    res.status(500).json({ success: false, message: 'Failed to fetch landing stats' });
+  }
+};
+
+// GET /api/public/levels - Public levels data for landing page
+exports.getPublicLevels = async (req, res) => {
+  try {
+    const levels = [
+      { _id: '1', name: 'Starter', levelNumber: 0, description: 'Begin your learning journey', quizCount: 25 },
+      { _id: '2', name: 'Rookie', levelNumber: 1, description: 'Build your foundation', quizCount: 30 },
+      { _id: '3', name: 'Explorer', levelNumber: 2, description: 'Discover new knowledge', quizCount: 35 },
+      { _id: '4', name: 'Thinker', levelNumber: 3, description: 'Develop critical thinking', quizCount: 40 },
+      { _id: '5', name: 'Strategist', levelNumber: 4, description: 'Master strategic learning', quizCount: 45 },
+      { _id: '6', name: 'Achiever', levelNumber: 5, description: 'Achieve excellence', quizCount: 50 },
+      { _id: '7', name: 'Mastermind', levelNumber: 6, description: 'Become a master', quizCount: 55 },
+      { _id: '8', name: 'Champion', levelNumber: 7, description: 'Champion level', quizCount: 60 },
+      { _id: '9', name: 'Prodigy', levelNumber: 8, description: 'Prodigy level', quizCount: 65 },
+      { _id: '10', name: 'Wizard', levelNumber: 9, description: 'Wizard level', quizCount: 70 },
+      { _id: '11', name: 'Legend', levelNumber: 10, description: 'Legendary status', quizCount: 75 }
+    ];
+
+    res.json({ success: true, data: levels });
+  } catch (error) {
+    console.error('Error fetching public levels:', error);
+    res.status(500).json({ success: false, message: 'Failed to fetch public levels' });
+  }
+};
+
+// GET /api/public/categories-enhanced - Enhanced categories with quiz counts
+exports.getCategoriesEnhanced = async (req, res) => {
+  try {
+    const categories = await Category.find({});
+    
+    // Add mock quiz counts for now (can be enhanced later with real data)
+    const enhancedCategories = categories.map(category => ({
+      ...category.toObject(),
+      quizCount: Math.floor(Math.random() * 50) + 20 // Random quiz count between 20-70
+    }));
+
+    res.json({ success: true, data: enhancedCategories });
+  } catch (error) {
+    console.error('Error fetching enhanced categories:', error);
+    res.status(500).json({ success: false, message: 'Failed to fetch enhanced categories' });
+  }
+};
+
+// GET /api/public/landing-top-performers - Top performers for landing page
+exports.getLandingTopPerformers = async (req, res) => {
+  try {
+    const { limit = 10 } = req.query;
+    const month = dayjs().format('YYYY-MM'); // Current month
+    
+    // Get all users with monthly progress for current month
+    const allUsers = await User.find({ 
+      role: 'student',
+      'monthlyProgress.month': month
+    })
+      .select('_id name monthlyProgress createdAt')
+      .lean();
+
+    // Ensure all users have monthly progress data, set defaults if missing
+    allUsers.forEach(user => {
+      if (!user.monthlyProgress) {
+        user.monthlyProgress = {
+          month: month,
+          highScoreWins: 0,
+          totalQuizAttempts: 0,
+          accuracy: 0,
+          currentLevel: 0,
+          rewardEligible: false
+        };
+      }
+    });
+
+    // Sort by high score wins and accuracy
+    allUsers.sort((a, b) => {
+      const aHighScore = a.monthlyProgress?.highScoreWins || 0;
+      const bHighScore = b.monthlyProgress?.highScoreWins || 0;
+      const aAccuracy = a.monthlyProgress?.accuracy || 0;
+      const bAccuracy = b.monthlyProgress?.accuracy || 0;
+      
+      if (aHighScore !== bHighScore) {
+        return bHighScore - aHighScore;
+      }
+      return bAccuracy - aAccuracy;
+    });
+
+    // Get top performers and format for landing page with all required fields
+    const topPerformers = allUsers.slice(0, parseInt(limit)).map((user, index) => ({
+      _id: user._id,
+      name: user.name || 'Anonymous',
+      userLevel: user.monthlyProgress?.currentLevel || 0,
+      totalQuizzes: user.monthlyProgress?.totalQuizAttempts || 0,
+      highQuizzes: user.monthlyProgress?.highScoreWins || 0,
+      accuracy: user.monthlyProgress?.accuracy || 0,
+      // Keep existing fields for backward compatibility
+      level: user.monthlyProgress?.currentLevel || 0,
+      score: user.monthlyProgress?.highScoreWins || 0,
+      quizCount: user.monthlyProgress?.totalQuizAttempts || 0
+    }));
+
+    res.json({ success: true, data: topPerformers });
+  } catch (error) {
+    console.error('Error fetching landing top performers:', error);
+    res.status(500).json({ success: false, message: 'Failed to fetch landing top performers' });
   }
 };

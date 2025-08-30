@@ -5160,3 +5160,448 @@
   }
 } 
 2025-08-29T13:34:07.886Z [INFO]: 🔍 Debug - Sample monthly data: [object Object] 
+2025-08-30T05:11:07.543Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T05:11:07.555Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T05:11:07.702Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T07:35:10.962Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T07:35:10.971Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T07:35:11.038Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T07:35:22.777Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T07:35:22.784Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T07:35:22.834Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T08:05:47.398Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T08:05:47.410Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T08:05:47.514Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T08:50:16.158Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T08:50:16.169Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T08:50:16.219Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T08:53:56.573Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T08:58:41.794Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T08:58:41.804Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T08:58:41.859Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T09:06:20.067Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T09:06:20.079Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T09:06:20.156Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T09:23:51.958Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T09:23:51.969Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T09:23:52.072Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T09:27:17.742Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T09:27:17.752Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T09:27:17.814Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T09:27:45.357Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T09:27:45.364Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T09:27:45.426Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T09:28:36.258Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T09:28:36.266Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T09:28:36.326Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T09:29:25.784Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T09:29:25.795Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T09:29:25.853Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T09:31:45.072Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T09:31:45.080Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T09:31:45.140Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T09:33:03.409Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T09:33:03.421Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T09:33:03.491Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T09:33:24.613Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T09:33:24.623Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T09:33:24.684Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T09:34:21.412Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T09:34:21.421Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T09:34:21.489Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T09:35:04.418Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T09:35:04.429Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T09:35:04.491Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T09:35:43.925Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T09:35:43.935Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T09:35:43.995Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T09:35:59.250Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T09:35:59.259Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T09:35:59.323Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T09:36:15.567Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T09:36:15.575Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T09:36:15.639Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T10:00:42.771Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T10:00:42.793Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T10:00:42.973Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T10:01:09.299Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T10:01:09.311Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T10:01:09.380Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T10:01:45.319Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T10:01:45.340Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T10:01:45.473Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T10:02:14.173Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T10:02:14.182Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T10:02:14.256Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T10:02:21.682Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T10:02:21.691Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T10:02:21.766Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T10:14:56.143Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T10:14:56.153Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T10:14:56.219Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T10:26:50.399Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T10:26:50.407Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T10:26:50.462Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T10:34:08.360Z [INFO]: 🔍 Debug - Raw top performer data: {
+  "_id": "68ac6a3af77d51f2d1b50615",
+  "name": "Ariff",
+  "email": "aiariffai@gmail.com",
+  "level": {
+    "currentLevel": 2,
+    "levelName": "Explorer",
+    "quizzesPlayed": 8,
+    "highScoreQuizzes": 0,
+    "totalScore": 39,
+    "averageScore": 5,
+    "levelProgress": 33,
+    "lastLevelUp": "2025-08-30T08:46:13.824Z"
+  },
+  "subscriptionStatus": "free",
+  "monthlyProgress": {
+    "accuracy": 100,
+    "currentLevel": 2,
+    "highScoreWins": 8,
+    "month": "2025-08",
+    "rewardEligible": false,
+    "rewardRank": null,
+    "totalQuizAttempts": 8
+  }
+} 
+2025-08-30T10:34:08.361Z [INFO]: 🔍 Debug - Raw monthly progress data: {
+  "accuracy": 100,
+  "currentLevel": 2,
+  "highScoreWins": 8,
+  "month": "2025-08",
+  "rewardEligible": false,
+  "rewardRank": null,
+  "totalQuizAttempts": 8
+} 
+2025-08-30T10:34:08.362Z [INFO]: 🔍 Debug - First formatted top performer: {
+  "_id": "68ac6a3af77d51f2d1b50615",
+  "name": "Ariff",
+  "email": "aiariffai@gmail.com",
+  "level": {
+    "currentLevel": 2,
+    "levelName": "Explorer",
+    "highScoreQuizzes": 8,
+    "quizzesPlayed": 8,
+    "accuracy": 5,
+    "averageScore": 5,
+    "totalScore": 39
+  },
+  "subscriptionStatus": "free",
+  "monthlyProgress": {
+    "accuracy": 100,
+    "currentLevel": 2,
+    "highScoreWins": 8,
+    "month": "2025-08",
+    "rewardEligible": false,
+    "rewardRank": null,
+    "totalQuizAttempts": 8
+  }
+} 
+2025-08-30T10:34:08.363Z [INFO]: 🔍 Debug - Sample monthly data: [object Object] 
+2025-08-30T10:34:08.509Z [INFO]: 🔍 Debug - Raw top performer data: {
+  "_id": "68ac6a3af77d51f2d1b50615",
+  "name": "Ariff",
+  "email": "aiariffai@gmail.com",
+  "level": {
+    "currentLevel": 2,
+    "levelName": "Explorer",
+    "quizzesPlayed": 8,
+    "highScoreQuizzes": 0,
+    "totalScore": 39,
+    "averageScore": 5,
+    "levelProgress": 33,
+    "lastLevelUp": "2025-08-30T08:46:13.824Z"
+  },
+  "subscriptionStatus": "free",
+  "monthlyProgress": {
+    "accuracy": 100,
+    "currentLevel": 2,
+    "highScoreWins": 8,
+    "month": "2025-08",
+    "rewardEligible": false,
+    "rewardRank": null,
+    "totalQuizAttempts": 8
+  }
+} 
+2025-08-30T10:34:08.509Z [INFO]: 🔍 Debug - Raw monthly progress data: {
+  "accuracy": 100,
+  "currentLevel": 2,
+  "highScoreWins": 8,
+  "month": "2025-08",
+  "rewardEligible": false,
+  "rewardRank": null,
+  "totalQuizAttempts": 8
+} 
+2025-08-30T10:34:08.511Z [INFO]: 🔍 Debug - First formatted top performer: {
+  "_id": "68ac6a3af77d51f2d1b50615",
+  "name": "Ariff",
+  "email": "aiariffai@gmail.com",
+  "level": {
+    "currentLevel": 2,
+    "levelName": "Explorer",
+    "highScoreQuizzes": 8,
+    "quizzesPlayed": 8,
+    "accuracy": 5,
+    "averageScore": 5,
+    "totalScore": 39
+  },
+  "subscriptionStatus": "free",
+  "monthlyProgress": {
+    "accuracy": 100,
+    "currentLevel": 2,
+    "highScoreWins": 8,
+    "month": "2025-08",
+    "rewardEligible": false,
+    "rewardRank": null,
+    "totalQuizAttempts": 8
+  }
+} 
+2025-08-30T10:34:08.511Z [INFO]: 🔍 Debug - Sample monthly data: [object Object] 
+2025-08-30T10:34:57.669Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T10:34:57.681Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T10:34:57.744Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T10:35:16.317Z [INFO]: 🔍 Debug - Raw top performer data: {
+  "_id": "68ac6a3af77d51f2d1b50615",
+  "name": "Ariff",
+  "email": "aiariffai@gmail.com",
+  "level": {
+    "currentLevel": 2,
+    "levelName": "Explorer",
+    "quizzesPlayed": 8,
+    "highScoreQuizzes": 0,
+    "totalScore": 39,
+    "averageScore": 5,
+    "levelProgress": 33,
+    "lastLevelUp": "2025-08-30T08:46:13.824Z"
+  },
+  "subscriptionStatus": "free",
+  "monthlyProgress": {
+    "accuracy": 100,
+    "currentLevel": 2,
+    "highScoreWins": 8,
+    "month": "2025-08",
+    "rewardEligible": false,
+    "rewardRank": null,
+    "totalQuizAttempts": 8
+  }
+} 
+2025-08-30T10:35:16.318Z [INFO]: 🔍 Debug - Raw monthly progress data: {
+  "accuracy": 100,
+  "currentLevel": 2,
+  "highScoreWins": 8,
+  "month": "2025-08",
+  "rewardEligible": false,
+  "rewardRank": null,
+  "totalQuizAttempts": 8
+} 
+2025-08-30T10:35:16.320Z [INFO]: 🔍 Debug - First formatted top performer: {
+  "_id": "68ac6a3af77d51f2d1b50615",
+  "name": "Ariff",
+  "email": "aiariffai@gmail.com",
+  "level": {
+    "currentLevel": 2,
+    "levelName": "Explorer",
+    "highScoreQuizzes": 8,
+    "quizzesPlayed": 8,
+    "accuracy": 5,
+    "averageScore": 5,
+    "totalScore": 39
+  },
+  "subscriptionStatus": "free",
+  "monthlyProgress": {
+    "accuracy": 100,
+    "currentLevel": 2,
+    "highScoreWins": 8,
+    "month": "2025-08",
+    "rewardEligible": false,
+    "rewardRank": null,
+    "totalQuizAttempts": 8
+  }
+} 
+2025-08-30T10:35:16.321Z [INFO]: 🔍 Debug - Sample monthly data: [object Object] 
+2025-08-30T10:35:16.439Z [INFO]: 🔍 Debug - Raw top performer data: {
+  "_id": "68ac6a3af77d51f2d1b50615",
+  "name": "Ariff",
+  "email": "aiariffai@gmail.com",
+  "level": {
+    "currentLevel": 2,
+    "levelName": "Explorer",
+    "quizzesPlayed": 8,
+    "highScoreQuizzes": 0,
+    "totalScore": 39,
+    "averageScore": 5,
+    "levelProgress": 33,
+    "lastLevelUp": "2025-08-30T08:46:13.824Z"
+  },
+  "subscriptionStatus": "free",
+  "monthlyProgress": {
+    "accuracy": 100,
+    "currentLevel": 2,
+    "highScoreWins": 8,
+    "month": "2025-08",
+    "rewardEligible": false,
+    "rewardRank": null,
+    "totalQuizAttempts": 8
+  }
+} 
+2025-08-30T10:35:16.440Z [INFO]: 🔍 Debug - Raw monthly progress data: {
+  "accuracy": 100,
+  "currentLevel": 2,
+  "highScoreWins": 8,
+  "month": "2025-08",
+  "rewardEligible": false,
+  "rewardRank": null,
+  "totalQuizAttempts": 8
+} 
+2025-08-30T10:35:16.441Z [INFO]: 🔍 Debug - First formatted top performer: {
+  "_id": "68ac6a3af77d51f2d1b50615",
+  "name": "Ariff",
+  "email": "aiariffai@gmail.com",
+  "level": {
+    "currentLevel": 2,
+    "levelName": "Explorer",
+    "highScoreQuizzes": 8,
+    "quizzesPlayed": 8,
+    "accuracy": 5,
+    "averageScore": 5,
+    "totalScore": 39
+  },
+  "subscriptionStatus": "free",
+  "monthlyProgress": {
+    "accuracy": 100,
+    "currentLevel": 2,
+    "highScoreWins": 8,
+    "month": "2025-08",
+    "rewardEligible": false,
+    "rewardRank": null,
+    "totalQuizAttempts": 8
+  }
+} 
+2025-08-30T10:35:16.442Z [INFO]: 🔍 Debug - Sample monthly data: [object Object] 
+2025-08-30T10:41:55.165Z [INFO]: 🔍 Debug - Raw top performer data: {
+  "_id": "68ac6a3af77d51f2d1b50615",
+  "name": "Ariff",
+  "email": "aiariffai@gmail.com",
+  "level": {
+    "currentLevel": 2,
+    "levelName": "Explorer",
+    "quizzesPlayed": 8,
+    "highScoreQuizzes": 0,
+    "totalScore": 39,
+    "averageScore": 5,
+    "levelProgress": 33,
+    "lastLevelUp": "2025-08-30T08:46:13.824Z"
+  },
+  "subscriptionStatus": "free",
+  "monthlyProgress": {
+    "accuracy": 100,
+    "currentLevel": 2,
+    "highScoreWins": 8,
+    "month": "2025-08",
+    "rewardEligible": false,
+    "rewardRank": null,
+    "totalQuizAttempts": 8
+  }
+} 
+2025-08-30T10:41:55.166Z [INFO]: 🔍 Debug - Raw monthly progress data: {
+  "accuracy": 100,
+  "currentLevel": 2,
+  "highScoreWins": 8,
+  "month": "2025-08",
+  "rewardEligible": false,
+  "rewardRank": null,
+  "totalQuizAttempts": 8
+} 
+2025-08-30T10:41:55.166Z [INFO]: 🔍 Debug - First formatted top performer: {
+  "_id": "68ac6a3af77d51f2d1b50615",
+  "name": "Ariff",
+  "email": "aiariffai@gmail.com",
+  "level": {
+    "currentLevel": 2,
+    "levelName": "Explorer",
+    "highScoreQuizzes": 8,
+    "quizzesPlayed": 8,
+    "accuracy": 5,
+    "averageScore": 5,
+    "totalScore": 39
+  },
+  "subscriptionStatus": "free",
+  "monthlyProgress": {
+    "accuracy": 100,
+    "currentLevel": 2,
+    "highScoreWins": 8,
+    "month": "2025-08",
+    "rewardEligible": false,
+    "rewardRank": null,
+    "totalQuizAttempts": 8
+  }
+} 
+2025-08-30T10:41:55.167Z [INFO]: 🔍 Debug - Sample monthly data: [object Object] 
+2025-08-30T10:41:55.304Z [INFO]: 🔍 Debug - Raw top performer data: {
+  "_id": "68ac6a3af77d51f2d1b50615",
+  "name": "Ariff",
+  "email": "aiariffai@gmail.com",
+  "level": {
+    "currentLevel": 2,
+    "levelName": "Explorer",
+    "quizzesPlayed": 8,
+    "highScoreQuizzes": 0,
+    "totalScore": 39,
+    "averageScore": 5,
+    "levelProgress": 33,
+    "lastLevelUp": "2025-08-30T08:46:13.824Z"
+  },
+  "subscriptionStatus": "free",
+  "monthlyProgress": {
+    "accuracy": 100,
+    "currentLevel": 2,
+    "highScoreWins": 8,
+    "month": "2025-08",
+    "rewardEligible": false,
+    "rewardRank": null,
+    "totalQuizAttempts": 8
+  }
+} 
+2025-08-30T10:41:55.306Z [INFO]: 🔍 Debug - Raw monthly progress data: {
+  "accuracy": 100,
+  "currentLevel": 2,
+  "highScoreWins": 8,
+  "month": "2025-08",
+  "rewardEligible": false,
+  "rewardRank": null,
+  "totalQuizAttempts": 8
+} 
+2025-08-30T10:41:55.306Z [INFO]: 🔍 Debug - First formatted top performer: {
+  "_id": "68ac6a3af77d51f2d1b50615",
+  "name": "Ariff",
+  "email": "aiariffai@gmail.com",
+  "level": {
+    "currentLevel": 2,
+    "levelName": "Explorer",
+    "highScoreQuizzes": 8,
+    "quizzesPlayed": 8,
+    "accuracy": 5,
+    "averageScore": 5,
+    "totalScore": 39
+  },
+  "subscriptionStatus": "free",
+  "monthlyProgress": {
+    "accuracy": 100,
+    "currentLevel": 2,
+    "highScoreWins": 8,
+    "month": "2025-08",
+    "rewardEligible": false,
+    "rewardRank": null,
+    "totalQuizAttempts": 8
+  }
+} 
+2025-08-30T10:41:55.307Z [INFO]: 🔍 Debug - Sample monthly data: [object Object] 
+2025-08-30T10:52:22.465Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T10:52:22.473Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T10:52:22.533Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-30T11:12:03.467Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-30T11:12:03.540Z [INFO]: 🚀 Server running on port 5000 
+2025-08-30T11:12:03.692Z [INFO]: ✅ Monthly reset CRON scheduled 
