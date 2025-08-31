@@ -663,11 +663,16 @@ exports.getPerformanceAnalytics = async (req, res) => {
         { $sort: { totalEntries: -1 } },
         { $limit: 10 }
       ]),
-      // Get top performers based on current level data (fallback to monthly progress if available)
+      // Get top performers based on monthly progress data (fallback to level data if available)
       User.find({ 
-        role: 'student'
+        role: 'student',
+        'monthlyProgress.month': currentMonth // Only get users with current month data
       })
-        .sort({ 'level.highScoreQuizzes': -1, 'level.averageScore': -1, 'level.quizzesPlayed': -1 })
+        .sort({ 
+          'monthlyProgress.accuracy': -1, 
+          'monthlyProgress.highScoreWins': -1, 
+          'level.quizzesPlayed': -1 
+        })
         .limit(20)
         .select('name email level monthlyProgress subscriptionStatus')
         .lean(),
@@ -771,8 +776,8 @@ exports.getPerformanceAnalytics = async (req, res) => {
           levelName: levelData.currentLevel === 10 ? 'Legend' : getLevelName(levelData.currentLevel || monthlyData.currentLevel || 0),
           highScoreQuizzes: levelData.highScoreQuizzes || monthlyData.highScoreWins || 0,
           quizzesPlayed: levelData.quizzesPlayed || monthlyData.totalQuizAttempts || 0,
-          accuracy: levelData.averageScore || monthlyData.accuracy || 0,
-          averageScore: levelData.averageScore || monthlyData.accuracy || 0,
+          accuracy: monthlyData.accuracy || levelData.averageScore || 0, // Prioritize monthly accuracy
+          averageScore: monthlyData.accuracy || levelData.averageScore || 0, // Use monthly accuracy for average score too
           totalScore: levelData.totalScore || monthlyData.totalScore || 0
         }
       };
@@ -780,6 +785,36 @@ exports.getPerformanceAnalytics = async (req, res) => {
 
     console.log('🔍 Debug - First formatted top performer:', JSON.stringify(formattedTopPerformers[0], null, 2));
     console.log('🔍 Debug - Sample monthly data:', formattedTopPerformers[0]?.level);
+
+    // If we don't have enough users with monthly progress, add fallback users
+    if (formattedTopPerformers.length < 10) {
+      const fallbackUsers = await User.find({ 
+        role: 'student',
+        'monthlyProgress.month': { $ne: currentMonth } // Users without current month data
+      })
+        .sort({ 'level.highScoreQuizzes': -1, 'level.averageScore': -1, 'level.quizzesPlayed': -1 })
+        .limit(20 - formattedTopPerformers.length)
+        .select('name email level monthlyProgress subscriptionStatus')
+        .lean();
+
+      const formattedFallbackUsers = fallbackUsers.map(user => {
+        const levelData = user.level || {};
+        return {
+          ...user,
+          level: {
+            currentLevel: levelData.currentLevel || 0,
+            levelName: levelData.currentLevel === 10 ? 'Legend' : getLevelName(levelData.currentLevel || 0),
+            highScoreQuizzes: levelData.highScoreQuizzes || 0,
+            quizzesPlayed: levelData.quizzesPlayed || 0,
+            accuracy: levelData.averageScore || 0, // Use level data for fallback users
+            averageScore: levelData.averageScore || 0,
+            totalScore: levelData.totalScore || 0
+          }
+        };
+      });
+
+      formattedTopPerformers.push(...formattedFallbackUsers);
+    }
 
     res.json({
       success: true,
