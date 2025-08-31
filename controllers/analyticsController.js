@@ -782,10 +782,6 @@ exports.getPerformanceAnalytics = async (req, res) => {
         }
       };
     });
-
-    console.log('🔍 Debug - First formatted top performer:', JSON.stringify(formattedTopPerformers[0], null, 2));
-    console.log('🔍 Debug - Sample monthly data:', formattedTopPerformers[0]?.level);
-
     // If we don't have enough users with monthly progress, add fallback users
     if (formattedTopPerformers.length < 10) {
       const fallbackUsers = await User.find({ 
