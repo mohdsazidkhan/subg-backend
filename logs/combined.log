@@ -6277,3 +6277,6 @@
 2025-08-31T07:25:09.816Z [INFO]: ✅ Database Connected to MongoDB 
 2025-08-31T07:25:09.822Z [INFO]: 🚀 Server running on port 5000 
 2025-08-31T07:25:09.916Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T08:55:20.811Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T08:55:20.823Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T08:55:20.992Z [INFO]: ✅ Monthly reset CRON scheduled 

@@ -77,7 +77,6 @@ const monthlyWinnersSchema = new mongoose.Schema({
 });
 
 // Index for efficient queries
-monthlyWinnersSchema.index({ monthYear: 1 });
 monthlyWinnersSchema.index({ year: 1, month: 1 });
 monthlyWinnersSchema.index({ 'winners.userId': 1 });
 
