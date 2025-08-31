@@ -8,6 +8,7 @@ const http = require('http');
 const { Server } = require('socket.io');
 const cron = require('node-cron');
 const User = require('./models/User');
+const MonthlyWinners = require('./models/MonthlyWinners');
 const dayjs = require('dayjs');
 const authRoutes = require('./routes/authRoutes');
 const adminRoutes = require('./routes/adminRoutes');
@@ -17,6 +18,7 @@ const subscriptionRoutes = require('./routes/subscription');
 const userLevelRoutes = require('./routes/userLevel');
 const contactRoutes = require('./routes/contact');
 const bankDetailRoutes = require('./routes/bankDetailRoutes');
+const monthlyWinnersRoutes = require('./routes/monthlyWinners');
 const winston = require('winston');
 const morgan = require('morgan');
 const searchRoutes = require('./routes/search');
@@ -101,6 +103,7 @@ app.use('/api/subscription', subscriptionRoutes);
 app.use('/api/levels', userLevelRoutes);
 app.use('/api/contacts', contactRoutes);
 app.use('/api/bank-details', bankDetailRoutes);
+app.use('/api/monthly-winners', monthlyWinnersRoutes);
 app.use('/api', searchRoutes);
 // app.use('/api/rewards', rewardsRoutes); // deprecated: locked rewards removed in monthly system
 // Register public routes
@@ -175,44 +178,104 @@ io.on("connection", (socket) => {
   });
 });
 
-// Initialize monthly reset CRON job (runs on 1st of every month at 00:00 IST)
+// Initialize monthly reset CRON job (runs on last day of every month at 9:00 PM IST)
+// Using a daily check to find the last day of each month
 const initializeMonthlyReset = () => {
   try {
-    cron.schedule('0 0 1 * *', async () => {
-      try {
-        const month = dayjs().format('YYYY-MM');
-        console.log(`⏰ Monthly reset running for ${month} ...`);
-        // Reset monthly fields for all users
-        // First, process monthly rewards for top 3 eligible users
-        const topUsers = await User.find({
-          'monthlyProgress.rewardEligible': true,
-          'monthlyProgress.accuracy': { $gte: 75 }
-        })
-        .sort({ 'monthlyProgress.highScoreWins': -1, 'monthlyProgress.accuracy': -1 })
-        .limit(3);
-
-        // Process rewards for top 3 users with 3:2:1 ratio
-        const totalPrizePool = 9999; // Total prize pool ₹9,999
-        const ratios = [3, 2, 1]; // 3:2:1 ratio
-        const totalRatio = ratios.reduce((sum, ratio) => sum + ratio, 0);
-        
-        for (let i = 0; i < topUsers.length; i++) {
-          const user = topUsers[i];
-          // Calculate reward based on 3:2:1 ratio
-          const rewardAmount = Math.round((totalPrizePool * ratios[i]) / totalRatio);
+    // Check daily at 9:00 PM IST to see if it's the last day of the month
+    cron.schedule('0 21 * * *', async () => {
+              try {
+          // Check if today is the last day of the month
+          const today = dayjs();
+          const lastDayOfMonth = today.endOf('month');
+          const isLastDay = today.isSame(lastDayOfMonth, 'day');
           
-          // Add to claimable rewards
-          user.claimableRewards = (user.claimableRewards || 0) + rewardAmount;
-          user.monthlyProgress.rewardRank = i + 1;
-          await user.save();
+          if (!isLastDay) {
+            // Not the last day, skip monthly reset
+            console.log(`⏰ Daily check: ${today.format('YYYY-MM-DD')} - Not last day of month, skipping reset`);
+            return;
+          }
           
-          console.log(`🏆 Monthly reward processed for ${user.name}: Rank ${i + 1}, Amount: ₹${rewardAmount}`);
-        }
+          // Get next month for reset (since we're running on last day of current month)
+          const nextMonth = today.add(1, 'month').format('YYYY-MM');
+          console.log(`⏰ Monthly reset running on last day for ${today.format('YYYY-MM')}, resetting to ${nextMonth} ...`);
+          
+                    // First, find top 3 eligible users for monthly rewards
+          const topUsers = await User.find({
+            'monthlyProgress.rewardEligible': true,
+            'monthlyProgress.accuracy': { $gte: 75 }
+          })
+          .sort({ 'monthlyProgress.highScoreWins': -1, 'monthlyProgress.accuracy': -1 })
+          .limit(3);
 
-        // Reset monthly fields for all users
+          // Save monthly winners before resetting data
+          if (topUsers.length > 0) {
+            const currentMonth = today.format('MM'); // 08 for August
+            const currentYear = today.year(); // 2024
+            const monthYear = today.format('YYYY-MM'); // 2024-08
+            
+            // Prepare winners data
+            const winners = topUsers.map((user, index) => {
+              const rank = index + 1;
+              const rewardAmount = Math.round((9999 * [3, 2, 1][index]) / 6); // 3:2:1 ratio
+              
+              return {
+                rank,
+                userId: user._id,
+                userName: user.name,
+                userEmail: user.email,
+                highScoreWins: user.monthlyProgress.highScoreWins,
+                accuracy: user.monthlyProgress.accuracy,
+                rewardAmount,
+                claimableRewards: user.claimableRewards || 0
+              };
+            });
+
+            // Create or update monthly winners record
+            await MonthlyWinners.findOneAndUpdate(
+              { monthYear },
+              {
+                month: currentMonth,
+                year: currentYear,
+                monthYear,
+                winners,
+                totalWinners: winners.length,
+                resetDate: new Date(),
+                processedBy: 'monthly_reset_cron',
+                metadata: {
+                  totalEligibleUsers: topUsers.length,
+                  resetTimestamp: new Date(),
+                  cronJobId: 'monthly_reset_' + monthYear
+                }
+              },
+              { upsert: true, new: true }
+            );
+
+            console.log(`📊 Monthly winners saved for ${monthYear}: ${winners.length} winners`);
+          }
+
+          // Process rewards for top 3 users with 3:2:1 ratio
+          const totalPrizePool = 9999; // Total prize pool ₹9,999
+          const ratios = [3, 2, 1]; // 3:2:1 ratio
+          const totalRatio = ratios.reduce((sum, ratio) => sum + ratio, 0);
+          
+          for (let i = 0; i < topUsers.length; i++) {
+            const user = topUsers[i];
+            // Calculate reward based on 3:2:1 ratio
+            const rewardAmount = Math.round((totalPrizePool * ratios[i]) / totalRatio);
+            
+            // Add to claimable rewards
+            user.claimableRewards = (user.claimableRewards || 0) + rewardAmount;
+            user.monthlyProgress.rewardRank = i + 1;
+            await user.save();
+            
+            console.log(`🏆 Monthly reward processed for ${user.name}: Rank ${i + 1}, Amount: ₹${rewardAmount}`);
+          }
+
+        // Reset monthly fields for all users with next month
         await User.updateMany({}, {
           $set: {
-            'monthlyProgress.month': month,
+            'monthlyProgress.month': nextMonth,
             'monthlyProgress.highScoreWins': 0,
             'monthlyProgress.totalQuizAttempts': 0,
             'monthlyProgress.accuracy': 0,

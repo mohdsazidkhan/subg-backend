@@ -5889,3 +5889,391 @@
   }
 } 
 2025-08-31T03:56:03.587Z [INFO]: 🔍 Debug - Sample monthly data: [object Object] 
+2025-08-31T04:05:58.209Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:05:58.221Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:05:58.290Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T04:27:14.642Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:27:14.653Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:27:14.714Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T04:27:21.546Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:27:21.557Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:27:21.608Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T04:28:04.429Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:28:04.439Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:28:04.491Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T04:28:42.999Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:28:43.010Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:28:43.067Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T04:29:55.247Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:29:55.259Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:29:55.356Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T04:30:01.397Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:30:01.408Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:30:01.490Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T04:30:06.021Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:30:06.030Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:30:06.082Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T04:30:48.172Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:30:48.183Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:30:48.279Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T04:31:26.132Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:31:26.140Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:31:26.204Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T04:31:42.893Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:31:42.901Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:31:42.956Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T04:32:01.278Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:32:01.287Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:32:01.337Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T04:32:42.980Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:32:42.988Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:32:43.053Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T04:49:38.247Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:49:38.257Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:49:38.338Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T04:49:54.454Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:49:54.465Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:49:54.547Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T04:50:10.752Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:50:10.806Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:50:11.052Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T04:50:27.029Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:50:27.037Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:50:27.119Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T04:51:00.231Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:51:00.241Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:51:00.300Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T04:52:23.884Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:52:23.896Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:52:23.968Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T04:52:47.672Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:52:47.680Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:52:47.728Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T04:53:09.292Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:53:09.300Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:53:09.369Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T04:53:40.065Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:53:40.076Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:53:40.144Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T04:53:44.305Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:53:44.314Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:53:44.394Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T04:56:05.127Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:56:05.137Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:56:05.200Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T04:56:17.708Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:56:17.716Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:56:17.777Z [ERROR]: ❌ Failed to schedule monthly reset: RangeError: Invalid time value 
+2025-08-31T04:56:25.622Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:56:25.630Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:56:25.688Z [ERROR]: ❌ Failed to schedule monthly reset: RangeError: Invalid time value 
+2025-08-31T04:56:44.643Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:56:44.653Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:56:44.708Z [ERROR]: ❌ Failed to schedule monthly reset: RangeError: Invalid time value 
+2025-08-31T04:56:54.411Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:56:54.420Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:56:54.489Z [ERROR]: ❌ Failed to schedule monthly reset: RangeError: Invalid time value 
+2025-08-31T04:57:27.853Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:57:27.861Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:57:27.916Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T04:57:39.155Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:57:39.165Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:57:39.242Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T04:57:48.612Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:57:48.619Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:57:48.691Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T04:58:23.110Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T04:58:23.120Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T04:58:23.186Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T05:00:05.951Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T05:00:05.959Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T05:00:06.011Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T05:00:12.249Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T05:00:12.257Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T05:00:12.318Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T05:02:26.203Z [ERROR]: (node:13880) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:02:26.884Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T05:02:26.892Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T05:02:27.002Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T05:02:30.004Z [ERROR]: (node:3108) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:02:30.580Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T05:02:30.587Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T05:02:30.663Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T05:02:50.093Z [ERROR]: (node:3200) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:02:50.687Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T05:02:50.693Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T05:02:50.752Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T05:03:11.220Z [ERROR]: (node:8256) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:03:11.811Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T05:03:11.816Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T05:03:11.882Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T05:03:24.209Z [ERROR]: (node:1716) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:03:24.981Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T05:03:24.988Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T05:03:25.076Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T05:03:36.196Z [ERROR]: (node:2768) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:03:37.033Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T05:03:37.041Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T05:03:37.128Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T05:03:48.363Z [ERROR]: (node:10984) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:03:49.035Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T05:03:49.042Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T05:03:49.114Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T05:03:56.079Z [ERROR]: (node:9252) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:03:59.898Z [ERROR]: (node:8384) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:04:00.526Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T05:04:00.532Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T05:04:00.625Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T05:04:40.930Z [ERROR]: (node:4268) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:04:41.696Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T05:04:41.703Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T05:04:41.768Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T05:05:37.586Z [ERROR]: (node:3044) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:05:38.159Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T05:05:38.163Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T05:05:38.219Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T05:56:25.472Z [ERROR]: (node:15796) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:56:29.707Z [ERROR]: (node:8528) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:56:30.281Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T05:56:30.288Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T05:56:30.356Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T05:56:56.232Z [ERROR]: (node:8844) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:56:56.839Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T05:56:56.846Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T05:56:56.922Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T05:57:26.007Z [ERROR]: (node:12056) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:57:26.670Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T05:57:26.678Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T05:57:26.740Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T05:58:24.072Z [ERROR]: (node:16216) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:58:24.745Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T05:58:24.751Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T05:58:24.834Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T05:58:31.104Z [ERROR]: (node:11524) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:58:31.828Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T05:58:31.835Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T05:58:31.921Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T05:58:42.357Z [ERROR]: (node:16180) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:58:42.996Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T05:58:43.001Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T05:58:43.060Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T05:59:11.581Z [ERROR]: (node:3180) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:59:12.230Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T05:59:12.236Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T05:59:12.313Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T06:03:24.090Z [INFO]: 🔍 Debug - Raw top performer data: {
+  "_id": "68ac6a3af77d51f2d1b50615",
+  "name": "Ariff",
+  "email": "aiariffai@gmail.com",
+  "level": {
+    "currentLevel": 0,
+    "levelName": "Starter",
+    "quizzesPlayed": 0,
+    "highScoreQuizzes": 0,
+    "totalScore": 0,
+    "averageScore": 0,
+    "levelProgress": 0,
+    "lastLevelUp": "2024-09-01T00:00:00.000Z"
+  },
+  "subscriptionStatus": "free",
+  "monthlyProgress": {
+    "accuracy": 0,
+    "currentLevel": 0,
+    "highScoreWins": 0,
+    "month": "2025-08",
+    "rewardEligible": false,
+    "rewardRank": null,
+    "totalQuizAttempts": 0
+  }
+} 
+2025-08-31T06:03:24.092Z [INFO]: 🔍 Debug - Raw monthly progress data: {
+  "accuracy": 0,
+  "currentLevel": 0,
+  "highScoreWins": 0,
+  "month": "2025-08",
+  "rewardEligible": false,
+  "rewardRank": null,
+  "totalQuizAttempts": 0
+} 
+2025-08-31T06:03:24.229Z [INFO]: 🔍 Debug - Raw top performer data: {
+  "_id": "68ac6a3af77d51f2d1b50615",
+  "name": "Ariff",
+  "email": "aiariffai@gmail.com",
+  "level": {
+    "currentLevel": 0,
+    "levelName": "Starter",
+    "quizzesPlayed": 0,
+    "highScoreQuizzes": 0,
+    "totalScore": 0,
+    "averageScore": 0,
+    "levelProgress": 0,
+    "lastLevelUp": "2024-09-01T00:00:00.000Z"
+  },
+  "subscriptionStatus": "free",
+  "monthlyProgress": {
+    "accuracy": 0,
+    "currentLevel": 0,
+    "highScoreWins": 0,
+    "month": "2025-08",
+    "rewardEligible": false,
+    "rewardRank": null,
+    "totalQuizAttempts": 0
+  }
+} 
+2025-08-31T06:03:24.230Z [INFO]: 🔍 Debug - Raw monthly progress data: {
+  "accuracy": 0,
+  "currentLevel": 0,
+  "highScoreWins": 0,
+  "month": "2025-08",
+  "rewardEligible": false,
+  "rewardRank": null,
+  "totalQuizAttempts": 0
+} 
+2025-08-31T06:05:06.543Z [ERROR]: (node:14916) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:05:07.157Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T06:05:07.163Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T06:05:07.235Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T06:05:15.871Z [ERROR]: (node:14368) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:05:16.483Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T06:05:16.489Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T06:05:16.567Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T06:06:27.595Z [ERROR]: (node:9160) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:06:28.173Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T06:06:28.180Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T06:06:28.235Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T06:06:36.001Z [ERROR]: (node:7744) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:06:36.528Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T06:06:36.534Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T06:06:36.605Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T06:07:00.047Z [INFO]: ⏰ Monthly reset running on last day for 2025-08, resetting to 2025-09 ... 
+2025-08-31T06:07:00.783Z [INFO]: ✅ Monthly reset completed 
+2025-08-31T06:09:15.557Z [ERROR]: (node:7480) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:09:16.228Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T06:09:16.234Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T06:09:16.310Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T06:10:44.528Z [ERROR]: (node:1564) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:10:45.130Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T06:10:45.135Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T06:10:45.186Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T06:11:00.024Z [INFO]: ⏰ Monthly reset running on last day for 2025-08, resetting to 2025-09 ... 
+2025-08-31T06:11:00.146Z [INFO]: ✅ Monthly reset completed 
+2025-08-31T06:20:07.413Z [ERROR]: (node:16972) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:20:08.012Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T06:20:08.019Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T06:20:08.080Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T06:20:15.674Z [ERROR]: (node:16928) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:20:16.212Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T06:20:16.218Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T06:20:16.290Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T06:31:27.777Z [ERROR]: (node:16568) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:31:28.463Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T06:31:28.469Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T06:31:28.525Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T06:34:54.727Z [ERROR]: (node:2012) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:34:55.496Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T06:34:55.502Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T06:34:55.585Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T06:53:43.115Z [ERROR]: (node:16208) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:53:43.726Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T06:53:43.731Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T06:53:43.789Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T06:55:19.966Z [ERROR]: (node:17232) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:55:20.616Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T06:55:20.623Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T06:55:20.677Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T06:57:35.617Z [ERROR]: (node:14116) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:57:36.267Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T06:57:36.273Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T06:57:36.383Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T06:57:51.406Z [ERROR]: (node:1936) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:57:52.069Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T06:57:52.075Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T06:57:52.141Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T06:58:10.736Z [ERROR]: (node:15696) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:58:11.337Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T06:58:11.342Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T06:58:11.395Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T06:58:45.393Z [ERROR]: (node:14100) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:58:46.186Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T06:58:46.192Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T06:58:46.276Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T07:02:07.169Z [ERROR]: (node:16020) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T07:02:07.809Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T07:02:07.814Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T07:02:07.891Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T07:05:10.917Z [ERROR]: (node:2200) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T07:05:11.535Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T07:05:11.545Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T07:05:11.629Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T07:15:32.116Z [ERROR]: (node:17308) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T07:15:32.818Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T07:15:32.825Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T07:15:32.920Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T07:15:37.679Z [ERROR]: (node:16084) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T07:15:38.392Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T07:15:38.400Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T07:15:38.476Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T07:15:56.845Z [ERROR]: (node:12720) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T07:15:57.591Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T07:15:57.599Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T07:15:57.681Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T07:16:01.879Z [ERROR]: (node:10236) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T07:16:02.485Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T07:16:02.493Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T07:16:02.567Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T07:16:41.590Z [ERROR]: (node:7180) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T07:16:42.292Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T07:16:42.301Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T07:16:42.377Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T07:16:46.312Z [ERROR]: (node:13336) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T07:16:46.963Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T07:16:46.969Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T07:16:47.047Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-08-31T07:25:09.125Z [ERROR]: (node:1584) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T07:25:09.816Z [INFO]: ✅ Database Connected to MongoDB 
+2025-08-31T07:25:09.822Z [INFO]: 🚀 Server running on port 5000 
+2025-08-31T07:25:09.916Z [INFO]: ✅ Monthly reset CRON scheduled 

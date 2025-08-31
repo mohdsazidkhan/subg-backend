@@ -63,66 +63,10 @@ const userSchema = new mongoose.Schema({
 
   },
   
-  // Legacy fields for backward compatibility (will be deprecated)
-  lockedRewards: [{
-    level: {
-      type: Number,
-      required: true,
-      enum: [6, 9, 10]
-    },
-    amount: {
-      type: Number,
-      required: true
-    },
-    isUnlocked: {
-      type: Boolean,
-      default: false
-    },
-    dateLocked: {
-      type: Date,
-      default: Date.now
-    },
-    dateUnlocked: {
-      type: Date
-    },
-    isClaimed: {
-      type: Boolean,
-      default: false
-    },
-    dateClaimed: {
-      type: Date
-    }
-  }],
-  
+  // Monthly rewards tracking
   claimableRewards: {
     type: Number,
     default: 0
-  },
-  
-  totalQuizzesPlayed: {
-    type: Number,
-    default: 0
-  },
-  
-  // Migration tracking fields
-  migratedToMonthlySystem: {
-    type: Boolean,
-    default: false
-  },
-  migrationDate: {
-    type: Date
-  },
-  migrationDetails: {
-    oldHighScoreQuizzes: Number,
-    oldLevel: Number,
-    newLevel: Number,
-    oldClaimableRewards: Number,
-    oldSubscription: mongoose.Schema.Types.ObjectId,
-    oldSubscriptionStatus: String,
-    oldSubscriptionExpiry: Date,
-    monthlyCredit: Number,
-    migrationType: String,
-    resetReason: String
   }
   
 }, { timestamps: true });
@@ -239,7 +183,7 @@ userSchema.methods.ensureMonthlyProgress = function() {
 
 // Method to add quiz completion
 userSchema.methods.addQuizCompletion = function(score, totalQuestions) {
-  // Global legacy stats (kept for compatibility)
+  // Update global level stats for compatibility
   this.level.quizzesPlayed += 1;
   this.level.totalScore += score;
   this.level.averageScore = Math.round(this.level.totalScore / this.level.quizzesPlayed) || 0;

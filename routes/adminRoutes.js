@@ -47,7 +47,6 @@ router.post('/assign-badge', protect, adminOnly, adminCtrl.assignBadge);
 // BANK DETAILS
 router.get('/bank-details', protect, adminOnly, adminCtrl.getBankDetails);
 
-// MIGRATION
-router.post('/migrate-users-to-free', protect, adminOnly, adminCtrl.migrateUsersToFree);
+
 
 module.exports = router;

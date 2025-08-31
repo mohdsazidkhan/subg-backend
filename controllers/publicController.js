@@ -23,13 +23,45 @@ exports.getTopPerformers = async (req, res) => {
     const currentUserId = req.user.id; // Get current user ID from auth middleware (optional)
     const month = dayjs().format('YYYY-MM'); // Current month
     
-    // Get all users with monthly progress for current month
-    const allUsers = await User.find({ 
+    // First, try to get users with monthly progress for current month
+    let allUsers = await User.find({ 
       role: 'student',
       'monthlyProgress.month': month
     })
       .select('_id name monthlyProgress createdAt')
       .lean();
+
+    // If we don't have enough users with current month data, get additional users with global level data
+    if (allUsers.length < parseInt(limit)) {
+      const additionalUsers = await User.find({ 
+        role: 'student',
+        $or: [
+          { 'monthlyProgress.month': { $ne: month } },
+          { monthlyProgress: { $exists: false } }
+        ]
+      })
+        .select('_id name level createdAt')
+        .sort({ 'level.highScoreQuizzes': -1, 'level.averageScore': -1 })
+        .limit(parseInt(limit) - allUsers.length)
+        .lean();
+
+      // Transform additional users to match monthly progress format
+      const transformedAdditionalUsers = additionalUsers.map(user => ({
+        _id: user._id,
+        name: user.name,
+        monthlyProgress: {
+          month: month,
+          highScoreWins: user.level?.highScoreQuizzes || 0,
+          totalQuizAttempts: user.level?.quizzesPlayed || 0,
+          accuracy: user.level?.averageScore || 0,
+          currentLevel: user.level?.currentLevel || 0,
+          rewardEligible: false
+        },
+        createdAt: user.createdAt
+      }));
+
+      allUsers = [...allUsers, ...transformedAdditionalUsers];
+    }
 
     // Ensure all users have monthly progress data, set defaults if missing
     allUsers.forEach(user => {
@@ -235,13 +267,45 @@ exports.getTopPerformersMonthly = async (req, res) => {
     const limit = Math.min(parseInt(req.query.limit, 10) || 10, 50);
     const currentUserId = req.query.userId; // Get current user ID from query parameter
 
-    // Get all users with monthly progress for current month
-    const users = await User.find({ 
+    // First, try to get users with monthly progress for current month
+    let users = await User.find({ 
       role: 'student',
       'monthlyProgress.month': month
     })
     .select('_id name monthlyProgress profilePicture')
     .lean();
+
+    // If we don't have enough users with current month data, get additional users with global level data
+    if (users.length < limit) {
+      const additionalUsers = await User.find({ 
+        role: 'student',
+        $or: [
+          { 'monthlyProgress.month': { $ne: month } },
+          { monthlyProgress: { $exists: false } }
+        ]
+      })
+        .select('_id name level profilePicture')
+        .sort({ 'level.highScoreQuizzes': -1, 'level.averageScore': -1 })
+        .limit(limit - users.length)
+        .lean();
+
+      // Transform additional users to match monthly progress format
+      const transformedAdditionalUsers = additionalUsers.map(user => ({
+        _id: user._id,
+        name: user.name,
+        profilePicture: user.profilePicture,
+        monthlyProgress: {
+          month: month,
+          highScoreWins: user.level?.highScoreQuizzes || 0,
+          totalQuizAttempts: user.level?.quizzesPlayed || 0,
+          accuracy: user.level?.averageScore || 0,
+          currentLevel: user.level?.currentLevel || 0,
+          rewardEligible: false
+        }
+      }));
+
+      users = [...users, ...transformedAdditionalUsers];
+    }
 
     // Ensure all users have monthly progress data, set defaults if missing
     users.forEach(user => {
@@ -459,13 +523,45 @@ exports.getLandingTopPerformers = async (req, res) => {
     const { limit = 10 } = req.query;
     const month = dayjs().format('YYYY-MM'); // Current month
     
-    // Get all users with monthly progress for current month
-    const allUsers = await User.find({ 
+    // First, try to get users with monthly progress for current month
+    let allUsers = await User.find({ 
       role: 'student',
       'monthlyProgress.month': month
     })
       .select('_id name monthlyProgress createdAt')
       .lean();
+
+    // If we don't have enough users with current month data, get additional users with global level data
+    if (allUsers.length < parseInt(limit)) {
+      const additionalUsers = await User.find({ 
+        role: 'student',
+        $or: [
+          { 'monthlyProgress.month': { $ne: month } },
+          { monthlyProgress: { $exists: false } }
+        ]
+      })
+        .select('_id name level createdAt')
+        .sort({ 'level.highScoreQuizzes': -1, 'level.averageScore': -1 })
+        .limit(parseInt(limit) - allUsers.length)
+        .lean();
+
+      // Transform additional users to match monthly progress format
+      const transformedAdditionalUsers = additionalUsers.map(user => ({
+        _id: user._id,
+        name: user.name,
+        monthlyProgress: {
+          month: month,
+          highScoreWins: user.level?.highScoreQuizzes || 0,
+          totalQuizAttempts: user.level?.quizzesPlayed || 0,
+          accuracy: user.level?.averageScore || 0,
+          currentLevel: user.level?.currentLevel || 0,
+          rewardEligible: false
+        },
+        createdAt: user.createdAt
+      }));
+
+      allUsers = [...allUsers, ...transformedAdditionalUsers];
+    }
 
     // Ensure all users have monthly progress data, set defaults if missing
     allUsers.forEach(user => {

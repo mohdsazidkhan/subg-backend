@@ -121,3 +121,95 @@
 2025-08-28T04:06:15.895Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU2MTg0ODQ0LCJleHAiOjE3NTYyNzEyNDR9.A-ZjjQRrnZ--kE8N7tLRrhlQ--LzyTtU1hjbOYngtQg 
 2025-08-28T04:06:16.044Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU2MTg0ODQ0LCJleHAiOjE3NTYyNzEyNDR9.A-ZjjQRrnZ--kE8N7tLRrhlQ--LzyTtU1hjbOYngtQg 
 2025-08-28T18:29:32.079Z [ERROR]: ❌ Failed to connect to MongoDB: Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.dnrv0.mongodb.net 
+2025-08-31T04:56:17.777Z [ERROR]: ❌ Failed to schedule monthly reset: RangeError: Invalid time value 
+2025-08-31T04:56:25.688Z [ERROR]: ❌ Failed to schedule monthly reset: RangeError: Invalid time value 
+2025-08-31T04:56:44.708Z [ERROR]: ❌ Failed to schedule monthly reset: RangeError: Invalid time value 
+2025-08-31T04:56:54.489Z [ERROR]: ❌ Failed to schedule monthly reset: RangeError: Invalid time value 
+2025-08-31T05:02:26.203Z [ERROR]: (node:13880) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:02:30.004Z [ERROR]: (node:3108) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:02:50.093Z [ERROR]: (node:3200) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:03:11.220Z [ERROR]: (node:8256) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:03:24.209Z [ERROR]: (node:1716) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:03:36.196Z [ERROR]: (node:2768) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:03:48.363Z [ERROR]: (node:10984) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:03:56.079Z [ERROR]: (node:9252) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:03:59.898Z [ERROR]: (node:8384) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:04:40.930Z [ERROR]: (node:4268) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:05:37.586Z [ERROR]: (node:3044) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:56:25.472Z [ERROR]: (node:15796) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:56:29.707Z [ERROR]: (node:8528) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:56:56.232Z [ERROR]: (node:8844) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:57:26.007Z [ERROR]: (node:12056) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:58:24.072Z [ERROR]: (node:16216) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:58:31.104Z [ERROR]: (node:11524) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:58:42.357Z [ERROR]: (node:16180) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T05:59:11.581Z [ERROR]: (node:3180) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:05:06.543Z [ERROR]: (node:14916) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:05:15.871Z [ERROR]: (node:14368) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:06:27.595Z [ERROR]: (node:9160) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:06:36.001Z [ERROR]: (node:7744) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:09:15.557Z [ERROR]: (node:7480) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:10:44.528Z [ERROR]: (node:1564) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:20:07.413Z [ERROR]: (node:16972) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:20:15.674Z [ERROR]: (node:16928) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:31:27.777Z [ERROR]: (node:16568) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:34:54.727Z [ERROR]: (node:2012) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:53:43.115Z [ERROR]: (node:16208) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:55:19.966Z [ERROR]: (node:17232) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:57:35.617Z [ERROR]: (node:14116) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:57:51.406Z [ERROR]: (node:1936) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:58:10.736Z [ERROR]: (node:15696) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T06:58:45.393Z [ERROR]: (node:14100) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T07:02:07.169Z [ERROR]: (node:16020) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T07:05:10.917Z [ERROR]: (node:2200) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T07:15:32.116Z [ERROR]: (node:17308) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T07:15:37.679Z [ERROR]: (node:16084) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T07:15:56.845Z [ERROR]: (node:12720) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T07:16:01.879Z [ERROR]: (node:10236) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T07:16:41.590Z [ERROR]: (node:7180) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T07:16:46.312Z [ERROR]: (node:13336) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-08-31T07:25:09.125Z [ERROR]: (node:1584) [MONGOOSE] Warning: Duplicate schema index on {"monthYear":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
