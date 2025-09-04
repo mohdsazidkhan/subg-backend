@@ -312,8 +312,28 @@ exports.verifyPayuSubscriptionPayment = async (req, res) => {
       user.subscriptionExpiry = endDate;
       await user.save();
 
-      // Simplified: No wallet transaction record needed
-      console.log('ℹ️ Skipping wallet transaction creation (simplified flow)');
+      // Ledger: create wallet transaction record (no wallet deduction, audit only)
+      const lastWalletTx = await WalletTransaction.findOne({ user: userId }).sort({ createdAt: -1 });
+      const ledgerBalance = lastWalletTx?.balance ?? 0; // keep balance unchanged
+      const ledgerTx = new WalletTransaction({
+        user: userId,
+        type: 'debit',
+        amount: paymentOrder.amount,
+        balance: ledgerBalance,
+        description: `Payment for ${normalizedPlan} subscription via PayU`,
+        category: 'subscription_payment',
+        status: 'completed',
+        reference: txnid,
+        subscriptionId: subscription._id,
+        metadata: {
+          gateway: 'payu',
+          payuStatus: status,
+          payuTransactionId: txnid,
+          paymentOrderId: paymentOrder._id
+        }
+      });
+      await ledgerTx.save();
+      console.log('✅ WalletTransaction ledger recorded', { id: ledgerTx._id });
 
       res.json({
       success: true, 
