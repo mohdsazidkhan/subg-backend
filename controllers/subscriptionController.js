@@ -299,16 +299,26 @@ exports.verifyPayuSubscriptionPayment = async (req, res) => {
       }
 
       // Create wallet transaction for successful payment
+      const currentUser = await User.findById(userId).select('balance');
+      const currentBalance = currentUser?.balance ?? 0;
       const walletTransaction = new WalletTransaction({
         user: userId,
-        type: 'subscription_payment',
+        type: 'debit',
         amount: paymentOrder.amount,
+        balance: currentBalance, // balance after transaction (no wallet deduction for subscription)
         description: `Payment for ${planId} subscription via PayU`,
+        category: 'subscription_payment',
         status: 'completed',
-        paymentOrder: paymentOrder._id
+        reference: txnid,
+        subscriptionId: subscription._id,
+        metadata: {
+          gateway: 'payu',
+          payuStatus: status,
+          payuTransactionId: txnid
+        }
       });
       await walletTransaction.save();
-      console.log('✅ Wallet transaction created');
+      console.log('✅ Wallet transaction created', { id: walletTransaction._id });
 
       res.json({
       success: true, 
