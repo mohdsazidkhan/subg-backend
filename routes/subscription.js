@@ -1,12 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const subscriptionController = require('../controllers/subscriptionController');
+const { protect } = require('../middleware/auth');
 
 // Get subscription status for a user
 router.get('/status/:userId', subscriptionController.getSubscriptionStatus);
 
 // Get subscription transactions for a user
 router.get('/transactions/:userId', subscriptionController.getSubscriptionTransactions);
+
+// Get user payment transactions with filtering (authenticated user only)
+router.get('/payment-transactions', protect, subscriptionController.getUserPaymentTransactions);
+
+// Get transaction filter options (months, years) (authenticated user only)
+router.get('/transaction-filters', protect, subscriptionController.getTransactionFilterOptions);
 
 // (Razorpay removed)
 

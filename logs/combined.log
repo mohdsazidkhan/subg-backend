@@ -6486,3 +6486,183 @@
 2025-09-04T12:47:43.172Z [INFO]: 🚀 Server running on port 5000 
 2025-09-04T12:47:43.231Z [INFO]: ✅ Monthly reset CRON scheduled 
 2025-09-04T12:52:10.445Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T12:52:13.822Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T12:52:13.829Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T12:52:13.888Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T18:34:36.251Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T18:34:36.259Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T18:34:36.414Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T18:35:16.575Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T18:35:16.590Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T18:35:16.695Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T18:36:24.436Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T18:36:24.445Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T18:36:24.507Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T18:37:47.740Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T18:37:47.752Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T18:37:47.842Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T18:38:19.635Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T18:38:19.646Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T18:38:19.753Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T18:40:49.011Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T18:40:49.022Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T18:40:49.103Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T18:41:03.841Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T18:41:03.849Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T18:41:03.913Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T18:41:21.080Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T18:41:21.088Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T18:41:21.144Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T18:46:14.285Z [ERROR]: Error fetching user payment transactions: StrictPopulateError: Cannot populate path `paymentOrder` because it is not in your schema. Set the `strictPopulate` option to false to override. 
+2025-09-04T18:46:14.709Z [ERROR]: Error fetching user payment transactions: StrictPopulateError: Cannot populate path `paymentOrder` because it is not in your schema. Set the `strictPopulate` option to false to override. 
+2025-09-04T18:46:42.030Z [ERROR]: Error fetching user payment transactions: StrictPopulateError: Cannot populate path `paymentOrder` because it is not in your schema. Set the `strictPopulate` option to false to override. 
+2025-09-04T18:46:42.416Z [ERROR]: Error fetching user payment transactions: StrictPopulateError: Cannot populate path `paymentOrder` because it is not in your schema. Set the `strictPopulate` option to false to override. 
+2025-09-04T18:47:13.430Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T18:47:13.437Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T18:47:13.495Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T18:48:09.375Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T18:48:09.384Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T18:48:09.438Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T18:48:29.647Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T18:48:29.655Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T18:48:29.711Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T18:49:38.597Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T18:49:38.605Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T18:49:38.668Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T18:52:34.509Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T18:52:34.521Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T18:52:34.593Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T18:52:51.132Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T18:52:51.144Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T18:52:51.204Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T18:52:56.947Z [INFO]: 🔍 Debug - Raw top performer data: {
+  "_id": "68ac6a3af77d51f2d1b50615",
+  "name": "Ariff",
+  "email": "aiariffai@gmail.com",
+  "level": {
+    "currentLevel": 1,
+    "levelName": "Rookie",
+    "quizzesPlayed": 3,
+    "highScoreQuizzes": 0,
+    "totalScore": 12,
+    "averageScore": 4,
+    "levelProgress": 25,
+    "lastLevelUp": "2025-09-02T04:06:09.499Z"
+  },
+  "subscriptionStatus": "free",
+  "monthlyProgress": {
+    "accuracy": 100,
+    "currentLevel": 1,
+    "highScoreWins": 3,
+    "month": "2025-09",
+    "rewardEligible": false,
+    "rewardRank": null,
+    "totalQuizAttempts": 3
+  }
+} 
+2025-09-04T18:52:56.948Z [INFO]: 🔍 Debug - Raw monthly progress data: {
+  "accuracy": 100,
+  "currentLevel": 1,
+  "highScoreWins": 3,
+  "month": "2025-09",
+  "rewardEligible": false,
+  "rewardRank": null,
+  "totalQuizAttempts": 3
+} 
+2025-09-04T18:52:57.059Z [INFO]: 🔍 Debug - Raw top performer data: {
+  "_id": "68ac6a3af77d51f2d1b50615",
+  "name": "Ariff",
+  "email": "aiariffai@gmail.com",
+  "level": {
+    "currentLevel": 1,
+    "levelName": "Rookie",
+    "quizzesPlayed": 3,
+    "highScoreQuizzes": 0,
+    "totalScore": 12,
+    "averageScore": 4,
+    "levelProgress": 25,
+    "lastLevelUp": "2025-09-02T04:06:09.499Z"
+  },
+  "subscriptionStatus": "free",
+  "monthlyProgress": {
+    "accuracy": 100,
+    "currentLevel": 1,
+    "highScoreWins": 3,
+    "month": "2025-09",
+    "rewardEligible": false,
+    "rewardRank": null,
+    "totalQuizAttempts": 3
+  }
+} 
+2025-09-04T18:52:57.060Z [INFO]: 🔍 Debug - Raw monthly progress data: {
+  "accuracy": 100,
+  "currentLevel": 1,
+  "highScoreWins": 3,
+  "month": "2025-09",
+  "rewardEligible": false,
+  "rewardRank": null,
+  "totalQuizAttempts": 3
+} 
+2025-09-04T18:53:04.890Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T18:53:04.904Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T18:53:05.001Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T18:53:24.895Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T18:53:24.905Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T18:53:24.967Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T18:53:39.429Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T18:53:39.441Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T18:53:39.507Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T18:57:01.440Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T18:57:01.449Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T18:57:01.518Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T18:58:25.319Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T18:58:25.330Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T18:58:25.412Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T18:58:38.204Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T18:58:38.216Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T18:58:38.282Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T18:58:48.194Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T18:58:48.204Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T18:58:48.264Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T19:01:04.281Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T19:01:04.292Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T19:01:04.366Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T19:01:22.430Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T19:01:22.440Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T19:01:22.514Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T19:02:13.921Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T19:02:13.930Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T19:02:14.011Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T19:13:44.942Z [ERROR]: ❌ Failed to connect to MongoDB: Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.dnrv0.mongodb.net 
+2025-09-04T19:13:55.214Z [ERROR]: ❌ Failed to connect to MongoDB: Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.dnrv0.mongodb.net 
+2025-09-04T19:15:09.055Z [ERROR]: ❌ Failed to connect to MongoDB: MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/ 
+2025-09-04T19:16:16.825Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T19:16:16.837Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T19:16:16.892Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T19:22:46.028Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T19:22:46.041Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T19:22:46.114Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T19:25:10.547Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T19:25:10.554Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T19:25:10.610Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T19:26:37.568Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T19:26:37.576Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T19:26:37.637Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T19:26:46.075Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T19:26:46.084Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T19:26:46.139Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T19:27:13.398Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T19:27:13.409Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T19:27:13.486Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T19:28:00.167Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T19:28:00.174Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T19:28:00.232Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T19:28:16.520Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T19:28:16.532Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T19:28:16.611Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T19:29:32.693Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T19:29:32.711Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T19:29:32.822Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-04T19:29:45.712Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-04T19:29:45.719Z [INFO]: 🚀 Server running on port 5000 
+2025-09-04T19:29:45.783Z [INFO]: ✅ Monthly reset CRON scheduled 

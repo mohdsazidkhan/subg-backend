@@ -70,6 +70,235 @@ exports.getSubscriptionTransactions = async (req, res) => {
   }
 };
 
+// Get user payment transactions with filtering (from PaymentOrder, Subscription, and User models)
+exports.getUserPaymentTransactions = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const { month, year, type, status, limit = 50, page = 1 } = req.query;
+    
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ success: false, message: "User not found" });
+    }
+
+    // Build date filter
+    let dateFilter = {};
+    if (month && year) {
+      const startDate = new Date(year, month - 1, 1);
+      const endDate = new Date(year, month, 0, 23, 59, 59, 999);
+      dateFilter = { $gte: startDate, $lte: endDate };
+    } else if (month && !year) {
+      const currentYear = new Date().getFullYear();
+      const startDate = new Date(currentYear, month - 1, 1);
+      const endDate = new Date(currentYear, month, 0, 23, 59, 59, 999);
+      dateFilter = { $gte: startDate, $lte: endDate };
+    } else if (!month && !year) {
+      const now = new Date();
+      const startDate = new Date(now.getFullYear(), now.getMonth(), 1);
+      const endDate = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59, 999);
+      dateFilter = { $gte: startDate, $lte: endDate };
+    }
+
+    // Pagination
+    const skip = (parseInt(page) - 1) * parseInt(limit);
+
+    // Get Payment Orders - only successful PayU payments
+    const paymentOrderFilter = { 
+      user: user._id,
+      payuStatus: 'success', // Only fetch successful PayU payments
+      ...(Object.keys(dateFilter).length > 0 && { createdAt: dateFilter })
+    };
+    
+    if (status && status !== 'all') {
+      paymentOrderFilter.status = status;
+    }
+
+    const paymentOrders = await PaymentOrder.find(paymentOrderFilter)
+      .populate('subscriptionId', 'plan status startDate endDate amount currency')
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(parseInt(limit));
+
+    // Only return Payment Orders - no subscriptions or wallet transactions
+    const allTransactions = [];
+
+    // Add Payment Orders only
+    paymentOrders.forEach(order => {
+      allTransactions.push({
+        id: order._id,
+        source: 'payment_order',
+        type: 'payment',
+        amount: order.amount,
+        currency: order.currency,
+        description: `Payment for ${order.planId || 'subscription'} plan`,
+        status: order.status,
+        reference: order.orderId,
+        createdAt: order.createdAt,
+        updatedAt: order.updatedAt,
+        // PaymentOrder specific fields as requested
+        subscriptionName: order.subscriptionId?.plan || 'Subscription',
+        subscriptionId: order.subscriptionId?._id,
+        paymentId: order.payuPaymentId || order.payuTransactionId,
+        transactionId: order.payuTransactionId,
+        orderId: order.orderId,
+        paymentMethod: order.paymentMethod || 'payu',
+        paymentDesc: `Payment for ${order.subscriptionId?.plan || 'Subscription'}`,
+        paymentStatus: order.payuStatus || order.status,
+        date: order.createdAt,
+        subscription: order.subscriptionId ? {
+          id: order.subscriptionId._id,
+          plan: order.subscriptionId.plan,
+          status: order.subscriptionId.status,
+          startDate: order.subscriptionId.startDate,
+          endDate: order.subscriptionId.endDate,
+          amount: order.subscriptionId.amount,
+          currency: order.subscriptionId.currency
+        } : null,
+        paymentOrder: {
+          id: order._id,
+          orderId: order.orderId,
+          amount: order.amount,
+          status: order.status,
+          payuTransactionId: order.payuTransactionId,
+          payuStatus: order.payuStatus,
+          payuResponse: order.payuResponse,
+          paymentMethod: order.paymentMethod,
+          currency: order.currency
+        },
+        metadata: order.metadata
+      });
+    });
+
+    // Sort transactions by date
+    allTransactions.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+    // Apply pagination
+    const paginatedTransactions = allTransactions.slice(0, parseInt(limit));
+
+    // Get total count for pagination (only PaymentOrders)
+    const totalPaymentOrders = await PaymentOrder.countDocuments(paymentOrderFilter);
+    const totalCount = totalPaymentOrders;
+
+    // Get summary statistics from PaymentOrders only
+    const paymentOrderSummary = await PaymentOrder.aggregate([
+      { $match: paymentOrderFilter },
+      {
+        $group: {
+          _id: null,
+          totalAmount: { $sum: '$amount' },
+          totalTransactions: { $sum: 1 },
+          completedTransactions: {
+            $sum: {
+              $cond: [{ $eq: ['$status', 'paid'] }, 1, 0]
+            }
+          }
+        }
+      }
+    ]);
+
+    // Summary statistics for PaymentOrders only
+    const combinedSummary = {
+      totalAmount: paymentOrderSummary[0]?.totalAmount || 0,
+      totalTransactions: totalCount,
+      paymentOrders: {
+        count: totalPaymentOrders,
+        amount: paymentOrderSummary[0]?.totalAmount || 0,
+        completed: paymentOrderSummary[0]?.completedTransactions || 0
+      }
+    };
+
+    res.json({
+      success: true,
+      data: {
+        transactions: paginatedTransactions,
+        pagination: {
+          currentPage: parseInt(page),
+          totalPages: Math.ceil(totalCount / parseInt(limit)),
+          totalCount,
+          hasNext: skip + paginatedTransactions.length < totalCount,
+          hasPrev: parseInt(page) > 1
+        },
+        summary: combinedSummary,
+        filter: {
+          month: month ? parseInt(month) : new Date().getMonth() + 1,
+          year: year ? parseInt(year) : new Date().getFullYear(),
+          type: type || 'all',
+          status: status || 'all'
+        }
+      }
+    });
+  } catch (error) {
+    console.error('Error fetching user payment transactions:', error);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+};
+
+// Get available months and years for filtering (from all models)
+exports.getTransactionFilterOptions = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ success: false, message: "User not found" });
+    }
+
+    // Get unique months and years from PaymentOrders only
+    const paymentOrderDates = await PaymentOrder.aggregate([
+      { $match: { user: user._id, payuStatus: 'success' } },
+      {
+        $group: {
+          _id: {
+            year: { $year: '$createdAt' },
+            month: { $month: '$createdAt' }
+          }
+        }
+      }
+    ]);
+
+    // Sort date options
+    const dateOptions = paymentOrderDates.sort((a, b) => {
+      if (a._id.year !== b._id.year) {
+        return b._id.year - a._id.year;
+      }
+      return b._id.month - a._id.month;
+    });
+
+    const months = [
+      { value: 1, label: 'January' },
+      { value: 2, label: 'February' },
+      { value: 3, label: 'March' },
+      { value: 4, label: 'April' },
+      { value: 5, label: 'May' },
+      { value: 6, label: 'June' },
+      { value: 7, label: 'July' },
+      { value: 8, label: 'August' },
+      { value: 9, label: 'September' },
+      { value: 10, label: 'October' },
+      { value: 11, label: 'November' },
+      { value: 12, label: 'December' }
+    ];
+
+    const years = [...new Set(dateOptions.map(option => option._id.year))].sort((a, b) => b - a);
+
+    res.json({
+      success: true,
+      data: {
+        months,
+        years,
+        availableDates: dateOptions.map(option => ({
+          year: option._id.year,
+          month: option._id.month,
+          monthName: months[option._id.month - 1].label
+        }))
+      }
+    });
+  } catch (error) {
+    console.error('Error fetching transaction filter options:', error);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+};
+
 // ===== PAYU PAYMENT METHODS =====
 
 // Create PayU subscription order
@@ -310,14 +539,14 @@ exports.verifyPayuSubscriptionPayment = async (req, res) => {
       user.currentSubscription = subscription._id;
       user.subscriptionStatus = normalizedPlan;
       user.subscriptionExpiry = endDate;
-      await user.save();
+    await user.save();
 
       // Ledger: create wallet transaction record (no wallet deduction, audit only)
       const lastWalletTx = await WalletTransaction.findOne({ user: userId }).sort({ createdAt: -1 });
       const ledgerBalance = lastWalletTx?.balance ?? 0; // keep balance unchanged
       const ledgerTx = new WalletTransaction({
         user: userId,
-        type: 'debit',
+      type: 'debit',
         amount: paymentOrder.amount,
         balance: ledgerBalance,
         description: `Payment for ${normalizedPlan} subscription via PayU`,
