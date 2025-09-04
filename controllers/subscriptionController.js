@@ -273,60 +273,56 @@ exports.verifyPayuSubscriptionPayment = async (req, res) => {
 
     console.log('✅ User found:', user.name);
 
-    // Calculate expiry date
-    const expiryDate = new Date();
-      expiryDate.setDate(expiryDate.getDate() + 30); // 30 days from now
+    // Calculate subscription window
+    const startDate = new Date();
+      const endDate = new Date(startDate.getTime());
+      endDate.setDate(endDate.getDate() + 30); // 30 days
+
+      // Normalize plan to Subscription enum
+      const normalizedPlan = (planId || '').toLowerCase(); // 'free' | 'basic' | 'premium' | 'pro'
 
       // Update or create subscription
       let subscription = await Subscription.findOne({ user: userId });
       if (subscription) {
-        subscription.planName = planId;
+        subscription.plan = normalizedPlan;
         subscription.status = 'active';
-        subscription.expiryDate = expiryDate;
-        subscription.paymentOrder = paymentOrder._id;
+        subscription.startDate = startDate;
+        subscription.endDate = endDate;
         await subscription.save();
-        console.log('✅ Existing subscription updated');
+        console.log('✅ Existing subscription updated', { id: subscription._id });
       } else {
         subscription = new Subscription({
           user: userId,
-          planName: planId,
+          plan: normalizedPlan,
           status: 'active',
-          expiryDate: expiryDate,
-          paymentOrder: paymentOrder._id
+          startDate,
+          endDate
         });
         await subscription.save();
-        console.log('✅ New subscription created');
+        console.log('✅ New subscription created', { id: subscription._id });
       }
 
-      // Create wallet transaction for successful payment
-      const currentUser = await User.findById(userId).select('balance');
-      const currentBalance = currentUser?.balance ?? 0;
-      const walletTransaction = new WalletTransaction({
-        user: userId,
-        type: 'debit',
-        amount: paymentOrder.amount,
-        balance: currentBalance, // balance after transaction (no wallet deduction for subscription)
-        description: `Payment for ${planId} subscription via PayU`,
-        category: 'subscription_payment',
-        status: 'completed',
-        reference: txnid,
-        subscriptionId: subscription._id,
-        metadata: {
-          gateway: 'payu',
-          payuStatus: status,
-          payuTransactionId: txnid
-        }
-      });
-      await walletTransaction.save();
-      console.log('✅ Wallet transaction created', { id: walletTransaction._id });
+      // Link order to subscription
+      paymentOrder.subscriptionId = subscription._id;
+      await paymentOrder.save();
+
+      // Update user convenience fields for access checks
+      user.currentSubscription = subscription._id;
+      user.subscriptionStatus = normalizedPlan;
+      user.subscriptionExpiry = endDate;
+      await user.save();
+
+      // Simplified: No wallet transaction record needed
+      console.log('ℹ️ Skipping wallet transaction creation (simplified flow)');
 
       res.json({
       success: true, 
         message: "PayU payment verified and subscription activated successfully",
       subscription: {
-          planName: subscription.planName,
+          plan: subscription.plan,
           status: subscription.status,
-          expiryDate: subscription.expiryDate
+          startDate: subscription.startDate,
+          endDate: subscription.endDate
         }
       });
     } else {
