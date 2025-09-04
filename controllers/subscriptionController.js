@@ -118,8 +118,8 @@ exports.createPayuSubscriptionOrder = async (req, res) => {
     const receipt = `subscription_${planId}_${Date.now()}`;
 
     // Prepare PayU payment parameters
-    const surl = payuHelpers.buildServerUrl(req, '/subscription/payu-success');
-    const furl = payuHelpers.buildServerUrl(req, '/subscription/payu-failure');
+    const surl = payuHelpers.buildServerUrl(req, '/api/subscription/payu-return');
+    const furl = payuHelpers.buildServerUrl(req, '/api/subscription/payu-return');
     
     console.log('🔗 PayU Return URLs:', { 
       surl: surl, 

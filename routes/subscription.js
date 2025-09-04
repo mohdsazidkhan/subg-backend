@@ -28,7 +28,7 @@ const handlePayuReturn = (req, res) => {
   
   // Set frontend URL based on environment
   const redirectBase = process.env.FRONTEND_URL || 
-    (process.env.NODE_ENV === 'production' ? 'https://subgquiz.com' : 'https://subgquiz.com');
+    (process.env.NODE_ENV === 'production' ? 'https://subgquiz.com' : 'http://localhost:3000');
   
   // Safely extract txnid and status from both body and query
   // PayU might send data in different formats
@@ -53,9 +53,30 @@ const handlePayuReturn = (req, res) => {
   
   console.log('🔁 Extracted data:', { txnid, status });
   
+  // Determine the frontend path based on status
   const path = status === 'success' ? '/subscription/payu-success' : '/subscription/payu-failure';
-  const qs = new URLSearchParams({ txnid, status }).toString();
-  const dest = `${redirectBase}${path}?${qs}`;
+  
+  // Build query parameters for frontend redirect
+  const queryParams = new URLSearchParams();
+  if (txnid) queryParams.set('txnid', txnid);
+  if (status) queryParams.set('status', status);
+  
+  // Add additional PayU parameters if available
+  if (req.body) {
+    if (req.body.amount) queryParams.set('amount', req.body.amount);
+    if (req.body.productinfo) queryParams.set('productinfo', req.body.productinfo);
+    if (req.body.firstname) queryParams.set('firstname', req.body.firstname);
+    if (req.body.email) queryParams.set('email', req.body.email);
+    if (req.body.phone) queryParams.set('phone', req.body.phone);
+    if (req.body.hash) queryParams.set('hash', req.body.hash);
+    if (req.body.udf1) queryParams.set('udf1', req.body.udf1);
+    if (req.body.udf2) queryParams.set('udf2', req.body.udf2);
+    if (req.body.udf3) queryParams.set('udf3', req.body.udf3);
+    if (req.body.udf4) queryParams.set('udf4', req.body.udf4);
+    if (req.body.udf5) queryParams.set('udf5', req.body.udf5);
+  }
+  
+  const dest = `${redirectBase}${path}?${queryParams.toString()}`;
   
   console.log('🔁 PayU return data:', { txnid, status, redirectBase, path, dest });
   console.log('🔁 Redirecting to:', dest);
