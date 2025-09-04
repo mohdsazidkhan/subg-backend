@@ -118,6 +118,11 @@ exports.createPayuSubscriptionOrder = async (req, res) => {
     const receipt = `subscription_${planId}_${Date.now()}`;
 
     // Prepare PayU payment parameters
+    const surl = payuHelpers.buildServerUrl(req, '/subscription/payu-success');
+    const furl = payuHelpers.buildServerUrl(req, '/subscription/payu-failure');
+    
+    console.log('🔗 PayU Return URLs:', { surl, furl });
+    
     const payuParams = {
       key: payuConfig.merchantKey,
       txnid: transactionId,
@@ -126,8 +131,8 @@ exports.createPayuSubscriptionOrder = async (req, res) => {
       firstname: user.name || 'User',
       email: user.email,
       phone: user.phone || '9999999999',
-      surl: payuHelpers.buildServerUrl(req, '/subscription/payu-success'),
-      furl: payuHelpers.buildServerUrl(req, '/subscription/payu-failure'),
+      surl: surl,
+      furl: furl,
       udf1: userId,
       udf2: planId,
       udf3: receipt,

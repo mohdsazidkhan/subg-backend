@@ -84,4 +84,15 @@ router.get('/payu-return', handlePayuReturn);
 // PayU webhook
 router.post('/payu-webhook', subscriptionController.payuWebhook);
 
+// Test route to verify frontend redirect
+router.get('/test-redirect', (req, res) => {
+  const frontendUrl = process.env.FRONTEND_URL || 
+    (process.env.NODE_ENV === 'production' ? 'https://subgquiz.com' : 'http://localhost:3000');
+  
+  const testUrl = `${frontendUrl}/subscription/payu-success?txnid=TEST123&status=success`;
+  
+  console.log('🧪 Test redirect to:', testUrl);
+  res.redirect(testUrl);
+});
+
 module.exports = router; 
