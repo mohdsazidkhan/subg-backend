@@ -95,4 +95,14 @@ router.get('/test-redirect', (req, res) => {
   res.redirect(testUrl);
 });
 
+// Test route to verify API is working
+router.get('/test-api', (req, res) => {
+  res.json({ 
+    success: true, 
+    message: 'API is working',
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV
+  });
+});
+
 module.exports = router; 
