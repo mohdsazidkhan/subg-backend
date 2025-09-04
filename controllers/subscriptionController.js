@@ -121,7 +121,11 @@ exports.createPayuSubscriptionOrder = async (req, res) => {
     const surl = payuHelpers.buildServerUrl(req, '/subscription/payu-success');
     const furl = payuHelpers.buildServerUrl(req, '/subscription/payu-failure');
     
-    console.log('🔗 PayU Return URLs:', { surl, furl });
+    console.log('🔗 PayU Return URLs:', { 
+      surl: surl, 
+      furl: furl,
+      frontendUrl: process.env.FRONTEND_URL || 'https://subgquiz.com'
+    });
     
     const payuParams = {
       key: payuConfig.merchantKey,

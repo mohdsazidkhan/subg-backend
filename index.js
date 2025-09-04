@@ -44,6 +44,9 @@ console.log(`🟢 Running in ${process.env.NODE_ENV} mode`);
 
 const app = express();
 
+// Trust proxy for rate limiting and IP detection (required for Render.com)
+app.set('trust proxy', 1);
+
 // Security headers
 app.use(helmet());
 app.use(helmet.contentSecurityPolicy({
