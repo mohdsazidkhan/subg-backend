@@ -36,10 +36,11 @@ const payuHelpers = {
     return Number(amountNumber).toFixed(2);
   },
 
-  // Build backend URLs for surl/furl
+  // Build frontend URLs for surl/furl (PayU redirects to frontend, not backend)
   buildServerUrl: (req, path) => {
-    const origin = process.env.BACKEND_URL || `${req.protocol}://${req.get('host')}`;
-    return `${origin}${path}`;
+    const frontendUrl = process.env.FRONTEND_URL || 
+      (process.env.NODE_ENV === 'production' ? 'https://subgquiz.com' : 'http://localhost:3000');
+    return `${frontendUrl}${path}`;
   }
 };
 
