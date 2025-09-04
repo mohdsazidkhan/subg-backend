@@ -1,9 +1,10 @@
 const dotenv = require('dotenv');
-const razorpay = require("../config/razorpay");
+const { getPayuConfig, payuHelpers } = require('../config/payu');
 const crypto = require("crypto");
 const PaymentOrder = require('../models/PaymentOrder');
 const User = require('../models/User');
 const WalletTransaction = require('../models/WalletTransaction');
+const Subscription = require('../models/Subscription');
 
 dotenv.config();
 
@@ -69,10 +70,12 @@ exports.getSubscriptionTransactions = async (req, res) => {
   }
 };
 
-// Create subscription order
-exports.createSubscriptionOrder = async (req, res) => {
+// ===== PAYU PAYMENT METHODS =====
+
+// Create PayU subscription order
+exports.createPayuSubscriptionOrder = async (req, res) => {
   try {
-    console.log('📦 Creating subscription order with data:', req.body);
+    console.log('📦 Creating PayU subscription order with data:', req.body);
     const { planId, userId } = req.body;
     
     if (!planId || !userId) {
@@ -103,94 +106,147 @@ exports.createSubscriptionOrder = async (req, res) => {
 
     console.log('✅ Plan found:', plan);
 
-    // Check if Razorpay is configured
-    if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_SECRET) {
-      console.error('❌ Razorpay configuration missing');
-      return res.status(500).json({ success: false, message: "Payment gateway not configured" });
+    // Check if PayU is configured
+    const payuConfig = getPayuConfig();
+    if (!payuConfig.merchantId || !payuConfig.merchantKey || !payuConfig.merchantSalt) {
+      console.error('❌ PayU configuration missing');
+      return res.status(500).json({ success: false, message: "PayU payment gateway not configured" });
     }
-    const options = {
-      amount: plan.amount * 100, // paise
-      currency: "INR",
-      receipt: `subscription_${planId}_${Date.now()}`,
+
+    // Generate transaction ID
+    const transactionId = `TXN_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
+    const receipt = `subscription_${planId}_${Date.now()}`;
+
+    // Prepare PayU payment parameters
+    const payuParams = {
+      key: payuConfig.merchantKey,
+      txnid: transactionId,
+      amount: payuHelpers.formatAmountForPayU(plan.amount),
+      productinfo: `${plan.name} - 1 month subscription`,
+      firstname: user.name || 'User',
+      email: user.email,
+      phone: user.phone || '9999999999',
+      surl: payuHelpers.buildServerUrl(req, '/api/subscription/payu-return'),
+      furl: payuHelpers.buildServerUrl(req, '/api/subscription/payu-return'),
+      udf1: userId,
+      udf2: planId,
+      udf3: receipt,
+      udf4: 'subscription',
+      udf5: 'monthly'
     };
 
-    console.log('🔧 Creating Razorpay order with options:', options);
+    // Generate hash
+    const hash = payuHelpers.generateRequestHash(payuParams, payuConfig.merchantSalt);
+    payuParams.hash = hash;
 
-    const order = await razorpay.orders.create(options);
-    console.log('✅ Razorpay order created:', order.id);
+    console.log('🔧 PayU order parameters:', { ...payuParams, hash: '[HIDDEN]' });
     
     // Save order details in DB
     const paymentOrder = new PaymentOrder({
-      orderId: order.id,
-      amount: (order.amount / 100),
-      currency: order.currency,
-      receipt: order.receipt,
-      user: user._id,
-      razorpayOrderId: order.id,
-      planId: planId
+      orderId: transactionId,
+      amount: plan.amount,
+      currency: 'INR',
+      receipt: receipt,
+      user: userId,
+      planId: planId,
+      paymentMethod: 'payu',
+      payuTransactionId: transactionId,
+      status: 'created'
     });
 
     await paymentOrder.save();
-    console.log('✅ Payment order saved to database');
+    console.log('✅ PayU order saved to database:', paymentOrder._id);
 
-    res.status(200).json({
-      ...order,
-      key: process.env.RAZORPAY_KEY_ID,
-      planId: planId
+    res.json({
+      success: true,
+      message: "PayU order created successfully",
+      orderId: transactionId,
+      amount: plan.amount,
+      paymentUrl: payuConfig.paymentUrl,
+      paymentParams: payuParams
     });
-  } catch (err) {
-    console.error('❌ Subscription order creation error:', JSON.stringify(err, null, 2));
-    res.status(500).json({ success: false, message: "Failed to create subscription order", error: err.message });
+
+  } catch (error) {
+    console.error('❌ Error creating PayU order:', error);
+    return res.status(500).json({ 
+      success: false, 
+      message: "Failed to create PayU order",
+      error: error.message 
+    });
   }
 };
 
-// Verify subscription payment
-exports.verifySubscriptionPayment = async (req, res) => {
+// Verify PayU subscription payment
+exports.verifyPayuSubscriptionPayment = async (req, res) => {
   try {
-    console.log('🔍 Payment verification request:', req.body);
-    const { razorpay_order_id, razorpay_payment_id, razorpay_signature, userId, planId } = req.body;
+    console.log('🔍 PayU payment verification request:', req.body);
+    const { txnid, status, amount, productinfo, firstname, email, phone, hash, udf1, udf2, udf3, udf4, udf5 } = req.body;
 
     // Validate required fields
-    if (!razorpay_order_id || !razorpay_payment_id || !razorpay_signature || !userId || !planId) {
-      console.error('❌ Missing required fields for verification:', { razorpay_order_id, razorpay_payment_id, userId, planId });
+    if (!txnid || !status || !amount || !hash) {
+      console.error('❌ Missing required fields for PayU verification:', { txnid, status, amount });
       return res.status(400).json({ success: false, message: "Missing required fields for payment verification" });
     }
 
-    // Generate expected signature
-    const generatedSignature = crypto
-      .createHmac("sha256", process.env.RAZORPAY_SECRET)
-      .update(razorpay_order_id + "|" + razorpay_payment_id)
-      .digest("hex");
+    const payuConfig = getPayuConfig();
+    
+    // Validate hash
+    const responseData = {
+      status,
+      udf1,
+      udf2,
+      udf3,
+      udf4,
+      udf5,
+      email,
+      firstname,
+      productinfo,
+      amount,
+      txnid,
+      key: payuConfig.merchantKey
+    };
 
-    console.log('🔐 Signature verification:', { 
-      received: razorpay_signature, 
-      generated: generatedSignature,
-      matches: generatedSignature === razorpay_signature 
+    const isValidHash = payuHelpers.validateResponse({ ...responseData, hash }, { merchantKey: payuConfig.merchantKey, merchantSalt: payuConfig.merchantSalt });
+    
+    console.log('🔐 PayU hash verification:', { 
+      received: hash, 
+      isValid: isValidHash 
     });
 
-    if (generatedSignature !== razorpay_signature) {
-      console.error('❌ Invalid signature');
-      return res.status(400).json({ success: false, message: "Invalid signature" });
+    if (!isValidHash) {
+      console.error('❌ Invalid PayU hash');
+      return res.status(400).json({ success: false, message: "Invalid hash" });
     }
 
-    console.log('✅ Signature verified successfully');
+    console.log('✅ PayU hash verified successfully');
 
-    // Update payment order status
-    console.log('🔍 Looking for payment order:', razorpay_order_id);
-    const paymentOrder = await PaymentOrder.findOne({ orderId: razorpay_order_id });
+    // Find payment order
+    console.log('🔍 Looking for PayU payment order:', txnid);
+    const paymentOrder = await PaymentOrder.findOne({ payuTransactionId: txnid });
     if (!paymentOrder) {
-      console.error('❌ Payment order not found:', razorpay_order_id);
+      console.error('❌ PayU payment order not found:', txnid);
       return res.status(404).json({ success: false, message: "Order not found" });
     }
 
-    console.log('✅ Payment order found:', paymentOrder._id);
+    console.log('✅ PayU payment order found:', paymentOrder._id);
 
-    paymentOrder.status = "paid";
-    paymentOrder.razorpayPaymentId = razorpay_payment_id;
+    // Update payment order status
+    paymentOrder.status = status === 'success' ? 'paid' : 'failed';
+    paymentOrder.payuStatus = status;
+    paymentOrder.payuResponse = req.body;
+    
+    if (status === 'success') {
+      paymentOrder.payuPaymentId = txnid;
+    }
+    
     await paymentOrder.save();
-    console.log('✅ Payment order updated successfully');
+    console.log('✅ PayU payment order updated successfully');
 
-    // Fetch user
+    // If payment successful, create/update subscription
+    if (status === 'success') {
+      const userId = udf1;
+      const planId = udf2;
+
     console.log('🔍 Looking for user:', userId);
     const user = await User.findById(userId);
     if (!user) {
@@ -200,59 +256,110 @@ exports.verifySubscriptionPayment = async (req, res) => {
 
     console.log('✅ User found:', user.name);
 
-    // Define subscription plans
-    const plans = {
-      basic: { amount: 9, duration: 30, name: 'Basic Plan' },
-      premium: { amount: 49, duration: 30, name: 'Premium Plan' },
-      pro: { amount: 99, duration: 30, name: 'Pro Plan' }
-    };
-
-    const plan = plans[planId];
-    if (!plan) {
-      console.error('❌ Invalid plan ID:', planId);
-      return res.status(400).json({ success: false, message: "Invalid plan" });
-    }
-
-    console.log('✅ Plan found:', plan);
-
     // Calculate expiry date
     const expiryDate = new Date();
-    expiryDate.setDate(expiryDate.getDate() + plan.duration);
-    console.log('📅 Expiry date calculated:', expiryDate);
+      expiryDate.setDate(expiryDate.getDate() + 30); // 30 days from now
 
-    // Update user subscription
-    user.subscriptionStatus = planId;
-    user.subscriptionExpiry = expiryDate;
-    await user.save();
-    console.log('✅ User subscription updated successfully');
-
-    // Log subscription transaction
-    console.log('💰 Creating wallet transaction');
-    await WalletTransaction.create({
-      user: user._id,
-      type: 'debit',
-      amount: plan.amount,
-      balance: 0,
-      description: `${plan.name} subscription activated for ${plan.amount} INR`,
-      category: 'subscription_payment'
-    });
-    console.log('✅ Wallet transaction created successfully');
-
-    console.log('🎉 Payment verification completed successfully');
-    return res.status(200).json({ 
-      success: true, 
-      message: "Subscription payment verified and activated",
-      subscription: {
-        status: user.subscriptionStatus,
-        expiry: user.subscriptionExpiry
+      // Update or create subscription
+      let subscription = await Subscription.findOne({ user: userId });
+      if (subscription) {
+        subscription.planName = planId;
+        subscription.status = 'active';
+        subscription.expiryDate = expiryDate;
+        subscription.paymentOrder = paymentOrder._id;
+        await subscription.save();
+        console.log('✅ Existing subscription updated');
+      } else {
+        subscription = new Subscription({
+          user: userId,
+          planName: planId,
+          status: 'active',
+          expiryDate: expiryDate,
+          paymentOrder: paymentOrder._id
+        });
+        await subscription.save();
+        console.log('✅ New subscription created');
       }
-    });
+
+      // Create wallet transaction for successful payment
+      const walletTransaction = new WalletTransaction({
+        user: userId,
+        type: 'subscription_payment',
+        amount: paymentOrder.amount,
+        description: `Payment for ${planId} subscription via PayU`,
+        status: 'completed',
+        paymentOrder: paymentOrder._id
+      });
+      await walletTransaction.save();
+      console.log('✅ Wallet transaction created');
+
+      res.json({
+      success: true, 
+        message: "PayU payment verified and subscription activated successfully",
+      subscription: {
+          planName: subscription.planName,
+          status: subscription.status,
+          expiryDate: subscription.expiryDate
+        }
+      });
+    } else {
+      res.json({
+        success: false,
+        message: "PayU payment failed",
+        status: status
+      });
+    }
+
   } catch (error) {
-    console.error("❌ Error in payment verification:", error);
+    console.error("❌ Error in PayU payment verification:", error);
     console.error("❌ Error stack:", error.stack);
     return res.status(500).json({ 
       success: false, 
-      message: "Server error while updating order",
+      message: "Server error while verifying PayU payment",
+      error: error.message 
+    });
+  }
+};
+
+// PayU webhook handler
+exports.payuWebhook = async (req, res) => {
+  try {
+    console.log('🔔 PayU webhook received:', req.body);
+    
+    const { txnid, status, amount, hash } = req.body;
+    
+    if (!txnid || !status) {
+      return res.status(400).json({ success: false, message: "Missing required fields" });
+    }
+
+    // Find the payment order
+    const paymentOrder = await PaymentOrder.findOne({ payuTransactionId: txnid });
+    if (!paymentOrder) {
+      console.error('❌ PayU webhook: Order not found:', txnid);
+      return res.status(404).json({ success: false, message: "Order not found" });
+    }
+
+    // Update payment status
+    paymentOrder.payuStatus = status;
+    paymentOrder.payuResponse = req.body;
+    
+    if (status === 'success') {
+      paymentOrder.status = 'paid';
+      paymentOrder.payuPaymentId = txnid;
+    } else if (status === 'failure') {
+      paymentOrder.status = 'failed';
+    }
+    
+    await paymentOrder.save();
+    console.log('✅ PayU webhook: Order updated successfully');
+
+    res.json({ success: true, message: "Webhook processed successfully" });
+
+  } catch (error) {
+    console.error("❌ Error in PayU webhook:", error);
+    return res.status(500).json({ 
+      success: false, 
+      message: "Server error while processing webhook",
       error: error.message 
     });
   }

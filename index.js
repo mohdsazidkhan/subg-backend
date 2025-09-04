@@ -28,9 +28,7 @@ dotenv.config();
 // Validate required environment variables
 const requiredEnvVars = [
   'JWT_SECRET',
-  'MONGO_URI',
-  'RAZORPAY_KEY_ID',
-  'RAZORPAY_SECRET'
+  'MONGO_URI'
 ];
 
 requiredEnvVars.forEach(envVar => {
@@ -91,6 +89,8 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use(express.json({ limit: '10mb' }));
+// PayU sends form-urlencoded payloads for redirects/webhooks
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(express.static('public'));
 
 // Routes with rate limiting for auth

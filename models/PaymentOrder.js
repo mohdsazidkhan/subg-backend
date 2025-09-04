@@ -10,10 +10,13 @@ const paymentOrderSchema = new mongoose.Schema({
   subscriptionId: { type: mongoose.Schema.Types.ObjectId, ref: 'Subscription' }, // associated subscription (optional)
   quizId: { type: mongoose.Schema.Types.ObjectId, ref: 'Quiz' }, // associated quiz (optional)
   planId: { type: String }, // for subscription orders
-  paymentMethod: { type: String, default: 'razorpay' },
-  razorpayOrderId: { type: String },
-  razorpayPaymentId: { type: String },
-  razorpaySignature: { type: String },
+  paymentMethod: { type: String, enum: ['payu'], default: 'payu' },
+  // PayU fields
+  payuTransactionId: { type: String },
+  payuPaymentId: { type: String },
+  payuHash: { type: String },
+  payuStatus: { type: String },
+  payuResponse: { type: mongoose.Schema.Types.Mixed },
   metadata: { type: mongoose.Schema.Types.Mixed },
   notes: { type: String },
   refundId: { type: String },
