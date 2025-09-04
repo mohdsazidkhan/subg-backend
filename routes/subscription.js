@@ -18,26 +18,21 @@ router.post('/create-payu-order', subscriptionController.createPayuSubscriptionO
 // Verify PayU subscription payment
 router.post('/verify-payu', subscriptionController.verifyPayuSubscriptionPayment);
 
-// PayU return (success/failure) handler - verifies then redirects
-router.post('/payu-return', async (req, res, next) => {
-  try {
-    // Reuse verification logic
-    req.body = req.body || {};
-    const result = await subscriptionController.verifyPayuSubscriptionPayment(req, {
-      status: (code) => ({ json: (payload) => ({ code, payload }) }),
-      json: (payload) => ({ code: 200, payload })
-    });
-    const success = !result || result.code === 200 && result.payload && result.payload.success;
-    const redirectBase = process.env.FRONTEND_URL || 'http://localhost:3000';
-    const path = success ? '/subscription/payu-success' : '/subscription/payu-failure';
-    // Propagate minimal info as query params
-    const params = new URLSearchParams({ txnid: req.body.txnid || '', status: req.body.status || '' }).toString();
-    return res.redirect(`${redirectBase}${path}?${params}`);
-  } catch (e) {
-    const redirectBase = process.env.FRONTEND_URL || 'http://localhost:3000';
-    return res.redirect(`${redirectBase}/subscription/payu-failure`);
-  }
-});
+// PayU return (success/failure) handler - redirect only (webhook handles DB update)
+const handlePayuReturn = (req, res) => {
+  console.log('🔁 PayU return hit', { method: req.method, query: req.query, body: req.body, headers: req.headers });
+  const redirectBase = process.env.FRONTEND_URL || 'http://localhost:3000';
+  const txnid = (req.body.txnid || req.query.txnid || '').toString();
+  const status = (req.body.status || req.query.status || '').toString().toLowerCase();
+  const path = status === 'success' ? '/subscription/payu-success' : '/subscription/payu-failure';
+  const qs = new URLSearchParams({ txnid, status }).toString();
+  const dest = `${redirectBase}${path}?${qs}`;
+  console.log('🔁 Redirecting to', dest);
+  return res.redirect(dest);
+};
+
+router.post('/payu-return', handlePayuReturn);
+router.get('/payu-return', handlePayuReturn);
 
 // PayU webhook
 router.post('/payu-webhook', subscriptionController.payuWebhook);

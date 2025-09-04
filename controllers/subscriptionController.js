@@ -138,8 +138,13 @@ exports.createPayuSubscriptionOrder = async (req, res) => {
     // Generate hash
     const hash = payuHelpers.generateRequestHash(payuParams, payuConfig.merchantSalt);
     payuParams.hash = hash;
-
-    console.log('🔧 PayU order parameters:', { ...payuParams, hash: '[HIDDEN]' });
+    // Mask sensitive fields for logs
+    const masked = {
+      ...payuParams,
+      key: '[MASKED]'
+    };
+    masked.hash = `${hash.slice(0,8)}...${hash.slice(-6)}`;
+    console.log('🔧 PayU order parameters:', masked);
     
     // Save order details in DB
     const paymentOrder = new PaymentOrder({
@@ -179,7 +184,8 @@ exports.createPayuSubscriptionOrder = async (req, res) => {
 // Verify PayU subscription payment
 exports.verifyPayuSubscriptionPayment = async (req, res) => {
   try {
-    console.log('🔍 PayU payment verification request:', req.body);
+    console.log('🔍 PayU payment verification request headers:', req.headers);
+    console.log('🔍 PayU payment verification request body:', req.body);
     const { txnid, status, amount, productinfo, firstname, email, phone, hash, udf1, udf2, udf3, udf4, udf5 } = req.body;
 
     // Validate required fields
@@ -207,9 +213,11 @@ exports.verifyPayuSubscriptionPayment = async (req, res) => {
     };
 
     const isValidHash = payuHelpers.validateResponse({ ...responseData, hash }, { merchantKey: payuConfig.merchantKey, merchantSalt: payuConfig.merchantSalt });
+    const expectedHash = payuHelpers.generateResponseHash({ key: payuConfig.merchantKey, ...responseData }, payuConfig.merchantSalt);
     
     console.log('🔐 PayU hash verification:', { 
-      received: hash, 
+      received: hash ? `${hash.slice(0,8)}...${hash.slice(-6)}` : undefined, 
+      expected: expectedHash ? `${expectedHash.slice(0,8)}...${expectedHash.slice(-6)}` : undefined,
       isValid: isValidHash 
     });
 
@@ -240,7 +248,7 @@ exports.verifyPayuSubscriptionPayment = async (req, res) => {
     }
     
     await paymentOrder.save();
-    console.log('✅ PayU payment order updated successfully');
+    console.log('✅ PayU payment order updated successfully', { orderId: paymentOrder.orderId, status: paymentOrder.status });
 
     // If payment successful, create/update subscription
     if (status === 'success') {
