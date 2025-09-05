@@ -119,12 +119,12 @@ exports.getStats = async (req, res) => {
     // Get payment order totals
     const totalPaymentOrders = await PaymentOrder.countDocuments();
     const completedPaymentOrders = await PaymentOrder.countDocuments({
-      status: 'paid'
+      payuStatus: 'success'
     });
     
     // Get total revenue from completed payments
     const revenueSummary = await PaymentOrder.aggregate([
-      { $match: { status: 'paid' } },
+      { $match: { payuStatus: 'success' } },
       {
         $group: {
           _id: null,
@@ -849,9 +849,12 @@ exports.getPaymentTransactions = async (req, res) => {
       filterQuery.createdAt = { $gte: startMonth, $lt: endMonth };
     }
     
-    // Status filtering
+    // Status filtering - only fetch successful PayU transactions
     if (status && status !== 'all') {
-      filterQuery.status = status;
+      filterQuery.payuStatus = status;
+    } else {
+      // Default to only successful transactions
+      filterQuery.payuStatus = 'success';
     }
     
     // Plan filtering
@@ -919,12 +922,16 @@ exports.getPaymentTransactionFilterOptions = async (req, res) => {
     // Get available plans
     const plans = await PaymentOrder.distinct('planId');
     
+    // Get available payuStatus values - only return success status
+    const payuStatuses = ['success']; // Only show successful transactions
+    
     res.json({
       success: true,
       data: {
         years,
         months,
-        plans: plans.filter(plan => plan).map(plan => plan.charAt(0).toUpperCase() + plan.slice(1))
+        plans: plans.filter(plan => plan).map(plan => plan.charAt(0).toUpperCase() + plan.slice(1)),
+        statuses: payuStatuses.map(status => status.charAt(0).toUpperCase() + status.slice(1))
       }
     });
   } catch (error) {
@@ -942,8 +949,10 @@ exports.getPaymentTransactionSummary = async (req, res) => {
   try {
     const { year, month } = req.query;
     
-    // Build filter query
-    const filterQuery = {};
+    // Build filter query - only include successful PayU transactions
+    const filterQuery = {
+      payuStatus: 'success' // Only count successful transactions
+    };
     
     if (year) {
       const startYear = new Date(parseInt(year), 0, 1);
@@ -967,9 +976,7 @@ exports.getPaymentTransactionSummary = async (req, res) => {
           totalRevenue: { $sum: '$amount' },
           totalTransactions: { $sum: 1 },
           activeUsers: { $addToSet: '$user' },
-          completedTransactions: {
-            $sum: { $cond: [{ $eq: ['$status', 'paid'] }, 1, 0] }
-          }
+          completedTransactions: { $sum: 1 } // All transactions are successful since we filtered by payuStatus: 'success'
         }
       }
     ]);
@@ -1230,7 +1237,7 @@ exports.getSubscriptionSummary = async (req, res) => {
     }
     
     const revenueSummary = await PaymentOrder.aggregate([
-      { $match: { ...revenueQuery, status: 'paid' } },
+      { $match: { ...revenueQuery, payuStatus: 'success' } },
       {
         $group: {
           _id: null,
