@@ -7,6 +7,7 @@ const Subscription = require('../models/Subscription');
 const WalletTransaction = require('../models/WalletTransaction');
 const BankDetail = require('../models/BankDetail');
 const Contact = require('../models/Contact');
+const PaymentOrder = require('../models/PaymentOrder');
 
 // Helper function for pagination
 const getPaginationOptions = (req) => {
@@ -59,7 +60,96 @@ exports.getStats = async (req, res) => {
     const questions = await Question.countDocuments();
     const students = await User.countDocuments({ role: 'student' });
     const bankDetails = await BankDetail.countDocuments();
-    res.json({ categories, subcategories, quizzes, questions, students, bankDetails });
+    
+    // Get subscription totals from User model (all users, no date filter)
+    const totalSubscriptions = await User.countDocuments({});
+    const activeSubscriptions = await User.countDocuments({
+      subscriptionExpiry: { $exists: true, $ne: null, $gt: new Date() }
+    });
+    const freeSubscriptions = await User.countDocuments({
+      subscriptionStatus: 'free'
+    });
+    const paidSubscriptions = await User.countDocuments({
+      subscriptionStatus: { $nin: ['free'] }
+    });
+    
+    // Debug logging
+    // console.log('📊 Dashboard Stats:', JSON.stringify({
+    //   freeSubscriptions,
+    //   paidSubscriptions,
+    //   activeSubscriptions,
+    //   totalSubscriptions
+    // }, null, 2));
+    
+    // Debug: Check basic users with expiry dates
+    const basicUsers = await User.find({ subscriptionStatus: 'basic' }).select('name subscriptionStatus subscriptionExpiry');
+    const basicUsersData = basicUsers.map(user => ({
+      name: user.name,
+      status: user.subscriptionStatus,
+      expiry: user.subscriptionExpiry,
+      isExpired: user.subscriptionExpiry ? new Date() > new Date(user.subscriptionExpiry) : 'No expiry date',
+      currentDate: new Date().toISOString()
+    }));
+    // console.log('🔍 Basic Users with Expiry Dates:', JSON.stringify(basicUsersData, null, 2));
+    
+    // Debug: Test different queries
+    const basicUsersCount = await User.countDocuments({ subscriptionStatus: 'basic' });
+    const basicUsersWithExpiry = await User.countDocuments({ 
+      subscriptionStatus: 'basic',
+      subscriptionExpiry: { $exists: true, $ne: null }
+    });
+    const basicUsersActive = await User.countDocuments({ 
+      subscriptionStatus: 'basic',
+      subscriptionExpiry: { $exists: true, $ne: null, $gt: new Date() }
+    });
+    
+    // Debug: Count all users with future expiry dates (regardless of subscription status)
+    const allUsersWithFutureExpiry = await User.countDocuments({
+      subscriptionExpiry: { $exists: true, $ne: null, $gt: new Date() }
+    });
+    
+    // console.log('🔍 Basic Users Debug:', JSON.stringify({
+    //   totalBasic: basicUsersCount,
+    //   withExpiry: basicUsersWithExpiry,
+    //   active: basicUsersActive,
+    //   allUsersWithFutureExpiry: allUsersWithFutureExpiry,
+    //   currentDate: new Date().toISOString()
+    // }, null, 2));
+    
+    // Get payment order totals
+    const totalPaymentOrders = await PaymentOrder.countDocuments();
+    const completedPaymentOrders = await PaymentOrder.countDocuments({
+      status: 'paid'
+    });
+    
+    // Get total revenue from completed payments
+    const revenueSummary = await PaymentOrder.aggregate([
+      { $match: { status: 'paid' } },
+      {
+        $group: {
+          _id: null,
+          totalRevenue: { $sum: '$amount' }
+        }
+      }
+    ]);
+    
+    const totalRevenue = revenueSummary[0]?.totalRevenue || 0;
+    
+    res.json({ 
+      categories, 
+      subcategories, 
+      quizzes, 
+      questions, 
+      students, 
+      bankDetails,
+      subscriptions: totalSubscriptions,
+      activeSubscriptions,
+      freeSubscriptions,
+      paidSubscriptions,
+      paymentOrders: totalPaymentOrders,
+      completedPaymentOrders,
+      totalRevenue
+    });
   } catch (error) {
     console.error('Error getting stats:', error);
     res.status(500).json({ error: 'Failed to get stats' });
@@ -730,6 +820,448 @@ exports.getBankDetails = async (req, res) => {
     res.status(500).json({ 
       success: false, 
       message: 'Failed to fetch bank details.', 
+      error: error.message 
+    });
+  }
+};
+
+// ===== PAYMENT TRANSACTIONS =====
+
+// Get all payment transactions with pagination and filtering
+exports.getPaymentTransactions = async (req, res) => {
+  try {
+    const { page, limit, skip } = getPaginationOptions(req);
+    const { year, month, status, plan, search, sortField = 'createdAt', sortOrder = 'desc' } = req.query;
+    
+    // Build filter query
+    const filterQuery = {};
+    
+    // Date filtering - Default to current year
+    const currentYear = year ? parseInt(year) : new Date().getFullYear();
+    const startYear = new Date(currentYear, 0, 1);
+    const endYear = new Date(currentYear + 1, 0, 1);
+    filterQuery.createdAt = { $gte: startYear, $lt: endYear };
+    
+    // Month filtering - if month is selected, filter by that month
+    if (month && month !== '0') {
+      const startMonth = new Date(currentYear, parseInt(month) - 1, 1);
+      const endMonth = new Date(currentYear, parseInt(month), 1);
+      filterQuery.createdAt = { $gte: startMonth, $lt: endMonth };
+    }
+    
+    // Status filtering
+    if (status && status !== 'all') {
+      filterQuery.status = status;
+    }
+    
+    // Plan filtering
+    if (plan && plan !== 'all') {
+      filterQuery.planId = plan.toLowerCase();
+    }
+    
+    // Search filtering
+    if (search && search.trim()) {
+      const searchRegex = new RegExp(search.trim(), 'i');
+      filterQuery.$or = [
+        { orderId: searchRegex },
+        { receipt: searchRegex }
+      ];
+    }
+    
+    // Sort options
+    const sortOptions = {};
+    sortOptions[sortField] = sortOrder === 'asc' ? 1 : -1;
+    
+    const transactions = await PaymentOrder.find(filterQuery)
+      .populate('user', 'name email phone')
+      .sort(sortOptions)
+      .skip(skip)
+      .limit(limit);
+    
+    const total = await PaymentOrder.countDocuments(filterQuery);
+    const totalPages = Math.ceil(total / limit);
+    
+    res.json({
+      success: true,
+      data: {
+        transactions,
+        pagination: {
+          currentPage: page,
+          totalPages,
+          total: total,
+          limit: limit,
+          hasNext: page < totalPages,
+          hasPrev: page > 1
+        }
+      }
+    });
+  } catch (error) {
+    console.error('Error getting payment transactions:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to fetch payment transactions.', 
+      error: error.message 
+    });
+  }
+};
+
+// Get payment transaction filter options
+exports.getPaymentTransactionFilterOptions = async (req, res) => {
+  try {
+    // Get available years
+    const years = await PaymentOrder.distinct('createdAt', {})
+      .then(dates => [...new Set(dates.map(date => new Date(date).getFullYear()))])
+      .then(years => years.sort((a, b) => b - a));
+    
+    // Get available months
+    const months = Array.from({length: 12}, (_, i) => i + 1);
+    
+    // Get available plans
+    const plans = await PaymentOrder.distinct('planId');
+    
+    res.json({
+      success: true,
+      data: {
+        years,
+        months,
+        plans: plans.filter(plan => plan).map(plan => plan.charAt(0).toUpperCase() + plan.slice(1))
+      }
+    });
+  } catch (error) {
+    console.error('Error getting payment transaction filter options:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to fetch filter options.', 
+      error: error.message 
+    });
+  }
+};
+
+// Get payment transaction summary
+exports.getPaymentTransactionSummary = async (req, res) => {
+  try {
+    const { year, month } = req.query;
+    
+    // Build filter query
+    const filterQuery = {};
+    
+    if (year) {
+      const startYear = new Date(parseInt(year), 0, 1);
+      const endYear = new Date(parseInt(year) + 1, 0, 1);
+      filterQuery.createdAt = { $gte: startYear, $lt: endYear };
+    }
+    
+    if (month && month !== '0') {
+      const currentYear = year ? parseInt(year) : new Date().getFullYear();
+      const startMonth = new Date(currentYear, parseInt(month) - 1, 1);
+      const endMonth = new Date(currentYear, parseInt(month), 1);
+      filterQuery.createdAt = { $gte: startMonth, $lt: endMonth };
+    }
+    
+    // Get summary statistics
+    const summary = await PaymentOrder.aggregate([
+      { $match: filterQuery },
+      {
+        $group: {
+          _id: null,
+          totalRevenue: { $sum: '$amount' },
+          totalTransactions: { $sum: 1 },
+          activeUsers: { $addToSet: '$user' },
+          completedTransactions: {
+            $sum: { $cond: [{ $eq: ['$status', 'paid'] }, 1, 0] }
+          }
+        }
+      }
+    ]);
+    
+    const result = summary[0] || {
+      totalRevenue: 0,
+      totalTransactions: 0,
+      activeUsers: [],
+      completedTransactions: 0
+    };
+    
+    res.json({
+      success: true,
+      data: {
+        totalRevenue: result.totalRevenue,
+        periodRevenue: result.totalRevenue,
+        totalTransactions: result.totalTransactions,
+        activeUsers: result.activeUsers.length,
+        completedTransactions: result.completedTransactions
+      }
+    });
+  } catch (error) {
+    console.error('Error getting payment transaction summary:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to fetch summary.', 
+      error: error.message 
+    });
+  }
+};
+
+// ===== SUBSCRIPTIONS =====
+
+// Get all user subscriptions with pagination and filtering
+exports.getSubscriptions = async (req, res) => {
+  try {
+    const { page, limit, skip } = getPaginationOptions(req);
+    const { year, month, status, plan, search, sortField = 'createdAt', sortOrder = 'desc' } = req.query;
+    
+    // Build filter query
+    const filterQuery = {};
+    
+    // Date filtering - Default to current year
+    const currentYear = year ? parseInt(year) : new Date().getFullYear();
+    const startYear = new Date(currentYear, 0, 1);
+    const endYear = new Date(currentYear + 1, 0, 1);
+    filterQuery.createdAt = { $gte: startYear, $lt: endYear };
+    
+    // Month filtering - if month is selected, filter by that month
+    if (month && month !== '0') {
+      const startMonth = new Date(currentYear, parseInt(month) - 1, 1);
+      const endMonth = new Date(currentYear, parseInt(month), 1);
+      filterQuery.createdAt = { $gte: startMonth, $lt: endMonth };
+    }
+    
+    // Status filtering
+    if (status && status !== 'all') {
+      if (status === 'active') {
+        // Show all users with future expiry dates (including free users)
+        filterQuery.subscriptionExpiry = { $exists: true, $ne: null, $gt: new Date() };
+      } else if (status === 'inactive') {
+        // Show users without future expiry dates
+        filterQuery.$or = [
+          { subscriptionExpiry: { $exists: false } },
+          { subscriptionExpiry: null },
+          { subscriptionExpiry: { $lte: new Date() } }
+        ];
+      } else if (status === 'expired') {
+        filterQuery.subscriptionExpiry = { $lte: new Date() };
+      }
+    }
+    
+    // Plan filtering
+    if (plan && plan !== 'all') {
+      filterQuery.subscriptionStatus = plan.toLowerCase();
+    }
+    
+    // Search filtering
+    if (search && search.trim()) {
+      const searchRegex = new RegExp(search.trim(), 'i');
+      filterQuery.$or = [
+        { name: searchRegex },
+        { email: searchRegex }
+      ];
+    }
+    
+    // Sort options
+    const sortOptions = {};
+    sortOptions[sortField] = sortOrder === 'asc' ? 1 : -1;
+    
+    const users = await User.find(filterQuery)
+      .select('name email phone subscriptionStatus subscriptionExpiry createdAt')
+      .sort(sortOptions)
+      .skip(skip)
+      .limit(limit);
+    
+    // Transform users to subscription format
+    const subscriptions = users.map(user => ({
+      _id: user._id,
+      user: {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        phone: user.phone
+      },
+      planName: user.subscriptionStatus ? user.subscriptionStatus.charAt(0).toUpperCase() + user.subscriptionStatus.slice(1) : 'Free',
+      status: user.subscriptionStatus && user.subscriptionStatus !== 'free' && user.subscriptionExpiry && new Date() < new Date(user.subscriptionExpiry) ? 'active' : 'inactive',
+      startDate: user.createdAt,
+      expiryDate: user.subscriptionExpiry,
+      amount: user.subscriptionStatus === 'basic' ? 9 : user.subscriptionStatus === 'premium' ? 49 : user.subscriptionStatus === 'pro' ? 99 : 0,
+      paymentMethod: 'payu' // Default for now
+    }));
+    
+    const total = await User.countDocuments(filterQuery);
+    const totalPages = Math.ceil(total / limit);
+    
+    res.json({
+      success: true,
+      data: {
+        subscriptions,
+        pagination: {
+          currentPage: page,
+          totalPages,
+          total: total,
+          limit: limit,
+          hasNext: page < totalPages,
+          hasPrev: page > 1
+        }
+      }
+    });
+  } catch (error) {
+    console.error('Error getting subscriptions:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to fetch subscriptions.', 
+      error: error.message 
+    });
+  }
+};
+
+// Get subscription filter options
+exports.getSubscriptionFilterOptions = async (req, res) => {
+  try {
+    // Get available years
+    const years = await User.distinct('createdAt', {})
+      .then(dates => [...new Set(dates.map(date => new Date(date).getFullYear()))])
+      .then(years => years.sort((a, b) => b - a));
+    
+    // Get available months
+    const months = Array.from({length: 12}, (_, i) => i + 1);
+    
+    // Get available plans
+    const plans = await User.distinct('subscriptionStatus');
+    
+    res.json({
+      success: true,
+      data: {
+        years,
+        months,
+        plans: plans.filter(plan => plan).map(plan => plan.charAt(0).toUpperCase() + plan.slice(1))
+      }
+    });
+  } catch (error) {
+    console.error('Error getting subscription filter options:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to fetch filter options.', 
+      error: error.message 
+    });
+  }
+};
+
+// Get subscription summary
+exports.getSubscriptionSummary = async (req, res) => {
+  try {
+    const { year, month } = req.query;
+    
+    // Build filter query
+    const filterQuery = {};
+    
+    if (year) {
+      const startYear = new Date(parseInt(year), 0, 1);
+      const endYear = new Date(parseInt(year) + 1, 0, 1);
+      filterQuery.createdAt = { $gte: startYear, $lt: endYear };
+    }
+    
+    if (month && month !== '0') {
+      const currentYear = year ? parseInt(year) : new Date().getFullYear();
+      const startMonth = new Date(currentYear, parseInt(month) - 1, 1);
+      const endMonth = new Date(currentYear, parseInt(month), 1);
+      filterQuery.createdAt = { $gte: startMonth, $lt: endMonth };
+    }
+    
+    // Get total subscriptions (all users, no date filter)
+    const totalSubscriptions = await User.countDocuments({});
+    
+    // Get active subscriptions (all users with future expiry dates, no date filter)
+    const activeSubscriptions = await User.countDocuments({
+      subscriptionExpiry: { $exists: true, $ne: null, $gt: new Date() }
+    });
+    
+    // Get free and paid subscription counts (without date filter)
+    const freeSubscriptions = await User.countDocuments({
+      subscriptionStatus: 'free'
+    });
+    const paidSubscriptions = await User.countDocuments({
+      subscriptionStatus: { $nin: ['free'] }
+    });
+    
+    // Debug logging for subscription summary
+    // console.log('📊 Subscription Summary:', JSON.stringify({
+    //   totalSubscriptions,
+    //   activeSubscriptions,
+    //   freeSubscriptions,
+    //   paidSubscriptions,
+    //   filterQuery
+    // }, null, 2));
+    
+    // Debug: Check all users with their subscription status
+    const allUsers = await User.find({}).select('name subscriptionStatus subscriptionExpiry');
+    const userStatuses = allUsers.map(user => ({
+      name: user.name,
+      status: user.subscriptionStatus,
+      expiry: user.subscriptionExpiry,
+      isActive: user.subscriptionStatus && user.subscriptionStatus !== 'free' && user.subscriptionExpiry && new Date() < new Date(user.subscriptionExpiry)
+    }));
+    // console.log('🔍 All Users Subscription Status:', JSON.stringify(userStatuses, null, 2));
+    
+    // Debug: Count all users by subscription status
+    const allFreeUsers = await User.countDocuments({ subscriptionStatus: 'free' });
+    const allBasicUsers = await User.countDocuments({ subscriptionStatus: 'basic' });
+    const allPremiumUsers = await User.countDocuments({ subscriptionStatus: 'premium' });
+    const allProUsers = await User.countDocuments({ subscriptionStatus: 'pro' });
+    const allNullUsers = await User.countDocuments({ subscriptionStatus: null });
+    
+    // console.log('🔍 All Users Count by Status:', JSON.stringify({
+    //   free: allFreeUsers,
+    //   basic: allBasicUsers,
+    //   premium: allPremiumUsers,
+    //   pro: allProUsers,
+    //   null: allNullUsers,
+    //   total: allFreeUsers + allBasicUsers + allPremiumUsers + allProUsers + allNullUsers
+    // }, null, 2));
+    
+    // Get revenue from payment orders
+    const revenueQuery = {};
+    if (year) {
+      const startYear = new Date(parseInt(year), 0, 1);
+      const endYear = new Date(parseInt(year) + 1, 0, 1);
+      revenueQuery.createdAt = { $gte: startYear, $lt: endYear };
+    }
+    
+    if (month && month !== '0') {
+      const currentYear = year ? parseInt(year) : new Date().getFullYear();
+      const startMonth = new Date(currentYear, parseInt(month) - 1, 1);
+      const endMonth = new Date(currentYear, parseInt(month), 1);
+      revenueQuery.createdAt = { $gte: startMonth, $lt: endMonth };
+    }
+    
+    const revenueSummary = await PaymentOrder.aggregate([
+      { $match: { ...revenueQuery, status: 'paid' } },
+      {
+        $group: {
+          _id: null,
+          totalRevenue: { $sum: '$amount' },
+          periodRevenue: { $sum: '$amount' }
+        }
+      }
+    ]);
+    
+    const result = revenueSummary[0] || { totalRevenue: 0, periodRevenue: 0 };
+    
+    const responseData = {
+      totalSubscriptions,
+      activeSubscriptions,
+      freeSubscriptions,
+      paidSubscriptions,
+      totalRevenue: result.totalRevenue,
+      periodRevenue: result.periodRevenue
+    };
+    
+    // console.log('📤 API Response Data:', JSON.stringify(responseData, null, 2));
+    
+    res.json({
+      success: true,
+      data: responseData
+    });
+  } catch (error) {
+    console.error('Error getting subscription summary:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to fetch summary.', 
       error: error.message 
     });
   }

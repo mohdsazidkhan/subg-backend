@@ -47,6 +47,14 @@ router.post('/assign-badge', protect, adminOnly, adminCtrl.assignBadge);
 // BANK DETAILS
 router.get('/bank-details', protect, adminOnly, adminCtrl.getBankDetails);
 
+// PAYMENT TRANSACTIONS
+router.get('/payment-transactions', protect, adminOnly, adminCtrl.getPaymentTransactions);
+router.get('/payment-transactions/filter-options', protect, adminOnly, adminCtrl.getPaymentTransactionFilterOptions);
+router.get('/payment-transactions/summary', protect, adminOnly, adminCtrl.getPaymentTransactionSummary);
 
+// SUBSCRIPTIONS
+router.get('/subscriptions', protect, adminOnly, adminCtrl.getSubscriptions);
+router.get('/subscriptions/filter-options', protect, adminOnly, adminCtrl.getSubscriptionFilterOptions);
+router.get('/subscriptions/summary', protect, adminOnly, adminCtrl.getSubscriptionSummary);
 
 module.exports = router;
