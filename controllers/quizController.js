@@ -321,11 +321,11 @@ exports.getQuizzesByLevel = async (req, res) => {
         },
         isRecommended: level && level !== ''
           ? quiz.requiredLevel === parseInt(level)
-          : quiz.requiredLevel === userLevel,
+          : quiz.requiredLevel === nextLevel,
         levelMatch: {
-          exact: quiz.requiredLevel === userLevel,
-          withinRange: quiz.requiredLevel >= Math.max(0, userLevel - 1) &&
-                       quiz.requiredLevel <= Math.min(10, userLevel + 1)
+          exact: quiz.requiredLevel === nextLevel,
+          withinRange: quiz.requiredLevel >= Math.max(0, nextLevel - 1) &&
+                       quiz.requiredLevel <= Math.min(10, nextLevel + 1)
         }
       };
       quizObj.questionCount = questionCountMap[quiz._id.toString()] || 0;
@@ -687,7 +687,7 @@ exports.getHomePageData = async (req, res) => {
               difficulty: '$difficulty',
               timeLimit: '$timeLimit',
               totalMarks: '$totalMarks',
-              isRecommended: { $eq: ['$requiredLevel', userLevel] }
+              isRecommended: { $eq: ['$requiredLevel', nextLevel] }
             }
           },
           quizCount: { $sum: 1 }
@@ -735,7 +735,7 @@ exports.getHomePageData = async (req, res) => {
               requiredLevel: '$requiredLevel',
               timeLimit: '$timeLimit',
               totalMarks: '$totalMarks',
-              isRecommended: { $eq: ['$requiredLevel', userLevel] }
+              isRecommended: { $eq: ['$requiredLevel', nextLevel] }
             }
           },
           quizCount: { $sum: 1 }
@@ -783,7 +783,7 @@ exports.getHomePageData = async (req, res) => {
               requiredLevel: '$requiredLevel',
               timeLimit: '$timeLimit',
               totalMarks: '$totalMarks',
-              isRecommended: { $eq: ['$requiredLevel', userLevel] }
+              isRecommended: { $eq: ['$requiredLevel', nextLevel] }
             }
           },
           quizCount: { $sum: 1 }
