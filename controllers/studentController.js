@@ -225,10 +225,65 @@ exports.getSubcategories = async (req, res) => {
 
 exports.getAllQuizzes = async (req, res) => {
   try {
-    const quizzes = await Quiz.find()
+    const userId = req.user?.id;
+    if (!userId) {
+      return res.status(401).json({ message: 'Unauthorized: No user info found' });
+    }
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Ensure level progress is calculated correctly
+    user.updateLevel();
+    await user.save();
+
+    const currentLevel = user.level.currentLevel;
+    const nextLevel = currentLevel + 1;
+
+    // Check user's level access permissions for next level
+    const levelAccess = user.canAccessLevel(nextLevel);
+    if (!levelAccess.canAccess) {
+      return res.status(403).json({ 
+        message: `You need a ${levelAccess.requiredPlan} subscription to access level ${nextLevel} quizzes`,
+        requiredPlan: levelAccess.requiredPlan,
+        accessibleLevels: levelAccess.accessibleLevels
+      });
+    }
+
+    // Get attempted quiz IDs for this user
+    const attemptedQuizIds = await QuizAttempt.find({ user: userId })
+      .distinct('quiz');
+
+    // Build query for next level quizzes (excluding attempted ones)
+    let query = {
+      isActive: true,
+      requiredLevel: nextLevel, // Show quizzes from next level only
+      _id: { $nin: attemptedQuizIds } // Exclude attempted quizzes
+    };
+
+    const quizzes = await Quiz.find(query)
       .populate('category', 'name')
-      .populate('subcategory', 'name');
-    res.json(quizzes);
+      .populate('subcategory', 'name')
+      .sort({ createdAt: -1 });
+
+    res.json({
+      success: true,
+      data: quizzes,
+      userLevel: {
+        currentLevel: currentLevel,
+        nextLevel: nextLevel,
+        levelName: user.level.levelName,
+        progress: user.level.levelProgress,
+        highScoreQuizzes: user.level.highScoreQuizzes,
+        totalQuizzesPlayed: user.level.quizzesPlayed
+      },
+      levelAccess: {
+        accessibleLevels: levelAccess.accessibleLevels,
+        userPlan: levelAccess.userPlan
+      }
+    });
   } catch (error) {
     console.error('Error fetching quizzes:', error);
     res.status(500).json({ success: false, message: 'Failed to fetch quizzes' });

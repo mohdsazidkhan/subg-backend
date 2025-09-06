@@ -384,67 +384,25 @@ exports.getLevelQuizzes = async (req, res) => {
     user.updateLevel();
     await user.save();
 
-    const userLevel = user.level.currentLevel;
+    const currentLevel = user.level.currentLevel;
+    const nextLevel = currentLevel + 1;
     const { category, subcategory, difficulty, level, attempted, search, limit = 20, page = 1 } = req.query;
 
-    // Check user's level access permissions
-    const levelAccess = user.canAccessLevel(userLevel);
+    // Check user's level access permissions for next level
+    const levelAccess = user.canAccessLevel(nextLevel);
     if (!levelAccess.canAccess) {
       return res.status(403).json({ 
-        message: `You need a ${levelAccess.requiredPlan} subscription to access level ${userLevel} quizzes`,
+        message: `You need a ${levelAccess.requiredPlan} subscription to access level ${nextLevel} quizzes`,
         requiredPlan: levelAccess.requiredPlan,
         accessibleLevels: levelAccess.accessibleLevels
       });
     }
 
-    // Build query for level-appropriate quizzes
+    // Build query for next level quizzes
     let query = {
-      isActive: true
+      isActive: true,
+      requiredLevel: nextLevel // Always show quizzes from next level
     };
-
-    // If specific level is requested, filter by that level
-    if (level && level !== '') {
-      const requestedLevel = parseInt(level);
-      
-      // Check if user has access to the requested level
-      if (user.role !== 'admin' && !levelAccess.accessibleLevels.includes(requestedLevel)) {
-        return res.status(403).json({ 
-          message: `You need a ${levelAccess.requiredPlan} subscription to access level ${requestedLevel} quizzes`,
-          requiredPlan: levelAccess.requiredPlan,
-          accessibleLevels: levelAccess.accessibleLevels
-        });
-      }
-      
-      query.requiredLevel = requestedLevel;
-    } else {
-      // Default behavior: show quizzes based on user's current level
-      query.$or = [
-        // Quizzes that match user's exact level
-        { requiredLevel: userLevel },
-        // Quizzes within user's level range (1 level below and 2 levels above)
-        { 
-          requiredLevel: { 
-            $gte: Math.max(0, userLevel - 1), 
-            $lte: Math.min(10, userLevel + 2) 
-          } 
-        },
-        // Quizzes where user level falls within the quiz's level range
-        {
-          'levelRange.min': { $lte: userLevel },
-          'levelRange.max': { $gte: userLevel }
-        }
-      ];
-
-      // For regular users, also filter by accessible levels
-      if (user.role !== 'admin') {
-        // Add accessible levels constraint to the $or query
-        query.$and = [
-          { $or: query.$or },
-          { requiredLevel: { $in: levelAccess.accessibleLevels } }
-        ];
-        delete query.$or; // Remove the original $or since we're using $and now
-      }
-    }
 
     // Add category filter if provided
     if (category) {
@@ -489,13 +447,12 @@ exports.getLevelQuizzes = async (req, res) => {
     const attemptedQuizzes = await QuizAttempt.find({ user: userId })
       .distinct('quiz');
 
-    // Add attempted filter if provided
-    if (attempted) {
-      if (attempted === 'attempted') {
-        query._id = { $in: attemptedQuizzes };
-      } else if (attempted === 'not_attempted') {
-        query._id = { $nin: attemptedQuizzes };
-      }
+    // Always exclude attempted quizzes by default, unless specifically requested
+    if (attempted === 'attempted') {
+      query._id = { $in: attemptedQuizzes };
+    } else {
+      // Default behavior: exclude attempted quizzes
+      query._id = { $nin: attemptedQuizzes };
     }
 
     const skip = (parseInt(page) - 1) * parseInt(limit);
@@ -574,7 +531,8 @@ exports.getLevelQuizzes = async (req, res) => {
       success: true,
       data: quizzesWithStatus,
       userLevel: {
-        currentLevel: userLevel,
+        currentLevel: currentLevel,
+        nextLevel: nextLevel,
         levelName: user.level.levelName,
         progress: user.level.levelProgress,
         highScoreQuizzes: user.level.highScoreQuizzes,

@@ -13,12 +13,23 @@ const searchAll = async (req, res) => {
     const user = await User.findById(userId);
     if (!user) return res.status(404).json({ error: 'User not found' });
 
-    const nextLevel = user.level.currentLevel + 1;
+    const currentLevel = user.level.currentLevel;
+    const nextLevel = currentLevel + 1;
     const skip = (parseInt(page) - 1) * parseInt(limit);
     const regex = new RegExp(query, 'i'); // case-insensitive partial match
 
     // ✅ Get attempted quiz IDs
     const attemptedQuizIds = await QuizAttempt.find({ user: userId }).distinct('quiz');
+
+    // Check user's level access permissions for next level
+    const levelAccess = user.canAccessLevel(nextLevel);
+    if (!levelAccess.canAccess) {
+      return res.status(403).json({ 
+        message: `You need a ${levelAccess.requiredPlan} subscription to access level ${nextLevel} quizzes`,
+        requiredPlan: levelAccess.requiredPlan,
+        accessibleLevels: levelAccess.accessibleLevels
+      });
+    }
 
     // ✅ Search categories and subcategories
     const [categories, subcategories] = await Promise.all([
@@ -35,10 +46,10 @@ const searchAll = async (req, res) => {
     const matchedCategoryIds = categories.map(cat => cat._id);
     const matchedSubcategoryIds = subcategories.map(sub => sub._id);
 
-    // ✅ Build quiz filter with "not attempted"
+    // ✅ Build quiz filter with "not attempted" and next level quizzes
     const quizFilter = {
       isActive: true,
-      requiredLevel: nextLevel,
+      requiredLevel: nextLevel, // Show quizzes from next level only
       _id: { $nin: attemptedQuizIds }, // <-- Exclude attempted
       $or: [
         { title: regex },
@@ -61,8 +72,19 @@ const searchAll = async (req, res) => {
 
     res.json({
       success: true,
-      currentLevel: user.level.currentLevel,
-      nextLevel,
+      currentLevel: currentLevel,
+      nextLevel: nextLevel,
+      userLevel: {
+        currentLevel: currentLevel,
+        levelName: user.level.levelName,
+        progress: user.level.levelProgress,
+        highScoreQuizzes: user.level.highScoreQuizzes,
+        totalQuizzesPlayed: user.level.quizzesPlayed
+      },
+      levelAccess: {
+        accessibleLevels: levelAccess.accessibleLevels,
+        userPlan: levelAccess.userPlan
+      },
       page: parseInt(page),
       limit: parseInt(limit),
       totalQuizzes: quizCount,
