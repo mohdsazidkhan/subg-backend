@@ -499,7 +499,6 @@ exports.getLevelQuizzes = async (req, res) => {
 
     const quizzesWithStatus = quizzes.map(quiz => {
       const attemptStatus = user.canAttemptQuiz(quiz._id);
-      
       return {
         _id: quiz._id,
         title: quiz.title,
