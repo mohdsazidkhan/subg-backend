@@ -621,18 +621,23 @@ exports.getLandingTopPerformers = async (req, res) => {
     });
 
     // Get top performers and format for landing page with all required fields
-    const topPerformers = allUsers.slice(0, parseInt(limit)).map((user, index) => ({
-      _id: user._id,
-      name: user.name || 'Anonymous',
-      userLevel: user.monthlyProgress?.currentLevel || 0,
-      totalQuizzes: user.monthlyProgress?.totalQuizAttempts || 0,
-      highQuizzes: user.monthlyProgress?.highScoreWins || 0,
-      accuracy: user.monthlyProgress?.accuracy || 0,
-      // Keep existing fields for backward compatibility
-      level: user.monthlyProgress?.currentLevel || 0,
-      score: user.monthlyProgress?.highScoreWins || 0,
-      quizCount: user.monthlyProgress?.totalQuizAttempts || 0
-    }));
+    const topPerformers = allUsers.slice(0, parseInt(limit)).map((user, index) => {
+      const currentLevel = user.monthlyProgress?.currentLevel || 0;
+      return {
+        _id: user._id,
+        name: user.name || 'Anonymous',
+        userLevel: currentLevel,
+        userLevelNo: currentLevel,
+        userLevelName: getLevelName(currentLevel),
+        totalQuizzes: user.monthlyProgress?.totalQuizAttempts || 0,
+        highQuizzes: user.monthlyProgress?.highScoreWins || 0,
+        accuracy: user.monthlyProgress?.accuracy || 0,
+        // Keep existing fields for backward compatibility
+        level: currentLevel,
+        score: user.monthlyProgress?.highScoreWins || 0,
+        quizCount: user.monthlyProgress?.totalQuizAttempts || 0
+      };
+    });
 
     res.json({ success: true, data: topPerformers });
   } catch (error) {
