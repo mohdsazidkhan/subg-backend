@@ -77,27 +77,32 @@ exports.getTopPerformers = async (req, res) => {
       }
     });
 
-    // Custom sorting: First by monthly high score wins (descending), then by accuracy (descending)
+    // Custom sorting: Same as Admin Performance Analytics - accuracy first, then high score wins, then total quizzes
     allUsers.sort((a, b) => {
-      const aHighScore = a.monthlyProgress?.highScoreWins || 0;
-      const bHighScore = b.monthlyProgress?.highScoreWins || 0;
       const aAccuracy = a.monthlyProgress?.accuracy || 0;
       const bAccuracy = b.monthlyProgress?.accuracy || 0;
+      const aHighScore = a.monthlyProgress?.highScoreWins || 0;
+      const bHighScore = b.monthlyProgress?.highScoreWins || 0;
+      const aTotalQuizzes = a.monthlyProgress?.totalQuizAttempts || 0;
+      const bTotalQuizzes = b.monthlyProgress?.totalQuizAttempts || 0;
       
-      // First priority: Monthly high score wins (descending)
-      if (aHighScore !== bHighScore) {
-        return bHighScore - aHighScore;
-      }
-      
-      // Second priority: Monthly accuracy (descending)
+      // First priority: Accuracy (descending) - same as Admin Performance Analytics
       if (aAccuracy !== bAccuracy) {
         return bAccuracy - aAccuracy;
       }
       
-      // Third priority: Total quiz attempts (ascending - fewer is better)
-      const aTotalQuizzes = a.monthlyProgress?.totalQuizAttempts || 0;
-      const bTotalQuizzes = b.monthlyProgress?.totalQuizAttempts || 0;
-      return aTotalQuizzes - bTotalQuizzes;
+      // Second priority: High score wins (descending) - same as Admin Performance Analytics
+      if (aHighScore !== bHighScore) {
+        return bHighScore - aHighScore;
+      }
+      
+      // Third priority: Total quiz played (descending) - same as Admin Performance Analytics
+      if (aTotalQuizzes !== bTotalQuizzes) {
+        return bTotalQuizzes - aTotalQuizzes;
+      }
+      
+      // Fourth priority: Total score (descending) - using accuracy as proxy for total score
+      return bAccuracy - aAccuracy;
     });
 
     // Get top performers
@@ -321,22 +326,32 @@ exports.getTopPerformersMonthly = async (req, res) => {
       }
     });
 
-    // Sort by performance: first by high score wins, then by accuracy, then by level
+    // Sort by performance: Same as Admin Performance Analytics - accuracy first, then high score wins, then total quizzes
     users.sort((a, b) => {
-      const aWins = a.monthlyProgress?.highScoreWins || 0;
-      const bWins = b.monthlyProgress?.highScoreWins || 0;
-      
-      if (aWins !== bWins) return bWins - aWins;
-      
       const aAccuracy = a.monthlyProgress?.accuracy || 0;
       const bAccuracy = b.monthlyProgress?.accuracy || 0;
+      const aHighScore = a.monthlyProgress?.highScoreWins || 0;
+      const bHighScore = b.monthlyProgress?.highScoreWins || 0;
+      const aTotalQuizzes = a.monthlyProgress?.totalQuizAttempts || 0;
+      const bTotalQuizzes = b.monthlyProgress?.totalQuizAttempts || 0;
       
-      if (aAccuracy !== bAccuracy) return bAccuracy - aAccuracy;
+      // First priority: Accuracy (descending) - same as Admin Performance Analytics
+      if (aAccuracy !== bAccuracy) {
+        return bAccuracy - aAccuracy;
+      }
       
-      const aLevel = a.monthlyProgress?.currentLevel || 0;
-      const bLevel = b.monthlyProgress?.currentLevel || 0;
+      // Second priority: High score wins (descending) - same as Admin Performance Analytics
+      if (aHighScore !== bHighScore) {
+        return bHighScore - aHighScore;
+      }
       
-      return bLevel - aLevel;
+      // Third priority: Total quiz played (descending) - same as Admin Performance Analytics
+      if (aTotalQuizzes !== bTotalQuizzes) {
+        return bTotalQuizzes - aTotalQuizzes;
+      }
+      
+      // Fourth priority: Total score (descending) - using accuracy as proxy for total score
+      return bAccuracy - aAccuracy;
     });
 
     // Add position to each user
@@ -577,16 +592,31 @@ exports.getLandingTopPerformers = async (req, res) => {
       }
     });
 
-    // Sort by high score wins and accuracy
+    // Sort by performance: Same as Admin Performance Analytics - accuracy first, then high score wins, then total quizzes
     allUsers.sort((a, b) => {
-      const aHighScore = a.monthlyProgress?.highScoreWins || 0;
-      const bHighScore = b.monthlyProgress?.highScoreWins || 0;
       const aAccuracy = a.monthlyProgress?.accuracy || 0;
       const bAccuracy = b.monthlyProgress?.accuracy || 0;
+      const aHighScore = a.monthlyProgress?.highScoreWins || 0;
+      const bHighScore = b.monthlyProgress?.highScoreWins || 0;
+      const aTotalQuizzes = a.monthlyProgress?.totalQuizAttempts || 0;
+      const bTotalQuizzes = b.monthlyProgress?.totalQuizAttempts || 0;
       
+      // First priority: Accuracy (descending) - same as Admin Performance Analytics
+      if (aAccuracy !== bAccuracy) {
+        return bAccuracy - aAccuracy;
+      }
+      
+      // Second priority: High score wins (descending) - same as Admin Performance Analytics
       if (aHighScore !== bHighScore) {
         return bHighScore - aHighScore;
       }
+      
+      // Third priority: Total quiz played (descending) - same as Admin Performance Analytics
+      if (aTotalQuizzes !== bTotalQuizzes) {
+        return bTotalQuizzes - aTotalQuizzes;
+      }
+      
+      // Fourth priority: Total score (descending) - using accuracy as proxy for total score
       return bAccuracy - aAccuracy;
     });
 
