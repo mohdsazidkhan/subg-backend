@@ -278,21 +278,32 @@ userSchema.methods.getLevelInfo = function() {
 };
 
 // Method to check if user can attempt a quiz (single attempt system)
-userSchema.methods.canAttemptQuiz = function(quizId) {
+userSchema.methods.canAttemptQuiz = async function(quizId) {
   const existingQuiz = this.quizBestScores.find(q => q.quizId.toString() === quizId.toString());
   
-  if (!existingQuiz) {
-    return { canAttempt: true, attemptsLeft: 1, attemptNumber: 1, bestScore: null };
+  // Also check QuizAttempt collection for consistency
+  const QuizAttempt = require('./QuizAttempt');
+  const quizAttempt = await QuizAttempt.findOne({ 
+    user: this._id, 
+    quiz: quizId 
+  });
+  
+  // If either system shows the quiz was attempted, consider it attempted
+  if (existingQuiz || quizAttempt) {
+    const bestScore = existingQuiz ? existingQuiz.bestScorePercentage : (quizAttempt ? quizAttempt.scorePercentage : null);
+    const isHighScore = existingQuiz ? existingQuiz.isHighScore : (quizAttempt ? quizAttempt.scorePercentage >= 75 : false);
+    
+    return {
+      canAttempt: false,
+      attemptsLeft: 0,
+      attemptNumber: 1,
+      bestScore: bestScore,
+      isHighScore: isHighScore
+    };
   }
   
-  // User has already attempted this quiz
-  return {
-    canAttempt: false,
-    attemptsLeft: 0,
-    attemptNumber: 1,
-    bestScore: existingQuiz.bestScorePercentage,
-    isHighScore: existingQuiz.isHighScore
-  };
+  // User has not attempted this quiz
+  return { canAttempt: true, attemptsLeft: 1, attemptNumber: 1, bestScore: null };
 };
 
 // Method to update quiz best score after attempt

@@ -314,14 +314,14 @@ exports.getHomeQuizzes = async (req, res) => {
     // Add attempt status for authenticated users
     let quizzesWithStatus = quizzes;
     if (currentUser) {
-      quizzesWithStatus = quizzes.map(quiz => {
-        const attemptStatus = currentUser.canAttemptQuiz(quiz._id);
+      quizzesWithStatus = await Promise.all(quizzes.map(async (quiz) => {
+        const attemptStatus = await currentUser.canAttemptQuiz(quiz._id);
         return {
           ...quiz.toObject(),
           attemptStatus,
           isRecommended: quiz.requiredLevel === targetLevel
         };
-      });
+      }));
     } else {
       // For guest users, mark all quizzes as can attempt
       quizzesWithStatus = quizzes.map(quiz => ({
@@ -497,8 +497,8 @@ exports.getLevelQuizzes = async (req, res) => {
       total = await Quiz.countDocuments(query);
     }
 
-    const quizzesWithStatus = quizzes.map(quiz => {
-      const attemptStatus = user.canAttemptQuiz(quiz._id);
+    const quizzesWithStatus = await Promise.all(quizzes.map(async (quiz) => {
+      const attemptStatus = await user.canAttemptQuiz(quiz._id);
       return {
         _id: quiz._id,
         title: quiz.title,
@@ -524,7 +524,7 @@ exports.getLevelQuizzes = async (req, res) => {
           isHighScore: attemptStatus.isHighScore
         }
       };
-    });
+    }));
 
     res.json({
       success: true,

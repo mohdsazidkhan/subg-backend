@@ -26,7 +26,7 @@ exports.attemptQuiz = async (req, res) => {
     }
 
     // Check if user can attempt this quiz (single attempt system)
-    const attemptStatus = user.canAttemptQuiz(quizId);
+    const attemptStatus = await user.canAttemptQuiz(quizId);
     if (!attemptStatus.canAttempt) {
       return res.status(400).json({ 
         message: 'You have already attempted this quiz.',
