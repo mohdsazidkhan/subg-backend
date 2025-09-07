@@ -28,7 +28,7 @@ exports.getTopPerformers = async (req, res) => {
       role: 'student',
       'monthlyProgress.month': month
     })
-      .select('_id name monthlyProgress createdAt')
+      .select('_id name monthlyProgress createdAt subscriptionStatus')
       .lean();
 
     // If we don't have enough users with current month data, get additional users with global level data
@@ -40,7 +40,7 @@ exports.getTopPerformers = async (req, res) => {
           { monthlyProgress: { $exists: false } }
         ]
       })
-        .select('_id name level createdAt')
+        .select('_id name level createdAt subscriptionStatus')
         .sort({ 'level.highScoreQuizzes': -1, 'level.averageScore': -1 })
         .limit(parseInt(limit) - allUsers.length)
         .lean();
@@ -49,6 +49,7 @@ exports.getTopPerformers = async (req, res) => {
       const transformedAdditionalUsers = additionalUsers.map(user => ({
         _id: user._id,
         name: user.name,
+        subscriptionStatus: user.subscriptionStatus,
         monthlyProgress: {
           month: month,
           highScoreWins: user.level?.highScoreQuizzes || 0,
@@ -155,6 +156,7 @@ exports.getTopPerformers = async (req, res) => {
         name: user.name,
         position: position || 0,
         isCurrentUser,
+        subscriptionName: getSubscriptionDisplayName(user.subscriptionStatus),
         level: {
           currentLevel,
           levelName: getLevelName(currentLevel),
@@ -260,6 +262,17 @@ const getLevelName = (level) => {
   return levelNames[level] || 'Unknown';
 };
 
+const getSubscriptionDisplayName = (subscriptionStatus) => {
+  const subscriptionNames = {
+    'free': 'FREE',
+    'basic': 'BASIC', 
+    'premium': 'PREMIUM',
+    'pro': 'PRO'
+  };
+
+  return subscriptionNames[subscriptionStatus] || 'FREE';
+};
+
 // GET /api/public/top-performers-monthly - Top 10 performers for current month based on performance
 exports.getTopPerformersMonthly = async (req, res) => {
   try {
@@ -272,7 +285,7 @@ exports.getTopPerformersMonthly = async (req, res) => {
       role: 'student',
       'monthlyProgress.month': month
     })
-    .select('_id name monthlyProgress profilePicture')
+    .select('_id name monthlyProgress profilePicture subscriptionStatus')
     .lean();
 
     // If we don't have enough users with current month data, get additional users with global level data
@@ -284,7 +297,7 @@ exports.getTopPerformersMonthly = async (req, res) => {
           { monthlyProgress: { $exists: false } }
         ]
       })
-        .select('_id name level profilePicture')
+        .select('_id name level profilePicture subscriptionStatus')
         .sort({ 'level.highScoreQuizzes': -1, 'level.averageScore': -1 })
         .limit(limit - users.length)
         .lean();
@@ -294,6 +307,7 @@ exports.getTopPerformersMonthly = async (req, res) => {
         _id: user._id,
         name: user.name,
         profilePicture: user.profilePicture,
+        subscriptionStatus: user.subscriptionStatus,
         monthlyProgress: {
           month: month,
           highScoreWins: user.level?.highScoreQuizzes || 0,
@@ -352,6 +366,7 @@ exports.getTopPerformersMonthly = async (req, res) => {
       rank: index + 1,
       month: month,
       profilePicture: user.profilePicture,
+      subscriptionName: getSubscriptionDisplayName(user.subscriptionStatus),
       monthly: {
         highScoreWins: user.monthlyProgress?.highScoreWins || 0,
         totalQuizAttempts: user.monthlyProgress?.totalQuizAttempts || 0,
@@ -396,6 +411,7 @@ exports.getTopPerformersMonthly = async (req, res) => {
           name: user.name,
           position: user.position,
           isCurrentUser: user._id.toString() === currentUserId.toString(),
+          subscriptionName: getSubscriptionDisplayName(user.subscriptionStatus),
           level: {
             currentLevel: user.monthlyProgress?.currentLevel || 0,
             levelName: user.monthlyProgress?.currentLevel === 10 ? 'Legend' : getLevelName(user.monthlyProgress?.currentLevel || 0),
@@ -419,6 +435,7 @@ exports.getTopPerformersMonthly = async (req, res) => {
           name: currentUserData.name,
           position: currentUserData.position,
           isCurrentUser: true,
+          subscriptionName: getSubscriptionDisplayName(currentUserData.subscriptionStatus),
           level: {
             currentLevel: currentUserData.monthlyProgress?.currentLevel || 0,
             levelName: currentUserData.monthlyProgress?.currentLevel === 10 ? 'Legend' : getLevelName(currentUserData.monthlyProgress?.currentLevel || 0),
@@ -450,14 +467,19 @@ exports.getLandingStats = async (req, res) => {
       totalQuizAttempts,
       totalCategories,
       totalSubcategories,
-      totalQuestions
+      totalQuestions,
+      paidSubscriptions
     ] = await Promise.all([
       User.countDocuments({ role: 'student' }),
       Quiz.countDocuments({ isActive: true }),
       QuizAttempt.countDocuments(),
       Category.countDocuments(),
       Subcategory.countDocuments(),
-      Question.countDocuments() // Remove isActive filter since Question model doesn't have it
+      Question.countDocuments(), // Remove isActive filter since Question model doesn't have it
+      User.countDocuments({ 
+        role: 'student',
+        subscriptionStatus: { $nin: ['free'] } // Count users who don't have free subscription
+      })
     ]);
     
     const stats = {
@@ -467,6 +489,7 @@ exports.getLandingStats = async (req, res) => {
       totalQuizzes: totalQuizzes,
       totalQuestions: totalQuestions,
       quizzesTaken: totalQuizAttempts,
+      paidSubscriptions: paidSubscriptions, // Add count of users with paid subscriptions
       monthlyPrizePool: '₹9,999'
     };
 
@@ -530,7 +553,7 @@ exports.getLandingTopPerformers = async (req, res) => {
       role: 'student',
       'monthlyProgress.month': month
     })
-      .select('_id name monthlyProgress createdAt')
+      .select('_id name monthlyProgress createdAt subscriptionStatus')
       .lean();
 
     // If we don't have enough users with current month data, get additional users with global level data
@@ -542,7 +565,7 @@ exports.getLandingTopPerformers = async (req, res) => {
           { monthlyProgress: { $exists: false } }
         ]
       })
-        .select('_id name level createdAt')
+        .select('_id name level createdAt subscriptionStatus')
         .sort({ 'level.highScoreQuizzes': -1, 'level.averageScore': -1 })
         .limit(parseInt(limit) - allUsers.length)
         .lean();
@@ -551,6 +574,7 @@ exports.getLandingTopPerformers = async (req, res) => {
       const transformedAdditionalUsers = additionalUsers.map(user => ({
         _id: user._id,
         name: user.name,
+        subscriptionStatus: user.subscriptionStatus,
         monthlyProgress: {
           month: month,
           highScoreWins: user.level?.highScoreQuizzes || 0,
@@ -606,6 +630,7 @@ exports.getLandingTopPerformers = async (req, res) => {
     const topPerformers = allUsers.slice(0, parseInt(limit)).map((user, index) => ({
       _id: user._id,
       name: user.name || 'Anonymous',
+      subscriptionName: getSubscriptionDisplayName(user.subscriptionStatus),
       userLevel: user.monthlyProgress?.currentLevel || 0,
       userLevelName: getLevelName(user.monthlyProgress?.currentLevel || 0),
       userLevelNo: user.monthlyProgress?.currentLevel || 0,

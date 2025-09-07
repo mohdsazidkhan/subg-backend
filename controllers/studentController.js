@@ -240,13 +240,16 @@ exports.getAllQuizzes = async (req, res) => {
     await user.save();
 
     const currentLevel = user.level.currentLevel;
-    const nextLevel = currentLevel + 1;
+    const { level, page = 1, limit = 10 } = req.query;
+    
+    // Use the requested level or default to next level
+    const targetLevel = level ? parseInt(level) : currentLevel + 1;
 
-    // Check user's level access permissions for next level
-    const levelAccess = user.canAccessLevel(nextLevel);
+    // Check user's level access permissions for the target level
+    const levelAccess = user.canAccessLevel(targetLevel);
     if (!levelAccess.canAccess) {
       return res.status(403).json({ 
-        message: `You need a ${levelAccess.requiredPlan} subscription to access level ${nextLevel} quizzes`,
+        message: `You need a ${levelAccess.requiredPlan} subscription to access level ${targetLevel} quizzes`,
         requiredPlan: levelAccess.requiredPlan,
         accessibleLevels: levelAccess.accessibleLevels
       });
@@ -256,24 +259,37 @@ exports.getAllQuizzes = async (req, res) => {
     const attemptedQuizIds = await QuizAttempt.find({ user: userId })
       .distinct('quiz');
 
-    // Build query for next level quizzes (excluding attempted ones)
+    // Build query for the target level quizzes (excluding attempted ones)
     let query = {
       isActive: true,
-      requiredLevel: nextLevel, // Show quizzes from next level only
+      requiredLevel: targetLevel, // Use the requested level
       _id: { $nin: attemptedQuizIds } // Exclude attempted quizzes
     };
+
+    // Add pagination
+    const skip = (parseInt(page) - 1) * parseInt(limit);
+    const total = await Quiz.countDocuments(query);
 
     const quizzes = await Quiz.find(query)
       .populate('category', 'name')
       .populate('subcategory', 'name')
-      .sort({ createdAt: -1 });
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(parseInt(limit));
 
     res.json({
       success: true,
       data: quizzes,
+      pagination: {
+        currentPage: parseInt(page),
+        totalPages: Math.ceil(total / parseInt(limit)),
+        totalQuizzes: total,
+        hasNextPage: skip + quizzes.length < total,
+        hasPrevPage: parseInt(page) > 1
+      },
       userLevel: {
         currentLevel: currentLevel,
-        nextLevel: nextLevel,
+        nextLevel: currentLevel + 1,
         levelName: user.level.levelName,
         progress: user.level.levelProgress,
         highScoreQuizzes: user.level.highScoreQuizzes,

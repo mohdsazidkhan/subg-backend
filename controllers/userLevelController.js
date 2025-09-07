@@ -388,20 +388,23 @@ exports.getLevelQuizzes = async (req, res) => {
     const nextLevel = currentLevel + 1;
     const { category, subcategory, difficulty, level, attempted, search, limit = 20, page = 1 } = req.query;
 
-    // Check user's level access permissions for next level
-    const levelAccess = user.canAccessLevel(nextLevel);
+    // Use the requested level or default to next level
+    const targetLevel = level ? parseInt(level) : nextLevel;
+
+    // Check user's level access permissions for the target level
+    const levelAccess = user.canAccessLevel(targetLevel);
     if (!levelAccess.canAccess) {
       return res.status(403).json({ 
-        message: `You need a ${levelAccess.requiredPlan} subscription to access level ${nextLevel} quizzes`,
+        message: `You need a ${levelAccess.requiredPlan} subscription to access level ${targetLevel} quizzes`,
         requiredPlan: levelAccess.requiredPlan,
         accessibleLevels: levelAccess.accessibleLevels
       });
     }
 
-    // Build query for next level quizzes
+    // Build query for the target level quizzes
     let query = {
       isActive: true,
-      requiredLevel: nextLevel // Always show quizzes from next level
+      requiredLevel: targetLevel // Use the requested level
     };
 
     // Add category filter if provided
@@ -509,13 +512,11 @@ exports.getLevelQuizzes = async (req, res) => {
         requiredLevel: quiz.requiredLevel,
         timeLimit: quiz.timeLimit,
         totalMarks: quiz.totalMarks,
-        isRecommended: level && level !== '' 
-          ? quiz.requiredLevel === parseInt(level) 
-          : quiz.requiredLevel === userLevel,
+        isRecommended: quiz.requiredLevel === targetLevel,
         levelMatch: {
-          exact: quiz.requiredLevel === userLevel,
-          withinRange: quiz.requiredLevel >= Math.max(0, userLevel - 1) && 
-                      quiz.requiredLevel <= Math.min(10, userLevel + 2)
+          exact: quiz.requiredLevel === targetLevel,
+          withinRange: quiz.requiredLevel >= Math.max(0, targetLevel - 1) && 
+                      quiz.requiredLevel <= Math.min(10, targetLevel + 2)
         },
         attemptStatus: {
           hasAttempted: attemptStatus.canAttempt === false,
