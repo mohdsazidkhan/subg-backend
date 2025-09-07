@@ -8,6 +8,7 @@ const WalletTransaction = require('../models/WalletTransaction');
 const BankDetail = require('../models/BankDetail');
 const Contact = require('../models/Contact');
 const PaymentOrder = require('../models/PaymentOrder');
+const QuizAttempt = require('../models/QuizAttempt');
 
 // Helper function for pagination
 const getPaginationOptions = (req) => {
@@ -60,6 +61,7 @@ exports.getStats = async (req, res) => {
     const questions = await Question.countDocuments();
     const students = await User.countDocuments({ role: 'student' });
     const bankDetails = await BankDetail.countDocuments();
+    const totalQuizAttempts = await QuizAttempt.countDocuments();
     
     // Get subscription totals from User model (all users, no date filter)
     const totalSubscriptions = await User.countDocuments({});
@@ -142,6 +144,7 @@ exports.getStats = async (req, res) => {
       questions, 
       students, 
       bankDetails,
+      totalQuizAttempts,
       subscriptions: totalSubscriptions,
       activeSubscriptions,
       freeSubscriptions,

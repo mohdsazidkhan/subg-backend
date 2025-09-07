@@ -11800,3 +11800,176 @@
 2025-09-07T07:48:03.764Z [INFO]: ✅ Database Connected to MongoDB 
 2025-09-07T07:48:03.773Z [INFO]: 🚀 Server running on port 5000 
 2025-09-07T07:48:03.831Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-07T08:11:31.847Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-07T08:11:31.855Z [INFO]: 🚀 Server running on port 5000 
+2025-09-07T08:11:31.907Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-07T08:14:15.713Z [INFO]: 🔍 Debug - Raw top performer data: {
+  "_id": "686a8fc5d0ed6e850923b81e",
+  "name": "Asif Khan",
+  "email": "asifkhanconnect@gmail.com",
+  "level": {
+    "currentLevel": 2,
+    "levelName": "Explorer",
+    "quizzesPlayed": 9,
+    "highScoreQuizzes": 0,
+    "totalScore": 41,
+    "averageScore": 5,
+    "levelProgress": 50,
+    "lastLevelUp": "2025-09-06T11:29:47.784Z"
+  },
+  "subscriptionStatus": "basic",
+  "monthlyProgress": {
+    "accuracy": 100,
+    "currentLevel": 2,
+    "highScoreWins": 9,
+    "month": "2025-09",
+    "rewardEligible": false,
+    "rewardRank": null,
+    "totalQuizAttempts": 9
+  }
+} 
+2025-09-07T08:14:15.714Z [INFO]: 🔍 Debug - Raw monthly progress data: {
+  "accuracy": 100,
+  "currentLevel": 2,
+  "highScoreWins": 9,
+  "month": "2025-09",
+  "rewardEligible": false,
+  "rewardRank": null,
+  "totalQuizAttempts": 9
+} 
+2025-09-07T08:14:16.103Z [INFO]: 🔍 Debug - Raw top performer data: {
+  "_id": "686a8fc5d0ed6e850923b81e",
+  "name": "Asif Khan",
+  "email": "asifkhanconnect@gmail.com",
+  "level": {
+    "currentLevel": 2,
+    "levelName": "Explorer",
+    "quizzesPlayed": 9,
+    "highScoreQuizzes": 0,
+    "totalScore": 41,
+    "averageScore": 5,
+    "levelProgress": 50,
+    "lastLevelUp": "2025-09-06T11:29:47.784Z"
+  },
+  "subscriptionStatus": "basic",
+  "monthlyProgress": {
+    "accuracy": 100,
+    "currentLevel": 2,
+    "highScoreWins": 9,
+    "month": "2025-09",
+    "rewardEligible": false,
+    "rewardRank": null,
+    "totalQuizAttempts": 9
+  }
+} 
+2025-09-07T08:14:16.104Z [INFO]: 🔍 Debug - Raw monthly progress data: {
+  "accuracy": 100,
+  "currentLevel": 2,
+  "highScoreWins": 9,
+  "month": "2025-09",
+  "rewardEligible": false,
+  "rewardRank": null,
+  "totalQuizAttempts": 9
+} 
+2025-09-07T08:16:57.690Z [INFO]: 🔍 Debug - Raw top performer data: {
+  "_id": "686a8fc5d0ed6e850923b81e",
+  "name": "Asif Khan",
+  "email": "asifkhanconnect@gmail.com",
+  "level": {
+    "currentLevel": 2,
+    "levelName": "Explorer",
+    "quizzesPlayed": 9,
+    "highScoreQuizzes": 0,
+    "totalScore": 41,
+    "averageScore": 5,
+    "levelProgress": 50,
+    "lastLevelUp": "2025-09-06T11:29:47.784Z"
+  },
+  "subscriptionStatus": "basic",
+  "monthlyProgress": {
+    "accuracy": 100,
+    "currentLevel": 2,
+    "highScoreWins": 9,
+    "month": "2025-09",
+    "rewardEligible": false,
+    "rewardRank": null,
+    "totalQuizAttempts": 9
+  }
+} 
+2025-09-07T08:16:57.691Z [INFO]: 🔍 Debug - Raw monthly progress data: {
+  "accuracy": 100,
+  "currentLevel": 2,
+  "highScoreWins": 9,
+  "month": "2025-09",
+  "rewardEligible": false,
+  "rewardRank": null,
+  "totalQuizAttempts": 9
+} 
+2025-09-07T08:16:58.159Z [INFO]: 🔍 Debug - Raw top performer data: {
+  "_id": "686a8fc5d0ed6e850923b81e",
+  "name": "Asif Khan",
+  "email": "asifkhanconnect@gmail.com",
+  "level": {
+    "currentLevel": 2,
+    "levelName": "Explorer",
+    "quizzesPlayed": 9,
+    "highScoreQuizzes": 0,
+    "totalScore": 41,
+    "averageScore": 5,
+    "levelProgress": 50,
+    "lastLevelUp": "2025-09-06T11:29:47.784Z"
+  },
+  "subscriptionStatus": "basic",
+  "monthlyProgress": {
+    "accuracy": 100,
+    "currentLevel": 2,
+    "highScoreWins": 9,
+    "month": "2025-09",
+    "rewardEligible": false,
+    "rewardRank": null,
+    "totalQuizAttempts": 9
+  }
+} 
+2025-09-07T08:16:58.160Z [INFO]: 🔍 Debug - Raw monthly progress data: {
+  "accuracy": 100,
+  "currentLevel": 2,
+  "highScoreWins": 9,
+  "month": "2025-09",
+  "rewardEligible": false,
+  "rewardRank": null,
+  "totalQuizAttempts": 9
+} 
+2025-09-07T08:18:35.651Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-07T08:18:35.680Z [INFO]: 🚀 Server running on port 5000 
+2025-09-07T08:18:35.921Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-07T08:18:58.895Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-07T08:18:58.905Z [INFO]: 🚀 Server running on port 5000 
+2025-09-07T08:18:58.973Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-07T08:19:08.555Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-07T08:19:08.566Z [INFO]: 🚀 Server running on port 5000 
+2025-09-07T08:19:08.655Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-07T08:19:22.090Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-07T08:19:22.101Z [INFO]: 🚀 Server running on port 5000 
+2025-09-07T08:19:22.170Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-07T08:21:11.020Z [ERROR]: Error getting stats: ReferenceError: QuizAttempt is not defined 
+2025-09-07T08:21:11.254Z [ERROR]: Error getting stats: ReferenceError: QuizAttempt is not defined 
+2025-09-07T08:21:20.384Z [ERROR]: Error getting stats: ReferenceError: QuizAttempt is not defined 
+2025-09-07T08:21:21.073Z [ERROR]: Error getting stats: ReferenceError: QuizAttempt is not defined 
+2025-09-07T08:21:49.710Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-07T08:21:49.721Z [INFO]: 🚀 Server running on port 5000 
+2025-09-07T08:21:49.793Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-07T08:22:00.813Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-07T08:22:00.820Z [INFO]: 🚀 Server running on port 5000 
+2025-09-07T08:22:00.874Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-07T08:22:13.561Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-07T08:22:13.575Z [INFO]: 🚀 Server running on port 5000 
+2025-09-07T08:22:13.666Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-07T08:22:54.704Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-07T08:22:54.712Z [INFO]: 🚀 Server running on port 5000 
+2025-09-07T08:22:54.777Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-07T08:23:19.468Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-07T08:23:19.476Z [INFO]: 🚀 Server running on port 5000 
+2025-09-07T08:23:19.530Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-07T08:23:32.646Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-07T08:23:32.656Z [INFO]: 🚀 Server running on port 5000 
+2025-09-07T08:23:32.729Z [INFO]: ✅ Monthly reset CRON scheduled 

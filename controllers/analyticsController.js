@@ -761,8 +761,8 @@ exports.getPerformanceAnalytics = async (req, res) => {
       ])
     ]);
 
-    console.log('🔍 Debug - Raw top performer data:', JSON.stringify(topPerformers[0], null, 2));
-    console.log('🔍 Debug - Raw monthly progress data:', JSON.stringify(topPerformers[0]?.monthlyProgress, null, 2));
+    //console.log('🔍 Debug - Raw top performer data:', JSON.stringify(topPerformers[0], null, 2));
+    //console.log('🔍 Debug - Raw monthly progress data:', JSON.stringify(topPerformers[0]?.monthlyProgress, null, 2));
 
     // Format top performers to use level data as primary, monthly progress as fallback
     const formattedTopPerformers = topPerformers.map(user => {
