@@ -11973,3 +11973,33 @@
 2025-09-07T08:23:32.646Z [INFO]: ✅ Database Connected to MongoDB 
 2025-09-07T08:23:32.656Z [INFO]: 🚀 Server running on port 5000 
 2025-09-07T08:23:32.729Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-08T06:07:11.822Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-08T06:07:11.831Z [INFO]: 🚀 Server running on port 5000 
+2025-09-08T06:07:11.971Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-08T06:07:58.189Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2Zjc2ZGQzYTkwMjc5ZGIzZGEzMCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NzMwODcyNSwiZXhwIjoxNzU3Mzk1MTI1fQ.WC0pXLJyY9dn2TKQBj0P2RywFyJn_eZRFtUQ6W3x5NM 
+2025-09-08T06:07:58.442Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2Zjc2ZGQzYTkwMjc5ZGIzZGEzMCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NzMwODcyNSwiZXhwIjoxNzU3Mzk1MTI1fQ.WC0pXLJyY9dn2TKQBj0P2RywFyJn_eZRFtUQ6W3x5NM 
+2025-09-08T06:10:26.002Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2Zjc2ZGQzYTkwMjc5ZGIzZGEzMCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NzMwODcyNSwiZXhwIjoxNzU3Mzk1MTI1fQ.WC0pXLJyY9dn2TKQBj0P2RywFyJn_eZRFtUQ6W3x5NM 
+2025-09-08T06:10:26.012Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2Zjc2ZGQzYTkwMjc5ZGIzZGEzMCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NzMwODcyNSwiZXhwIjoxNzU3Mzk1MTI1fQ.WC0pXLJyY9dn2TKQBj0P2RywFyJn_eZRFtUQ6W3x5NM 
+2025-09-08T06:10:26.113Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2Zjc2ZGQzYTkwMjc5ZGIzZGEzMCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NzMwODcyNSwiZXhwIjoxNzU3Mzk1MTI1fQ.WC0pXLJyY9dn2TKQBj0P2RywFyJn_eZRFtUQ6W3x5NM 
+2025-09-08T06:10:26.124Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2Zjc2ZGQzYTkwMjc5ZGIzZGEzMCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NzMwODcyNSwiZXhwIjoxNzU3Mzk1MTI1fQ.WC0pXLJyY9dn2TKQBj0P2RywFyJn_eZRFtUQ6W3x5NM 
+2025-09-08T06:13:14.029Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-08T06:13:14.040Z [INFO]: 🚀 Server running on port 5000 
+2025-09-08T06:13:14.114Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-08T06:13:19.212Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-08T06:13:19.222Z [INFO]: 🚀 Server running on port 5000 
+2025-09-08T06:13:19.284Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-08T06:13:35.258Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-08T06:13:35.270Z [INFO]: 🚀 Server running on port 5000 
+2025-09-08T06:13:35.344Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-08T06:15:07.659Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-08T06:15:07.668Z [INFO]: 🚀 Server running on port 5000 
+2025-09-08T06:15:07.730Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-08T06:15:21.734Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-08T06:15:21.744Z [INFO]: 🚀 Server running on port 5000 
+2025-09-08T06:15:21.824Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-08T06:15:41.362Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-08T06:15:41.372Z [INFO]: 🚀 Server running on port 5000 
+2025-09-08T06:15:41.458Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-08T06:16:12.140Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-08T06:16:12.149Z [INFO]: 🚀 Server running on port 5000 
+2025-09-08T06:16:12.212Z [INFO]: ✅ Monthly reset CRON scheduled 

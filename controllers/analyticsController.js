@@ -136,11 +136,35 @@ exports.getDashboardOverview = async (req, res) => {
       .sort({ attemptedAt: -1 })
       .limit(10);
 
-    // Get top performing users
+    // Get top performing users with monthly progress (same sorting as performance analytics)
+    const currentMonth = new Date().toISOString().slice(0, 7); // YYYY-MM format
+    
     const topUsers = await User.find({ role: 'student' })
-      .sort({ 'level.highScoreQuizzes': -1, 'level.averageScore': -1 })
+      .sort({ 
+        'monthlyProgress.highScoreWins': -1, 
+        'monthlyProgress.accuracy': -1, 
+        'monthlyProgress.totalQuizAttempts': -1,
+        'level.averageScore': -1
+      })
       .limit(10)
-      .select('name level badges subscriptionStatus');
+      .select('name level badges subscriptionStatus monthlyProgress');
+
+    // Format topUsers to include monthlyProgress data
+    const formattedTopUsers = topUsers.map(user => {
+      const monthlyData = user.monthlyProgress || {};
+      const levelData = user.level || {};
+      
+      return {
+        ...user.toObject(),
+        monthlyProgress: {
+          highScoreWins: monthlyData.highScoreWins || 0,
+          accuracy: monthlyData.accuracy || 0,
+          currentLevel: monthlyData.currentLevel || levelData.currentLevel || 0,
+          totalQuizAttempts: monthlyData.totalQuizAttempts || levelData.quizzesPlayed || 0,
+          month: monthlyData.month || new Date().toISOString().slice(0, 7)
+        }
+      };
+    });
 
     res.json({
       success: true,
@@ -162,7 +186,7 @@ exports.getDashboardOverview = async (req, res) => {
         levelDistribution,
         subscriptionDistribution,
         recentActivity: recentAttempts,
-        topUsers
+        topUsers: formattedTopUsers
       }
     });
   } catch (error) {
@@ -669,9 +693,10 @@ exports.getPerformanceAnalytics = async (req, res) => {
         'monthlyProgress.month': currentMonth // Only get users with current month data
       })
         .sort({ 
-          'monthlyProgress.accuracy': -1, 
           'monthlyProgress.highScoreWins': -1, 
-          'level.quizzesPlayed': -1 
+          'monthlyProgress.accuracy': -1, 
+          'monthlyProgress.totalQuizAttempts': -1,
+          'level.averageScore': -1
         })
         .limit(20)
         .select('name email level monthlyProgress subscriptionStatus')
@@ -788,7 +813,7 @@ exports.getPerformanceAnalytics = async (req, res) => {
         role: 'student',
         'monthlyProgress.month': { $ne: currentMonth } // Users without current month data
       })
-        .sort({ 'level.highScoreQuizzes': -1, 'level.averageScore': -1, 'level.quizzesPlayed': -1 })
+        .sort({ 'level.highScoreQuizzes': -1, 'level.averageScore': -1, 'level.quizzesPlayed': -1, 'level.totalScore': -1 })
         .limit(20 - formattedTopPerformers.length)
         .select('name email level monthlyProgress subscriptionStatus')
         .lean();
