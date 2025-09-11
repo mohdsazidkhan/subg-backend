@@ -12003,3 +12003,47 @@
 2025-09-08T06:16:12.140Z [INFO]: ✅ Database Connected to MongoDB 
 2025-09-08T06:16:12.149Z [INFO]: 🚀 Server running on port 5000 
 2025-09-08T06:16:12.212Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-08T15:55:42.950Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-08T15:55:42.963Z [INFO]: 🚀 Server running on port 5000 
+2025-09-08T15:55:43.086Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-08T16:00:29.184Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-08T16:00:29.196Z [INFO]: 🚀 Server running on port 5000 
+2025-09-08T16:00:29.282Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-08T16:00:42.976Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-08T16:00:42.987Z [INFO]: 🚀 Server running on port 5000 
+2025-09-08T16:00:43.064Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-08T16:01:07.642Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-08T16:01:07.653Z [INFO]: 🚀 Server running on port 5000 
+2025-09-08T16:01:07.717Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-08T16:01:23.809Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-08T16:01:23.818Z [INFO]: 🚀 Server running on port 5000 
+2025-09-08T16:01:23.875Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-08T16:10:07.715Z [INFO]: 🔍 HomePage: User 686a6f76dd3a90279db3da30 has attempted 0 quizzes 
+2025-09-08T16:10:26.250Z [INFO]: 🔍 HomePage: User 686a6fa36580063952214011 has attempted 40 quizzes 
+2025-09-08T16:10:27.462Z [INFO]: 🔍 HomePage: User 686a6fa36580063952214011 has attempted 40 quizzes 
+2025-09-08T16:13:48.881Z [INFO]: 🔍 HomePage: User 686a6fa36580063952214011 has attempted 40 quizzes 
+2025-09-08T16:13:50.672Z [INFO]: 🔍 HomePage: User 686a6fa36580063952214011 has attempted 40 quizzes 
+2025-09-08T16:14:09.171Z [INFO]: 🔍 HomePage: User 686a6fa36580063952214011 has attempted 40 quizzes 
+2025-09-08T16:14:55.999Z [INFO]: 🔍 HomePage: User 686a6fa36580063952214011 has attempted 40 quizzes 
+2025-09-11T04:48:01.124Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-11T04:48:01.138Z [INFO]: 🚀 Server running on port 5000 
+2025-09-11T04:48:01.280Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-11T04:50:05.802Z [ERROR]: JWT verification failed in protect: jwt expired Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU3MzQ4MDI4LCJleHAiOjE3NTc0MzQ0Mjh9.wIKsJP0hYJCVdLnNVyKlo7tAp317SvFkxkAUS39hzHk 
+2025-09-11T04:54:47.572Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-11T04:54:47.584Z [INFO]: 🚀 Server running on port 5000 
+2025-09-11T04:54:47.669Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-11T04:55:09.494Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-11T04:55:09.505Z [INFO]: 🚀 Server running on port 5000 
+2025-09-11T04:55:09.580Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-11T04:55:24.547Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-11T04:55:24.558Z [INFO]: 🚀 Server running on port 5000 
+2025-09-11T04:55:24.641Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-11T04:55:44.179Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-11T04:55:44.188Z [INFO]: 🚀 Server running on port 5000 
+2025-09-11T04:55:44.252Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-11T05:02:04.090Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-11T05:02:04.099Z [INFO]: 🚀 Server running on port 5000 
+2025-09-11T05:02:04.173Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-11T05:03:55.988Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-11T05:03:55.996Z [INFO]: 🚀 Server running on port 5000 
+2025-09-11T05:03:56.063Z [INFO]: ✅ Monthly reset CRON scheduled 

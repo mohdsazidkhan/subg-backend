@@ -302,8 +302,10 @@ exports.getHomeQuizzes = async (req, res) => {
     const targetLevel = userLevelInfo?.currentLevel?.number || 0;
     
     // Find quizzes suitable for the user's level
+    // If user is at level 10, show level 10 quizzes only
+    const levelFilter = targetLevel === 10 ? 10 : { $lte: targetLevel + 1 };
     const quizzes = await Quiz.find({
-      requiredLevel: { $lte: targetLevel + 1 }, // Show quizzes up to one level above
+      requiredLevel: levelFilter, // Show quizzes up to one level above, or level 10 only
       isActive: true
     })
     .populate('category', 'name')
@@ -389,7 +391,8 @@ exports.getLevelQuizzes = async (req, res) => {
     const { category, subcategory, difficulty, level, attempted, search, limit = 20, page = 1 } = req.query;
 
     // Use the requested level or default to next level
-    const targetLevel = level ? parseInt(level) : nextLevel;
+    // If user is at level 10, show level 10 quizzes
+    const targetLevel = level ? parseInt(level) : (currentLevel === 10 ? 10 : nextLevel);
 
     // Check user's level access permissions for the target level
     const levelAccess = user.canAccessLevel(targetLevel);

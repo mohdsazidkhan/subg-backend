@@ -47,9 +47,11 @@ const searchAll = async (req, res) => {
     const matchedSubcategoryIds = subcategories.map(sub => sub._id);
 
     // ✅ Build quiz filter with "not attempted" and next level quizzes
+    // If user is at level 10, show level 10 quizzes
+    const targetLevel = currentLevel === 10 ? 10 : nextLevel;
     const quizFilter = {
       isActive: true,
-      requiredLevel: nextLevel, // Show quizzes from next level only
+      requiredLevel: targetLevel, // Show quizzes from target level
       _id: { $nin: attemptedQuizIds }, // <-- Exclude attempted
       $or: [
         { title: regex },

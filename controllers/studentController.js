@@ -243,7 +243,8 @@ exports.getAllQuizzes = async (req, res) => {
     const { level, page = 1, limit = 10 } = req.query;
     
     // Use the requested level or default to next level
-    const targetLevel = level ? parseInt(level) : currentLevel + 1;
+    // If user is at level 10, show level 10 quizzes
+    const targetLevel = level ? parseInt(level) : (currentLevel === 10 ? 10 : currentLevel + 1);
 
     // Check user's level access permissions for the target level
     const levelAccess = user.canAccessLevel(targetLevel);

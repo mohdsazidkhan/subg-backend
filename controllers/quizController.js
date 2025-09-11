@@ -257,10 +257,13 @@ exports.getQuizzesByLevel = async (req, res) => {
     const nextLevel = currentLevel + 1;
     const { category, subcategory, difficulty, level, limit = 20, page = 1 } = req.query;
 
-    const levelAccess = user.canAccessLevel(nextLevel);
+    // Check user's level access permissions for target level
+    // If user is at level 10, check access for level 10, otherwise check next level
+    const targetLevel = currentLevel === 10 ? 10 : nextLevel;
+    const levelAccess = user.canAccessLevel(targetLevel);
     if (!levelAccess.canAccess) {
       return res.status(403).json({
-        message: `You need a ${levelAccess.requiredPlan} subscription to access level ${nextLevel} quizzes`,
+        message: `You need a ${levelAccess.requiredPlan} subscription to access level ${targetLevel} quizzes`,
         requiredPlan: levelAccess.requiredPlan,
         accessibleLevels: levelAccess.accessibleLevels
       });
@@ -268,8 +271,8 @@ exports.getQuizzesByLevel = async (req, res) => {
 
     let query = { isActive: true };
 
-    // Always show quizzes from next level
-    query.requiredLevel = nextLevel;
+    // Show quizzes from target level
+    query.requiredLevel = targetLevel;
 
     if (category?.trim()) query.category = category;
     if (subcategory?.trim()) query.subcategory = subcategory;
@@ -386,9 +389,11 @@ exports.getRecommendedQuizzes = async (req, res) => {
       .distinct('quiz');
 
     // Get quizzes that are perfect for user's next level (excluding attempted ones)
+    // If user is at level 10, show level 10 quizzes
+    const targetLevel = currentLevel === 10 ? 10 : nextLevel;
     const recommendedQuizzes = await Quiz.find({
       isActive: true,
-      requiredLevel: nextLevel,
+      requiredLevel: targetLevel,
       _id: { $nin: attemptedQuizIds } // Exclude attempted quizzes
     })
     .populate('category', 'name')
@@ -435,21 +440,14 @@ exports.getQuizDifficultyDistribution = async (req, res) => {
     await user.save();
 
     const userLevel = user.level.currentLevel;
+    const targetLevel = userLevel === 10 ? 10 : userLevel;
 
     // Get difficulty distribution for user's level
     const difficultyStats = await Quiz.aggregate([
       {
         $match: {
           isActive: true,
-          $or: [
-            { requiredLevel: userLevel },
-            { 
-              requiredLevel: { 
-                $gte: Math.max(0, userLevel - 1), 
-                $lte: Math.min(10, userLevel + 2) 
-              } 
-            }
-          ]
+          requiredLevel: targetLevel
         }
       },
       {
@@ -465,15 +463,7 @@ exports.getQuizDifficultyDistribution = async (req, res) => {
       {
         $match: {
           isActive: true,
-          $or: [
-            { requiredLevel: userLevel },
-            { 
-              requiredLevel: { 
-                $gte: Math.max(0, userLevel - 1), 
-                $lte: Math.min(10, userLevel + 2) 
-              } 
-            }
-          ]
+          requiredLevel: targetLevel
         }
       },
       {
@@ -521,11 +511,13 @@ exports.getHomePageLevelQuizzes = async (req, res) => {
     const nextLevel = currentLevel + 1;
     const limit = parseInt(req.query.limit) || 6; // Show 6 quizzes on home page
 
-    // Check user's level access permissions for next level
-    const levelAccess = user.canAccessLevel(nextLevel);
+    // Check user's level access permissions for target level
+    // If user is at level 10, check access for level 10, otherwise check next level
+    const targetLevel = currentLevel === 10 ? 10 : nextLevel;
+    const levelAccess = user.canAccessLevel(targetLevel);
     if (!levelAccess.canAccess) {
       return res.status(403).json({ 
-        message: `You need a ${levelAccess.requiredPlan} subscription to access level ${nextLevel} quizzes`,
+        message: `You need a ${levelAccess.requiredPlan} subscription to access level ${targetLevel} quizzes`,
         requiredPlan: levelAccess.requiredPlan,
         accessibleLevels: levelAccess.accessibleLevels
       });
@@ -536,9 +528,10 @@ exports.getHomePageLevelQuizzes = async (req, res) => {
       .distinct('quiz');
 
     // Build query for next level quizzes (excluding attempted ones)
+    // If user is at level 10, show level 10 quizzes
     let query = {
       isActive: true,
-      requiredLevel: nextLevel, // Show quizzes from next level only
+      requiredLevel: targetLevel, // Show quizzes from target level
       _id: { $nin: attemptedQuizIds } // Exclude attempted quizzes
     };
 
@@ -619,11 +612,13 @@ exports.getHomePageData = async (req, res) => {
     const currentLevel = user.level.currentLevel;
     const nextLevel = currentLevel + 1;
 
-    // Check user's level access permissions for next level
-    const levelAccess = user.canAccessLevel(nextLevel);
+    // Check user's level access permissions for target level
+    // If user is at level 10, check access for level 10, otherwise check next level
+    const targetLevel = currentLevel === 10 ? 10 : nextLevel;
+    const levelAccess = user.canAccessLevel(targetLevel);
     if (!levelAccess.canAccess) {
       return res.status(403).json({ 
-        message: `You need a ${levelAccess.requiredPlan} subscription to access level ${nextLevel} quizzes`,
+        message: `You need a ${levelAccess.requiredPlan} subscription to access level ${targetLevel} quizzes`,
         requiredPlan: levelAccess.requiredPlan,
         accessibleLevels: levelAccess.accessibleLevels
       });
@@ -642,9 +637,10 @@ exports.getHomePageData = async (req, res) => {
       .distinct('quiz');
 
     // Build query for next level quizzes (excluding attempted ones)
+    // If user is at level 10, show level 10 quizzes
     let query = {
       isActive: true,
-      requiredLevel: nextLevel, // Show quizzes from next level only
+      requiredLevel: targetLevel, // Show quizzes from target level
       _id: { $nin: attemptedQuizIds } // Exclude attempted quizzes
     };
 
