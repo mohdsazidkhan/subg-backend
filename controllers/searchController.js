@@ -21,11 +21,12 @@ const searchAll = async (req, res) => {
     // ✅ Get attempted quiz IDs
     const attemptedQuizIds = await QuizAttempt.find({ user: userId }).distinct('quiz');
 
-    // Check user's level access permissions for next level
-    const levelAccess = user.canAccessLevel(nextLevel);
+    // Check user's level access permissions for target level
+    const targetLevel = currentLevel === 10 ? 10 : nextLevel;
+    const levelAccess = user.canAccessLevel(targetLevel);
     if (!levelAccess.canAccess) {
       return res.status(403).json({ 
-        message: `You need a ${levelAccess.requiredPlan} subscription to access level ${nextLevel} quizzes`,
+        message: `You need a ${levelAccess.requiredPlan} subscription to access level ${targetLevel} quizzes`,
         requiredPlan: levelAccess.requiredPlan,
         accessibleLevels: levelAccess.accessibleLevels
       });
@@ -46,9 +47,8 @@ const searchAll = async (req, res) => {
     const matchedCategoryIds = categories.map(cat => cat._id);
     const matchedSubcategoryIds = subcategories.map(sub => sub._id);
 
-    // ✅ Build quiz filter with "not attempted" and next level quizzes
+    // ✅ Build quiz filter with "not attempted" and target level quizzes
     // If user is at level 10, show level 10 quizzes
-    const targetLevel = currentLevel === 10 ? 10 : nextLevel;
     const quizFilter = {
       isActive: true,
       requiredLevel: targetLevel, // Show quizzes from target level
