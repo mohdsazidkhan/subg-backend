@@ -13,10 +13,17 @@ exports.getProfile = async (req, res) => {
 
     // Get level information
     const levelInfo = user.getLevelInfo();
+    
+    // Get profile completion details
+    const profileCompletion = user.getProfileCompletionDetails();
 
     res.json({
-      ...user.toObject(),
-      levelInfo: levelInfo
+      success: true,
+      user: {
+        ...user.toObject(),
+        levelInfo: levelInfo,
+        profileCompletion: profileCompletion
+      }
     });
   } catch (err) {
     console.error('Profile fetch error:', err);

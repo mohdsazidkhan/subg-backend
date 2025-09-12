@@ -75,7 +75,11 @@ const userSchema = new mongoose.Schema({
   claimableRewards: {
     type: Number,
     default: 0
-  }
+  },
+  
+  // Profile completion tracking
+  profileCompleted: { type: Boolean, default: false },
+  profileCompletionReward: { type: Boolean, default: false } // Track if user got reward for profile completion
   
 }, { timestamps: true });
 
@@ -417,6 +421,79 @@ userSchema.methods.getRequiredPlanForLevel = function(levelNumber) {
   if (levelNumber <= 6) return 'basic';
   if (levelNumber <= 9) return 'premium';
   return 'pro';
+};
+
+// Method to check if user profile is complete
+userSchema.methods.isProfileComplete = function() {
+  return this.getProfileCompletionPercentage() === 100;
+};
+
+// Method to get profile completion percentage
+userSchema.methods.getProfileCompletionPercentage = function() {
+  const requiredFields = [
+    { field: 'name', validator: (value) => value && value.trim() !== '' },
+    { field: 'email', validator: (value) => value && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value) },
+    { field: 'phone', validator: (value) => value && /^[0-9]{10}$/.test(value) },
+    { field: 'socialLinks', validator: (value) => {
+      if (!value) return false;
+      // Check if at least one social media link is provided
+      const socialPlatforms = ['instagram', 'facebook', 'x', 'youtube'];
+      return socialPlatforms.some(platform => value[platform] && value[platform].trim() !== '');
+    }}
+  ];
+  
+  let completedFields = 0;
+  
+  for (const { field, validator } of requiredFields) {
+    if (validator(this[field])) {
+      completedFields++;
+    }
+  }
+  
+  return Math.round((completedFields / requiredFields.length) * 100);
+};
+
+// Method to get profile completion details
+userSchema.methods.getProfileCompletionDetails = function() {
+  const fields = [
+    { 
+      name: 'Full Name', 
+      field: 'name', 
+      completed: this.name && this.name.trim() !== '',
+      value: this.name || ''
+    },
+    { 
+      name: 'Email Address', 
+      field: 'email', 
+      completed: this.email && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(this.email),
+      value: this.email || ''
+    },
+    { 
+      name: 'Phone Number', 
+      field: 'phone', 
+      completed: this.phone && /^[0-9]{10}$/.test(this.phone),
+      value: this.phone || ''
+    },
+    { 
+      name: 'Social Media Link', 
+      field: 'socialLinks', 
+      completed: this.socialLinks && (() => {
+        const socialPlatforms = ['instagram', 'facebook', 'x', 'youtube'];
+        return socialPlatforms.some(platform => this.socialLinks[platform] && this.socialLinks[platform].trim() !== '');
+      })(),
+      value: this.socialLinks ? Object.values(this.socialLinks).filter(link => link && link.trim() !== '').join(', ') : ''
+    }
+  ];
+  
+  const percentage = this.getProfileCompletionPercentage();
+  
+  return {
+    percentage,
+    isComplete: percentage === 100,
+    fields,
+    completedFields: fields.filter(f => f.completed).length,
+    totalFields: fields.length
+  };
 };
 
 module.exports = mongoose.model('User', userSchema);

@@ -219,6 +219,42 @@ exports.register = async (req, res) => {
     // Save user first to get the _id
     await user.save();
 
+    // Check if profile is 100% complete and give basic subscription reward
+    const profileDetails = user.getProfileCompletionDetails();
+    if (profileDetails.isComplete && !user.profileCompleted) {
+      user.profileCompleted = true;
+      
+      // Give basic subscription reward if user hasn't received it yet
+      if (!user.profileCompletionReward && user.subscriptionStatus === 'free') {
+        try {
+          const Subscription = require('../models/Subscription');
+          const now = new Date();
+          const endDate = new Date(now);
+          endDate.setDate(endDate.getDate() + 30); // 30 days
+          
+          const subscription = await Subscription.create({
+            user: user._id,
+            plan: 'basic',
+            status: 'active',
+            startDate: now,
+            endDate,
+            amount: 9,
+            currency: 'INR',
+            metadata: { profileCompletionReward: true }
+          });
+          
+          user.currentSubscription = subscription._id;
+          user.subscriptionStatus = 'basic';
+          user.subscriptionExpiry = endDate;
+          user.profileCompletionReward = true;
+          
+          console.log(`🎁 Profile completion reward: BASIC plan awarded to ${user.name} during registration! (${profileDetails.percentage}% complete)`);
+        } catch (subError) {
+          console.error('❌ Failed to create profile completion subscription:', subError);
+        }
+      }
+    }
+
     // Referral logic
     if (referredBy) {
       // Find referrer by referralCode
@@ -385,8 +421,50 @@ exports.login = async (req, res) => {
     const decoded = jwt.decode(token);
     const expiresAt = new Date(decoded.exp * 1000); // Convert from seconds to ms
 
+    // Check profile completion and give reward if 100% complete
+    const profileDetails = user.getProfileCompletionDetails();
+    if (profileDetails.isComplete && !user.profileCompleted) {
+      user.profileCompleted = true;
+      
+      // Give basic subscription reward if user hasn't received it yet
+      if (!user.profileCompletionReward && user.subscriptionStatus === 'free') {
+        try {
+          const Subscription = require('../models/Subscription');
+          const now = new Date();
+          const endDate = new Date(now);
+          endDate.setDate(endDate.getDate() + 30); // 30 days
+          
+          const subscription = await Subscription.create({
+            user: user._id,
+            plan: 'basic',
+            status: 'active',
+            startDate: now,
+            endDate,
+            amount: 9,
+            currency: 'INR',
+            metadata: { profileCompletionReward: true }
+          });
+          
+          user.currentSubscription = subscription._id;
+          user.subscriptionStatus = 'basic';
+          user.subscriptionExpiry = endDate;
+          user.profileCompletionReward = true;
+          
+          console.log(`🎁 Profile completion reward: BASIC plan awarded to ${user.name} during login! (${profileDetails.percentage}% complete)`);
+        } catch (subError) {
+          console.error('❌ Failed to create profile completion subscription during login:', subError);
+        }
+      }
+      
+      // Save user changes
+      await user.save();
+    }
+
     // Get level information
     const levelInfo = user.getLevelInfo();
+    
+    // Get updated profile completion details
+    const updatedProfileDetails = user.getProfileCompletionDetails();
 
     // Response
     res.status(200).json({
@@ -404,7 +482,8 @@ exports.login = async (req, res) => {
         subscriptionExpiry: user.subscriptionExpiry,
         currentSubscription: user.currentSubscription,
         badges: user.badges,
-        level: levelInfo
+        level: levelInfo,
+        profileCompletion: updatedProfileDetails
       }
     });
 
@@ -725,6 +804,48 @@ exports.googleAuth = async (req, res) => {
       };
     }
     
+    // Check profile completion and give reward if 100% complete
+    const profileDetails = user.getProfileCompletionDetails();
+    if (profileDetails.isComplete && !user.profileCompleted) {
+      user.profileCompleted = true;
+      
+      // Give basic subscription reward if user hasn't received it yet
+      if (!user.profileCompletionReward && user.subscriptionStatus === 'free') {
+        try {
+          const Subscription = require('../models/Subscription');
+          const now = new Date();
+          const endDate = new Date(now);
+          endDate.setDate(endDate.getDate() + 30); // 30 days
+          
+          const subscription = await Subscription.create({
+            user: user._id,
+            plan: 'basic',
+            status: 'active',
+            startDate: now,
+            endDate,
+            amount: 9,
+            currency: 'INR',
+            metadata: { profileCompletionReward: true }
+          });
+          
+          user.currentSubscription = subscription._id;
+          user.subscriptionStatus = 'basic';
+          user.subscriptionExpiry = endDate;
+          user.profileCompletionReward = true;
+          
+          console.log(`🎁 Profile completion reward: BASIC plan awarded to ${user.name} during Google login! (${profileDetails.percentage}% complete)`);
+        } catch (subError) {
+          console.error('❌ Failed to create profile completion subscription during Google login:', subError);
+        }
+      }
+      
+      // Save user changes
+      await user.save();
+    }
+    
+    // Get updated profile completion details
+    const updatedProfileDetails = user.getProfileCompletionDetails();
+    
     console.log('🎉 Google auth successful, sending response...');
     res.json({
       success: true,
@@ -742,7 +863,8 @@ exports.googleAuth = async (req, res) => {
         subscriptionExpiry: user.subscriptionExpiry,
         currentSubscription: user.currentSubscription,
         badges: user.badges,
-        level: levelInfo
+        level: levelInfo,
+        profileCompletion: updatedProfileDetails
       }
     });
     
@@ -893,10 +1015,49 @@ exports.updateProfile = async (req, res) => {
       };
     }
     
+    // Check if profile is now 100% complete and user hasn't received reward yet
+    const profileDetails = user.getProfileCompletionDetails();
+    if (profileDetails.isComplete && !user.profileCompleted) {
+      user.profileCompleted = true;
+      
+      // Give basic subscription reward if user hasn't received it yet
+      if (!user.profileCompletionReward && user.subscriptionStatus === 'free') {
+        try {
+          const Subscription = require('../models/Subscription');
+          const now = new Date();
+          const endDate = new Date(now);
+          endDate.setDate(endDate.getDate() + 30); // 30 days
+          
+          const subscription = await Subscription.create({
+            user: user._id,
+            plan: 'basic',
+            status: 'active',
+            startDate: now,
+            endDate,
+            amount: 9,
+            currency: 'INR',
+            metadata: { profileCompletionReward: true }
+          });
+          
+          user.currentSubscription = subscription._id;
+          user.subscriptionStatus = 'basic';
+          user.subscriptionExpiry = endDate;
+          user.profileCompletionReward = true;
+          
+          console.log(`🎁 Profile completion reward: BASIC plan awarded to ${user.name}! (${profileDetails.percentage}% complete)`);
+        } catch (subError) {
+          console.error('❌ Failed to create profile completion subscription:', subError);
+        }
+      }
+    }
+    
     await user.save();
 
     // Get updated level information
     const levelInfo = user.getLevelInfo();
+
+    // Get profile completion details
+    const profileCompletionDetails = user.getProfileCompletionDetails();
 
     res.json({
       success: true,
@@ -914,7 +1075,8 @@ exports.updateProfile = async (req, res) => {
         currentSubscription: user.currentSubscription,
         badges: user.badges,
         socialLinks: user.socialLinks,
-        level: levelInfo
+        level: levelInfo,
+        profileCompletion: profileCompletionDetails
       }
     });
 
