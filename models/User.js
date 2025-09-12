@@ -12,6 +12,14 @@ const userSchema = new mongoose.Schema({
   googleId: { type: String, sparse: true }, // Google OAuth ID
   profilePicture: { type: String }, // Profile picture URL from Google
   
+  // Social media links (optional)
+  socialLinks: {
+    instagram: { type: String, default: null },
+    facebook: { type: String, default: null },
+    x: { type: String, default: null }, // Twitter/X
+    youtube: { type: String, default: null }
+  },
+  
   // Referral system fields
   referralCode: { type: String, unique: true, default: () => uuidv4().replace(/-/g, '').substring(0, 8).toUpperCase() },
   referredBy: { type: String, default: null }, // referralCode of the referrer

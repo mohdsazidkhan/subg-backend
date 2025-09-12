@@ -814,7 +814,7 @@ exports.googleAuth = async (req, res) => {
 // Update Profile
 exports.updateProfile = async (req, res) => {
   try {
-    const { name, phone, email } = req.body;
+    const { name, phone, email, socialLinks } = req.body;
     const userId = req.user.id;
 
     // Validation
@@ -836,6 +836,20 @@ exports.updateProfile = async (req, res) => {
       return res.status(400).json({ 
         message: 'Please provide a valid email address' 
       });
+    }
+
+    // Validate social media links if provided
+    if (socialLinks) {
+      const urlRegex = /^https?:\/\/.+/;
+      const socialPlatforms = ['instagram', 'facebook', 'x', 'youtube'];
+      
+      for (const platform of socialPlatforms) {
+        if (socialLinks[platform] && !urlRegex.test(socialLinks[platform])) {
+          return res.status(400).json({ 
+            message: `Please provide a valid URL for ${platform}` 
+          });
+        }
+      }
     }
 
     // Find user
@@ -869,6 +883,16 @@ exports.updateProfile = async (req, res) => {
     user.phone = phone;
     user.email = email;
     
+    // Update social media links if provided
+    if (socialLinks) {
+      user.socialLinks = {
+        instagram: socialLinks.instagram || null,
+        facebook: socialLinks.facebook || null,
+        x: socialLinks.x || null,
+        youtube: socialLinks.youtube || null
+      };
+    }
+    
     await user.save();
 
     // Get updated level information
@@ -889,6 +913,7 @@ exports.updateProfile = async (req, res) => {
         subscriptionExpiry: user.subscriptionExpiry,
         currentSubscription: user.currentSubscription,
         badges: user.badges,
+        socialLinks: user.socialLinks,
         level: levelInfo
       }
     });
