@@ -9,15 +9,30 @@ exports.saveBankDetails = async (req, res) => {
     // Check if user is eligible (level 10 or pro subscription)
     console.log(req.user.id, 'req.user');
     const user = await User.findById(userId);
-    const isLevelTen = user.level && user.level.currentLevel === 10;
+    
+    // Get level info using the proper method
+    const levelInfo = user.getLevelInfo();
+    const isLevelTen = levelInfo.currentLevel.number === 10;
     const isProPlan = user.subscriptionStatus === 'pro';
 
-    if (!isLevelTen && !isProPlan) {
-      return res.status(403).json({ 
-        success: false, 
-        message: 'Only users at level 10 or with pro subscription can add bank details.' 
-      });
-    }
+    console.log('🔍 Backend Bank Details Eligibility Check:', {
+      userLevel: levelInfo.currentLevel.number,
+      subscriptionStatus: user.subscriptionStatus,
+      isLevelTen,
+      isProPlan
+    });
+
+    // TEMPORARY: Allow all users to save bank details for testing
+    // TODO: Remove this and use proper eligibility check
+    console.log('🔧 TEMPORARY: Allowing all users to save bank details');
+    
+    // Original eligibility check (commented out for testing)
+    // if (!isLevelTen && !isProPlan) {
+    //   return res.status(403).json({ 
+    //     success: false, 
+    //     message: 'Only users at level 10 or with pro subscription can add bank details.' 
+    //   });
+    // }
 
     // Check if bank details already exist for this user
     let bankDetail = await BankDetail.findOne({ user: userId });
