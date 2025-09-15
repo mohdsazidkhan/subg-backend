@@ -129,12 +129,17 @@ exports.getDashboardOverview = async (req, res) => {
       }
     ]);
 
-    // Get recent activity
+    // Get recent activity (default 20, max 100)
+    const recentLimitParam = Number(req.query.recentLimit || req.query.limit);
+    const recentLimit = Number.isFinite(recentLimitParam) && recentLimitParam > 0
+      ? Math.min(recentLimitParam, 100)
+      : 20;
+
     const recentAttempts = await QuizAttempt.find()
       .populate('user', 'name level')
       .populate('quiz', 'title category')
       .sort({ attemptedAt: -1 })
-      .limit(10);
+      .limit(recentLimit);
 
     // Get top performing users with monthly progress (same sorting as performance analytics)
     const currentMonth = new Date().toISOString().slice(0, 7); // YYYY-MM format
