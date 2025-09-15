@@ -151,7 +151,7 @@ exports.getDashboardOverview = async (req, res) => {
         'monthlyProgress.totalQuizAttempts': -1,
         'level.averageScore': -1
       })
-      .limit(10)
+      .limit(20)
       .select('name level badges subscriptionStatus monthlyProgress');
 
     // Format topUsers to include monthlyProgress data
