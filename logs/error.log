@@ -237,3 +237,93 @@
 2025-09-12T17:57:36.116Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2Zjc2ZGQzYTkwMjc5ZGIzZGEzMCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NzY5OTc4MCwiZXhwIjoxNzU3Nzg2MTgwfQ.Rb-Qy0kPn8v7c6c6O469AFunFosVg_4pf8HBJdoFnv8 
 2025-09-12T17:57:36.124Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2Zjc2ZGQzYTkwMjc5ZGIzZGEzMCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NzY5OTc4MCwiZXhwIjoxNzU3Nzg2MTgwfQ.Rb-Qy0kPn8v7c6c6O469AFunFosVg_4pf8HBJdoFnv8 
 2025-09-12T17:57:36.133Z [ERROR]: JWT verification failed in protect: invalid signature Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2Zjc2ZGQzYTkwMjc5ZGIzZGEzMCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NzY5OTc4MCwiZXhwIjoxNzU3Nzg2MTgwfQ.Rb-Qy0kPn8v7c6c6O469AFunFosVg_4pf8HBJdoFnv8 
+2025-09-16T04:45:24.878Z [ERROR]: (node:5668) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T06:12:41.093Z [ERROR]: Error creating article: ValidationError: subcategory: Cast to ObjectId failed for value "" (type string) at path "subcategory" because of "BSONError", slug: Path `slug` is required. 
+2025-09-16T06:12:55.645Z [ERROR]: Error creating article: ValidationError: subcategory: Cast to ObjectId failed for value "" (type string) at path "subcategory" because of "BSONError", slug: Path `slug` is required. 
+2025-09-16T06:30:51.620Z [ERROR]: (node:18416) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T06:31:01.050Z [ERROR]: (node:13596) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T06:31:36.285Z [ERROR]: (node:18512) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T06:37:26.573Z [ERROR]: (node:10480) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T07:02:50.161Z [ERROR]: (node:13768) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T07:03:11.522Z [ERROR]: (node:19248) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T07:04:12.436Z [ERROR]: (node:4572) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T07:04:28.206Z [ERROR]: (node:19164) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T07:04:40.799Z [ERROR]: (node:15928) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T07:04:54.520Z [ERROR]: (node:19264) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T07:05:08.115Z [ERROR]: (node:9204) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T07:06:27.048Z [ERROR]: (node:14132) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T07:30:42.748Z [ERROR]: Error creating article: ValidationError: slug: Path `slug` is required. 
+2025-09-16T07:31:48.953Z [ERROR]: (node:3440) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T07:32:03.336Z [ERROR]: (node:19176) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T07:32:06.536Z [ERROR]: (node:1288) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T07:35:02.616Z [ERROR]: Error creating article: StrictPopulateError: Cannot populate path `subcategory` because it is not in your schema. Set the `strictPopulate` option to false to override. 
+2025-09-16T07:47:25.702Z [ERROR]: (node:18512) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T07:47:29.250Z [ERROR]: (node:8664) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T07:47:45.052Z [ERROR]: (node:19112) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T07:48:17.156Z [ERROR]: (node:11816) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T07:48:31.883Z [ERROR]: (node:14188) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T07:48:47.180Z [ERROR]: (node:15152) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T07:49:32.565Z [ERROR]: (node:18860) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T07:49:48.273Z [ERROR]: (node:9660) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T07:52:23.239Z [ERROR]: (node:11272) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T07:55:42.999Z [ERROR]: (node:13048) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T07:56:11.449Z [ERROR]: (node:8296) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T07:56:22.019Z [ERROR]: (node:11668) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T07:59:12.670Z [ERROR]: (node:2108) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T08:00:21.137Z [ERROR]: (node:17752) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T08:00:26.951Z [ERROR]: (node:7072) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T08:02:04.934Z [ERROR]: (node:17676) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T08:02:21.786Z [ERROR]: (node:11612) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T08:03:08.355Z [ERROR]: (node:19108) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T08:03:40.989Z [ERROR]: (node:8900) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T08:06:21.532Z [ERROR]: (node:3936) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T08:06:37.024Z [ERROR]: (node:10560) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T08:09:32.054Z [ERROR]: (node:18720) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T08:09:39.148Z [ERROR]: (node:17048) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T08:09:59.435Z [ERROR]: (node:14368) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T08:10:26.181Z [ERROR]: (node:17516) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T08:11:26.182Z [ERROR]: (node:6000) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T08:11:51.573Z [ERROR]: (node:17808) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 

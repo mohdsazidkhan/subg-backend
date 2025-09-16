@@ -4,6 +4,7 @@ const Quiz = require('../models/Quiz');
 const Question = require('../models/Question');
 const QuizAttempt = require('../models/QuizAttempt');
 const User = require('../models/User');
+const Article = require('../models/Article');
 const dayjs = require('dayjs');
 
 // GET /api/public/categories - Public categories API
@@ -647,5 +648,279 @@ exports.getLandingTopPerformers = async (req, res) => {
   } catch (error) {
     console.error('Error fetching landing top performers:', error);
     res.status(500).json({ success: false, message: 'Failed to fetch landing top performers' });
+  }
+};
+
+// ===== ARTICLES - PUBLIC ROUTES =====
+
+// GET /api/public/articles - Get published articles
+exports.getPublishedArticles = async (req, res) => {
+  try {
+    const { page = 1, limit = 10, category, featured, pinned } = req.query;
+    const skip = (parseInt(page) - 1) * parseInt(limit);
+
+    let query = { status: 'published' };
+
+    // Apply filters
+    if (category) query.category = category;
+    if (featured === 'true') query.isFeatured = true;
+    if (pinned === 'true') query.isPinned = true;
+
+    const articles = await Article.find(query)
+      .populate('author', 'name email')
+      .populate('category', 'name')
+      .sort({ publishedAt: -1, createdAt: -1 })
+      .skip(skip)
+      .limit(parseInt(limit));
+
+    const total = await Article.countDocuments(query);
+    const totalPages = Math.ceil(total / parseInt(limit));
+
+    res.json({
+      success: true,
+      data: {
+        articles,
+        pagination: {
+          page: parseInt(page),
+          limit: parseInt(limit),
+          total,
+          totalPages,
+          hasNext: parseInt(page) < totalPages,
+          hasPrev: parseInt(page) > 1
+        }
+      }
+    });
+  } catch (error) {
+    console.error('Error fetching published articles:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to fetch articles', 
+      error: error.message 
+    });
+  }
+};
+
+// GET /api/public/articles/featured - Get featured articles
+exports.getFeaturedArticles = async (req, res) => {
+  try {
+    const { limit = 5 } = req.query;
+
+    const articles = await Article.find({ 
+      status: 'published', 
+      isFeatured: true 
+    })
+      .populate('author', 'name email')
+      .populate('category', 'name')
+      .sort({ publishedAt: -1 })
+      .limit(parseInt(limit));
+
+    res.json({
+      success: true,
+      data: articles
+    });
+  } catch (error) {
+    console.error('Error fetching featured articles:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to fetch featured articles', 
+      error: error.message 
+    });
+  }
+};
+
+// GET /api/public/articles/:slug - Get single article by slug
+exports.getArticleBySlug = async (req, res) => {
+  try {
+    const { slug } = req.params;
+
+    const article = await Article.findOne({ 
+      slug, 
+      status: 'published' 
+    })
+      .populate('author', 'name email')
+      .populate('category', 'name');
+
+    if (!article) {
+      return res.status(404).json({ 
+        success: false, 
+        message: 'Article not found' 
+      });
+    }
+
+    // Increment view count
+    await article.incrementViews();
+
+    res.json({
+      success: true,
+      data: article
+    });
+  } catch (error) {
+    console.error('Error fetching article by slug:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to fetch article', 
+      error: error.message 
+    });
+  }
+};
+
+// GET /api/public/articles/category/:categoryId - Get articles by category
+exports.getArticlesByCategory = async (req, res) => {
+  try {
+    const { categoryId } = req.params;
+    const { page = 1, limit = 10 } = req.query;
+    const skip = (parseInt(page) - 1) * parseInt(limit);
+
+    const articles = await Article.find({ 
+      category: categoryId, 
+      status: 'published' 
+    })
+      .populate('author', 'name email')
+      .populate('category', 'name')
+      .sort({ publishedAt: -1 })
+      .skip(skip)
+      .limit(parseInt(limit));
+
+    const total = await Article.countDocuments({ 
+      category: categoryId, 
+      status: 'published' 
+    });
+    const totalPages = Math.ceil(total / parseInt(limit));
+
+    res.json({
+      success: true,
+      data: {
+        articles,
+        pagination: {
+          page: parseInt(page),
+          limit: parseInt(limit),
+          total,
+          totalPages,
+          hasNext: parseInt(page) < totalPages,
+          hasPrev: parseInt(page) > 1
+        }
+      }
+    });
+  } catch (error) {
+    console.error('Error fetching articles by category:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to fetch articles by category', 
+      error: error.message 
+    });
+  }
+};
+
+// GET /api/public/articles/search - Search articles
+exports.searchArticles = async (req, res) => {
+  try {
+    const { q, page = 1, limit = 10 } = req.query;
+    const skip = (parseInt(page) - 1) * parseInt(limit);
+
+    if (!q || q.trim() === '') {
+      return res.status(400).json({ 
+        success: false, 
+        message: 'Search query is required' 
+      });
+    }
+
+    const articles = await Article.find({
+      $text: { $search: q },
+      status: 'published'
+    })
+      .populate('author', 'name email')
+      .populate('category', 'name')
+      .sort({ score: { $meta: 'textScore' }, publishedAt: -1 })
+      .skip(skip)
+      .limit(parseInt(limit));
+
+    const total = await Article.countDocuments({
+      $text: { $search: q },
+      status: 'published'
+    });
+    const totalPages = Math.ceil(total / parseInt(limit));
+
+    res.json({
+      success: true,
+      data: {
+        articles,
+        query: q,
+        pagination: {
+          page: parseInt(page),
+          limit: parseInt(limit),
+          total,
+          totalPages,
+          hasNext: parseInt(page) < totalPages,
+          hasPrev: parseInt(page) > 1
+        }
+      }
+    });
+  } catch (error) {
+    console.error('Error searching articles:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to search articles', 
+      error: error.message 
+    });
+  }
+};
+
+// POST /api/public/articles/:id/view - Increment article views
+exports.incrementArticleViews = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const article = await Article.findById(id);
+    if (!article) {
+      return res.status(404).json({ 
+        success: false, 
+        message: 'Article not found' 
+      });
+    }
+
+    await article.incrementViews();
+
+    res.json({
+      success: true,
+      message: 'View count updated',
+      views: article.views
+    });
+  } catch (error) {
+    console.error('Error incrementing article views:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to update view count', 
+      error: error.message 
+    });
+  }
+};
+
+// POST /api/public/articles/:id/like - Increment article likes
+exports.incrementArticleLikes = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const article = await Article.findById(id);
+    if (!article) {
+      return res.status(404).json({ 
+        success: false, 
+        message: 'Article not found' 
+      });
+    }
+
+    await article.incrementLikes();
+
+    res.json({
+      success: true,
+      message: 'Like count updated',
+      likes: article.likes
+    });
+  } catch (error) {
+    console.error('Error incrementing article likes:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to update like count', 
+      error: error.message 
+    });
   }
 };

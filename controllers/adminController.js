@@ -9,6 +9,7 @@ const BankDetail = require('../models/BankDetail');
 const Contact = require('../models/Contact');
 const PaymentOrder = require('../models/PaymentOrder');
 const QuizAttempt = require('../models/QuizAttempt');
+const Article = require('../models/Article');
 
 // Helper function for pagination
 const getPaginationOptions = (req) => {
@@ -1277,3 +1278,420 @@ exports.getSubscriptionSummary = async (req, res) => {
   }
 };
 
+
+// Get all articles with pagination and filtering (canonical)
+exports.getArticles = async (req, res) => {
+  try {
+    const { page, limit, skip } = getPaginationOptions(req);
+    const searchQuery = getSearchQuery(req, ['title', 'content', 'tags']);
+    const filterQuery = getFilterQuizQuery(req, [
+      'status',
+      'category',
+      'isFeatured',
+      'isPinned'
+    ]);
+
+    const finalQuery = { ...searchQuery, ...filterQuery };
+
+    const articles = await Article.find(finalQuery)
+      .populate('author', 'name email')
+      .populate('category', 'name')
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
+
+    const total = await Article.countDocuments(finalQuery);
+    const totalPages = Math.ceil(total / limit);
+
+    res.json({
+      success: true,
+      articles,
+      pagination: {
+        page,
+        limit,
+        total,
+        totalPages,
+        hasNext: page < totalPages,
+        hasPrev: page > 1
+      }
+    });
+  } catch (error) {
+    console.error('Error getting articles:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to fetch articles.', 
+      error: error.message 
+    });
+  }
+};
+
+// Get single article by ID (canonical)
+exports.getArticle = async (req, res) => {
+  try {
+    const article = await Article.findById(req.params.id)
+      .populate('author', 'name email')
+      .populate('category', 'name');
+
+    if (!article) {
+      return res.status(404).json({ 
+        success: false, 
+        message: 'Article not found' 
+      });
+    }
+
+    res.json({
+      success: true,
+      article
+    });
+  } catch (error) {
+    console.error('Error getting article:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to fetch article.', 
+      error: error.message 
+    });
+  }
+};
+
+// Create new article (canonical)
+exports.createArticle = async (req, res) => {
+  try {
+    const {
+      title,
+      content,
+      excerpt,
+      category,
+      tags,
+      featuredImage,
+      featuredImageAlt,
+      metaTitle,
+      metaDescription,
+      isFeatured,
+      isPinned,
+      status,
+      slug
+    } = req.body;
+
+    if (!title || !content || !category) {
+      return res.status(400).json({ 
+        success: false, 
+        message: 'Title, content, and category are required' 
+      });
+    }
+
+    // Get author from authenticated user
+    const author = req.user.id;
+
+    const article = new Article({
+      title,
+      slug,
+      content,
+      excerpt,
+      author,
+      category,
+      tags: tags || [],
+      featuredImage,
+      featuredImageAlt,
+      metaTitle,
+      metaDescription,
+      isFeatured: isFeatured || false,
+      isPinned: isPinned || false,
+      status: status || 'draft'
+    });
+
+    await article.save();
+    await article.populate('author', 'name email');
+    await article.populate('category', 'name');
+
+    res.status(201).json({
+      success: true,
+      message: "🎉 Article Created Successfully!",
+      article
+    });
+  } catch (error) {
+    console.error('Error creating article:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to create article.', 
+      error: error.message 
+    });
+  }
+};
+
+// Update article (canonical)
+exports.updateArticle = async (req, res) => {
+  try {
+    const {
+      title,
+      slug,
+      content,
+      excerpt,
+      category,
+      tags,
+      featuredImage,
+      featuredImageAlt,
+      metaTitle,
+      metaDescription,
+      isFeatured,
+      isPinned,
+      status
+    } = req.body;
+
+    const updateData = {
+      title,
+      slug,
+      content,
+      excerpt,
+      category,
+      tags,
+      featuredImage,
+      featuredImageAlt,
+      metaTitle,
+      metaDescription,
+      isFeatured,
+      isPinned,
+      status
+    };
+
+    // Remove undefined values
+    Object.keys(updateData).forEach(key => {
+      if (updateData[key] === undefined) {
+        delete updateData[key];
+      }
+    });
+
+    const article = await Article.findByIdAndUpdate(
+      req.params.id, 
+      updateData, 
+      { new: true }
+    )
+      .populate('author', 'name email')
+      .populate('category', 'name');
+
+    if (!article) {
+      return res.status(404).json({ 
+        success: false, 
+        message: 'Article not found' 
+      });
+    }
+
+    res.json({
+      success: true,
+      message: "🎉 Article Updated Successfully!",
+      article
+    });
+  } catch (error) {
+    console.error('Error updating article:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to update article.', 
+      error: error.message 
+    });
+  }
+};
+
+// Delete article (canonical)
+exports.deleteArticle = async (req, res) => {
+  try {
+    const article = await Article.findByIdAndDelete(req.params.id);
+
+    if (!article) {
+      return res.status(404).json({ 
+        success: false, 
+        message: 'Article not found' 
+      });
+    }
+
+    res.json({
+      success: true,
+      message: '🗑️ Article deleted successfully!'
+    });
+  } catch (error) {
+    console.error('Error deleting article:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to delete article.', 
+      error: error.message 
+    });
+  }
+};
+
+// Publish article (canonical)
+exports.publishArticle = async (req, res) => {
+  try {
+    const article = await Article.findByIdAndUpdate(
+      req.params.id,
+      { 
+        status: 'published',
+        publishedAt: new Date()
+      },
+      { new: true }
+    )
+      .populate('author', 'name email')
+      .populate('category', 'name');
+
+    if (!article) {
+      return res.status(404).json({ 
+        success: false, 
+        message: 'Article not found' 
+      });
+    }
+
+    res.json({
+      success: true,
+      message: "🚀 Article Published Successfully!",
+      article
+    });
+  } catch (error) {
+    console.error('Error publishing article:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to publish article.', 
+      error: error.message 
+    });
+  }
+};
+
+// Unpublish article (canonical)
+exports.unpublishArticle = async (req, res) => {
+  try {
+    const article = await Article.findByIdAndUpdate(
+      req.params.id,
+      { status: 'draft' },
+      { new: true }
+    )
+      .populate('author', 'name email')
+      .populate('category', 'name');
+
+    if (!article) {
+      return res.status(404).json({ 
+        success: false, 
+        message: 'Article not found' 
+      });
+    }
+
+    res.json({
+      success: true,
+      message: "📝 Article Unpublished Successfully!",
+      article
+    });
+  } catch (error) {
+    console.error('Error unpublishing article:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to unpublish article.', 
+      error: error.message 
+    });
+  }
+};
+
+// Toggle featured status (canonical)
+exports.toggleFeatured = async (req, res) => {
+  try {
+    const article = await Article.findById(req.params.id);
+
+    if (!article) {
+      return res.status(404).json({ 
+        success: false, 
+        message: 'Article not found' 
+      });
+    }
+
+    article.isFeatured = !article.isFeatured;
+    await article.save();
+    await article.populate('author', 'name email');
+    await article.populate('category', 'name');
+
+    res.json({
+      success: true,
+      message: article.isFeatured ? "⭐ Article Featured!" : "⭐ Article Unfeatured!",
+      article
+    });
+  } catch (error) {
+    console.error('Error toggling featured status:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to toggle featured status.', 
+      error: error.message 
+    });
+  }
+};
+
+// Toggle pinned status (canonical)
+exports.togglePinned = async (req, res) => {
+  try {
+    const article = await Article.findById(req.params.id);
+
+    if (!article) {
+      return res.status(404).json({ 
+        success: false, 
+        message: 'Article not found' 
+      });
+    }
+
+    article.isPinned = !article.isPinned;
+    await article.save();
+    await article.populate('author', 'name email');
+    await article.populate('category', 'name');
+
+    res.json({
+      success: true,
+      message: article.isPinned ? "📌 Article Pinned!" : "📌 Article Unpinned!",
+      article
+    });
+  } catch (error) {
+    console.error('Error toggling pinned status:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to toggle pinned status.', 
+      error: error.message 
+    });
+  }
+};
+
+// Get article statistics (canonical)
+exports.getArticleStats = async (req, res) => {
+  try {
+    const totalArticles = await Article.countDocuments();
+    const publishedArticles = await Article.countDocuments({ status: 'published' });
+    const draftArticles = await Article.countDocuments({ status: 'draft' });
+    const archivedArticles = await Article.countDocuments({ status: 'archived' });
+    const featuredArticles = await Article.countDocuments({ isFeatured: true });
+    const pinnedArticles = await Article.countDocuments({ isPinned: true });
+
+    // Get total views and likes
+    const stats = await Article.aggregate([
+      {
+        $group: {
+          _id: null,
+          totalViews: { $sum: '$views' },
+          totalLikes: { $sum: '$likes' }
+        }
+      }
+    ]);
+
+    const totalViews = stats[0]?.totalViews || 0;
+    const totalLikes = stats[0]?.totalLikes || 0;
+
+    res.json({
+      success: true,
+      stats: {
+        totalArticles,
+        publishedArticles,
+        draftArticles,
+        archivedArticles,
+        featuredArticles,
+        pinnedArticles,
+        totalViews,
+        totalLikes
+      }
+    });
+  } catch (error) {
+    console.error('Error getting article stats:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to fetch article statistics.', 
+      error: error.message 
+    });
+  }
+};

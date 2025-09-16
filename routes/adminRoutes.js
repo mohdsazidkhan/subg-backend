@@ -57,4 +57,16 @@ router.get('/subscriptions', protect, adminOnly, adminCtrl.getSubscriptions);
 router.get('/subscriptions/filter-options', protect, adminOnly, adminCtrl.getSubscriptionFilterOptions);
 router.get('/subscriptions/summary', protect, adminOnly, adminCtrl.getSubscriptionSummary);
 
+// ARTICLES
+router.get('/articles', protect, adminOnly, adminCtrl.getArticles);
+router.get('/articles/:id', protect, adminOnly, adminCtrl.getArticle);
+router.post('/articles', protect, adminOnly, adminCtrl.createArticle);
+router.put('/articles/:id', protect, adminOnly, adminCtrl.updateArticle);
+router.delete('/articles/:id', protect, adminOnly, adminCtrl.deleteArticle);
+router.patch('/articles/:id/publish', protect, adminOnly, adminCtrl.publishArticle);
+router.patch('/articles/:id/unpublish', protect, adminOnly, adminCtrl.unpublishArticle);
+router.patch('/articles/:id/toggle-featured', protect, adminOnly, adminCtrl.toggleFeatured);
+router.patch('/articles/:id/toggle-pinned', protect, adminOnly, adminCtrl.togglePinned);
+router.get('/articles-stats', protect, adminOnly, adminCtrl.getArticleStats);
+
 module.exports = router;

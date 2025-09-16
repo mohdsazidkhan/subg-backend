@@ -28,4 +28,26 @@ router.get('/categories-enhanced', publicController.getCategoriesEnhanced);
 // GET /api/public/landing-top-performers - Top performers for landing page
 router.get('/landing-top-performers', publicController.getLandingTopPerformers);
 
+// ARTICLES - Public routes
+// GET /api/public/articles - Get published articles
+router.get('/articles', publicController.getPublishedArticles);
+
+// GET /api/public/articles/featured - Get featured articles
+router.get('/articles/featured', publicController.getFeaturedArticles);
+
+// GET /api/public/articles/:slug - Get single article by slug
+router.get('/articles/:slug', publicController.getArticleBySlug);
+
+// GET /api/public/articles/category/:categoryId - Get articles by category
+router.get('/articles/category/:categoryId', publicController.getArticlesByCategory);
+
+// GET /api/public/articles/search - Search articles
+router.get('/articles/search', publicController.searchArticles);
+
+// POST /api/public/articles/:id/view - Increment article views
+router.post('/articles/:id/view', publicController.incrementArticleViews);
+
+// POST /api/public/articles/:id/like - Increment article likes
+router.post('/articles/:id/like', publicController.incrementArticleLikes);
+
 module.exports = router;
