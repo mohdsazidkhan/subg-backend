@@ -865,6 +865,53 @@ exports.searchArticles = async (req, res) => {
   }
 };
 
+// GET /api/public/articles/tag/:tag - Get articles by tag
+exports.getArticlesByTag = async (req, res) => {
+  try {
+    const { tag } = req.params;
+    const { page = 1, limit = 10 } = req.query;
+    const skip = (parseInt(page) - 1) * parseInt(limit);
+
+    const normalizedTag = String(tag).toLowerCase();
+
+    const articles = await Article.find({
+      status: 'published',
+      tags: normalizedTag
+    })
+      .populate('author', 'name email')
+      .populate('category', 'name')
+      .sort({ publishedAt: -1, createdAt: -1 })
+      .skip(skip)
+      .limit(parseInt(limit));
+
+    const total = await Article.countDocuments({ status: 'published', tags: normalizedTag });
+    const totalPages = Math.ceil(total / parseInt(limit));
+
+    res.json({
+      success: true,
+      data: {
+        tag: normalizedTag,
+        articles,
+        pagination: {
+          page: parseInt(page),
+          limit: parseInt(limit),
+          total,
+          totalPages,
+          hasNext: parseInt(page) < totalPages,
+          hasPrev: parseInt(page) > 1
+        }
+      }
+    });
+  } catch (error) {
+    console.error('Error fetching articles by tag:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to fetch articles by tag', 
+      error: error.message 
+    });
+  }
+};
+
 // POST /api/public/articles/:id/view - Increment article views
 exports.incrementArticleViews = async (req, res) => {
   try {

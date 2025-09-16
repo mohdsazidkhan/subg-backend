@@ -44,6 +44,9 @@ router.get('/articles/category/:categoryId', publicController.getArticlesByCateg
 // GET /api/public/articles/search - Search articles
 router.get('/articles/search', publicController.searchArticles);
 
+// GET /api/public/articles/tag/:tag - Get articles by tag
+router.get('/articles/tag/:tag', publicController.getArticlesByTag);
+
 // POST /api/public/articles/:id/view - Increment article views
 router.post('/articles/:id/view', publicController.incrementArticleViews);
 

@@ -12418,3 +12418,13 @@
 2025-09-16T08:11:52.112Z [INFO]: ✅ Database Connected to MongoDB 
 2025-09-16T08:11:52.117Z [INFO]: 🚀 Server running on port 5000 
 2025-09-16T08:11:52.187Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-16T12:31:39.173Z [ERROR]: (node:20452) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T12:31:41.773Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-16T12:31:41.779Z [INFO]: 🚀 Server running on port 5000 
+2025-09-16T12:31:41.858Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-16T12:37:08.749Z [ERROR]: (node:2956) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T12:37:09.456Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-16T12:37:09.462Z [INFO]: 🚀 Server running on port 5000 
+2025-09-16T12:37:09.542Z [INFO]: ✅ Monthly reset CRON scheduled 
