@@ -12624,3 +12624,15 @@
 2025-09-17T05:50:57.128Z [INFO]: ✅ Database Connected to MongoDB 
 2025-09-17T05:50:57.139Z [INFO]: 🚀 Server running on port 5000 
 2025-09-17T05:50:57.199Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T05:54:08.053Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T05:54:08.064Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T05:54:08.112Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T06:00:35.666Z [INFO]: Upload middleware called for field: featuredImageFile 
+2025-09-17T06:00:35.667Z [INFO]: Request headers: [object Object] 
+2025-09-17T06:00:35.668Z [INFO]: Content-Type: multipart/form-data; boundary=----WebKitFormBoundarybeT5052Sc33DVu23 
+2025-09-17T06:00:35.685Z [INFO]: File filter called with fieldname: featuredImageFile expected: featuredImageFile 
+2025-09-17T06:00:35.686Z [INFO]: Accepting file: featuredImageFile 
+2025-09-17T06:00:35.703Z [INFO]: File processed successfully: featuredImageFile 
+2025-09-17T06:23:30.690Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T06:23:30.703Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T06:23:30.823Z [INFO]: ✅ Monthly reset CRON scheduled 
