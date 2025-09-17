@@ -1,3 +1,34 @@
+SSR on Render (with Vercel proxy)
+
+Build command (Render):
+
+  cd subg-frontend && npm ci && npm run build && cd ../subg-backend && npm ci
+
+Start command (Render):
+
+  node index.js
+
+Env vars (Render):
+
+  NODE_ENV=production
+  PORT=5000
+  MONGO_URI=<your_mongo>
+  JWT_SECRET=<your_secret>
+  REACT_APP_GA4=<optional>
+  REACT_APP_GOOGLE_CLIENT_ID=<optional>
+
+Vercel (frontend):
+
+- vercel.json contains rewrites to proxy / and all pages to Render for SSR
+- Replace <YOUR-RENDER-SERVICE> with your Render service subdomain
+
+Deploy steps:
+
+1) Push code
+2) Render: configure build/start, envs; deploy
+3) Vercel: deploy with vercel.json, set domain to Vercel
+4) DNS: point domain to Vercel (it will proxy to Render for SSR)
+
 # SUBG Backend
 
 A comprehensive quiz platform backend with advanced analytics, user level system, subscription management, and monthly highscore rewards system.

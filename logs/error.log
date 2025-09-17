@@ -408,3 +408,11 @@
 (Use `node --trace-warnings ...` to show where the warning was created) 
 2025-09-17T05:45:05.886Z [ERROR]: (node:18452) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
 (Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-17T07:02:37.672Z [ERROR]: SSR render error: SyntaxError: Unexpected token '.' 
+2025-09-17T07:04:32.371Z [ERROR]: SSR render error: Error: Objects are not valid as a React child (found: object with keys {$$typeof, type, key, props, _owner, _store}). If you meant to render a collection of children, use an array instead. 
+2025-09-17T07:09:39.497Z [ERROR]: SSR render error: Error: Objects are not valid as a React child (found: object with keys {$$typeof, type, key, props, _owner, _store}). If you meant to render a collection of children, use an array instead. 
+2025-09-17T07:14:10.576Z [ERROR]: SSR render error: Error: Objects are not valid as a React child (found: object with keys {$$typeof, type, key, props, _owner, _store}). If you meant to render a collection of children, use an array instead. 
+2025-09-17T07:14:19.844Z [ERROR]: SSR render error: Error: Objects are not valid as a React child (found: object with keys {$$typeof, type, key, props, _owner, _store}). If you meant to render a collection of children, use an array instead. 
+2025-09-17T07:14:34.724Z [ERROR]: SSR render error: Error: Objects are not valid as a React child (found: object with keys {$$typeof, type, key, props, _owner, _store}). If you meant to render a collection of children, use an array instead. 
+2025-09-17T07:16:29.262Z [ERROR]: SSR render error: Error: Objects are not valid as a React child (found: object with keys {$$typeof, type, key, props, _owner, _store}). If you meant to render a collection of children, use an array instead. 
+2025-09-17T07:16:55.025Z [ERROR]: SSR render error: Error: Objects are not valid as a React child (found: object with keys {$$typeof, type, key, props, _owner, _store}). If you meant to render a collection of children, use an array instead. 

@@ -12636,3 +12636,51 @@
 2025-09-17T06:23:30.690Z [INFO]: ✅ Database Connected to MongoDB 
 2025-09-17T06:23:30.703Z [INFO]: 🚀 Server running on port 5000 
 2025-09-17T06:23:30.823Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T06:23:48.335Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T06:23:48.345Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T06:23:48.424Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T07:01:04.022Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T07:01:04.032Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T07:01:04.106Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T07:01:14.991Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T07:01:14.999Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T07:01:15.059Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T07:02:01.302Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T07:02:01.310Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T07:02:01.389Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T07:02:33.357Z [INFO]: 🔧 API Service initialized with base URL: http://localhost:5000 
+2025-09-17T07:02:37.672Z [ERROR]: SSR render error: SyntaxError: Unexpected token '.' 
+2025-09-17T07:04:10.173Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T07:04:10.182Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T07:04:10.244Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T07:04:14.375Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T07:04:14.385Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T07:04:14.467Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T07:04:28.344Z [INFO]: 🔧 API Service initialized with base URL: http://localhost:5000 
+2025-09-17T07:04:32.371Z [ERROR]: SSR render error: Error: Objects are not valid as a React child (found: object with keys {$$typeof, type, key, props, _owner, _store}). If you meant to render a collection of children, use an array instead. 
+2025-09-17T07:05:59.592Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T07:05:59.602Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T07:05:59.660Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T07:09:38.623Z [INFO]: 🔧 API Service initialized with base URL: http://localhost:5000 
+2025-09-17T07:09:39.497Z [ERROR]: SSR render error: Error: Objects are not valid as a React child (found: object with keys {$$typeof, type, key, props, _owner, _store}). If you meant to render a collection of children, use an array instead. 
+2025-09-17T07:13:14.944Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T07:13:14.955Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T07:13:15.064Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T07:13:25.973Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T07:13:25.982Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T07:13:26.043Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T07:14:09.530Z [INFO]: 🔧 API Service initialized with base URL: http://localhost:5000 
+2025-09-17T07:14:10.576Z [ERROR]: SSR render error: Error: Objects are not valid as a React child (found: object with keys {$$typeof, type, key, props, _owner, _store}). If you meant to render a collection of children, use an array instead. 
+2025-09-17T07:14:19.844Z [ERROR]: SSR render error: Error: Objects are not valid as a React child (found: object with keys {$$typeof, type, key, props, _owner, _store}). If you meant to render a collection of children, use an array instead. 
+2025-09-17T07:14:34.724Z [ERROR]: SSR render error: Error: Objects are not valid as a React child (found: object with keys {$$typeof, type, key, props, _owner, _store}). If you meant to render a collection of children, use an array instead. 
+2025-09-17T07:15:36.022Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T07:15:36.032Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T07:15:36.114Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T07:15:46.584Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T07:15:46.593Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T07:15:46.652Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T07:16:28.277Z [INFO]: 🔧 API Service initialized with base URL: http://localhost:5000 
+2025-09-17T07:16:29.257Z [INFO]: SSR meta for /about: {"title":"About Us | SUBG QUIZ","description":"About SUBG QUIZ - a skill-based, rewarding learning platform."} 
+2025-09-17T07:16:29.262Z [ERROR]: SSR render error: Error: Objects are not valid as a React child (found: object with keys {$$typeof, type, key, props, _owner, _store}). If you meant to render a collection of children, use an array instead. 
+2025-09-17T07:16:55.023Z [INFO]: SSR meta for /articles: {"title":"Articles | SUBG QUIZ","description":"Read articles on knowledge, quizzes, and learning."} 
+2025-09-17T07:16:55.025Z [ERROR]: SSR render error: Error: Objects are not valid as a React child (found: object with keys {$$typeof, type, key, props, _owner, _store}). If you meant to render a collection of children, use an array instead. 
