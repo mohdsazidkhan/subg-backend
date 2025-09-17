@@ -10,6 +10,7 @@ const Contact = require('../models/Contact');
 const PaymentOrder = require('../models/PaymentOrder');
 const QuizAttempt = require('../models/QuizAttempt');
 const Article = require('../models/Article');
+const cloudinary = require('../config/cloudinary');
 
 // Helper function for pagination
 const getPaginationOptions = (req) => {
@@ -1362,7 +1363,6 @@ exports.createArticle = async (req, res) => {
       excerpt,
       category,
       tags,
-      featuredImage,
       featuredImageAlt,
       metaTitle,
       metaDescription,
@@ -1382,6 +1382,34 @@ exports.createArticle = async (req, res) => {
     // Get author from authenticated user
     const author = req.user.id;
 
+    let featuredImageUrl = null;
+    // If file uploaded via multipart, upload to Cloudinary in subgquiz folder
+    if (req.file && req.file.buffer) {
+      try {
+        const uploadResult = await new Promise((resolve, reject) => {
+          const uploadStream = cloudinary.uploader.upload_stream(
+            {
+              folder: 'subgquiz',
+              resource_type: 'image',
+              overwrite: true,
+              unique_filename: true
+            },
+            (error, result) => {
+              if (error) return reject(error);
+              return resolve(result);
+            }
+          );
+          uploadStream.end(req.file.buffer);
+        });
+        featuredImageUrl = uploadResult.secure_url;
+      } catch (uploadErr) {
+        return res.status(500).json({ success: false, message: 'Image upload failed', error: uploadErr.message });
+      }
+    } else if (req.body.featuredImage && typeof req.body.featuredImage === 'string' && req.body.featuredImage.startsWith('http')) {
+      // Allow passing an already-hosted image URL as fallback
+      featuredImageUrl = req.body.featuredImage;
+    }
+
     const article = new Article({
       title,
       slug,
@@ -1390,7 +1418,7 @@ exports.createArticle = async (req, res) => {
       author,
       category,
       tags: tags || [],
-      featuredImage,
+      featuredImage: featuredImageUrl,
       featuredImageAlt,
       metaTitle,
       metaDescription,
@@ -1428,7 +1456,6 @@ exports.updateArticle = async (req, res) => {
       excerpt,
       category,
       tags,
-      featuredImage,
       featuredImageAlt,
       metaTitle,
       metaDescription,
@@ -1444,7 +1471,6 @@ exports.updateArticle = async (req, res) => {
       excerpt,
       category,
       tags,
-      featuredImage,
       featuredImageAlt,
       metaTitle,
       metaDescription,
@@ -1452,6 +1478,32 @@ exports.updateArticle = async (req, res) => {
       isPinned,
       status
     };
+
+    // If a new image file is uploaded, replace featuredImage via Cloudinary
+    if (req.file && req.file.buffer) {
+      try {
+        const uploadResult = await new Promise((resolve, reject) => {
+          const uploadStream = cloudinary.uploader.upload_stream(
+            {
+              folder: 'subgquiz',
+              resource_type: 'image',
+              overwrite: true,
+              unique_filename: true
+            },
+            (error, result) => {
+              if (error) return reject(error);
+              return resolve(result);
+            }
+          );
+          uploadStream.end(req.file.buffer);
+        });
+        updateData.featuredImage = uploadResult.secure_url;
+      } catch (uploadErr) {
+        return res.status(500).json({ success: false, message: 'Image upload failed', error: uploadErr.message });
+      }
+    } else if (req.body.featuredImage && typeof req.body.featuredImage === 'string' && req.body.featuredImage.startsWith('http')) {
+      updateData.featuredImage = req.body.featuredImage;
+    }
 
     // Remove undefined values
     Object.keys(updateData).forEach(key => {

@@ -12428,3 +12428,187 @@
 2025-09-16T12:37:09.456Z [INFO]: ✅ Database Connected to MongoDB 
 2025-09-16T12:37:09.462Z [INFO]: 🚀 Server running on port 5000 
 2025-09-16T12:37:09.542Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-16T15:27:59.118Z [ERROR]: (node:15704) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T15:28:00.305Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-16T15:28:00.313Z [INFO]: 🚀 Server running on port 5000 
+2025-09-16T15:28:00.444Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-16T15:30:00.035Z [INFO]: ⏰ Daily check: 2025-09-16 - Not last day of month, skipping reset 
+2025-09-16T17:31:00.034Z [ERROR]: (node:8596) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T17:31:00.717Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-16T17:31:00.724Z [INFO]: 🚀 Server running on port 5000 
+2025-09-16T17:31:00.784Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-16T17:32:52.339Z [ERROR]: (node:17384) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T17:32:52.994Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-16T17:32:53.002Z [INFO]: 🚀 Server running on port 5000 
+2025-09-16T17:32:53.076Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-16T17:33:08.632Z [ERROR]: (node:7704) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T17:33:09.320Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-16T17:33:09.327Z [INFO]: 🚀 Server running on port 5000 
+2025-09-16T17:33:09.388Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-16T17:33:20.241Z [ERROR]: (node:6944) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T17:33:20.917Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-16T17:33:20.924Z [INFO]: 🚀 Server running on port 5000 
+2025-09-16T17:33:20.991Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-16T17:41:42.800Z [ERROR]: (node:17076) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-16T17:41:43.494Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-16T17:41:43.499Z [INFO]: 🚀 Server running on port 5000 
+2025-09-16T17:41:43.563Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T05:15:29.988Z [ERROR]: (node:16296) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-17T05:15:33.472Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T05:15:33.481Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T05:15:33.766Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T05:29:44.886Z [ERROR]: MulterError: Unexpected field
+    at wrappedFileFilter (D:\Sazid\Github\subg-backend\node_modules\multer\index.js:40:19)
+    at Multipart.<anonymous> (D:\Sazid\Github\subg-backend\node_modules\multer\lib\make-middleware.js:132:7)
+    at Multipart.emit (node:events:518:28)
+    at HeaderParser.cb (D:\Sazid\Github\subg-backend\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (D:\Sazid\Github\subg-backend\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (D:\Sazid\Github\subg-backend\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (D:\Sazid\Github\subg-backend\node_modules\streamsearch\lib\sbmh.js:248:10)
+    at SBMH.push (D:\Sazid\Github\subg-backend\node_modules\streamsearch\lib\sbmh.js:104:16)
+    at Multipart._write (D:\Sazid\Github\subg-backend\node_modules\busboy\lib\types\multipart.js:567:19)
+    at writeOrBuffer (node:internal/streams/writable:572:12) 
+2025-09-17T05:33:25.579Z [ERROR]: (node:18732) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-17T05:33:31.843Z [ERROR]: (node:19800) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-17T05:33:32.674Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T05:33:32.681Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T05:33:32.740Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T05:33:38.808Z [ERROR]: (node:8908) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-17T05:33:39.444Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T05:33:39.450Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T05:33:39.543Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T05:33:58.707Z [ERROR]: (node:14044) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-17T05:33:59.479Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T05:33:59.484Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T05:33:59.546Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T05:34:14.254Z [ERROR]: (node:9036) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-17T05:34:14.806Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T05:34:14.812Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T05:34:14.870Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T05:36:59.420Z [INFO]: Upload middleware called for field: featuredImage 
+2025-09-17T05:36:59.422Z [INFO]: Request headers: [object Object] 
+2025-09-17T05:36:59.423Z [INFO]: Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryslG22lBN9LjMHjJx 
+2025-09-17T05:36:59.443Z [INFO]: File filter called with fieldname: featuredImage 
+2025-09-17T05:36:59.463Z [ERROR]: Multer error: MulterError: Unexpected field 
+2025-09-17T05:36:59.465Z [ERROR]: Error details: [object Object] 
+2025-09-17T05:37:39.142Z [ERROR]: (node:21136) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-17T05:37:39.856Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T05:37:39.861Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T05:37:39.924Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T05:37:56.031Z [ERROR]: (node:12308) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-17T05:37:56.613Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T05:37:56.619Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T05:37:56.688Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T05:38:17.167Z [ERROR]: (node:20716) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-17T05:38:17.720Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T05:38:17.727Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T05:38:17.790Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T05:38:29.899Z [INFO]: Upload middleware called for field: featuredImage 
+2025-09-17T05:38:29.900Z [INFO]: Request headers: [object Object] 
+2025-09-17T05:38:29.901Z [INFO]: Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryDyUApgxXxFklvZHE 
+2025-09-17T05:38:29.918Z [INFO]: File filter called with fieldname: featuredImage 
+2025-09-17T05:38:29.943Z [ERROR]: Multer error: MulterError: Unexpected field 
+2025-09-17T05:38:29.945Z [ERROR]: Error details: [object Object] 
+2025-09-17T05:39:09.925Z [ERROR]: (node:15936) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-17T05:39:12.778Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T05:39:12.785Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T05:39:12.888Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T05:39:26.574Z [INFO]: Upload middleware called for field: featuredImage 
+2025-09-17T05:39:26.575Z [INFO]: Request headers: [object Object] 
+2025-09-17T05:39:26.575Z [INFO]: Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryY8fvwrNOJuj3BVSa 
+2025-09-17T05:39:26.593Z [INFO]: File filter called with fieldname: featuredImage 
+2025-09-17T05:39:26.615Z [ERROR]: Multer error: MulterError: Unexpected field 
+2025-09-17T05:39:26.617Z [ERROR]: Error details: [object Object] 
+2025-09-17T05:40:29.110Z [ERROR]: (node:13916) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-17T05:40:29.892Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T05:40:29.900Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T05:40:29.998Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T05:40:32.439Z [ERROR]: (node:21428) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-17T05:40:33.015Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T05:40:33.022Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T05:40:33.080Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T05:40:43.966Z [INFO]: Upload middleware called for field: featuredImage 
+2025-09-17T05:40:43.967Z [INFO]: Request headers: [object Object] 
+2025-09-17T05:40:43.967Z [INFO]: Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryBWD9vm15mHAg8rfY 
+2025-09-17T05:40:43.977Z [INFO]: File filter called with fieldname: featuredImage expected: featuredImage 
+2025-09-17T05:40:43.990Z [ERROR]: Multer error: MulterError: Unexpected field 
+2025-09-17T05:40:43.991Z [ERROR]: Error details: [object Object] 
+2025-09-17T05:41:30.413Z [ERROR]: (node:5408) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-17T05:41:31.073Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T05:41:31.080Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T05:41:31.150Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T05:41:37.776Z [ERROR]: (node:20684) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-17T05:41:38.489Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T05:41:38.495Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T05:41:38.590Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T05:41:42.386Z [ERROR]: (node:8300) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-17T05:41:42.944Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T05:41:42.951Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T05:41:43.019Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T05:42:14.292Z [INFO]: Upload middleware called for field: featuredImageFile 
+2025-09-17T05:42:14.305Z [INFO]: Request headers: [object Object] 
+2025-09-17T05:42:14.330Z [INFO]: Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryFCwGJyDJhzxr1vQg 
+2025-09-17T05:42:14.363Z [ERROR]: Multer error: MulterError: Unexpected field 
+2025-09-17T05:42:14.367Z [ERROR]: Error details: [object Object] 
+2025-09-17T05:42:46.070Z [ERROR]: (node:2156) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-17T05:42:48.772Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T05:42:48.777Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T05:42:48.841Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T05:43:02.824Z [ERROR]: (node:20212) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-17T05:43:03.418Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T05:43:03.424Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T05:43:03.498Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T05:43:16.697Z [ERROR]: (node:20736) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-17T05:43:17.320Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T05:43:17.327Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T05:43:17.397Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T05:43:25.052Z [ERROR]: (node:20756) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-17T05:43:25.748Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T05:43:25.755Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T05:43:25.821Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T05:44:25.282Z [ERROR]: (node:17996) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-17T05:44:28.206Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T05:44:28.213Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T05:44:28.281Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T05:44:53.655Z [ERROR]: (node:21284) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-17T05:44:54.354Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T05:44:54.360Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T05:44:54.439Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T05:45:05.886Z [ERROR]: (node:18452) [MONGOOSE] Warning: Duplicate schema index on {"slug":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created) 
+2025-09-17T05:45:06.517Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T05:45:06.523Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T05:45:06.599Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T05:45:22.646Z [INFO]: Upload middleware called for field: featuredImageFile 
+2025-09-17T05:45:22.647Z [INFO]: Request headers: [object Object] 
+2025-09-17T05:45:22.647Z [INFO]: Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryXbBLayjxL3XKo2ao 
+2025-09-17T05:45:22.665Z [INFO]: File filter called with fieldname: featuredImageFile expected: featuredImageFile 
+2025-09-17T05:45:22.667Z [INFO]: Accepting file: featuredImageFile 
+2025-09-17T05:45:22.749Z [INFO]: File processed successfully: featuredImageFile 

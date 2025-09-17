@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { protect, adminOnly } = require('../middleware/auth');
+const { upload, uploadSingle } = require('../middleware/upload');
 const adminCtrl = require('../controllers/adminController');
 
 // STATS
@@ -60,8 +61,8 @@ router.get('/subscriptions/summary', protect, adminOnly, adminCtrl.getSubscripti
 // ARTICLES
 router.get('/articles', protect, adminOnly, adminCtrl.getArticles);
 router.get('/articles/:id', protect, adminOnly, adminCtrl.getArticle);
-router.post('/articles', protect, adminOnly, adminCtrl.createArticle);
-router.put('/articles/:id', protect, adminOnly, adminCtrl.updateArticle);
+router.post('/articles', protect, adminOnly, uploadSingle('featuredImageFile'), adminCtrl.createArticle);
+router.put('/articles/:id', protect, adminOnly, uploadSingle('featuredImageFile'), adminCtrl.updateArticle);
 router.delete('/articles/:id', protect, adminOnly, adminCtrl.deleteArticle);
 router.patch('/articles/:id/publish', protect, adminOnly, adminCtrl.publishArticle);
 router.patch('/articles/:id/unpublish', protect, adminOnly, adminCtrl.unpublishArticle);
