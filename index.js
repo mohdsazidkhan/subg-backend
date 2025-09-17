@@ -52,9 +52,10 @@ app.use(helmet());
 app.use(helmet.contentSecurityPolicy({
   directives: {
     defaultSrc: ["'self'"],
-    styleSrc: ["'self'", "'unsafe-inline'"],
-    scriptSrc: ["'self'", "'unsafe-inline'"],
+    styleSrc: ["'self'", "'unsafe-inline'", 'https:'],
+    scriptSrc: ["'self'", "'unsafe-inline'", 'https://vercel.live'],
     imgSrc: ["'self'", "data:", "https:"],
+    connectSrc: ["'self'", 'https:', 'wss:']
   },
 }));
 
@@ -318,7 +319,7 @@ app.get(/^(?!\/api)(?!\/static)(?!\/assets)(?!\/sockjs)(?!\/favicon\.ico).*/, as
   try {
     // Ensure build exists
     if (!fs.existsSync(indexHtmlPath)) {
-      return res.status(200).send('<!doctype html><html><head><meta charset="utf-8"/><title>Loading...</title></head><body><div id="root"></div><script src="/static/js/bundle.js"></script></body></html>');
+      return res.status(503).send('SSR build missing on server. Ensure Render build runs: cd subg-frontend && npm ci && npm run build.');
     }
 
     // Read HTML template

@@ -12684,3 +12684,15 @@
 2025-09-17T07:16:29.262Z [ERROR]: SSR render error: Error: Objects are not valid as a React child (found: object with keys {$$typeof, type, key, props, _owner, _store}). If you meant to render a collection of children, use an array instead. 
 2025-09-17T07:16:55.023Z [INFO]: SSR meta for /articles: {"title":"Articles | SUBG QUIZ","description":"Read articles on knowledge, quizzes, and learning."} 
 2025-09-17T07:16:55.025Z [ERROR]: SSR render error: Error: Objects are not valid as a React child (found: object with keys {$$typeof, type, key, props, _owner, _store}). If you meant to render a collection of children, use an array instead. 
+2025-09-17T07:47:39.339Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T07:47:39.353Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T07:47:39.458Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T07:47:49.174Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T07:47:49.186Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T07:47:49.257Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T07:52:39.425Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T07:52:39.436Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T07:52:39.514Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T07:52:46.374Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T07:52:46.386Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T07:52:46.464Z [INFO]: ✅ Monthly reset CRON scheduled 
