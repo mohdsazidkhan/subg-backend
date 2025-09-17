@@ -52,10 +52,9 @@ app.use(helmet());
 app.use(helmet.contentSecurityPolicy({
   directives: {
     defaultSrc: ["'self'"],
-    styleSrc: ["'self'", "'unsafe-inline'", 'https:'],
-    scriptSrc: ["'self'", "'unsafe-inline'", 'https://vercel.live'],
+    styleSrc: ["'self'", "'unsafe-inline'"],
+    scriptSrc: ["'self'", "'unsafe-inline'"],
     imgSrc: ["'self'", "data:", "https:"],
-    connectSrc: ["'self'", 'https:', 'wss:']
   },
 }));
 
@@ -298,140 +297,6 @@ const initializeMonthlyReset = () => {
     console.error('❌ Failed to schedule monthly reset:', error);
   }
 };
-
-// --- SSR: serve frontend build and render on server ---
-const path = require('path');
-const fs = require('fs');
-
-const frontendBuildPath = path.resolve(__dirname, '..', 'subg-frontend', 'build');
-const indexHtmlPath = path.join(frontendBuildPath, 'index.html');
-
-// Serve static assets first
-app.use(express.static(frontendBuildPath, { maxAge: process.env.NODE_ENV === 'production' ? '1y' : 0 }));
-
-// SSR catch-all after API routes (exclude /api and obvious asset requests)
-app.get(/^(?!\/api)(?!\/static)(?!\/assets)(?!\/sockjs)(?!\/favicon\.ico).*/, async (req, res, next) => {
-  // Do not SSR API or asset requests
-  if (req.path.startsWith('/api') || req.path.includes('.')) {
-    return next();
-  }
-
-  try {
-    // Ensure build exists
-    if (!fs.existsSync(indexHtmlPath)) {
-      return res.status(503).send('SSR build missing on server. Ensure Render build runs: cd subg-frontend && npm ci && npm run build.');
-    }
-
-    // Read HTML template
-    let html = fs.readFileSync(indexHtmlPath, 'utf8');
-
-    // Setup babel to transpile JSX from server-entry on the fly
-    require('@babel/register')({
-      presets: [
-        ['@babel/preset-env', { targets: { node: 'current' } }],
-        ['@babel/preset-react', { runtime: 'automatic' }]
-      ],
-      extensions: ['.js', '.jsx'],
-      ignore: [/node_modules/]
-    });
-
-    // Ignore non-JS imports (CSS/assets) during SSR
-    require.extensions['.css'] = () => null;
-    require.extensions['.scss'] = () => null;
-    require.extensions['.sass'] = () => null;
-    require.extensions['.less'] = () => null;
-    ['.png','.jpg','.jpeg','.gif','.svg','.ico','.webp'].forEach(ext => {
-      require.extensions[ext] = () => null;
-    });
-
-    const { renderToString } = require('react-dom/server');
-    const { render } = require(path.resolve(__dirname, '..', 'subg-frontend', 'src', 'server-entry.jsx'));
-
-    // Build per-route meta tags
-    const buildMeta = async () => {
-      const defaultMeta = {
-        title: 'SUBG QUIZ : Student Unknown\'s Battle Ground Quiz',
-        description: 'SUBG QUIZ is a skill-based quiz app where users play exciting quizzes, level up, and become quiz legends. Unlock achievements and win exciting scholar prizes!'
-      };
-
-      const pathname = req.path;
-      const staticMap = {
-        '/': { title: 'SUBG QUIZ', description: defaultMeta.description },
-        '/login': { title: 'Login | SUBG QUIZ', description: 'Login to continue your learning and rewards journey.' },
-        '/register': { title: 'Register | SUBG QUIZ', description: 'Create your SUBG QUIZ account and start winning with knowledge.' },
-        '/home': { title: 'Home | SUBG QUIZ', description: 'Your dashboard for quizzes, levels, and rewards.' },
-        '/about': { title: 'About Us | SUBG QUIZ', description: 'About SUBG QUIZ - a skill-based, rewarding learning platform.' },
-        '/how-it-works': { title: 'How It Works | SUBG QUIZ', description: 'How SUBG QUIZ works and rewards your knowledge fairly.' },
-        '/terms': { title: 'Terms & Conditions | SUBG QUIZ', description: 'Terms and conditions for using SUBG QUIZ.' },
-        '/privacy': { title: 'Privacy Policy | SUBG QUIZ', description: 'How SUBG QUIZ protects your data and privacy.' },
-        '/refund': { title: 'Refund Policy | SUBG QUIZ', description: 'Refund policy for subscriptions and purchases.' },
-        '/contact': { title: 'Contact Us | SUBG QUIZ', description: 'Get in touch with the SUBG QUIZ team.' },
-        '/articles': { title: 'Articles | SUBG QUIZ', description: 'Read articles on knowledge, quizzes, and learning.' }
-      };
-
-      // Dynamic: article detail
-      const articleDetail = pathname.match(/^\/articles\/([^\/]+)$/);
-      if (articleDetail) {
-        try {
-          const origin = `${req.protocol}://${req.get('host')}`;
-          const resp = await fetch(`${origin}/api/public/articles/${articleDetail[1]}`);
-          if (resp.ok) {
-            const data = await resp.json();
-            const article = data?.article;
-            if (article) {
-              return {
-                title: `${article.title} | Articles | SUBG QUIZ`,
-                description: String(article.excerpt || article.description || defaultMeta.description).slice(0, 160)
-              };
-            }
-          }
-        } catch (_) {}
-      }
-
-      // Dynamic: category list
-      if (pathname.startsWith('/articles/category/')) {
-        return { title: 'Articles by Category | SUBG QUIZ', description: 'Browse articles by category on SUBG QUIZ.' };
-      }
-      // Dynamic: tag list
-      if (pathname.startsWith('/articles/tag/')) {
-        return { title: 'Articles by Tag | SUBG QUIZ', description: 'Browse articles by tag on SUBG QUIZ.' };
-      }
-
-      return staticMap[pathname] || defaultMeta;
-    };
-
-    const meta = await buildMeta();
-    console.log(`SSR meta for ${req.path}:`, JSON.stringify(meta));
-
-    // Inject meta into HTML
-    if (meta?.title) {
-      html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${meta.title}</title>`);
-    }
-    if (meta?.description) {
-      if (/<meta\s+name=["']description["'][^>]*>/i.test(html)) {
-        html = html.replace(/<meta\s+name=["']description["'][^>]*>/i, `<meta name="description" content="${meta.description.replace(/"/g, '&quot;')}">`);
-      } else {
-        html = html.replace('</head>', `<meta name="description" content="${meta.description.replace(/"/g, '&quot;')}"></head>`);
-      }
-    }
-
-    const appJsx = render(req.url, {});
-    const appHtml = renderToString(appJsx);
-
-    const finalHtml = html.replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`);
-
-    return res.status(200).send(finalHtml);
-  } catch (err) {
-    console.error('SSR render error:', err);
-    // Graceful fallback to CSR to avoid breaking the page
-    try {
-      const html = fs.readFileSync(indexHtmlPath, 'utf8');
-      return res.status(200).send(html);
-    } catch (e) {
-      return res.status(500).send('Internal Server Error');
-    }
-  }
-});
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
