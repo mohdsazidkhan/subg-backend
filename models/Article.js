@@ -105,7 +105,7 @@ articleSchema.index({ category: 1, status: 1 });
 articleSchema.index({ author: 1, status: 1 });
 articleSchema.index({ isFeatured: 1, status: 1 });
 articleSchema.index({ isPinned: 1, status: 1 });
-articleSchema.index({ slug: 1 }, { unique: true }); // Unique slug for URLs
+// Note: slug unique index is already created by the unique: true in the schema field definition
 
 // Virtual for formatted published date
 articleSchema.virtual('formattedPublishedAt').get(function() {

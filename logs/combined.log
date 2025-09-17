@@ -12612,3 +12612,15 @@
 2025-09-17T05:45:22.665Z [INFO]: File filter called with fieldname: featuredImageFile expected: featuredImageFile 
 2025-09-17T05:45:22.667Z [INFO]: Accepting file: featuredImageFile 
 2025-09-17T05:45:22.749Z [INFO]: File processed successfully: featuredImageFile 
+2025-09-17T05:46:01.768Z [INFO]: Upload middleware called for field: featuredImageFile 
+2025-09-17T05:46:01.769Z [INFO]: Request headers: [object Object] 
+2025-09-17T05:46:01.769Z [INFO]: Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryR7Alsg2nNq8NM2T0 
+2025-09-17T05:46:01.774Z [INFO]: File filter called with fieldname: featuredImageFile expected: featuredImageFile 
+2025-09-17T05:46:01.775Z [INFO]: Accepting file: featuredImageFile 
+2025-09-17T05:46:01.785Z [INFO]: File processed successfully: featuredImageFile 
+2025-09-17T05:50:51.634Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T05:50:51.643Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T05:50:51.708Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-17T05:50:57.128Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-17T05:50:57.139Z [INFO]: 🚀 Server running on port 5000 
+2025-09-17T05:50:57.199Z [INFO]: ✅ Monthly reset CRON scheduled 
