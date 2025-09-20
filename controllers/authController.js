@@ -11,6 +11,24 @@ const { sendBrevoEmail } = require('../utils/email');
 const mongoose = require('mongoose'); // Added for database connection status check
 // ...existing code...
 
+// Token validation endpoint
+exports.validateToken = async (req, res) => {
+  try {
+    // The token is already validated by the auth middleware
+    // If we reach here, the token is valid
+    res.status(200).json({
+      valid: true,
+      message: 'Token is valid'
+    });
+  } catch (error) {
+    console.error('Token validation error:', error);
+    res.status(401).json({
+      valid: false,
+      message: 'Token validation failed'
+    });
+  }
+};
+
 // Health check for debugging
 exports.healthCheck = async (req, res) => {
   try {
