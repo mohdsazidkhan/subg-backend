@@ -669,7 +669,7 @@ exports.getPublishedArticles = async (req, res) => {
     const articles = await Article.find(query)
       .populate('author', 'name email')
       .populate('category', 'name')
-      .sort({ publishedAt: -1, createdAt: -1 })
+      .sort({ createdAt: -1 })
       .skip(skip)
       .limit(parseInt(limit));
 

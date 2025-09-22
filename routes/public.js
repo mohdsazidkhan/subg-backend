@@ -3,6 +3,16 @@ const router = express.Router();
 const publicController = require('../controllers/publicController');
 const { protect } = require('../middleware/auth');
 
+// Health check endpoint
+router.get('/health', (req, res) => {
+  res.status(200).json({
+    status: 'ok',
+    message: 'Backend server is running',
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime()
+  });
+});
+
 // GET /api/public/categories - Public categories API
 router.get('/categories', publicController.getCategories);
 

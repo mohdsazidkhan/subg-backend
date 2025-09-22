@@ -19,3 +19,21 @@
 2025-09-20T16:22:43.631Z [INFO]: ✅ Database Connected to MongoDB 
 2025-09-20T16:22:43.640Z [INFO]: 🚀 Server running on port 5000 
 2025-09-20T16:22:43.812Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-20T16:36:11.299Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-20T16:36:11.310Z [INFO]: 🚀 Server running on port 5000 
+2025-09-20T16:36:11.415Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-20T17:10:54.383Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-20T17:10:54.393Z [INFO]: 🚀 Server running on port 5000 
+2025-09-20T17:10:54.464Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-20T17:44:09.150Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-20T17:44:09.159Z [INFO]: 🚀 Server running on port 5000 
+2025-09-20T17:44:09.248Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-21T04:25:00.903Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-21T04:25:00.912Z [INFO]: 🚀 Server running on port 5000 
+2025-09-21T04:25:01.065Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-21T14:39:52.032Z [ERROR]: Error fetching top performers monthly: MongoServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-01.dnrv0.mongodb.net 
+2025-09-21T15:30:00.030Z [INFO]: ⏰ Daily check: 2025-09-21 - Not last day of month, skipping reset 
+2025-09-21T17:19:17.839Z [ERROR]: Error fetching top performers monthly: MongoServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-01.dnrv0.mongodb.net 
+2025-09-22T05:02:10.058Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-22T05:02:10.066Z [INFO]: 🚀 Server running on port 5000 
+2025-09-22T05:02:10.136Z [INFO]: ✅ Monthly reset CRON scheduled 

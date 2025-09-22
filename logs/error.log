@@ -1,0 +1,2 @@
+2025-09-21T14:39:52.032Z [ERROR]: Error fetching top performers monthly: MongoServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-01.dnrv0.mongodb.net 
+2025-09-21T17:19:17.839Z [ERROR]: Error fetching top performers monthly: MongoServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-01.dnrv0.mongodb.net 
