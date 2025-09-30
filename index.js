@@ -359,7 +359,7 @@ const initializeMonthlyReset = () => {
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log(`✅ Database Connected to MongoDB`);
-    console.log(`✅ Database URI ${process.env.MONGO_URI}`);
+    //console.log(`✅ Database URI ${process.env.MONGO_URI}`);
     server.listen(PORT, () => {
       console.log(`🚀 Server running on port ${PORT}`);
       
