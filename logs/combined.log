@@ -1670,3 +1670,600 @@
 2025-09-30T17:01:05.194Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
 2025-09-30T17:01:05.201Z [INFO]: 🚀 Server running on port 5000 
 2025-09-30T17:01:05.269Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T17:28:10.060Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T17:28:10.069Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T17:28:10.138Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:15:31.512Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:15:31.522Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:15:31.590Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:17:37.533Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:17:37.545Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:17:37.622Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:19:18.526Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:19:18.534Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:19:18.596Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:22:12.585Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:22:12.594Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:22:12.651Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:22:26.050Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:22:26.058Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:22:26.117Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:23:00.050Z [INFO]: ⏰ Monthly reset running on last day for 2025-09, resetting to 2025-10 ... 
+2025-09-30T18:23:00.051Z [INFO]: 🔎 Eligibility: monthlyProgress.highScoreWins >= 220 
+2025-09-30T18:23:00.236Z [INFO]: 📊 Monthly winners saved for 2025-09: 2 winners 
+2025-09-30T18:23:00.371Z [INFO]: 🏆 Monthly reward processed for Rajat Katiyar: Rank 1, Amount: ₹2500 
+2025-09-30T18:23:00.426Z [INFO]: 🏆 Monthly reward processed for Devanshu Tiwari: Rank 2, Amount: ₹2000 
+2025-09-30T18:23:00.475Z [INFO]: 🗑️ Cleared quiz attempts: 1831 records removed 
+2025-09-30T18:23:00.486Z [INFO]: ✅ Monthly reset completed (including student defaults) 
+2025-09-30T18:34:42.714Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:34:42.724Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:34:42.783Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:35:10.385Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:35:10.393Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:35:10.462Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:36:34.402Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:36:34.412Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:36:34.500Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:36:54.905Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:36:54.917Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:36:54.990Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:37:20.865Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:37:20.879Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:37:21.001Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:38:00.196Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:38:00.204Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:38:00.289Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:38:32.586Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:38:32.594Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:38:32.651Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:38:55.826Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:38:55.835Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:38:55.903Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:39:41.278Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:39:41.289Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:39:41.371Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:39:55.433Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:39:55.444Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:39:55.536Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:40:01.871Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:40:01.881Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:40:01.942Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:40:42.623Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:40:42.633Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:40:42.707Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:41:03.181Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:41:03.192Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:41:03.260Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:42:26.738Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:42:26.743Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T18:42:26.750Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:42:26.811Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:43:41.407Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:43:41.412Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T18:43:41.418Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:43:41.519Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:43:46.392Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:43:46.398Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T18:43:46.402Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:43:46.481Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:43:50.905Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:43:50.911Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T18:43:50.920Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:43:51.048Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:43:57.617Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:43:57.621Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T18:43:57.630Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:43:57.742Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:45:18.139Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:45:18.144Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T18:45:18.151Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:45:18.238Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:45:22.028Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:45:22.032Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T18:45:22.040Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:45:22.146Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:45:28.650Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:45:28.655Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T18:45:28.661Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:45:28.745Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:46:06.272Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:46:06.276Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T18:46:06.281Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:46:06.337Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:46:18.841Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:46:18.845Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T18:46:18.851Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:46:18.903Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:46:47.373Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:46:47.378Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T18:46:47.382Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:46:47.458Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:47:05.508Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:47:05.512Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T18:47:05.518Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:47:05.576Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:47:11.911Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:47:12.036Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T18:47:12.139Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:47:12.251Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:47:18.224Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:47:18.229Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T18:47:18.238Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:47:18.318Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:47:24.432Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:47:24.438Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T18:47:24.444Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:47:24.532Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:47:47.716Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:47:47.762Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T18:47:47.797Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:47:47.917Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:48:53.507Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:48:53.512Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T18:48:53.522Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:48:53.614Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:49:04.195Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:49:04.199Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T18:49:04.205Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:49:04.293Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:50:38.155Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:50:38.159Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T18:50:38.165Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:50:38.323Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:52:18.228Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:52:18.232Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T18:52:18.236Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:52:18.308Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:52:31.601Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:52:31.607Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T18:52:31.611Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:52:31.688Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:52:39.748Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:52:39.753Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T18:52:39.760Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:52:39.839Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:54:18.188Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:54:18.193Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T18:54:18.197Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:54:18.253Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:54:22.312Z [INFO]: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object] allUsers 
+2025-09-30T18:54:22.350Z [INFO]: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object] allUsers 
+2025-09-30T18:54:42.976Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:54:42.981Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T18:54:42.989Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:54:43.098Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:54:43.408Z [INFO]: [
+  {
+    "_id": "68bd1054118b52297d876bcf",
+    "name": "Devanshu Tiwari",
+    "subscriptionStatus": "pro",
+    "monthlyProgress": {
+      "month": "2025-10",
+      "highScoreWins": 0,
+      "totalQuizAttempts": 331,
+      "accuracy": 5,
+      "currentLevel": 10,
+      "rewardEligible": false
+    },
+    "createdAt": "2025-09-07T04:55:48.165Z",
+    "level": {
+      "totalScore": 0,
+      "quizzesPlayed": 0,
+      "averageScore": 0,
+      "currentLevel": 0,
+      "highScoreQuizzes": 0
+    }
+  },
+  {
+    "_id": "68ac6a3af77d51f2d1b50615",
+    "name": "Ariff",
+    "subscriptionStatus": "pro",
+    "monthlyProgress": {
+      "month": "2025-10",
+      "highScoreWins": 0,
+      "totalQuizAttempts": 228,
+      "accuracy": 5,
+      "currentLevel": 10,
+      "rewardEligible": false
+    },
+    "createdAt": "2025-08-25T13:50:50.074Z",
+    "level": {
+      "totalScore": 0,
+      "quizzesPlayed": 0,
+      "averageScore": 0,
+      "currentLevel": 0,
+      "highScoreQuizzes": 0
+    }
+  },
+  {
+    "_id": "686a8fc5d0ed6e850923b81e",
+    "name": "Asif Khan",
+    "subscriptionStatus": "pro",
+    "monthlyProgress": {
+      "month": "2025-10",
+      "highScoreWins": 0,
+      "totalQuizAttempts": 135,
+      "accuracy": 5,
+      "currentLevel": 10,
+      "rewardEligible": false
+    },
+    "createdAt": "2025-07-06T15:01:25.933Z",
+    "level": {
+      "totalScore": 0,
+      "quizzesPlayed": 0,
+      "averageScore": 0,
+      "currentLevel": 0,
+      "highScoreQuizzes": 0
+    }
+  },
+  {
+    "_id": "687f152db2a50f951ae2f70c",
+    "name": "Tryonlinefree",
+    "subscriptionStatus": "premium",
+    "monthlyProgress": {
+      "month": "2025-10",
+      "highScoreWins": 0,
+      "totalQuizAttempts": 12,
+      "accuracy": 5,
+      "currentLevel": 3,
+      "rewardEligible": false
+    },
+    "createdAt": "2025-07-22T04:35:57.696Z",
+    "level": {
+      "totalScore": 0,
+      "quizzesPlayed": 0,
+      "averageScore": 0,
+      "currentLevel": 0,
+      "highScoreQuizzes": 0
+    }
+  },
+  {
+    "_id": "68a189d265f2c078da148817",
+    "name": "Mohd Sazid Khan",
+    "subscriptionStatus": "pro",
+    "monthlyProgress": {
+      "month": "2025-10",
+      "highScoreWins": 0,
+      "totalQuizAttempts": 11,
+      "accuracy": 5,
+      "currentLevel": 2,
+      "rewardEligible": false
+    },
+    "createdAt": "2025-08-17T07:50:42.355Z",
+    "level": {
+      "totalScore": 0,
+      "quizzesPlayed": 0,
+      "averageScore": 0,
+      "currentLevel": 0,
+      "highScoreQuizzes": 0
+    }
+  },
+  {
+    "_id": "6882f7c59a17c4b4a899728a",
+    "name": "Rajat Katiyar",
+    "subscriptionStatus": "pro",
+    "monthlyProgress": {
+      "month": "2025-10",
+      "highScoreWins": 0,
+      "totalQuizAttempts": 680,
+      "accuracy": 4,
+      "currentLevel": 10,
+      "rewardEligible": false
+    },
+    "createdAt": "2025-07-25T03:19:33.857Z",
+    "level": {
+      "totalScore": 0,
+      "quizzesPlayed": 0,
+      "averageScore": 0,
+      "currentLevel": 0,
+      "highScoreQuizzes": 0
+    }
+  },
+  {
+    "_id": "686a6fa36580063952214011",
+    "name": "MSK",
+    "subscriptionStatus": "pro",
+    "monthlyProgress": {
+      "month": "2025-10",
+      "highScoreWins": 0,
+      "totalQuizAttempts": 393,
+      "accuracy": 4,
+      "currentLevel": 10,
+      "rewardEligible": false
+    },
+    "createdAt": "2025-07-06T12:44:19.678Z",
+    "level": {
+      "totalScore": 0,
+      "quizzesPlayed": 0,
+      "averageScore": 0,
+      "currentLevel": 0,
+      "highScoreQuizzes": 0
+    }
+  },
+  {
+    "_id": "68ce923d5a6f3a12e8ac3fd5",
+    "name": "Dhawal Jain",
+    "subscriptionStatus": "basic",
+    "monthlyProgress": {
+      "month": "2025-10",
+      "highScoreWins": 0,
+      "totalQuizAttempts": 8,
+      "accuracy": 4,
+      "currentLevel": 2,
+      "rewardEligible": false
+    },
+    "createdAt": "2025-09-20T11:38:37.287Z",
+    "level": {
+      "totalScore": 0,
+      "quizzesPlayed": 0,
+      "averageScore": 0,
+      "currentLevel": 0,
+      "highScoreQuizzes": 0
+    }
+  },
+  {
+    "_id": "68a8197ee87489d0eb9ae726",
+    "name": "Manish kumar",
+    "subscriptionStatus": "free",
+    "monthlyProgress": {
+      "month": "2025-10",
+      "highScoreWins": 0,
+      "totalQuizAttempts": 9,
+      "accuracy": 3,
+      "currentLevel": 1,
+      "rewardEligible": false
+    },
+    "createdAt": "2025-08-22T07:17:18.549Z",
+    "level": {
+      "totalScore": 0,
+      "quizzesPlayed": 0,
+      "averageScore": 0,
+      "currentLevel": 0,
+      "highScoreQuizzes": 0
+    }
+  },
+  {
+    "_id": "68bfd4dd6def06e96ece53ce",
+    "name": "Ishita kirti",
+    "subscriptionStatus": "free",
+    "monthlyProgress": {
+      "month": "2025-10",
+      "highScoreWins": 0,
+      "totalQuizAttempts": 1,
+      "accuracy": 3,
+      "currentLevel": 0,
+      "rewardEligible": false
+    },
+    "createdAt": "2025-09-09T07:18:53.481Z",
+    "level": {
+      "totalScore": 0,
+      "quizzesPlayed": 0,
+      "averageScore": 0,
+      "currentLevel": 0,
+      "highScoreQuizzes": 0
+    }
+  }
+] allUsers 
+2025-09-30T18:54:43.468Z [INFO]: [
+  {
+    "_id": "68bd1054118b52297d876bcf",
+    "name": "Devanshu Tiwari",
+    "subscriptionStatus": "pro",
+    "monthlyProgress": {
+      "month": "2025-10",
+      "highScoreWins": 0,
+      "totalQuizAttempts": 331,
+      "accuracy": 5,
+      "currentLevel": 10,
+      "rewardEligible": false
+    },
+    "createdAt": "2025-09-07T04:55:48.165Z",
+    "level": {
+      "totalScore": 0,
+      "quizzesPlayed": 0,
+      "averageScore": 0,
+      "currentLevel": 0,
+      "highScoreQuizzes": 0
+    }
+  },
+  {
+    "_id": "68ac6a3af77d51f2d1b50615",
+    "name": "Ariff",
+    "subscriptionStatus": "pro",
+    "monthlyProgress": {
+      "month": "2025-10",
+      "highScoreWins": 0,
+      "totalQuizAttempts": 228,
+      "accuracy": 5,
+      "currentLevel": 10,
+      "rewardEligible": false
+    },
+    "createdAt": "2025-08-25T13:50:50.074Z",
+    "level": {
+      "totalScore": 0,
+      "quizzesPlayed": 0,
+      "averageScore": 0,
+      "currentLevel": 0,
+      "highScoreQuizzes": 0
+    }
+  },
+  {
+    "_id": "686a8fc5d0ed6e850923b81e",
+    "name": "Asif Khan",
+    "subscriptionStatus": "pro",
+    "monthlyProgress": {
+      "month": "2025-10",
+      "highScoreWins": 0,
+      "totalQuizAttempts": 135,
+      "accuracy": 5,
+      "currentLevel": 10,
+      "rewardEligible": false
+    },
+    "createdAt": "2025-07-06T15:01:25.933Z",
+    "level": {
+      "totalScore": 0,
+      "quizzesPlayed": 0,
+      "averageScore": 0,
+      "currentLevel": 0,
+      "highScoreQuizzes": 0
+    }
+  },
+  {
+    "_id": "687f152db2a50f951ae2f70c",
+    "name": "Tryonlinefree",
+    "subscriptionStatus": "premium",
+    "monthlyProgress": {
+      "month": "2025-10",
+      "highScoreWins": 0,
+      "totalQuizAttempts": 12,
+      "accuracy": 5,
+      "currentLevel": 3,
+      "rewardEligible": false
+    },
+    "createdAt": "2025-07-22T04:35:57.696Z",
+    "level": {
+      "totalScore": 0,
+      "quizzesPlayed": 0,
+      "averageScore": 0,
+      "currentLevel": 0,
+      "highScoreQuizzes": 0
+    }
+  },
+  {
+    "_id": "68a189d265f2c078da148817",
+    "name": "Mohd Sazid Khan",
+    "subscriptionStatus": "pro",
+    "monthlyProgress": {
+      "month": "2025-10",
+      "highScoreWins": 0,
+      "totalQuizAttempts": 11,
+      "accuracy": 5,
+      "currentLevel": 2,
+      "rewardEligible": false
+    },
+    "createdAt": "2025-08-17T07:50:42.355Z",
+    "level": {
+      "totalScore": 0,
+      "quizzesPlayed": 0,
+      "averageScore": 0,
+      "currentLevel": 0,
+      "highScoreQuizzes": 0
+    }
+  },
+  {
+    "_id": "6882f7c59a17c4b4a899728a",
+    "name": "Rajat Katiyar",
+    "subscriptionStatus": "pro",
+    "monthlyProgress": {
+      "month": "2025-10",
+      "highScoreWins": 0,
+      "totalQuizAttempts": 680,
+      "accuracy": 4,
+      "currentLevel": 10,
+      "rewardEligible": false
+    },
+    "createdAt": "2025-07-25T03:19:33.857Z",
+    "level": {
+      "totalScore": 0,
+      "quizzesPlayed": 0,
+      "averageScore": 0,
+      "currentLevel": 0,
+      "highScoreQuizzes": 0
+    }
+  },
+  {
+    "_id": "686a6fa36580063952214011",
+    "name": "MSK",
+    "subscriptionStatus": "pro",
+    "monthlyProgress": {
+      "month": "2025-10",
+      "highScoreWins": 0,
+      "totalQuizAttempts": 393,
+      "accuracy": 4,
+      "currentLevel": 10,
+      "rewardEligible": false
+    },
+    "createdAt": "2025-07-06T12:44:19.678Z",
+    "level": {
+      "totalScore": 0,
+      "quizzesPlayed": 0,
+      "averageScore": 0,
+      "currentLevel": 0,
+      "highScoreQuizzes": 0
+    }
+  },
+  {
+    "_id": "68ce923d5a6f3a12e8ac3fd5",
+    "name": "Dhawal Jain",
+    "subscriptionStatus": "basic",
+    "monthlyProgress": {
+      "month": "2025-10",
+      "highScoreWins": 0,
+      "totalQuizAttempts": 8,
+      "accuracy": 4,
+      "currentLevel": 2,
+      "rewardEligible": false
+    },
+    "createdAt": "2025-09-20T11:38:37.287Z",
+    "level": {
+      "totalScore": 0,
+      "quizzesPlayed": 0,
+      "averageScore": 0,
+      "currentLevel": 0,
+      "highScoreQuizzes": 0
+    }
+  },
+  {
+    "_id": "68a8197ee87489d0eb9ae726",
+    "name": "Manish kumar",
+    "subscriptionStatus": "free",
+    "monthlyProgress": {
+      "month": "2025-10",
+      "highScoreWins": 0,
+      "totalQuizAttempts": 9,
+      "accuracy": 3,
+      "currentLevel": 1,
+      "rewardEligible": false
+    },
+    "createdAt": "2025-08-22T07:17:18.549Z",
+    "level": {
+      "totalScore": 0,
+      "quizzesPlayed": 0,
+      "averageScore": 0,
+      "currentLevel": 0,
+      "highScoreQuizzes": 0
+    }
+  },
+  {
+    "_id": "68bfd4dd6def06e96ece53ce",
+    "name": "Ishita kirti",
+    "subscriptionStatus": "free",
+    "monthlyProgress": {
+      "month": "2025-10",
+      "highScoreWins": 0,
+      "totalQuizAttempts": 1,
+      "accuracy": 3,
+      "currentLevel": 0,
+      "rewardEligible": false
+    },
+    "createdAt": "2025-09-09T07:18:53.481Z",
+    "level": {
+      "totalScore": 0,
+      "quizzesPlayed": 0,
+      "averageScore": 0,
+      "currentLevel": 0,
+      "highScoreQuizzes": 0
+    }
+  }
+] allUsers 
+2025-09-30T18:55:30.184Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:55:30.189Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T18:55:30.196Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:55:30.269Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:56:25.962Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:56:26.048Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T18:56:26.058Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:56:26.165Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T18:56:35.291Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T18:56:35.305Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T18:56:35.411Z [INFO]: ✅ Monthly reset CRON scheduled 

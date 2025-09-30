@@ -32,7 +32,8 @@ dotenv.config();
 
 // Quiz requirement configuration
 const MONTHLY_REWARD_QUIZ_REQUIREMENT = parseInt(process.env.MONTHLY_REWARD_QUIZ_REQUIREMENT) || 220;
-console.log(typeof MONTHLY_REWARD_QUIZ_REQUIREMENT, 'MONTHLY_REWARD_QUIZ_REQUIREMENT')
+const MONTHLY_MINIMUM_ACCURACY = parseInt(process.env.MONTHLY_MINIMUM_ACCURACY) || 75;
+console.log(MONTHLY_REWARD_QUIZ_REQUIREMENT,MONTHLY_MINIMUM_ACCURACY, 'MONTHLY_REWARD_QUIZ_REQUIREMENT')
 // Validate required environment variables
 const requiredEnvVars = [
   'JWT_SECRET',
@@ -200,8 +201,8 @@ io.on("connection", (socket) => {
 // Using a daily check to find the last day of each month
 const initializeMonthlyReset = () => {
   try {
-    // Check daily at 9:45 PM IST to see if it's the last day of the month
-    cron.schedule('23 22 * * *', async () => {
+    // Check daily at 9:00 PM IST to see if it's the last day of the month
+    cron.schedule('0 21 * * *', async () => {
           try {
           // Check if today is the last day of the month
           const today = dayjs();
@@ -230,10 +231,12 @@ const initializeMonthlyReset = () => {
           };
 
           const requiredWins = Number.isFinite(Number(MONTHLY_REWARD_QUIZ_REQUIREMENT)) ? Number(MONTHLY_REWARD_QUIZ_REQUIREMENT) : 0;
+          const requiredAccuracy = Number.isFinite(Number(MONTHLY_MINIMUM_ACCURACY)) ? Number(MONTHLY_MINIMUM_ACCURACY) : 0;
           console.log(`🔎 Eligibility: monthlyProgress.highScoreWins >= ${requiredWins}`);
           const eligibleTopUsers = await User.find({
             'level.currentLevel': 10,
-            'monthlyProgress.highScoreWins': { $gte: requiredWins }
+            'monthlyProgress.highScoreWins': { $gte: requiredWins },
+            'monthlyProgress.accuracy': { $gte: requiredAccuracy }
           })
           .sort(sortCriteria)
           .limit(10);
