@@ -5,11 +5,14 @@ const Question = require('../models/Question');
 const User = require('../models/User');
 const Subscription = require('../models/Subscription');
 const WalletTransaction = require('../models/WalletTransaction');
+const UserWallet = require('../models/UserWallet');
 const BankDetail = require('../models/BankDetail');
 const Contact = require('../models/Contact');
 const PaymentOrder = require('../models/PaymentOrder');
 const QuizAttempt = require('../models/QuizAttempt');
 const Article = require('../models/Article');
+const WithdrawRequest = require('../models/WithdrawRequest');
+const UserQuestions = require('../models/UserQuestions');
 const cloudinary = require('../config/cloudinary');
 
 // Helper function for pagination
@@ -139,6 +142,16 @@ exports.getStats = async (req, res) => {
     
     const totalRevenue = revenueSummary[0]?.totalRevenue || 0;
     
+    // Get withdraw requests and user questions stats
+    const withdrawRequests = await WithdrawRequest.countDocuments();
+    const pendingWithdrawRequests = await WithdrawRequest.countDocuments({ status: 'pending' });
+    
+    // Detailed user questions stats
+    const userQuestions = await UserQuestions.countDocuments();
+    const pendingUserQuestions = await UserQuestions.countDocuments({ status: 'pending' });
+    const approvedUserQuestions = await UserQuestions.countDocuments({ status: 'approved' });
+    const rejectedUserQuestions = await UserQuestions.countDocuments({ status: 'rejected' });
+    
     res.json({ 
       categories, 
       subcategories, 
@@ -153,7 +166,13 @@ exports.getStats = async (req, res) => {
       paidSubscriptions,
       paymentOrders: totalPaymentOrders,
       completedPaymentOrders,
-      totalRevenue
+      totalRevenue,
+      withdrawRequests,
+      pendingWithdrawRequests,
+      userQuestions,
+      pendingUserQuestions,
+      approvedUserQuestions,
+      rejectedUserQuestions
     });
   } catch (error) {
     console.error('Error getting stats:', error);
@@ -645,11 +664,20 @@ exports.getStudents = async (req, res) => {
         .skip(skip)
         .limit(limitNum);
 
+      // Attach wallet balances
+      const userIds = students.map(s => s._id);
+      const wallets = await UserWallet.find({ userId: { $in: userIds } }).select('userId balance');
+      const walletMap = new Map(wallets.map(w => [String(w.userId), w.balance]));
+      const studentsWithBalance = students.map(s => ({
+        ...s.toObject(),
+        balance: walletMap.get(String(s._id)) || 0
+      }));
+
       const total = await User.countDocuments(searchQuery);
       const totalPages = Math.ceil(total / limitNum);
 
       return res.json({
-        students,
+        students: studentsWithBalance,
         pagination: {
           page: pageNum,
           limit: limitNum,
@@ -665,8 +693,16 @@ exports.getStudents = async (req, res) => {
         .select('-password')
         .sort({ createdAt: -1 });
 
+      const userIds = students.map(s => s._id);
+      const wallets = await UserWallet.find({ userId: { $in: userIds } }).select('userId balance');
+      const walletMap = new Map(wallets.map(w => [String(w.userId), w.balance]));
+      const studentsWithBalance = students.map(s => ({
+        ...s.toObject(),
+        balance: walletMap.get(String(s._id)) || 0
+      }));
+
       res.json({
-        students
+        students: studentsWithBalance
       });
     }
   } catch (error) {
@@ -705,6 +741,119 @@ exports.deleteStudent = async (req, res) => {
   } catch (error) {
     console.error('Error deleting student:', error);
     res.status(500).json({ error: 'Failed to delete student' });
+  }
+};
+
+// ---------------- User Wallets (Admin) ----------------
+exports.getUserWallets = async (req, res) => {
+  try {
+    const { page, limit, search } = req.query;
+    const pageNum = parseInt(page) || 1;
+    const limitNum = Math.min(parseInt(limit) || 20, 100);
+    const skip = (pageNum - 1) * limitNum;
+
+    const match = {};
+    if (search) {
+      match.$or = [
+        { name: { $regex: search, $options: 'i' } },
+        { email: { $regex: search, $options: 'i' } },
+        { phone: { $regex: search, $options: 'i' } }
+      ];
+    }
+
+    const [rows, countResult] = await Promise.all([
+      User.aggregate([
+        { $match: match },
+        { $sort: { createdAt: -1 } },
+        { $skip: skip },
+        { $limit: limitNum },
+        {
+          $lookup: {
+            from: 'userwallets',
+            localField: '_id',
+            foreignField: 'userId',
+            as: 'wallet'
+          }
+        },
+        {
+          $lookup: {
+            from: 'userquestions',
+            localField: '_id',
+            foreignField: 'userId',
+            as: 'questions'
+          }
+        },
+        { $unwind: { path: '$wallet', preserveNullAndEmptyArrays: true } },
+        {
+          $project: {
+            _id: 1,
+            name: 1,
+            email: 1,
+            phone: 1,
+            amount: { $ifNull: ['$wallet.balance', 0] },
+            questionCounts: {
+              total: { $size: '$questions' },
+              approved: {
+                $size: {
+                  $filter: {
+                    input: '$questions',
+                    cond: { $eq: ['$$this.status', 'approved'] }
+                  }
+                }
+              },
+              rejected: {
+                $size: {
+                  $filter: {
+                    input: '$questions',
+                    cond: { $eq: ['$$this.status', 'rejected'] }
+                  }
+                }
+              },
+              pending: {
+                $size: {
+                  $filter: {
+                    input: '$questions',
+                    cond: { $eq: ['$$this.status', 'pending'] }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]),
+      User.countDocuments(match)
+    ]);
+
+    const items = rows.map(r => ({
+      id: r._id,
+      amount: r.amount || 0,
+      user: {
+        id: r._id,
+        name: r.name || 'Unknown',
+        email: r.email || '',
+        phone: r.phone || ''
+      },
+      questionCounts: {
+        total: r.questionCounts?.total || 0,
+        approved: r.questionCounts?.approved || 0,
+        rejected: r.questionCounts?.rejected || 0,
+        pending: r.questionCounts?.pending || 0
+      }
+    }));
+
+    return res.json({
+      success: true,
+      data: items,
+      pagination: {
+        page: pageNum,
+        limit: limitNum,
+        total: countResult,
+        totalPages: Math.max(1, Math.ceil(countResult / limitNum))
+      }
+    });
+  } catch (error) {
+    console.error('getUserWallets error:', error);
+    return res.status(500).json({ success: false, message: 'Failed to fetch user wallets' });
   }
 };
 

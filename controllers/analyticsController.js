@@ -1,175 +1,84 @@
 const User = require('../models/User');
 const Quiz = require('../models/Quiz');
 const QuizAttempt = require('../models/QuizAttempt');
-const Question = require('../models/Question');
 const Category = require('../models/Category');
 const Subcategory = require('../models/Subcategory');
-const Subscription = require('../models/Subscription');
-const PaymentOrder = require('../models/PaymentOrder');
-const Leaderboard = require('../models/Leaderboard');
+const MonthlyWinners = require('../models/MonthlyWinners');
 
-// Helper function to get level names
-const getLevelName = (level) => {
-  const levelNames = {
-    0: 'Starter', 1: 'Rookie', 2: 'Explorer', 3: 'Thinker', 4: 'Strategist', 5: 'Achiever',
-    6: 'Mastermind', 7: 'Champion', 8: 'Prodigy', 9: 'Wizard', 10: 'Legend'
-  };
-  return levelNames[level] || 'Unknown';
-};
-
-
-// Helper function to get date range
-const getDateRange = (period = 'current-month') => {
-  const now = new Date();
-  const startDate = new Date();
-  
-  switch (period) {
-    case 'week':
-      startDate.setDate(now.getDate() - 7);
-      break;
-    case 'current-month':
-      // Current month (from 1st to today)
-      startDate.setDate(1);
-      startDate.setHours(0, 0, 0, 0);
-      break;
-    case 'last-month':
-      startDate.setMonth(now.getMonth() - 1);
-      break;
-    case 'quarter':
-      startDate.setMonth(now.getMonth() - 3);
-      break;
-    case 'year':
-      startDate.setFullYear(now.getFullYear() - 1);
-      break;
-    default:
-      // Default to current month
-      startDate.setDate(1);
-      startDate.setHours(0, 0, 0, 0);
-  }
-  
-  return { startDate, endDate: now };
-};
-
-// Dashboard Overview Analytics
+// Dashboard overview analytics
 exports.getDashboardOverview = async (req, res) => {
   try {
-    const { period = 'current-month' } = req.query;
-    const { startDate, endDate } = getDateRange(period);
+    const totalUsers = await User.countDocuments({ role: 'student' });
+    const totalQuizzes = await Quiz.countDocuments();
+    const totalAttempts = await QuizAttempt.countDocuments();
+    const totalCategories = await Category.countDocuments();
+    const totalSubcategories = await Subcategory.countDocuments();
 
-    const [
-      totalUsers,
-      totalQuizzes,
-      totalQuestions,
-      totalAttempts,
-      totalSubscriptions,
-      totalRevenue,
-      activeUsers,
-      newUsersInPeriod,
-      newQuizzesInPeriod,
-      attemptsInPeriod,
-      revenueInPeriod
-    ] = await Promise.all([
-      User.countDocuments({ role: 'student' }),
-      Quiz.countDocuments({ isActive: true }),
-      Question.countDocuments(),
-      QuizAttempt.countDocuments(),
-      Subscription.countDocuments({ status: 'active' }),
-      PaymentOrder.aggregate([
-        { $match: { status: 'paid' } },
-        { $group: { _id: null, total: { $sum: '$amount' } } }
-      ]),
-      User.countDocuments({ 
-        role: 'student',
-        'level.lastLevelUp': { $gte: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000) } 
-      }),
-      User.countDocuments({ 
-        role: 'student',
-        createdAt: { $gte: startDate, $lte: endDate } 
-      }),
-      Quiz.countDocuments({ 
-        createdAt: { $gte: startDate, $lte: endDate } 
-      }),
-      QuizAttempt.countDocuments({ 
-        attemptedAt: { $gte: startDate, $lte: endDate } 
-      }),
-      PaymentOrder.aggregate([
-        { 
-          $match: { 
-            status: 'paid',
-            createdAt: { $gte: startDate, $lte: endDate }
-          } 
-        },
-        { $group: { _id: null, total: { $sum: '$amount' } } }
-      ])
+    // Get active users (users who have attempted quizzes in last 30 days)
+    const thirtyDaysAgo = new Date();
+    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+    const activeUsers = await QuizAttempt.distinct('user', {
+      attemptedAt: { $gte: thirtyDaysAgo }
+    });
+
+    // Get total revenue from subscriptions (mock calculation)
+    const subscriptionRevenue = await User.aggregate([
+      { $match: { role: 'student' } },
+      {
+        $group: {
+          _id: null,
+          totalRevenue: {
+            $sum: {
+              $switch: {
+                branches: [
+                  { case: { $eq: ['$subscriptionStatus', 'basic'] }, then: 99 },
+                  { case: { $eq: ['$subscriptionStatus', 'premium'] }, then: 199 },
+                  { case: { $eq: ['$subscriptionStatus', 'pro'] }, then: 299 }
+                ],
+                default: 0
+              }
+            }
+          }
+        }
+      }
+    ]);
+
+    // Get total subscriptions count
+    const totalSubscriptions = await User.countDocuments({ 
+      role: 'student', 
+      subscriptionStatus: { $in: ['basic', 'premium', 'pro'] } 
+    });
+
+    // Get recent activity (quiz attempts)
+    const recentActivity = await QuizAttempt.find()
+      .populate('user', 'name')
+      .populate('quiz', 'title')
+      .sort({ attemptedAt: -1 })
+      .limit(20)
+      .select('score scorePercentage attemptedAt');
+
+    // Get subscription distribution
+    const subscriptionDistribution = await User.aggregate([
+      { $match: { role: 'student' } },
+      { $group: { _id: '$subscriptionStatus', count: { $sum: 1 } } }
     ]);
 
     // Get level distribution
     const levelDistribution = await User.aggregate([
       { $match: { role: 'student' } },
-      {
-        $group: {
-          _id: '$level.currentLevel',
-          count: { $sum: 1 },
-          avgScore: { $avg: '$level.averageScore' },
-          avgQuizzes: { $avg: '$level.quizzesPlayed' }
-        }
-      },
+      { $group: { _id: '$level.currentLevel', count: { $sum: 1 } } },
       { $sort: { _id: 1 } }
     ]);
 
-    // Get subscription distribution
-    const subscriptionDistribution = await User.aggregate([
-      { $match: { role: 'student' } },
-      {
-        $group: {
-          _id: '$subscriptionStatus',
-          count: { $sum: 1 },
-          avgLevel: { $avg: '$level.currentLevel' }
-        }
-      }
-    ]);
-
-    // Get recent activity (default 20, max 100)
-    const recentLimitParam = Number(req.query.recentLimit || req.query.limit);
-    const recentLimit = Number.isFinite(recentLimitParam) && recentLimitParam > 0
-      ? Math.min(recentLimitParam, 100)
-      : 20;
-
-    const recentAttempts = await QuizAttempt.find()
-      .populate('user', 'name level')
-      .populate('quiz', 'title category')
-      .sort({ attemptedAt: -1 })
-      .limit(recentLimit);
-
-    // Get top performing users with monthly progress (same sorting as performance analytics)
-    const currentMonth = new Date().toISOString().slice(0, 7); // YYYY-MM format
-    
-    const topUsers = await User.find({ role: 'student' })
-      .sort({ 
-        'monthlyProgress.highScoreWins': -1, 
-        'monthlyProgress.accuracy': -1, 
-        'monthlyProgress.totalQuizAttempts': -1,
-        'level.averageScore': -1
-      })
-      .limit(20)
-      .select('name level badges subscriptionStatus monthlyProgress');
-
-    // Format topUsers to include monthlyProgress data
-    const formattedTopUsers = topUsers.map(user => {
-      const monthlyData = user.monthlyProgress || {};
-      const levelData = user.level || {};
-      
-      return {
-        ...user.toObject(),
-        monthlyProgress: {
-          highScoreWins: monthlyData.highScoreWins || 0,
-          accuracy: monthlyData.accuracy || 0,
-          currentLevel: monthlyData.currentLevel || levelData.currentLevel || 0,
-          totalQuizAttempts: monthlyData.totalQuizAttempts || levelData.quizzesPlayed || 0,
-          month: monthlyData.month || new Date().toISOString().slice(0, 7)
-        }
-      };
-    });
+    // Get top users based on monthly progress
+    const currentMonth = new Date().toISOString().slice(0, 7);
+    const topUsers = await User.find({
+      role: 'student',
+      'monthlyProgress.month': currentMonth
+    })
+    .select('name level monthlyProgress')
+    .sort({ 'monthlyProgress.highScoreWins': -1, 'monthlyProgress.accuracy': -1 })
+    .limit(10);
 
     res.json({
       success: true,
@@ -177,21 +86,15 @@ exports.getDashboardOverview = async (req, res) => {
         overview: {
           totalUsers,
           totalQuizzes,
-          totalQuestions,
           totalAttempts,
-          totalSubscriptions,
-          totalRevenue: totalRevenue[0]?.total || 0,
-          activeUsers,
-          newUsersInPeriod,
-          newQuizzesInPeriod,
-          attemptsInPeriod,
-          revenueInPeriod: revenueInPeriod[0]?.total || 0,
-          period
+          totalRevenue: subscriptionRevenue[0]?.totalRevenue || 0,
+          activeUsers: activeUsers.length,
+          totalSubscriptions
         },
-        levelDistribution,
+        recentActivity,
         subscriptionDistribution,
-        recentActivity: recentAttempts,
-        topUsers: formattedTopUsers
+        levelDistribution,
+        topUsers
       }
     });
   } catch (error) {
@@ -204,150 +107,90 @@ exports.getDashboardOverview = async (req, res) => {
   }
 };
 
-// User Analytics
+// User analytics
 exports.getUserAnalytics = async (req, res) => {
   try {
-    const { period = 'current-month', level, subscription, dateRange } = req.query;
-    const { startDate, endDate } = getDateRange(period);
+    const { period = '30' } = req.query;
+    
+    // Handle different period formats
+    let days;
+    if (period === 'week') {
+      days = 7;
+    } else if (period === 'month') {
+      days = 30;
+    } else if (period === 'quarter') {
+      days = 90;
+    } else if (period === 'year') {
+      days = 365;
+    } else {
+      days = parseInt(period) || 30;
+    }
+    
+    const startDate = new Date();
+    startDate.setDate(startDate.getDate() - days);
 
-    // Build filter
-    const filter = { role: 'student' };
-    if (level) filter['level.currentLevel'] = parseInt(level);
-    if (subscription) filter.subscriptionStatus = subscription;
-
-    // Date filter
-    const dateFilter = { createdAt: { $gte: startDate, $lte: endDate } };
-
-    const [
-      totalUsers,
-      newUsers,
-      activeUsers,
-      levelDistribution,
-      subscriptionStats,
-      userGrowth,
-      topPerformers,
-      userEngagement,
-      userRetention
-    ] = await Promise.all([
-      User.countDocuments(filter),
-      User.countDocuments({ ...filter, ...dateFilter }),
-      User.countDocuments({ 
-        ...filter, 
-        'level.lastLevelUp': { $gte: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000) } 
-      }),
-      User.aggregate([
-        { $match: filter },
-        {
-          $group: {
-            _id: '$level.currentLevel',
-            count: { $sum: 1 },
-            avgScore: { $avg: '$level.averageScore' },
-            avgQuizzes: { $avg: '$level.quizzesPlayed' },
-            avgHighScores: { $avg: '$level.highScoreQuizzes' }
-          }
-        },
-        { $sort: { _id: 1 } }
-      ]),
-      User.aggregate([
-        { $match: filter },
-        {
-          $group: {
-            _id: '$subscriptionStatus',
-            count: { $sum: 1 },
-            avgLevel: { $avg: '$level.currentLevel' },
-            avgScore: { $avg: '$level.averageScore' },
-            avgQuizzes: { $avg: '$level.quizzesPlayed' }
-          }
+    // User registration trends (userGrowth)
+    const userGrowth = await User.aggregate([
+      { $match: { role: 'student', createdAt: { $gte: startDate } } },
+      {
+        $group: {
+          _id: {
+            year: { $year: '$createdAt' },
+            month: { $month: '$createdAt' },
+            day: { $dayOfMonth: '$createdAt' }
+          },
+          count: { $sum: 1 }
         }
-      ]),
-      User.aggregate([
-        { $match: { ...filter, ...dateFilter } },
-        {
-          $group: {
-            _id: {
-              year: { $year: '$createdAt' },
-              month: { $month: '$createdAt' },
-              day: { $dayOfMonth: '$createdAt' }
-            },
-            count: { $sum: 1 }
-          }
-        },
-        { $sort: { '_id.year': 1, '_id.month': 1, '_id.day': 1 } }
-      ]),
-      User.find(filter)
-        .sort({ 'level.highScoreQuizzes': -1, 'level.averageScore': -1 })
-        .limit(20)
-        .select('name level badges subscriptionStatus createdAt')
-        .lean(),
-      User.aggregate([
-        { $match: filter },
-        {
-          $group: {
-            _id: null,
-            avgQuizzesPlayed: { $avg: '$level.quizzesPlayed' },
-            avgHighScoreQuizzes: { $avg: '$level.highScoreQuizzes' },
-            avgLevel: { $avg: '$level.currentLevel' },
-            avgScore: { $avg: '$level.averageScore' },
-            totalQuizzesPlayed: { $sum: '$level.quizzesPlayed' },
-            totalHighScoreQuizzes: { $sum: '$level.highScoreQuizzes' },
-            maxLevel: { $max: '$level.currentLevel' },
-            minLevel: { $min: '$level.currentLevel' }
-          }
-        }
-      ]),
-      User.aggregate([
-        { $match: filter },
-        {
-          $group: {
-            _id: {
-              $dateToString: { format: "%Y-%m", date: "$createdAt" }
-            },
-            newUsers: { $sum: 1 },
-            activeUsers: {
-              $sum: {
-                $cond: [
-                  { $gte: ["$level.lastLevelUp", new Date(Date.now() - 30 * 24 * 60 * 60 * 1000)] },
-                  1,
-                  0
-                ]
-              }
-            }
-          }
-        },
-        { $sort: { _id: 1 } }
-      ])
+      },
+      { $sort: { '_id.year': 1, '_id.month': 1, '_id.day': 1 } }
     ]);
 
-    // Format top performers to include accuracy
-    const formattedTopPerformers = topPerformers.map(user => {
-      const highScoreQuizzes = user.level?.highScoreQuizzes || 0;
-      const quizzesPlayed = user.level?.quizzesPlayed || 0;
-      const accuracy = quizzesPlayed > 0 ? Math.round((highScoreQuizzes / quizzesPlayed) * 100) : 0;
-      
-      return {
-        ...user,
-        level: {
-          ...user.level,
-          accuracy: accuracy
-        }
-      };
+    // Active users (users who attempted quizzes)
+    const activeUsers = await QuizAttempt.distinct('user', {
+      attemptedAt: { $gte: startDate }
     });
+
+    // Level distribution
+    const levelDistribution = await User.aggregate([
+      { $match: { role: 'student' } },
+      { $group: { _id: '$level.currentLevel', count: { $sum: 1 } } },
+      { $sort: { _id: 1 } }
+    ]);
+
+    // Subscription stats
+    const subscriptionStats = await User.aggregate([
+      { $match: { role: 'student' } },
+      { $group: { _id: '$subscriptionStatus', count: { $sum: 1 } } }
+    ]);
+
+    // Top performers (engagement stats)
+    const topPerformers = await User.aggregate([
+      { $match: { role: 'student' } },
+      {
+        $project: {
+          name: 1,
+          email: 1,
+          subscriptionStatus: 1,
+          level: 1,
+          quizAttempts: { $size: '$quizBestScores' },
+          highScoreQuizzes: '$level.highScoreQuizzes',
+          averageScore: '$level.averageScore',
+          lastActivity: { $max: '$quizBestScores.lastAttemptDate' }
+        }
+      },
+      { $sort: { quizAttempts: -1, highScoreQuizzes: -1 } },
+      { $limit: 20 }
+    ]);
 
     res.json({
       success: true,
       data: {
-        overview: {
-          totalUsers,
-          newUsers,
-          activeUsers,
-          period
-        },
+        period: `${days} days`,
+        userGrowth,
+        activeUsers: activeUsers.length,
         levelDistribution,
         subscriptionStats,
-        userGrowth,
-        topPerformers: formattedTopPerformers,
-        userEngagement: userEngagement[0] || {},
-        userRetention
+        topPerformers
       }
     });
   } catch (error) {
@@ -360,177 +203,162 @@ exports.getUserAnalytics = async (req, res) => {
   }
 };
 
-// Quiz Analytics
+// Quiz analytics
 exports.getQuizAnalytics = async (req, res) => {
   try {
-    const { period = 'current-month', category, difficulty } = req.query;
-    const { startDate, endDate } = getDateRange(period);
+    const { period = '30' } = req.query;
+    
+    // Handle different period formats
+    let days;
+    if (period === 'week') {
+      days = 7;
+    } else if (period === 'month') {
+      days = 30;
+    } else if (period === 'quarter') {
+      days = 90;
+    } else if (period === 'year') {
+      days = 365;
+    } else {
+      days = parseInt(period) || 30;
+    }
+    
+    const startDate = new Date();
+    startDate.setDate(startDate.getDate() - days);
 
-    // Build filter
-    const quizFilter = { isActive: true };
-    if (category) quizFilter.category = category;
-    if (difficulty) quizFilter.difficulty = difficulty;
-
-    const attemptFilter = { attemptedAt: { $gte: startDate, $lte: endDate } };
-
-    const [
-      totalQuizzes,
-      totalAttempts,
-      avgScore,
-      categoryStats,
-      difficultyStats,
-      levelStats,
-      topQuizzes,
-      quizPerformance,
-      recentQuizzes
-    ] = await Promise.all([
-      // Total active quizzes
-      Quiz.countDocuments(quizFilter),
-
-      // Total quiz attempts in time range
-      QuizAttempt.countDocuments(attemptFilter),
-
-      // Average score
-      QuizAttempt.aggregate([
-        { $match: attemptFilter },
-        {
-          $group: {
-            _id: null,
-            avgScore: { $avg: '$scorePercentage' }
+    // Quiz performance metrics
+    const quizStats = await QuizAttempt.aggregate([
+      { $match: { attemptedAt: { $gte: startDate } } },
+      {
+        $group: {
+          _id: '$quiz',
+          totalAttempts: { $sum: 1 },
+          averageScore: { $avg: '$scorePercentage' },
+          highScoreAttempts: {
+            $sum: { $cond: [{ $gte: ['$scorePercentage', 75] }, 1, 0] }
           }
         }
-      ]),
-
-      // Category stats
-      Quiz.aggregate([
-        { $match: quizFilter },
-        {
-          $lookup: {
-            from: 'categories',
-            localField: 'category',
-            foreignField: '_id',
-            as: 'categoryInfo'
-          }
-        },
-        {
-          $group: {
-            _id: '$category',
-            categoryName: { $first: '$categoryInfo.name' },
-            quizCount: { $sum: 1 },
-            avgTimeLimit: { $avg: '$timeLimit' },
-            avgTotalMarks: { $avg: '$totalMarks' }
+      },
+      {
+        $lookup: {
+          from: 'quizzes',
+          localField: '_id',
+          foreignField: '_id',
+          as: 'quizInfo'
+        }
+      },
+      { $unwind: '$quizInfo' },
+      {
+        $project: {
+          quizTitle: '$quizInfo.title',
+          totalAttempts: 1,
+          averageScore: { $round: ['$averageScore', 2] },
+          highScoreAttempts: 1,
+          highScoreRate: {
+            $round: [
+              { $multiply: [{ $divide: ['$highScoreAttempts', '$totalAttempts'] }, 100] },
+              2
+            ]
           }
         }
-      ]),
+      },
+      { $sort: { totalAttempts: -1 } },
+      { $limit: 20 }
+    ]);
 
-      // Difficulty stats
-      Quiz.aggregate([
-        { $match: quizFilter },
-        {
-          $group: {
-            _id: '$difficulty',
-            count: { $sum: 1 },
-            avgTimeLimit: { $avg: '$timeLimit' },
-            avgTotalMarks: { $avg: '$totalMarks' }
-          }
+    // Category performance
+    const categoryStats = await QuizAttempt.aggregate([
+      { $match: { attemptedAt: { $gte: startDate } } },
+      {
+        $lookup: {
+          from: 'quizzes',
+          localField: 'quiz',
+          foreignField: '_id',
+          as: 'quizInfo'
         }
-      ]),
-
-      // ✅ Level stats with levelName (e.g. "Level 1")
-      Quiz.aggregate([
-        { $match: quizFilter },
-        {
-          $group: {
-            _id: '$requiredLevel',
-            count: { $sum: 1 }
-          }
-        },
-        {
-          $addFields: {
-            levelName: {
-              $concat: ['Level ', { $toString: '$_id' }]
-            }
-          }
-        },
-        { $sort: { _id: 1 } }
-      ]),
-
-      // Top 10 most attempted quizzes
-      QuizAttempt.aggregate([
-        { $match: attemptFilter },
-        {
-          $lookup: {
-            from: 'quizzes',
-            localField: 'quiz',
-            foreignField: '_id',
-            as: 'quizInfo'
-          }
-        },
-        {
-          $group: {
-            _id: '$quiz',
-            quizTitle: { $first: '$quizInfo.title' },
-            attemptCount: { $sum: 1 },
-            avgScore: { $avg: '$scorePercentage' },
-            maxScore: { $max: '$scorePercentage' },
-            minScore: { $min: '$scorePercentage' }
-          }
-        },
-        { $sort: { attemptCount: -1 } },
-        { $limit: 10 }
-      ]),
-
-      // Performance grouped by quiz and difficulty
-      QuizAttempt.aggregate([
-        { $match: attemptFilter },
-        {
-          $lookup: {
-            from: 'quizzes',
-            localField: 'quiz',
-            foreignField: '_id',
-            as: 'quizInfo'
-          }
-        },
-        {
-          $group: {
-            _id: {
-              quiz: '$quiz',
-              difficulty: '$quizInfo.difficulty'
-            },
-            avgScore: { $avg: '$scorePercentage' },
-            attemptCount: { $sum: 1 },
-            completionRate: {
-              $avg: {
-                $cond: [{ $gte: ['$scorePercentage', 0] }, 1, 0]
-              }
-            }
-          }
+      },
+      { $unwind: '$quizInfo' },
+      {
+        $lookup: {
+          from: 'categories',
+          localField: 'quizInfo.category',
+          foreignField: '_id',
+          as: 'categoryInfo'
         }
-      ]),
+      },
+      { $unwind: '$categoryInfo' },
+      {
+        $group: {
+          _id: '$categoryInfo._id',
+          categoryName: { $first: '$categoryInfo.name' },
+          totalAttempts: { $sum: 1 },
+          averageScore: { $avg: '$scorePercentage' }
+        }
+      },
+      {
+        $project: {
+          categoryName: 1,
+          totalAttempts: 1,
+          averageScore: { $round: ['$averageScore', 2] }
+        }
+      },
+      { $sort: { totalAttempts: -1 } }
+    ]);
 
-      // Recent quizzes
-      Quiz.find(quizFilter)
-        .populate('category', 'name')
-        .populate('subcategory', 'name')
-        .sort({ createdAt: -1 })
-        .limit(10)
+    // Get recent quizzes
+    const recentQuizzes = await Quiz.find()
+      .populate('category', 'name')
+      .populate('subcategory', 'name')
+      .sort({ createdAt: -1 })
+      .limit(10)
+      .select('title category subcategory difficulty createdAt');
+
+    // Get overview stats
+    const totalQuizzes = await Quiz.countDocuments();
+    const totalAttempts = await QuizAttempt.countDocuments();
+    const avgScore = await QuizAttempt.aggregate([
+      {
+        $group: {
+          _id: null,
+          avgScore: { $avg: '$scorePercentage' }
+        }
+      }
+    ]);
+
+    // Get difficulty stats
+    const difficultyStats = await Quiz.aggregate([
+      { $group: { _id: '$difficulty', count: { $sum: 1 } } }
+    ]);
+
+    // Get level stats (quiz attempts by level)
+    const levelStats = await QuizAttempt.aggregate([
+      { $match: { attemptedAt: { $gte: startDate } } },
+      {
+        $lookup: {
+          from: 'users',
+          localField: 'user',
+          foreignField: '_id',
+          as: 'userInfo'
+        }
+      },
+      { $unwind: '$userInfo' },
+      { $group: { _id: '$userInfo.level.currentLevel', count: { $sum: 1 } } },
+      { $sort: { _id: 1 } }
     ]);
 
     res.json({
       success: true,
       data: {
-        overview: {
-          totalQuizzes,
-          totalAttempts,
-          avgScore: avgScore[0]?.avgScore || 0,
-          period
-        },
+        period: `${days} days`,
+        topQuizzes: quizStats,
+        recentQuizzes,
         categoryStats,
         difficultyStats,
         levelStats,
-        topQuizzes,
-        quizPerformance,
-        recentQuizzes
+        overview: {
+          totalQuizzes,
+          totalAttempts,
+          avgScore: avgScore[0]?.avgScore || 0
+        }
       }
     });
   } catch (error) {
@@ -543,113 +371,114 @@ exports.getQuizAnalytics = async (req, res) => {
   }
 };
 
-
-// Financial Analytics
+// Financial analytics
 exports.getFinancialAnalytics = async (req, res) => {
   try {
-    const { period = 'current-month' } = req.query;
-    const { startDate, endDate } = getDateRange(period);
+    const { period = '30' } = req.query;
+    
+    // Handle different period formats
+    let days;
+    if (period === 'week') {
+      days = 7;
+    } else if (period === 'month') {
+      days = 30;
+    } else if (period === 'quarter') {
+      days = 90;
+    } else if (period === 'year') {
+      days = 365;
+    } else {
+      days = parseInt(period) || 30;
+    }
+    
+    const startDate = new Date();
+    startDate.setDate(startDate.getDate() - days);
 
-    const [
-      totalRevenue,
-      periodRevenue,
-      subscriptionStats,
-      paymentStats,
-      revenueTrend,
-      planDistribution,
-      topRevenuePlans
-    ] = await Promise.all([
-      PaymentOrder.aggregate([
-        { $match: { status: 'paid' } },
-        { $group: { _id: null, total: { $sum: '$amount' } } }
-      ]),
-      PaymentOrder.aggregate([
-        { 
-          $match: { 
-            status: 'paid',
-            createdAt: { $gte: startDate, $lte: endDate }
-          } 
-        },
-        { $group: { _id: null, total: { $sum: '$amount' } } }
-      ]),
-      Subscription.aggregate([
-        { $match: { status: 'active' } },
-        {
-          $group: {
-            _id: '$plan',
-            count: { $sum: 1 },
-            totalAmount: { $sum: '$amount' }
+    // Subscription revenue (mock data - replace with actual subscription model)
+    const subscriptionStats = await User.aggregate([
+      { $match: { role: 'student' } },
+      {
+        $group: {
+          _id: '$subscriptionStatus',
+          count: { $sum: 1 },
+          totalRevenue: {
+            $sum: {
+              $switch: {
+                branches: [
+                  { case: { $eq: ['$subscriptionStatus', 'basic'] }, then: 99 },
+                  { case: { $eq: ['$subscriptionStatus', 'premium'] }, then: 199 },
+                  { case: { $eq: ['$subscriptionStatus', 'pro'] }, then: 299 }
+                ],
+                default: 0
+              }
+            }
           }
         }
-      ]),
-      PaymentOrder.aggregate([
-        { $match: { createdAt: { $gte: startDate, $lte: endDate } } },
-        {
-          $group: {
-            _id: '$status',
-            count: { $sum: 1 },
-            totalAmount: { $sum: '$amount' }
-          }
-        }
-      ]),
-      PaymentOrder.aggregate([
-        { $match: { status: 'paid' } },
-        {
-          $group: {
-            _id: {
-              year: { $year: '$createdAt' },
-              month: { $month: '$createdAt' }
-            },
-            revenue: { $sum: '$amount' },
-            count: { $sum: 1 }
-          }
-        },
-        { $sort: { '_id.year': 1, '_id.month': 1 } }
-      ]),
-      User.aggregate([
-        { $match: { role: 'student' } },
-        {
-          $group: {
-            _id: '$subscriptionStatus',
-            count: { $sum: 1 }
-          }
-        }
-      ]),
-      PaymentOrder.aggregate([
-        { $match: { status: 'paid' } },
-        {
-          $lookup: {
-            from: 'subscriptions',
-            localField: 'subscriptionId',
-            foreignField: '_id',
-            as: 'subscriptionInfo'
-          }
-        },
-        {
-          $group: {
-            _id: '$subscriptionInfo.plan',
-            totalRevenue: { $sum: '$amount' },
-            count: { $sum: 1 },
-            avgAmount: { $avg: '$amount' }
-          }
-        },
-        { $sort: { totalRevenue: -1 } }
-      ])
+      }
     ]);
+
+    // Monthly winners payout
+    const monthlyWinners = await MonthlyWinners.find()
+      .sort({ monthYear: -1 })
+      .limit(12);
+
+    const totalPayouts = monthlyWinners.reduce((sum, month) => {
+      return sum + month.winners.reduce((monthSum, winner) => {
+        return monthSum + winner.rewardAmount;
+      }, 0);
+    }, 0);
+
+    // Calculate total revenue
+    const totalRevenue = subscriptionStats.reduce((sum, stat) => sum + stat.totalRevenue, 0);
+    
+    // Calculate period revenue (revenue from last period)
+    const periodRevenue = subscriptionStats.reduce((sum, stat) => {
+      // Mock calculation - in real app, filter by date
+      return sum + (stat.totalRevenue * 0.3); // Assume 30% is from current period
+    }, 0);
+
+    // Plan distribution (same as subscription stats)
+    const planDistribution = subscriptionStats;
+
+    // Top revenue plans (same as subscription stats sorted by revenue)
+    const topRevenuePlans = subscriptionStats.sort((a, b) => b.totalRevenue - a.totalRevenue);
+
+    // Revenue trend (mock data - in real app, get monthly revenue data)
+    const revenueTrend = [];
+    for (let i = 11; i >= 0; i--) {
+      const date = new Date();
+      date.setMonth(date.getMonth() - i);
+      revenueTrend.push({
+        _id: {
+          year: date.getFullYear(),
+          month: date.getMonth() + 1
+        },
+        revenue: Math.floor(totalRevenue * (0.8 + Math.random() * 0.4)) // Mock trend
+      });
+    }
+
+    // Payment stats (mock data - in real app, get actual payment data)
+    const paymentStats = [
+      { _id: 'successful', count: Math.floor(subscriptionStats.length * 0.85) },
+      { _id: 'failed', count: Math.floor(subscriptionStats.length * 0.10) },
+      { _id: 'pending', count: Math.floor(subscriptionStats.length * 0.05) }
+    ];
 
     res.json({
       success: true,
       data: {
-        overview: {
-          totalRevenue: totalRevenue[0]?.total || 0,
-          periodRevenue: periodRevenue[0]?.total || 0,
-          period
-        },
-        subscriptionStats,
-        paymentStats,
-        revenueTrend,
+        period: `${days} days`,
+        topRevenuePlans,
         planDistribution,
-        topRevenuePlans
+        revenueTrend,
+        paymentStats,
+        subscriptionStats,
+        overview: {
+          totalRevenue,
+          periodRevenue,
+          totalPayouts
+        },
+        monthlyWinners: monthlyWinners.length,
+        recentWinners: monthlyWinners.slice(0, 6)
       }
     });
   } catch (error) {
@@ -662,196 +491,269 @@ exports.getFinancialAnalytics = async (req, res) => {
   }
 };
 
-// Performance Analytics
+// Performance analytics
 exports.getPerformanceAnalytics = async (req, res) => {
   try {
-    const { period = 'current-month' } = req.query;
-    const { startDate, endDate } = getDateRange(period);
+    const { period = '30' } = req.query;
     
-    // Get current month for monthly progress data
-    const currentMonth = new Date().toISOString().slice(0, 7); // YYYY-MM format
+    // Handle different period formats
+    let days;
+    if (period === 'week') {
+      days = 7;
+    } else if (period === 'month') {
+      days = 30;
+    } else if (period === 'quarter') {
+      days = 90;
+    } else if (period === 'year') {
+      days = 365;
+    } else {
+      days = parseInt(period) || 30;
+    }
+    
+    const startDate = new Date();
+    startDate.setDate(startDate.getDate() - days);
 
-    const [
-      leaderboardStats,
-      topPerformers,
-      scoreDistribution,
-      levelPerformance,
-      categoryPerformance,
-      timeAnalysis
-    ] = await Promise.all([
-      Leaderboard.aggregate([
+    // Overall performance metrics
+    const performanceStats = await QuizAttempt.aggregate([
+      { $match: { attemptedAt: { $gte: startDate } } },
+      {
+        $group: {
+          _id: null,
+          totalAttempts: { $sum: 1 },
+          averageScore: { $avg: '$scorePercentage' },
+          highScoreAttempts: {
+            $sum: { $cond: [{ $gte: ['$scorePercentage', 75] }, 1, 0] }
+          },
+          perfectScores: {
+            $sum: { $cond: [{ $eq: ['$scorePercentage', 100] }, 1, 0] }
+          }
+        }
+      },
+      {
+        $project: {
+          totalAttempts: 1,
+          averageScore: { $round: ['$averageScore', 2] },
+          highScoreAttempts: 1,
+          highScoreRate: {
+            $round: [
+              { $multiply: [{ $divide: ['$highScoreAttempts', '$totalAttempts'] }, 100] },
+              2
+            ]
+          },
+          perfectScores: 1,
+          perfectScoreRate: {
+            $round: [
+              { $multiply: [{ $divide: ['$perfectScores', '$totalAttempts'] }, 100] },
+              2
+            ]
+          }
+        }
+      }
+    ]);
+
+    // Top performers - use monthlyProgress data when period is month
+    let topPerformers;
+    if (period === 'month') {
+      const currentMonth = new Date().toISOString().slice(0, 7);
+      topPerformers = await User.find({
+        role: 'student',
+        'monthlyProgress.month': currentMonth
+      })
+      .select('name email level monthlyProgress')
+      .sort({ 'monthlyProgress.highScoreWins': -1, 'monthlyProgress.accuracy': -1 })
+      .limit(10)
+      .lean();
+      
+      // Calculate total scores for each user from quiz attempts
+      const userIds = topPerformers.map(user => user._id);
+      const totalScores = await QuizAttempt.aggregate([
+        { $match: { user: { $in: userIds } } },
         {
           $group: {
-            _id: '$quiz',
-            totalEntries: { $sum: 1 },
-            avgScore: { $avg: '$entries.score' },
-            maxScore: { $max: '$entries.score' },
-            minScore: { $min: '$entries.score' }
+            _id: '$user',
+            totalScore: { $sum: '$score' },
+            totalCorrectAnswers: { $sum: '$correctAnswers' }
+          }
+        }
+      ]);
+      
+      // Create a map for quick lookup
+      const scoreMap = {};
+      totalScores.forEach(score => {
+        scoreMap[score._id.toString()] = {
+          totalScore: score.totalScore,
+          totalCorrectAnswers: score.totalCorrectAnswers
+        };
+      });
+      
+      // Transform the data to match frontend expectations
+      topPerformers = topPerformers.map(user => ({
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        level: {
+          currentLevel: user.level?.currentLevel || 0,
+          levelName: user.level?.currentLevel === 10 ? 'Legend' : 
+                    user.level?.currentLevel === 9 ? 'Master' :
+                    user.level?.currentLevel === 8 ? 'Expert' :
+                    user.level?.currentLevel === 7 ? 'Advanced' :
+                    user.level?.currentLevel === 6 ? 'Intermediate' :
+                    user.level?.currentLevel === 5 ? 'Skilled' :
+                    user.level?.currentLevel === 4 ? 'Competent' :
+                    user.level?.currentLevel === 3 ? 'Novice' :
+                    user.level?.currentLevel === 2 ? 'Beginner' :
+                    user.level?.currentLevel === 1 ? 'Starter' : 'No Level',
+          highScoreQuizzes: user.monthlyProgress?.highScoreWins || 0,
+          quizzesPlayed: user.monthlyProgress?.totalQuizAttempts || 0,
+          accuracy: user.monthlyProgress?.accuracy || 0,
+          averageScore: user.monthlyProgress?.accuracy || 0,
+          totalScore: scoreMap[user._id.toString()]?.totalScore || 0
+        },
+        monthlyProgress: {
+          highScoreWins: user.monthlyProgress?.highScoreWins || 0,
+          accuracy: user.monthlyProgress?.accuracy || 0,
+          totalQuizAttempts: user.monthlyProgress?.totalQuizAttempts || 0,
+          month: user.monthlyProgress?.month,
+          currentLevel: user.monthlyProgress?.currentLevel || user.level?.currentLevel || 0,
+          rewardEligible: user.monthlyProgress?.rewardEligible || false
+        },
+        totalScore: scoreMap[user._id.toString()]?.totalScore || 0,
+        totalCorrectAnswers: scoreMap[user._id.toString()]?.totalCorrectAnswers || 0
+      }));
+    } else {
+      // For other periods, use the original aggregation logic with total score calculation
+      topPerformers = await User.aggregate([
+        { $match: { role: 'student' } },
+        {
+          $lookup: {
+            from: 'quizattempts',
+            localField: '_id',
+            foreignField: 'user',
+            as: 'quizAttempts'
           }
         },
-        { $sort: { totalEntries: -1 } },
-        { $limit: 10 }
-      ]),
-      // Get top performers based on monthly progress data (fallback to level data if available)
-      User.find({ 
-        role: 'student',
-        'monthlyProgress.month': currentMonth // Only get users with current month data
-      })
-        .sort({ 
-          'monthlyProgress.highScoreWins': -1, 
-          'monthlyProgress.accuracy': -1, 
-          'monthlyProgress.totalQuizAttempts': -1,
-          'level.averageScore': -1
-        })
-        .limit(20)
-        .select('name email level monthlyProgress subscriptionStatus')
-        .lean(),
-      QuizAttempt.aggregate([
-        { $match: { attemptedAt: { $gte: startDate, $lte: endDate } } },
         {
-          $group: {
-            _id: {
-              $switch: {
-                branches: [
-                  { case: { $lt: ['$scorePercentage', 40] }, then: '0-40%' },
-                  { case: { $lt: ['$scorePercentage', 60] }, then: '40-60%' },
-                  { case: { $lt: ['$scorePercentage', 75] }, then: '60-75%' },
-                  { case: { $lt: ['$scorePercentage', 100] }, then: '75-100%' }
-                ],
-                default: '100%'
-              }
-            },
+          $project: {
+            name: 1,
+            email: 1,
+            level: 1,
+            highScoreQuizzes: '$level.highScoreQuizzes',
+            accuracy: '$level.averageScore',
+            totalQuizzes: { $size: '$quizBestScores' },
+            totalScore: { $sum: '$quizAttempts.score' },
+            totalCorrectAnswers: { $sum: '$quizAttempts.correctAnswers' }
+          }
+        },
+        { $sort: { highScoreQuizzes: -1, accuracy: -1 } },
+        { $limit: 10 }
+      ]);
+    }
+
+    // Level performance data
+    const levelPerformance = await QuizAttempt.aggregate([
+      { $match: { attemptedAt: { $gte: startDate } } },
+      {
+        $lookup: {
+          from: 'users',
+          localField: 'user',
+          foreignField: '_id',
+          as: 'userInfo'
+        }
+      },
+      { $unwind: '$userInfo' },
+      {
+        $group: {
+          _id: '$userInfo.level.currentLevel',
+          avgScore: { $avg: '$scorePercentage' },
+          userCount: { $addToSet: '$user' }
+        }
+      },
+      {
+        $project: {
+          avgScore: { $round: ['$avgScore', 2] },
+          userCount: { $size: '$userCount' }
+        }
+      },
+      { $sort: { _id: 1 } }
+    ]);
+
+    // Score distribution data
+    const scoreDistribution = await QuizAttempt.aggregate([
+      { $match: { attemptedAt: { $gte: startDate } } },
+      {
+        $bucket: {
+          groupBy: '$scorePercentage',
+          boundaries: [0, 25, 50, 75, 90, 100],
+          default: 'Other',
+          output: {
             count: { $sum: 1 },
             avgScore: { $avg: '$scorePercentage' }
           }
         }
-      ]),
-      // Use level data for level performance
-      User.aggregate([
-        { 
-          $match: { 
-            role: 'student'
-          } 
-        },
-        {
-          $group: {
-            _id: '$level.currentLevel',
-            userCount: { $sum: 1 },
-            avgScore: { $avg: '$level.averageScore' },
-            avgQuizzes: { $avg: '$level.quizzesPlayed' },
-            avgHighScores: { $avg: '$level.highScoreQuizzes' }
-          }
-        },
-        { $sort: { _id: 1 } }
-      ]),
-      QuizAttempt.aggregate([
-        { $match: { attemptedAt: { $gte: startDate, $lte: endDate } } },
-        {
-          $lookup: {
-            from: 'quizzes',
-            localField: 'quiz',
-            foreignField: '_id',
-            as: 'quizInfo'
-          }
-        },
-        {
-          $lookup: {
-            from: 'categories',
-            localField: 'quizInfo.category',
-            foreignField: '_id',
-            as: 'categoryInfo'
-          }
-        },
-        {
-          $group: {
-            _id: '$categoryInfo.name',
-            avgScore: { $avg: '$scorePercentage' },
-            attemptCount: { $sum: 1 },
-            completionRate: {
-              $avg: {
-                $cond: [{ $gte: ['$scorePercentage', 0] }, 1, 0]
-              }
+      },
+      {
+        $project: {
+          _id: { $concat: [{ $toString: '$_id.min' }, '-', { $toString: '$_id.max' }, '%'] },
+          count: 1,
+          avgScore: { $round: ['$avgScore', 2] }
+        }
+      }
+    ]);
+
+    // Category performance data
+    const categoryPerformance = await QuizAttempt.aggregate([
+      { $match: { attemptedAt: { $gte: startDate } } },
+      {
+        $lookup: {
+          from: 'quizzes',
+          localField: 'quiz',
+          foreignField: '_id',
+          as: 'quizInfo'
+        }
+      },
+      { $unwind: '$quizInfo' },
+      {
+        $lookup: {
+          from: 'categories',
+          localField: 'quizInfo.category',
+          foreignField: '_id',
+          as: 'categoryInfo'
+        }
+      },
+      { $unwind: '$categoryInfo' },
+      {
+        $group: {
+          _id: '$categoryInfo._id',
+          categoryName: { $first: '$categoryInfo.name' },
+          attemptCount: { $sum: 1 },
+          avgScore: { $avg: '$scorePercentage' },
+          completionRate: {
+            $avg: {
+              $cond: [{ $gte: ['$scorePercentage', 75] }, 1, 0]
             }
           }
         }
-      ]),
-      QuizAttempt.aggregate([
-        { $match: { attemptedAt: { $gte: startDate, $lte: endDate } } },
-        {
-          $group: {
-            _id: {
-              hour: { $hour: '$attemptedAt' },
-              dayOfWeek: { $dayOfWeek: '$attemptedAt' }
-            },
-            attemptCount: { $sum: 1 },
-            avgScore: { $avg: '$scorePercentage' }
-          }
-        },
-        { $sort: { '_id.dayOfWeek': 1, '_id.hour': 1 } }
-      ])
-    ]);
-
-    //console.log('🔍 Debug - Raw top performer data:', JSON.stringify(topPerformers[0], null, 2));
-    //console.log('🔍 Debug - Raw monthly progress data:', JSON.stringify(topPerformers[0]?.monthlyProgress, null, 2));
-
-    // Format top performers to use level data as primary, monthly progress as fallback
-    const formattedTopPerformers = topPerformers.map(user => {
-      const monthlyData = user.monthlyProgress || {};
-      const levelData = user.level || {};
-      
-      return {
-        ...user,
-        level: {
-          currentLevel: levelData.currentLevel || monthlyData.currentLevel || 0,
-          levelName: levelData.currentLevel === 10 ? 'Legend' : getLevelName(levelData.currentLevel || monthlyData.currentLevel || 0),
-          highScoreQuizzes: levelData.highScoreQuizzes || monthlyData.highScoreWins || 0,
-          quizzesPlayed: levelData.quizzesPlayed || monthlyData.totalQuizAttempts || 0,
-          accuracy: monthlyData.accuracy || levelData.averageScore || 0, // Prioritize monthly accuracy
-          averageScore: monthlyData.accuracy || levelData.averageScore || 0, // Use monthly accuracy for average score too
-          totalScore: levelData.totalScore || monthlyData.totalScore || 0
+      },
+      {
+        $project: {
+          categoryName: 1,
+          attemptCount: 1,
+          avgScore: { $round: ['$avgScore', 2] },
+          completionRate: { $round: ['$completionRate', 4] }
         }
-      };
-    });
-    // If we don't have enough users with monthly progress, add fallback users
-    if (formattedTopPerformers.length < 10) {
-      const fallbackUsers = await User.find({ 
-        role: 'student',
-        'monthlyProgress.month': { $ne: currentMonth } // Users without current month data
-      })
-        .sort({ 'level.highScoreQuizzes': -1, 'level.averageScore': -1, 'level.quizzesPlayed': -1, 'level.totalScore': -1 })
-        .limit(20 - formattedTopPerformers.length)
-        .select('name email level monthlyProgress subscriptionStatus')
-        .lean();
-
-      const formattedFallbackUsers = fallbackUsers.map(user => {
-        const levelData = user.level || {};
-        return {
-          ...user,
-          level: {
-            currentLevel: levelData.currentLevel || 0,
-            levelName: levelData.currentLevel === 10 ? 'Legend' : getLevelName(levelData.currentLevel || 0),
-            highScoreQuizzes: levelData.highScoreQuizzes || 0,
-            quizzesPlayed: levelData.quizzesPlayed || 0,
-            accuracy: levelData.averageScore || 0, // Use level data for fallback users
-            averageScore: levelData.averageScore || 0,
-            totalScore: levelData.totalScore || 0
-          }
-        };
-      });
-
-      formattedTopPerformers.push(...formattedFallbackUsers);
-    }
+      },
+      { $sort: { attemptCount: -1 } }
+    ]);
 
     res.json({
       success: true,
       data: {
-        leaderboardStats,
-        topPerformers: formattedTopPerformers,
-        scoreDistribution,
+        period: `${days} days`,
+        performanceStats: performanceStats[0] || {},
+        topPerformers,
         levelPerformance,
-        categoryPerformance,
-        timeAnalysis,
-        period
+        scoreDistribution,
+        categoryPerformance
       }
     });
   } catch (error) {
@@ -864,283 +766,57 @@ exports.getPerformanceAnalytics = async (req, res) => {
   }
 };
 
-// Individual User Analytics
-exports.getUserPerformanceAnalytics = async (req, res) => {
-  try {
-    const { userId } = req.params;
-    const { period = 'current-month' } = req.query;
-    const { startDate, endDate } = getDateRange(period);
-
-    const user = await User.findById(userId).select('-password');
-    if (!user) {
-      return res.status(404).json({
-        success: false,
-        message: 'User not found'
-      });
-    }
-
-    const [
-      userAttempts,
-      levelProgress,
-      categoryPerformance,
-      timeAnalysis,
-      comparisonStats
-    ] = await Promise.all([
-      QuizAttempt.find({ 
-        user: userId,
-        attemptedAt: { $gte: startDate, $lte: endDate }
-      })
-        .populate('quiz', 'title category difficulty')
-        .sort({ attemptedAt: -1 }),
-      User.aggregate([
-        { $match: { role: 'student' } },
-        {
-          $group: {
-            _id: null,
-            avgLevel: { $avg: '$level.currentLevel' },
-            avgScore: { $avg: '$level.averageScore' },
-            avgQuizzes: { $avg: '$level.quizzesPlayed' },
-            avgHighScores: { $avg: '$level.highScoreQuizzes' }
-          }
-        }
-      ]),
-      QuizAttempt.aggregate([
-      { $match: { user: user._id } },
-      {
-        $lookup: {
-          from: 'quizzes',
-          localField: 'quiz',
-          foreignField: '_id',
-          as: 'quizInfo'
-        }
-      },
-      {
-        $lookup: {
-          from: 'categories',
-          localField: 'quizInfo.category',
-          foreignField: '_id',
-          as: 'categoryInfo'
-        }
-      },
-      {
-        $group: {
-            _id: '$categoryInfo.name',
-            attemptCount: { $sum: 1 },
-          avgScore: { $avg: '$scorePercentage' },
-          bestScore: { $max: '$scorePercentage' },
-            lastAttempt: { $max: '$attemptedAt' }
-          }
-        }
-      ]),
-      QuizAttempt.aggregate([
-        { $match: { user: user._id } },
-        {
-          $group: {
-            _id: {
-              hour: { $hour: '$attemptedAt' },
-              dayOfWeek: { $dayOfWeek: '$attemptedAt' }
-            },
-            attemptCount: { $sum: 1 },
-            avgScore: { $avg: '$scorePercentage' }
-          }
-        }
-      ]),
-      User.aggregate([
-        { $match: { role: 'student' } },
-        {
-          $addFields: {
-            scoreRank: {
-              $rank: {
-                sortBy: { 'level.averageScore': -1 },
-                output: { $sum: 1 }
-              }
-            },
-            levelRank: {
-              $rank: {
-                sortBy: { 'level.currentLevel': -1 },
-                output: { $sum: 1 }
-              }
-            }
-          }
-        },
-        { $match: { _id: user._id } }
-      ])
-    ]);
-
-    res.json({
-      success: true,
-      data: {
-        user,
-        userAttempts,
-        levelProgress: levelProgress[0] || {},
-        categoryPerformance,
-        timeAnalysis,
-        comparisonStats: comparisonStats[0] || {},
-        period
-      }
-    });
-  } catch (error) {
-    console.error('Error fetching user performance analytics:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Failed to fetch user performance analytics',
-      error: error.message
-    });
-  }
-}; 
-
-// Monthly Progress Analytics
+// Monthly progress analytics
 exports.getMonthlyProgressAnalytics = async (req, res) => {
   try {
-    const { month } = req.query;
-    const currentMonth = month || new Date().toISOString().slice(0, 7); // YYYY-MM
-
-    const [
-      monthlyStats,
-      levelDistribution,
-      topPerformers,
-      rewardEligibleUsers,
-      accuracyDistribution,
-      quizAttemptsTrend
-    ] = await Promise.all([
-      // Overall monthly statistics
-      User.aggregate([
-        { 
-          $match: { 
-            role: 'student',
-            'monthlyProgress.month': currentMonth
-          } 
-        },
-        {
-          $group: {
-            _id: null,
-            totalUsers: { $sum: 1 },
-            avgHighScoreWins: { $avg: '$monthlyProgress.highScoreWins' },
-            avgAccuracy: { $avg: '$monthlyProgress.accuracy' },
-            avgCurrentLevel: { $avg: '$monthlyProgress.currentLevel' },
-            totalQuizAttempts: { $sum: '$monthlyProgress.totalQuizAttempts' },
-            totalHighScoreWins: { $sum: '$monthlyProgress.highScoreWins' },
-            usersAtLevel10: { $sum: { $cond: [{ $eq: ['$monthlyProgress.currentLevel', 10] }, 1, 0] } },
-            eligibleForRewards: { $sum: { $cond: [{ $eq: ['$monthlyProgress.rewardEligible', true] }, 1, 0] } }
+    const currentMonth = new Date().toISOString().slice(0, 7);
+    
+    // Monthly progress stats
+    const monthlyStats = await User.aggregate([
+      { $match: { role: 'student', 'monthlyProgress.month': currentMonth } },
+      {
+        $group: {
+          _id: null,
+          totalUsers: { $sum: 1 },
+          totalAttempts: { $sum: '$monthlyProgress.totalQuizAttempts' },
+          totalHighScores: { $sum: '$monthlyProgress.highScoreWins' },
+          averageAccuracy: { $avg: '$monthlyProgress.accuracy' },
+          eligibleUsers: {
+            $sum: { $cond: ['$monthlyProgress.rewardEligible', 1, 0] }
           }
         }
-      ]),
-      // Monthly level distribution
-      User.aggregate([
-        { 
-          $match: { 
-            role: 'student',
-            'monthlyProgress.month': currentMonth
-          } 
-        },
-        {
-          $group: {
-            _id: '$monthlyProgress.currentLevel',
-            count: { $sum: 1 },
-            avgHighScoreWins: { $avg: '$monthlyProgress.highScoreWins' },
-            avgAccuracy: { $avg: '$monthlyProgress.accuracy' },
-            avgQuizAttempts: { $avg: '$monthlyProgress.totalQuizAttempts' }
-          }
-        },
-        { $sort: { _id: 1 } }
-      ]),
-      // Top performers for the month
-      User.find({ 
-        role: 'student',
-        'monthlyProgress.month': currentMonth
-      })
-        .sort({ 'monthlyProgress.highScoreWins': -1, 'monthlyProgress.accuracy': -1 })
-        .limit(20)
-        .select('name monthlyProgress subscriptionStatus')
-        .lean(),
-      // Users eligible for monthly rewards
-      User.find({ 
-        role: 'student',
-        'monthlyProgress.month': currentMonth,
-        'monthlyProgress.rewardEligible': true
-      })
-        .sort({ 'monthlyProgress.highScoreWins': -1, 'monthlyProgress.accuracy': -1 })
-        .select('name monthlyProgress subscriptionStatus')
-        .lean(),
-      // Accuracy distribution
-      User.aggregate([
-        { 
-          $match: { 
-            role: 'student',
-            'monthlyProgress.month': currentMonth,
-            'monthlyProgress.accuracy': { $gte: 0 }
-          } 
-        },
-        {
-          $group: {
-            _id: {
-              $switch: {
-                branches: [
-                  { case: { $lt: ['$monthlyProgress.accuracy', 25] }, then: '0-25%' },
-                  { case: { $lt: ['$monthlyProgress.accuracy', 50] }, then: '25-50%' },
-                  { case: { $lt: ['$monthlyProgress.accuracy', 75] }, then: '50-75%' },
-                  { case: { $lt: ['$monthlyProgress.accuracy', 100] }, then: '75-100%' }
-                ],
-                default: '100%'
-              }
-            },
-            count: { $sum: 1 },
-            avgHighScoreWins: { $avg: '$monthlyProgress.highScoreWins' }
-          }
-        },
-        { $sort: { _id: 1 } }
-      ]),
-      // Quiz attempts trend for the month
-      QuizAttempt.aggregate([
-        { 
-          $match: { 
-            attemptedAt: { 
-              $gte: new Date(currentMonth + '-01'),
-              $lt: new Date(new Date(currentMonth + '-01').setMonth(new Date(currentMonth + '-01').getMonth() + 1))
-            }
-          } 
-        },
-        {
-          $group: {
-            _id: {
-              day: { $dayOfMonth: '$attemptedAt' },
-              hour: { $hour: '$attemptedAt' }
-            },
-            attemptCount: { $sum: 1 },
-            avgScore: { $avg: '$scorePercentage' }
-          }
-        },
-        { $sort: { '_id.day': 1, '_id.hour': 1 } }
-      ])
+      }
     ]);
+
+    // Level distribution for current month
+    const levelDistribution = await User.aggregate([
+      { $match: { role: 'student', 'monthlyProgress.month': currentMonth } },
+      {
+        $group: {
+          _id: '$monthlyProgress.currentLevel',
+          count: { $sum: 1 }
+        }
+      },
+      { $sort: { _id: 1 } }
+    ]);
+
+    // Top performers for current month
+    const monthlyTopPerformers = await User.find({
+      role: 'student',
+      'monthlyProgress.month': currentMonth,
+      'monthlyProgress.rewardEligible': true
+    })
+    .select('name monthlyProgress level')
+    .sort({ 'monthlyProgress.highScoreWins': -1, 'monthlyProgress.accuracy': -1 })
+    .limit(10);
 
     res.json({
       success: true,
       data: {
         month: currentMonth,
-        overview: monthlyStats[0] || {
-          totalUsers: 0,
-          avgHighScoreWins: 0,
-          avgAccuracy: 0,
-          avgCurrentLevel: 0,
-          totalQuizAttempts: 0,
-          totalHighScoreWins: 0,
-          usersAtLevel10: 0,
-          eligibleForRewards: 0
-        },
+        monthlyStats: monthlyStats[0] || {},
         levelDistribution,
-        topPerformers: topPerformers.map(user => ({
-          name: user.name,
-          subscriptionStatus: user.subscriptionStatus,
-          monthly: user.monthlyProgress
-        })),
-        rewardEligibleUsers: rewardEligibleUsers.map(user => ({
-          name: user.name,
-          subscriptionStatus: user.subscriptionStatus,
-          monthly: user.monthlyProgress
-        })),
-        accuracyDistribution,
-        quizAttemptsTrend
+        topPerformers: monthlyTopPerformers
       }
     });
   } catch (error) {
@@ -1151,4 +827,124 @@ exports.getMonthlyProgressAnalytics = async (req, res) => {
       error: error.message
     });
   }
-}; 
+};
+
+// Individual user performance analytics
+exports.getUserPerformanceAnalytics = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    
+    if (!userId) {
+      return res.status(400).json({
+        success: false,
+        message: 'User ID is required'
+      });
+    }
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: 'User not found'
+      });
+    }
+
+    // User's quiz attempts
+    const userAttempts = await QuizAttempt.find({ user: userId })
+      .populate('quiz', 'title category subcategory')
+      .sort({ attemptedAt: -1 })
+      .limit(50);
+
+    // Performance over time
+    const performanceOverTime = await QuizAttempt.aggregate([
+      { $match: { user: userId } },
+      {
+        $group: {
+          _id: {
+            year: { $year: '$attemptedAt' },
+            month: { $month: '$attemptedAt' },
+            day: { $dayOfMonth: '$attemptedAt' }
+          },
+          averageScore: { $avg: '$scorePercentage' },
+          totalAttempts: { $sum: 1 },
+          highScores: {
+            $sum: { $cond: [{ $gte: ['$scorePercentage', 75] }, 1, 0] }
+          }
+        }
+      },
+      { $sort: { '_id.year': 1, '_id.month': 1, '_id.day': 1 } }
+    ]);
+
+    // Category performance
+    const categoryPerformance = await QuizAttempt.aggregate([
+      { $match: { user: userId } },
+      {
+        $lookup: {
+          from: 'quizzes',
+          localField: 'quiz',
+          foreignField: '_id',
+          as: 'quizInfo'
+        }
+      },
+      { $unwind: '$quizInfo' },
+      {
+        $lookup: {
+          from: 'categories',
+          localField: 'quizInfo.category',
+          foreignField: '_id',
+          as: 'categoryInfo'
+        }
+      },
+      { $unwind: '$categoryInfo' },
+      {
+        $group: {
+          _id: '$categoryInfo._id',
+          categoryName: { $first: '$categoryInfo.name' },
+          totalAttempts: { $sum: 1 },
+          averageScore: { $avg: '$scorePercentage' },
+          highScores: {
+            $sum: { $cond: [{ $gte: ['$scorePercentage', 75] }, 1, 0] }
+          }
+        }
+      },
+      {
+        $project: {
+          categoryName: 1,
+          totalAttempts: 1,
+          averageScore: { $round: ['$averageScore', 2] },
+          highScores: 1,
+          highScoreRate: {
+            $round: [
+              { $multiply: [{ $divide: ['$highScores', '$totalAttempts'] }, 100] },
+              2
+            ]
+          }
+        }
+      },
+      { $sort: { totalAttempts: -1 } }
+    ]);
+
+    res.json({
+      success: true,
+      data: {
+        user: {
+          _id: user._id,
+          name: user.name,
+          email: user.email,
+          level: user.level,
+          monthlyProgress: user.monthlyProgress
+        },
+        recentAttempts: userAttempts,
+        performanceOverTime,
+        categoryPerformance
+      }
+    });
+  } catch (error) {
+    console.error('Error fetching user performance analytics:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch user performance analytics',
+      error: error.message
+    });
+  }
+};

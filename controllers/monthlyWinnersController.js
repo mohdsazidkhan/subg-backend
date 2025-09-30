@@ -50,11 +50,23 @@ exports.getRecentMonthlyWinners = async (req, res) => {
       // Otherwise get recent winners
       recentWinners = await MonthlyWinners.getRecentWinners(limit);
     }
-    
+
+    // Sanitize: remove email from winners for public endpoints (home/landing)
+    const sanitized = recentWinners.map(doc => {
+      const obj = typeof doc.toObject === 'function' ? doc.toObject() : doc;
+      return {
+        ...obj,
+        winners: (obj.winners || []).map(w => {
+          const { userEmail, ...rest } = w;
+          return rest;
+        })
+      };
+    });
+
     res.json({
       success: true,
-      data: recentWinners,
-      total: recentWinners.length
+      data: sanitized,
+      total: sanitized.length
     });
   } catch (error) {
     console.error('Error fetching recent monthly winners:', error);

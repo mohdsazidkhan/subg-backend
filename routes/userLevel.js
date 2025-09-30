@@ -12,4 +12,7 @@ router.get('/all-with-quiz-count', userLevelController.getAllLevelsWithQuizCount
 // Get user's quiz history with level progression (protected)
 router.get('/history', protect, userLevelController.getUserQuizHistory);
 
+// Get monthly reward information (protected)
+router.get('/monthly-rewards', protect, userLevelController.getMonthlyRewardInfo);
+
 module.exports = router; 

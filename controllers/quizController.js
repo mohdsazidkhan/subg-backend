@@ -78,9 +78,9 @@ exports.attemptQuiz = async (req, res) => {
       });
     });
 
-    // Calculate score percentage based on answered questions only
+    // Calculate score percentage based on total questions (regardless of skipped questions)
     const answeredQuestions = questions.length - skippedQuestions;
-    const scorePercentage = answeredQuestions > 0 ? Math.round((score / answeredQuestions) * 100) : 0;
+    const scorePercentage = Math.round((score / questions.length) * 100);
 
     // Create quiz attempt record
     const attempt = new QuizAttempt({
@@ -109,7 +109,7 @@ exports.attemptQuiz = async (req, res) => {
     await user.save();
 
     // Note: Rewards are now handled by the monthly rewards system
-    // Top 3 eligible users at Level 10 (110 wins + ≥75% accuracy) win ₹9,999 each month
+    // Top 10 eligible users at Level 10 (configurable high-score quizzes) win from configurable prize pool each month
 
     // Add badge for perfect score (if user has pro subscription)
     if (score === questions.length && user.subscriptionStatus === 'pro') {
@@ -143,8 +143,8 @@ exports.attemptQuiz = async (req, res) => {
         monthly: levelUpdate.monthly
       } : null,
       message: bestScoreUpdate.isNewBestScore 
-        ? `Quiz completed! Score: ${scorePercentage}% (${score}/${answeredQuestions} answered correctly) - New best score! Counts towards level progression!` 
-        : `Quiz completed! Score: ${scorePercentage}% (${score}/${answeredQuestions} answered correctly) - Quiz attempted successfully.`
+        ? `Quiz completed! Score: ${scorePercentage}% (${score}/${questions.length} total questions) - New best score! Counts towards level progression!` 
+        : `Quiz completed! Score: ${scorePercentage}% (${score}/${questions.length} total questions) - Quiz attempted successfully.`
     });
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -284,12 +284,15 @@ exports.getQuizzesByLevel = async (req, res) => {
       .populate('category', 'name')
       .populate('subcategory', 'name')
       .sort({ createdAt: -1 });
+    
+    // Randomize the order of quizzes
+    const shuffledQuizzes = allQuizzes.sort(() => Math.random() - 0.5);
 
     const attemptedQuizIds = await QuizAttempt.find({ user: userId }).distinct('quiz');
     const attemptedQuizIdStrings = attemptedQuizIds.map(id => id.toString());
 
     // ✅ Filter out attempted quizzes
-    const filteredQuizzes = allQuizzes.filter(
+    const filteredQuizzes = shuffledQuizzes.filter(
       quiz => !attemptedQuizIdStrings.includes(quiz._id.toString())
     );
 
@@ -540,9 +543,12 @@ exports.getHomePageLevelQuizzes = async (req, res) => {
       .populate('subcategory', 'name')
       .sort({ createdAt: -1 })
       .limit(limit);
+    
+    // Randomize the order of quizzes
+    const shuffledQuizzes = quizzes.sort(() => Math.random() - 0.5);
 
     // Since we already filtered out attempted quizzes, all returned quizzes are not attempted
-    const quizzesWithStatus = quizzes.map(quiz => {
+    const quizzesWithStatus = shuffledQuizzes.map(quiz => {
       return {
         _id: quiz._id,
         title: quiz.title,
@@ -666,9 +672,11 @@ exports.getHomePageData = async (req, res) => {
       {
         $addFields: {
           category: { $arrayElemAt: ['$categoryData', 0] },
-          subcategory: { $arrayElemAt: ['$subcategoryData', 0] }
+          subcategory: { $arrayElemAt: ['$subcategoryData', 0] },
+          randomOrder: { $rand: {} }
         }
       },
+      { $sort: { randomOrder: 1 } },
       {
         $group: {
           _id: '$requiredLevel',
@@ -714,9 +722,11 @@ exports.getHomePageData = async (req, res) => {
       {
         $addFields: {
           category: { $arrayElemAt: ['$categoryData', 0] },
-          subcategory: { $arrayElemAt: ['$subcategoryData', 0] }
+          subcategory: { $arrayElemAt: ['$subcategoryData', 0] },
+          randomOrder: { $rand: {} }
         }
       },
+      { $sort: { randomOrder: 1 } },
       {
         $group: {
           _id: '$category._id',
@@ -762,9 +772,11 @@ exports.getHomePageData = async (req, res) => {
       {
         $addFields: {
           category: { $arrayElemAt: ['$categoryData', 0] },
-          subcategory: { $arrayElemAt: ['$subcategoryData', 0] }
+          subcategory: { $arrayElemAt: ['$subcategoryData', 0] },
+          randomOrder: { $rand: {} }
         }
       },
+      { $sort: { randomOrder: 1 } },
       {
         $group: {
           _id: '$subcategory._id',

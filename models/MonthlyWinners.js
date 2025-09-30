@@ -19,7 +19,7 @@ const monthlyWinnersSchema = new mongoose.Schema({
     rank: {
       type: Number,
       required: true,
-      enum: [1, 2, 3] // 1st, 2nd, 3rd place
+      enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] // Top 10 places
     },
     userId: {
       type: mongoose.Schema.Types.ObjectId,
@@ -42,6 +42,14 @@ const monthlyWinnersSchema = new mongoose.Schema({
       type: Number,
       required: true
     },
+    totalQuizAttempts: {
+      type: Number,
+      required: true
+    },
+    totalCorrectAnswers: {
+      type: Number,
+      required: true
+    },
     rewardAmount: {
       type: Number,
       required: true
@@ -53,7 +61,7 @@ const monthlyWinnersSchema = new mongoose.Schema({
   }],
   totalPrizePool: {
     type: Number,
-    default: 9999
+    default: parseInt(process.env.MONTHLY_PRIZE_POOL) || 10000
   },
   totalWinners: {
     type: Number,

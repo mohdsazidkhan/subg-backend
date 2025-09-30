@@ -278,12 +278,16 @@ exports.getAllQuizzes = async (req, res) => {
     const skip = (parseInt(page) - 1) * parseInt(limit);
     const total = await Quiz.countDocuments(query);
 
-    const quizzes = await Quiz.find(query)
+    const allQuizzes = await Quiz.find(query)
       .populate('category', 'name')
       .populate('subcategory', 'name')
-      .sort({ createdAt: -1 })
-      .skip(skip)
-      .limit(parseInt(limit));
+      .sort({ createdAt: -1 });
+    
+    // Randomize the order of quizzes
+    const shuffledQuizzes = allQuizzes.sort(() => Math.random() - 0.5);
+    
+    // Apply pagination after randomization
+    const quizzes = shuffledQuizzes.slice(skip, skip + parseInt(limit));
 
     res.json({
       success: true,

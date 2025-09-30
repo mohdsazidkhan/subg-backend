@@ -83,38 +83,69 @@ const userSchema = new mongoose.Schema({
   
 }, { timestamps: true });
 
-// Level configuration (monthly cumulative wins)
+// Level configuration (based on total quiz attempts)
 userSchema.statics.LEVEL_CONFIG = {
   0: { name: 'Starter', quizzesRequired: 0, description: 'Just registered - Start your journey!' },
-  1: { name: 'Rookie', quizzesRequired: 2, description: 'Just getting started – Easy questions' },
-  2: { name: 'Explorer', quizzesRequired: 6, description: 'Discover new ideas – Slightly challenging' },
-  3: { name: 'Thinker', quizzesRequired: 12, description: 'Test your brain power – Moderate difficulty' },
-  4: { name: 'Strategist', quizzesRequired: 20, description: 'Mix of logic, memory, and speed' },
-  5: { name: 'Achiever', quizzesRequired: 30, description: 'Cross-topic challenges begin' },
-  6: { name: 'Mastermind', quizzesRequired: 42, description: 'For those who always aim to win' },
-  7: { name: 'Champion', quizzesRequired: 56, description: 'Beat the timer and the brain' },
-  8: { name: 'Prodigy', quizzesRequired: 72, description: 'Only a few reach here – high-level puzzles' },
-  9: { name: 'Wizard', quizzesRequired: 90, description: 'Complex questions across categories' },
-  10: { name: 'Legend', quizzesRequired: 110, description: 'Final frontier — only the best reach here!' }
+  1: { name: 'Rookie', quizzesRequired: 4, description: 'Just getting started – Easy questions' },
+  2: { name: 'Explorer', quizzesRequired: 12, description: 'Discover new ideas – Slightly challenging' },
+  3: { name: 'Thinker', quizzesRequired: 24, description: 'Test your brain power – Moderate difficulty' },
+  4: { name: 'Strategist', quizzesRequired: 40, description: 'Mix of logic, memory, and speed' },
+  5: { name: 'Achiever', quizzesRequired: 60, description: 'Cross-topic challenges begin' },
+  6: { name: 'Mastermind', quizzesRequired: 84, description: 'For those who always aim to win' },
+  7: { name: 'Champion', quizzesRequired: 112, description: 'Beat the timer and the brain' },
+  8: { name: 'Prodigy', quizzesRequired: 144, description: 'Only a few reach here – high-level puzzles' },
+  9: { name: 'Wizard', quizzesRequired: 180, description: 'Complex questions across categories' },
+  10: { name: 'Legend', quizzesRequired: 220, description: 'Final frontier — only the best reach here!' }
 };
 
-// Method to calculate and update user level
-// Update monthly level + global level fields for compatibility
+// Level quiz requirements (per level and cumulative)
+userSchema.statics.LEVEL_QUIZZES = {
+  1: { perLevel: 4, cumulative: 4 },
+  2: { perLevel: 8, cumulative: 12 },
+  3: { perLevel: 12, cumulative: 24 },
+  4: { perLevel: 16, cumulative: 40 },
+  5: { perLevel: 20, cumulative: 60 },
+  6: { perLevel: 24, cumulative: 84 },
+  7: { perLevel: 28, cumulative: 112 },
+  8: { perLevel: 32, cumulative: 144 },
+  9: { perLevel: 36, cumulative: 180 },
+  10: { perLevel: 40, cumulative: 220 }
+};
+
+// Monthly reward distribution (configurable total)
+userSchema.statics.getRewardDistribution = function() {
+  const totalPrizePool = parseInt(process.env.MONTHLY_PRIZE_POOL) || 10000;
+  
+  return [
+    { rank: 1, percentage: 25, amount: Math.round(totalPrizePool * 0.25) },
+    { rank: 2, percentage: 20, amount: Math.round(totalPrizePool * 0.20) },
+    { rank: 3, percentage: 15, amount: Math.round(totalPrizePool * 0.15) },
+    { rank: 4, percentage: 12, amount: Math.round(totalPrizePool * 0.12) },
+    { rank: 5, percentage: 8, amount: Math.round(totalPrizePool * 0.08) },
+    { rank: 6, percentage: 6, amount: Math.round(totalPrizePool * 0.06) },
+    { rank: 7, percentage: 5, amount: Math.round(totalPrizePool * 0.05) },
+    { rank: 8, percentage: 4, amount: Math.round(totalPrizePool * 0.04) },
+    { rank: 9, percentage: 3.5, amount: Math.round(totalPrizePool * 0.035) },
+    { rank: 10, percentage: 1.5, amount: Math.round(totalPrizePool * 0.015) }
+  ];
+};
+
+// Method to calculate and update user level based on total quiz attempts
 userSchema.methods.updateLevel = function() {
   const config = this.constructor.LEVEL_CONFIG;
   
   // Ensure monthlyProgress is for current month
   this.ensureMonthlyProgress();
 
-  // Use monthly high-score wins for level calculation
-  const monthlyWins = Number(this.monthlyProgress.highScoreWins) || 0;
+  // Use total quiz attempts for level calculation
+  const totalQuizAttempts = Number(this.level.quizzesPlayed) || 0;
   
   let newLevel = this.level.currentLevel;
   let newLevelName = this.level.levelName;
   
-  // Find level by current month's wins
+  // Find level by total quiz attempts
   for (let level = 10; level >= 0; level--) {
-    if (monthlyWins >= config[level].quizzesRequired) {
+    if (totalQuizAttempts >= config[level].quizzesRequired) {
       newLevel = level;
       newLevelName = config[level].name;
       break;
@@ -128,7 +159,7 @@ userSchema.methods.updateLevel = function() {
   this.level.currentLevel = newLevel;
   this.level.levelName = newLevelName;
   
-  // Calculate progress to next level based on monthly wins
+  // Calculate progress to next level based on total quiz attempts
   const currentLevelQuizzes = config[newLevel].quizzesRequired;
   const nextLevelQuizzes = config[Math.min(newLevel + 1, 10)].quizzesRequired;
   
@@ -144,7 +175,7 @@ userSchema.methods.updateLevel = function() {
     this.level.levelProgress = 0;
   } else {
     const span = Math.max(1, nextLevelQuizzes - currentLevelQuizzes);
-    const withinLevel = Math.max(0, monthlyWins - currentLevelQuizzes);
+    const withinLevel = Math.max(0, totalQuizAttempts - currentLevelQuizzes);
     const progress = Math.min(100, Math.round((withinLevel / span) * 100));
     this.level.levelProgress = Math.max(0, isNaN(progress) ? 0 : progress);
   }
@@ -156,9 +187,10 @@ userSchema.methods.updateLevel = function() {
   // Sync monthly currentLevel
   this.monthlyProgress.currentLevel = newLevel;
 
-  // Determine monthly eligibility
-  const accuracy = Number(this.monthlyProgress.accuracy) || 0;
-  const eligible = monthlyWins >= 110 && accuracy >= 75 && newLevel === 10;
+  // Determine monthly eligibility - NEW CRITERIA: Level 10 + configurable high-score quizzes
+  const highScoreQuizzes = Number(this.level.highScoreQuizzes) || 0;
+  const requiredQuizzes = parseInt(process.env.MONTHLY_REWARD_QUIZ_REQUIREMENT) || 220;
+  const eligible = newLevel === 10 && highScoreQuizzes >= requiredQuizzes;
   this.monthlyProgress.rewardEligible = eligible;
   
   return { levelIncreased, newLevel, newLevelName };
@@ -195,13 +227,21 @@ userSchema.methods.ensureMonthlyProgress = function() {
 
 // Method to add quiz completion
 userSchema.methods.addQuizCompletion = function(score, totalQuestions) {
-  // Update global level stats for compatibility
+  // Ensure monthly progress exists and is for current month
+  this.ensureMonthlyProgress();
+  
+  // Update global level stats
   this.level.quizzesPlayed += 1;
   this.level.totalScore += score;
   this.level.averageScore = Math.round(this.level.totalScore / this.level.quizzesPlayed) || 0;
   
   // Calculate score percentage
   const scorePercentage = (score / totalQuestions) * 100;
+  
+  // Track high-score quizzes globally (for Level 10 + 300 requirement)
+  if (scorePercentage >= 75) {
+    this.level.highScoreQuizzes += 1;
+  }
   
   // Monthly tracking
   this.monthlyProgress.totalQuizAttempts += 1;
@@ -260,14 +300,14 @@ userSchema.methods.getLevelInfo = function() {
         number: nextLevel,
         name: config[nextLevel]?.name || 'Rookie',
         description: config[nextLevel]?.description || 'Getting better',
-        quizzesRequired: config[nextLevel]?.quizzesRequired || 2
+        quizzesRequired: config[nextLevel]?.quizzesRequired || 6
       },
       progress: {
         quizzesPlayed: this.level.quizzesPlayed || 0,
         highScoreQuizzes: this.level.highScoreQuizzes || 0,
         progressPercentage: this.level.levelProgress || 0,
-        quizzesToNextLevel: config[nextLevel]?.quizzesRequired || 2,
-        highScoreQuizzesToNextLevel: config[nextLevel]?.quizzesRequired || 2
+        quizzesToNextLevel: config[nextLevel]?.quizzesRequired || 4,
+        quizzesToNextLevelRemaining: Math.max(0, (config[nextLevel]?.quizzesRequired || 4) - (this.level.quizzesPlayed || 0))
       },
       stats: {
         totalScore: this.level.totalScore || 0,
@@ -282,8 +322,8 @@ userSchema.methods.getLevelInfo = function() {
     // Return default level info if there's an error
     return {
       currentLevel: { number: 0, name: 'Starter', description: 'Starting your journey', quizzesRequired: 0 },
-      nextLevel: { number: 1, name: 'Rookie', description: 'Begin your quiz journey', quizzesRequired: 2 },
-      progress: { quizzesPlayed: 0, highScoreQuizzes: 0, progressPercentage: 0, quizzesToNextLevel: 2, highScoreQuizzesToNextLevel: 2 },
+      nextLevel: { number: 1, name: 'Rookie', description: 'Begin your quiz journey', quizzesRequired: 6 },
+      progress: { quizzesPlayed: 0, highScoreQuizzes: 0, progressPercentage: 0, quizzesToNextLevel: 6, quizzesToNextLevelRemaining: 6 },
       stats: { totalScore: 0, averageScore: 0, lastLevelUp: new Date(), highScoreRate: 0 }
     };
   }

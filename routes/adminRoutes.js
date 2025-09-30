@@ -70,4 +70,7 @@ router.patch('/articles/:id/toggle-featured', protect, adminOnly, adminCtrl.togg
 router.patch('/articles/:id/toggle-pinned', protect, adminOnly, adminCtrl.togglePinned);
 router.get('/articles-stats', protect, adminOnly, adminCtrl.getArticleStats);
 
+// User Wallets (Admin)
+router.get('/user-wallets', protect, adminOnly, adminCtrl.getUserWallets);
+
 module.exports = router;

@@ -2,6 +2,29 @@
 
 A comprehensive quiz platform backend with advanced analytics, user level system, subscription management, and monthly highscore rewards system.
 
+## 💰 Wallet System Configuration
+
+The wallet system is fully configurable through environment variables:
+
+### Environment Variables
+- `PRO_USER_CREDIT_AMOUNT`: Amount earned per approved question (default: 10)
+- `PRO_USER_APPROVALS_PER_CREDIT`: Number of approvals per credit (default: 10)
+- `MIN_APPROVED_QUESTIONS`: Minimum approved questions for withdrawal (default: 100)
+- `MIN_WITHDRAW_AMOUNT`: Minimum withdrawal amount in rupees (default: 1000)
+
+### Default Configuration
+- **Earning Rate**: ₹10 per approved question
+- **Withdrawal Threshold**: 100 approved questions = ₹1000
+- **Minimum Withdrawal**: ₹1000
+- **Perfect Alignment**: 100 questions = ₹1000 = Minimum withdrawal
+
+### How It Works
+1. User creates question → Status: Pending
+2. Admin approves question → User earns ₹10
+3. After 100 approved questions → Withdrawal enabled
+4. User can withdraw ₹1000 or more
+5. Withdrawal processed within 24-48 hours
+
 ## 🚀 Features
 
 ### Core Features
@@ -10,8 +33,7 @@ A comprehensive quiz platform backend with advanced analytics, user level system
 - **Analytics**: Comprehensive admin analytics with charts and reports
 - **Subscription System**: Multiple subscription tiers (free, basic, premium, pro)
 - **Payment Integration**: Razorpay payment gateway
-- **Leaderboard System**: Real-time quiz leaderboards
-- **Wallet System**: User wallet and transaction management
+- **Wallet System**: User wallet and transaction management with configurable earning rates
 
 ### Advanced Features
 - **Level System**: 10 progressive levels with badges and achievements
@@ -22,6 +44,7 @@ A comprehensive quiz platform backend with advanced analytics, user level system
 - **Monthly Highscore System**: Monthly quiz competitions with prize distribution
 - **Referral System**: Smart referral rewards with subscription upgrades
 - **Migration Tools**: Comprehensive data migration and testing scripts
+- **Configurable Wallet System**: Environment-based configuration for earning rates and withdrawal limits
 
 ## 📋 Prerequisites
 
@@ -45,9 +68,50 @@ A comprehensive quiz platform backend with advanced analytics, user level system
 3. **Environment Setup**
    Create a `.env` file in the root directory:
    ```env
-   PORT=5000
-   MONGODB_URI=mongodb://localhost:27017/subg
+   # Database Configuration
+   MONGO_URI=mongodb://localhost:27017/subgquiz
+   MONGODB_URI=mongodb://localhost:27017/subgquiz
+   
+   # JWT Configuration
    JWT_SECRET=your_jwt_secret_here
+   JWT_EXPIRES_IN=1d
+   
+   # Server Configuration
+   PORT=5000
+   NODE_ENV=development
+   BACKEND_URL=http://localhost:5000
+   FRONTEND_URL=http://localhost:3000
+   
+   # Admin Configuration
+   ADMIN_NAME=Admin
+   ADMIN_EMAIL=admin@subgquiz.com
+   ADMIN_PHONE=1234567890
+   ADMIN_PASSWORD=admin123
+   
+   # Email Configuration
+   BREVO_EMAIL_API_KEY=your_brevo_api_key_here
+   
+   # Payment Gateway Configuration
+   PAYU_MERCHANT_ID=your_payu_merchant_id
+   PAYU_MERCHANT_KEY=your_payu_merchant_key
+   PAYU_MERCHANT_SALT=your_payu_merchant_salt
+   PAYU_MERCHANT_ID_TEST=your_payu_test_merchant_id
+   PAYU_MERCHANT_KEY_TEST=your_payu_test_merchant_key
+   PAYU_MERCHANT_SALT_TEST=your_payu_test_merchant_salt
+   
+   # Cloudinary Configuration
+   CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+   CLOUDINARY_API_KEY=your_cloudinary_api_key
+   CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+   
+   # OpenAI Configuration
+   OPENAI_API_KEY=your_openai_api_key_here
+   
+   # Wallet System Configuration
+   PRO_USER_APPROVALS_PER_CREDIT=10
+   PRO_USER_CREDIT_AMOUNT=10
+   MIN_APPROVED_QUESTIONS=100
+   MIN_WITHDRAW_AMOUNT=1000
    RAZORPAY_KEY_ID=your_razorpay_key_id
    RAZORPAY_KEY_SECRET=your_razorpay_secret
    ```
@@ -158,7 +222,6 @@ subg-backend/
 ### Analytics Models
 - Quiz attempts and scores
 - Payment orders and transactions
-- Leaderboard entries
 - User engagement metrics
 
 ## 🔐 Security Features
@@ -204,49 +267,54 @@ subg-backend/
 - Score distribution analysis
 - Level performance metrics
 - Category performance comparison
-- Leaderboard statistics
 - User achievement tracking
 
 ## 🎯 Level System
 
 ### Level Progression
-1. **Starter** (Level 0) - 0 high-score quizzes (75%+) required
-2. **Rookie** (Level 1) - 2 high-score quizzes (75%+) required
-3. **Explorer** (Level 2) - 6 high-score quizzes (75%+) required
-4. **Thinker** (Level 3) - 12 high-score quizzes (75%+) required
-5. **Strategist** (Level 4) - 20 high-score quizzes (75%+) required
-6. **Achiever** (Level 5) - 30 high-score quizzes (75%+) required
-7. **Mastermind** (Level 6) - 42 high-score quizzes (75%+) required
-8. **Champion** (Level 7) - 56 high-score quizzes (75%+) required
-9. **Prodigy** (Level 8) - 72 high-score quizzes (75%+) required
-10. **Wizard** (Level 9) - 90 high-score quizzes (75%+) required
-11. **Legend** (Level 10) - 110 high-score quizzes (75%+) required
+1. **Starter** (Level 0) - 0 total quiz attempts required - 0
+2. **Rookie** (Level 1) - 4 total quiz attempts required - 4
+3. **Explorer** (Level 2) - 12 total quiz attempts required - 8
+4. **Thinker** (Level 3) - 24 total quiz attempts required - 12
+5. **Strategist** (Level 4) - 40 total quiz attempts required - 16
+6. **Achiever** (Level 5) - 60 total quiz attempts required - 20
+7. **Mastermind** (Level 6) - 84 total quiz attempts required - 24
+8. **Champion** (Level 7) - 112 total quiz attempts required - 28
+9. **Prodigy** (Level 8) - 144 total quiz attempts required - 32
+10. **Wizard** (Level 9) - 180 total quiz attempts required - 36
+11. **Legend** (Level 10) - 220 total quiz attempts required - 40
 
-**Note**: Level progression is based on high-score quizzes (75% or higher). All quiz attempts are tracked for analytics.
+**Note**: Level progression is now based on total quiz attempts completed. High-score quizzes (75% or higher) are tracked separately for monthly rewards eligibility.
 
 ### Features
-- Automatic level calculation based on high-score quizzes (≥75%)
+- Automatic level calculation based on total quiz attempts
 - Level-specific badges and achievements
 - Progress tracking to next level
 - Subscription-based level access control
 
-## 🏆 Monthly Highscore System
+## 🏆 Monthly Top 10 Reward System
 
 ### Monthly Competition
 - **Duration**: Monthly (resets on last day of each month)
-- **Target**: 110 high-score quizzes (75%+ accuracy)
-- **Prize Pool**: ₹9,999 total
-- **Distribution**: Top 3 users in 3:2:1 ratio
+- **Eligibility**: Level 10 + ≥ 220 high-score quizzes (75%+ accuracy)
+- **Prize Pool**: Configurable via MONTHLY_PRIZE_POOL environment variable (default: ₹10,000)
+- **Distribution**: Top 10 users with fixed percentages
 
 ### Prize Distribution
-- **1st Place**: ₹4,999 (50% of pool)
-- **2nd Place**: ₹3,333 (33.33% of pool)
-- **3rd Place**: ₹1,667 (16.67% of pool)
+- **1st Place**: 25% of total prize pool - 2500
+- **2nd Place**: 20% of total prize pool - 2000
+- **3rd Place**: 15% of total prize pool - 1500
+- **4th Place**: 12% of total prize pool - 1200
+- **5th Place**: 8% of total prize pool - 800
+- **6th Place**: 6% of total prize pool - 600
+- **7th Place**: 5% of total prize pool - 500
+- **8th Place**: 4% of total prize pool - 400
+- **9th Place**: 3.5% of total prize pool - 350
+- **10th Place**: 1.5% of total prize pool - 150
 
 ### Features
 - Automatic monthly reset via CRON job
 - Real-time progress tracking
-- Leaderboard updates
 - Reward distribution system
 - Progress persistence across months
 

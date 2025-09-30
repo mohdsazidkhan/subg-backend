@@ -89,17 +89,17 @@ exports.getLevelLeaderboard = async (req, res) => {
     const users = await User.find({
       role: 'student', // Only include students
       'level.currentLevel': levelNumber,
-      'level.highScoreQuizzes': { $gte: minQuizzes, $lte: maxQuizzes }
+      'level.quizzesPlayed': { $gte: minQuizzes, $lte: maxQuizzes }
     })
     .select('name level badges')
-    .sort({ 'level.averageScore': -1, 'level.highScoreQuizzes': -1 })
+    .sort({ 'level.averageScore': -1, 'level.quizzesPlayed': -1 })
     .skip(skip)
     .limit(limit);
 
     const total = await User.countDocuments({
       role: 'student', // Only include students
       'level.currentLevel': levelNumber,
-      'level.highScoreQuizzes': { $gte: minQuizzes, $lte: maxQuizzes }
+      'level.quizzesPlayed': { $gte: minQuizzes, $lte: maxQuizzes }
     });
 
     const leaderboard = users.map((user, index) => ({
@@ -463,15 +463,19 @@ exports.getLevelQuizzes = async (req, res) => {
 
     const skip = (parseInt(page) - 1) * parseInt(limit);
 
-    let quizzes = await Quiz.find(query)
+    let allQuizzes = await Quiz.find(query)
       .populate('category', 'name')
       .populate('subcategory', 'name')
       .sort({ 
         // Sort by creation date (newest first)
         createdAt: -1
-      })
-      .skip(skip)
-      .limit(parseInt(limit));
+      });
+    
+    // Randomize the order of quizzes
+    let shuffledQuizzes = allQuizzes.sort(() => Math.random() - 0.5);
+    
+    // Apply pagination after randomization
+    let quizzes = shuffledQuizzes.slice(skip, skip + parseInt(limit));
 
     // If search is provided, also filter by category and subcategory names
     if (search && search.trim()) {
@@ -626,4 +630,80 @@ function calculateLevelAtTime(highScoreQuizzesPlayed) {
   }
 
   return { level, name };
-} 
+}
+
+// Get monthly reward eligibility and current rankings
+exports.getMonthlyRewardInfo = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User not found' });
+    }
+
+    // Check eligibility for new Top 10 system
+    const requiredQuizzes = parseInt(process.env.MONTHLY_REWARD_QUIZ_REQUIREMENT) || 220;
+    const isEligible = user.level.currentLevel === 10 && user.level.highScoreQuizzes >= requiredQuizzes;
+    
+    // Get current top 10 eligible users
+    const topUsers = await User.find({
+      'level.currentLevel': 10,
+      'level.highScoreQuizzes': { $gte: requiredQuizzes }
+    })
+    .select('name level monthlyProgress')
+    .sort({ 
+      'level.averageScore': -1,
+      'monthlyProgress.accuracy': -1,
+      'level.totalScore': -1,
+      'level.quizzesPlayed': -1
+    })
+    .limit(10);
+
+    // Find user's current rank
+    let userRank = null;
+    if (isEligible) {
+      const userIndex = topUsers.findIndex(u => u._id.toString() === userId);
+      if (userIndex !== -1) {
+        userRank = userIndex + 1;
+      }
+    }
+
+    // Get reward distribution info
+    const rewardDistribution = User.getRewardDistribution();
+
+    res.status(200).json({
+      success: true,
+      data: {
+        eligibility: {
+          isEligible,
+          currentLevel: user.level.currentLevel,
+          highScoreQuizzes: user.level.highScoreQuizzes,
+          requiredLevel: 10,
+          requiredHighScoreQuizzes: requiredQuizzes,
+          userRank
+        },
+        currentRankings: topUsers.map((user, index) => ({
+          rank: index + 1,
+          name: user.name,
+          averageScore: user.level.averageScore,
+          accuracy: user.monthlyProgress.accuracy,
+          totalScore: user.level.totalScore,
+          quizzesPlayed: user.level.quizzesPlayed,
+          highScoreQuizzes: user.level.highScoreQuizzes,
+          potentialReward: rewardDistribution[index]?.amount || 0
+        })),
+        rewardDistribution,
+        totalPrizePool: parseInt(process.env.MONTHLY_PRIZE_POOL) || 10000
+      }
+    });
+
+  } catch (error) {
+    console.error('Error fetching monthly reward info:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch monthly reward information',
+      error: error.message
+    });
+  }
+}; 

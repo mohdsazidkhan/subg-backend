@@ -37,3 +37,1636 @@
 2025-09-22T05:02:10.058Z [INFO]: ✅ Database Connected to MongoDB 
 2025-09-22T05:02:10.066Z [INFO]: 🚀 Server running on port 5000 
 2025-09-22T05:02:10.136Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-22T06:25:06.270Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-22T06:25:06.279Z [INFO]: 🚀 Server running on port 5000 
+2025-09-22T06:25:06.345Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-22T06:25:15.919Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-22T06:25:15.927Z [INFO]: 🚀 Server running on port 5000 
+2025-09-22T06:25:15.989Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-22T16:07:02.558Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-22T16:07:02.575Z [INFO]: 🚀 Server running on port 5000 
+2025-09-22T16:07:02.768Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-23T17:01:18.384Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-23T17:01:18.394Z [INFO]: 🚀 Server running on port 5000 
+2025-09-23T17:01:18.559Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-23T17:02:30.793Z [ERROR]: JWT verification failed in protect: jwt expired Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU4NTU3NzMxLCJleHAiOjE3NTg2NDQxMzF9.yyg9wp83QZgNrZV4BnPlpqqUPDwTy4M42wyhJ9NO4Bg 
+2025-09-23T17:02:30.855Z [ERROR]: JWT verification failed in protect: jwt expired Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU4NTU3NzMxLCJleHAiOjE3NTg2NDQxMzF9.yyg9wp83QZgNrZV4BnPlpqqUPDwTy4M42wyhJ9NO4Bg 
+2025-09-24T10:32:24.094Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-24T10:32:24.103Z [INFO]: 🚀 Server running on port 5000 
+2025-09-24T10:32:24.282Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-24T10:32:40.749Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-24T10:32:44.732Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-24T10:32:44.744Z [INFO]: 🚀 Server running on port 5000 
+2025-09-24T10:32:44.824Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-24T10:39:36.333Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-24T10:39:36.343Z [INFO]: 🚀 Server running on port 5000 
+2025-09-24T10:39:36.401Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-24T10:40:43.116Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-24T10:40:43.126Z [INFO]: 🚀 Server running on port 5000 
+2025-09-24T10:40:43.184Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-24T10:40:53.985Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-24T10:40:53.995Z [INFO]: 🚀 Server running on port 5000 
+2025-09-24T10:40:54.054Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-24T10:41:05.480Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-24T10:41:05.492Z [INFO]: 🚀 Server running on port 5000 
+2025-09-24T10:41:05.583Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-24T12:57:07.650Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-24T12:57:07.658Z [INFO]: 🚀 Server running on port 5000 
+2025-09-24T12:57:07.729Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-24T12:58:02.988Z [ERROR]: JWT verification failed in protect: invalid algorithm Token: eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiOTgxODMwMTA2MCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJTSWQiOiIxIiwiVUlkIjoiMSIsInNhbG9uUmVmSWQiOiI0MDExZjM0Mi1lMzViLTRmMGMtYWY1Yy1kOWY3YTE3NjM1ZmYiLCJwYXJlbnRSZWZJZCI6IjQwMTFmMzQyLWUzNWItNGYwYy1hZjVjLWQ5ZjdhMTc2MzVmZiIsIlVzZXJSZWZJZCI6IjlhZGU4Mjg5LTMxZDAtNDNlZS05YjI5LWM0MjFlZmJiNzMxYyIsImV4cCI6MTc1ODc4OTQzMH0.5nS6bE_IqWkbQ38ETd9mFUVAwMh6HkvyDGVhL8pnnH4 
+2025-09-24T12:58:03.076Z [ERROR]: JWT verification failed in protect: invalid algorithm Token: eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiOTgxODMwMTA2MCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJTSWQiOiIxIiwiVUlkIjoiMSIsInNhbG9uUmVmSWQiOiI0MDExZjM0Mi1lMzViLTRmMGMtYWY1Yy1kOWY3YTE3NjM1ZmYiLCJwYXJlbnRSZWZJZCI6IjQwMTFmMzQyLWUzNWItNGYwYy1hZjVjLWQ5ZjdhMTc2MzVmZiIsIlVzZXJSZWZJZCI6IjlhZGU4Mjg5LTMxZDAtNDNlZS05YjI5LWM0MjFlZmJiNzMxYyIsImV4cCI6MTc1ODc4OTQzMH0.5nS6bE_IqWkbQ38ETd9mFUVAwMh6HkvyDGVhL8pnnH4 
+2025-09-24T12:58:03.087Z [ERROR]: JWT verification failed in protect: invalid algorithm Token: eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiOTgxODMwMTA2MCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJTSWQiOiIxIiwiVUlkIjoiMSIsInNhbG9uUmVmSWQiOiI0MDExZjM0Mi1lMzViLTRmMGMtYWY1Yy1kOWY3YTE3NjM1ZmYiLCJwYXJlbnRSZWZJZCI6IjQwMTFmMzQyLWUzNWItNGYwYy1hZjVjLWQ5ZjdhMTc2MzVmZiIsIlVzZXJSZWZJZCI6IjlhZGU4Mjg5LTMxZDAtNDNlZS05YjI5LWM0MjFlZmJiNzMxYyIsImV4cCI6MTc1ODc4OTQzMH0.5nS6bE_IqWkbQ38ETd9mFUVAwMh6HkvyDGVhL8pnnH4 
+2025-09-24T12:58:03.163Z [ERROR]: JWT verification failed in protect: invalid algorithm Token: eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiOTgxODMwMTA2MCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJTSWQiOiIxIiwiVUlkIjoiMSIsInNhbG9uUmVmSWQiOiI0MDExZjM0Mi1lMzViLTRmMGMtYWY1Yy1kOWY3YTE3NjM1ZmYiLCJwYXJlbnRSZWZJZCI6IjQwMTFmMzQyLWUzNWItNGYwYy1hZjVjLWQ5ZjdhMTc2MzVmZiIsIlVzZXJSZWZJZCI6IjlhZGU4Mjg5LTMxZDAtNDNlZS05YjI5LWM0MjFlZmJiNzMxYyIsImV4cCI6MTc1ODc4OTQzMH0.5nS6bE_IqWkbQ38ETd9mFUVAwMh6HkvyDGVhL8pnnH4 
+2025-09-24T16:54:07.878Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-24T16:54:07.899Z [INFO]: 🚀 Server running on port 5000 
+2025-09-24T16:54:08.282Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T04:27:03.313Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T04:27:03.325Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T04:27:03.476Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T05:29:10.833Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T05:29:10.845Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T05:29:10.934Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T05:29:20.821Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T05:29:20.832Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T05:29:20.915Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T05:29:32.376Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T05:29:32.386Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T05:29:32.466Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T05:29:58.881Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T05:29:58.890Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T05:29:58.965Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T05:34:11.127Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T05:34:11.157Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T05:34:11.256Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T05:40:41.491Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T05:40:41.502Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T05:40:41.564Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T05:41:25.975Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T05:41:25.989Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T05:41:26.077Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T05:41:37.073Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T05:41:37.085Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T05:41:37.165Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T05:43:55.037Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T05:43:55.049Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T05:43:55.104Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T05:45:00.118Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T05:45:00.129Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T05:45:00.213Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T05:45:16.991Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T05:45:17.002Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T05:45:17.057Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T05:46:51.342Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T05:46:51.350Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T05:46:51.402Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T06:18:05.435Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T06:18:05.442Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T06:18:05.495Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T06:19:06.575Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T06:19:06.583Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T06:19:06.644Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T06:26:10.038Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T06:26:10.048Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T06:26:10.140Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T06:26:57.642Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T06:26:57.653Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T06:26:57.732Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T06:32:36.415Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T06:32:36.427Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T06:32:36.515Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T06:32:45.704Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T06:32:45.716Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T06:32:45.807Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T06:32:57.330Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T06:32:57.337Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T06:32:57.391Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T06:35:29.850Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T06:35:29.862Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T06:35:29.979Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T06:35:49.121Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T06:35:49.132Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T06:35:49.195Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T06:36:09.027Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T06:36:09.036Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T06:36:09.097Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T06:41:31.385Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T06:41:31.393Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T06:41:31.443Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T06:43:41.765Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T06:43:41.776Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T06:43:41.849Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T06:43:58.235Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T06:43:58.250Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T06:43:58.350Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T06:44:14.447Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T06:44:14.496Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T06:44:14.706Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T06:44:23.087Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T06:44:23.096Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T06:44:23.155Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T06:44:30.558Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T06:44:30.568Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T06:44:30.629Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T06:44:46.091Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T06:44:46.124Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T06:44:46.287Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T06:44:58.507Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T06:44:58.517Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T06:44:58.590Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T06:45:12.413Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T06:45:12.422Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T06:45:12.481Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T06:49:13.461Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T06:49:13.475Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T06:49:13.574Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T06:49:27.962Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T06:49:27.991Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T06:49:28.118Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T06:49:41.295Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T06:49:41.305Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T06:49:41.383Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T10:44:24.249Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T10:44:24.257Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T10:44:24.312Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T10:49:00.184Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T10:49:00.196Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T10:49:00.271Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T10:49:12.975Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T10:49:12.987Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T10:49:13.060Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T10:50:39.816Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T10:50:39.824Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T10:50:39.885Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T11:08:16.691Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T11:08:16.699Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T11:08:16.784Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T11:08:21.137Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T11:08:21.147Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T11:08:21.210Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T11:08:44.695Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T11:08:44.705Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T11:08:44.774Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T11:16:53.510Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T11:16:53.518Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T11:16:53.576Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T11:17:39.729Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T11:17:39.740Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T11:17:39.831Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T11:17:55.246Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T11:17:55.253Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T11:17:55.318Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T11:19:22.548Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T11:19:22.558Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T11:19:22.620Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T11:19:35.879Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T11:19:35.891Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T11:19:35.993Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T11:20:37.437Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T11:20:37.447Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T11:20:37.512Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T11:23:00.759Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T11:23:00.771Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T11:23:00.838Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T11:23:31.452Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T11:23:31.464Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T11:23:31.546Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T11:47:41.528Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T11:47:41.542Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T11:47:41.640Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T11:48:16.826Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T11:48:16.836Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T11:48:16.914Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T11:48:47.386Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T11:48:47.402Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T11:48:47.505Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T11:50:14.444Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T11:50:14.454Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T11:50:14.527Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T11:51:48.504Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T11:51:48.519Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T11:51:48.621Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-25T16:08:32.206Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-25T16:08:32.217Z [INFO]: 🚀 Server running on port 5000 
+2025-09-25T16:08:32.357Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-26T06:30:52.688Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-26T06:30:52.697Z [INFO]: 🚀 Server running on port 5000 
+2025-09-26T06:30:52.825Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-26T17:15:03.875Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-26T17:15:03.888Z [INFO]: 🚀 Server running on port 5000 
+2025-09-26T17:15:04.022Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T02:44:55.652Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T02:44:55.664Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T02:44:55.801Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T03:50:44.809Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T03:50:44.820Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T03:50:44.886Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T03:50:58.167Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T03:50:58.178Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T03:50:58.232Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T03:51:28.361Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T03:51:28.371Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T03:51:28.432Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T03:56:01.888Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T03:56:05.757Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T03:56:05.769Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T03:56:05.834Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T04:20:55.646Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T04:20:55.655Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T04:20:55.718Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T04:21:07.746Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T04:21:07.761Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T04:21:07.885Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T04:21:16.444Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T04:21:16.455Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T04:21:16.514Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T04:40:19.860Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T04:40:19.876Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T04:40:19.982Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T04:40:30.779Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T04:40:30.793Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T04:40:30.874Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T04:40:40.356Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T04:40:40.370Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T04:40:40.436Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T04:41:35.804Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T04:41:35.818Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T04:41:35.907Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T04:42:20.399Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T04:42:20.411Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T04:42:20.484Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T04:42:51.003Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T04:42:51.015Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T04:42:51.086Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T04:43:57.962Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T04:43:57.975Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T04:43:58.070Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T04:51:57.255Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T04:51:57.267Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T04:51:57.369Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T04:52:11.668Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T04:52:11.677Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T04:52:11.747Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T04:52:27.089Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T04:52:27.104Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T04:52:27.197Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T04:52:36.846Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T04:52:36.863Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T04:52:36.965Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T04:52:40.366Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T04:52:40.376Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T04:52:40.445Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T04:52:49.947Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T04:52:49.956Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T04:52:50.022Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T04:53:19.367Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T04:53:19.376Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T04:53:19.435Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T04:53:32.761Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T04:53:32.769Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T04:53:32.845Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T04:53:47.298Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T04:53:47.308Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T04:53:47.382Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T05:56:09.643Z [ERROR]: Error fetching top performers monthly: MongoServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-02.dnrv0.mongodb.net 
+2025-09-27T06:28:41.579Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T06:28:41.587Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T06:28:41.645Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T06:31:05.999Z [INFO]: ✅ Database Connected to MongoDB mongodb+srv://sajidpahat786:sajidpahat786@cluster0.dnrv0.mongodb.net/SubgQuiz?retryWrites=true&w=majority 
+2025-09-27T06:31:06.007Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T06:31:06.060Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T06:31:38.336Z [INFO]: ✅ Database Connected to MongoDB mongodb://localhost:27017/SubgQuiz 
+2025-09-27T06:31:38.346Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T06:31:38.410Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T06:32:14.526Z [INFO]: ✅ Database Connected to MongoDB mongodb://localhost:27017/SubgQuiz 
+2025-09-27T06:32:14.530Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T06:32:14.535Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T06:32:14.611Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T06:32:17.457Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T06:32:17.462Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T06:32:17.469Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T06:32:17.531Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:13:41.560Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:13:41.566Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:13:41.573Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:13:41.649Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:13:52.744Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:13:52.775Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:13:52.806Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:13:52.942Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:13:58.682Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:13:58.687Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:13:58.694Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:13:58.764Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:14:03.021Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:14:03.026Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:14:03.036Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:14:03.097Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:14:14.206Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:14:14.210Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:14:14.215Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:14:14.265Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:18:04.927Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:18:04.932Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:18:04.938Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:18:05.025Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:18:11.639Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:18:11.644Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:18:11.651Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:18:11.716Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:18:33.470Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:18:33.478Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:18:33.487Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:18:33.583Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:18:44.296Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:18:44.301Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:18:44.308Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:18:44.402Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:18:58.192Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:18:58.197Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:18:58.201Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:18:58.260Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:20:22.970Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:20:22.976Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:20:22.982Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:20:23.055Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:20:36.599Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:20:36.604Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:20:36.611Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:20:36.676Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:20:47.781Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:20:47.786Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:20:47.793Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:20:47.885Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:20:55.847Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:20:55.852Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:20:55.858Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:20:55.932Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:21:07.483Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:21:07.488Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:21:07.495Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:21:07.562Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:21:13.896Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:21:13.901Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:21:13.907Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:21:13.977Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:21:26.368Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:21:26.377Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:21:26.384Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:21:26.490Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:21:49.756Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:21:49.760Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:21:49.765Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:21:49.828Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:22:08.129Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:22:08.133Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:22:08.138Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:22:08.199Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:22:17.952Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:22:17.958Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:22:17.964Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:22:18.035Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:23:08.213Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:23:08.219Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:23:08.225Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:23:08.281Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:23:17.162Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:23:17.166Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:23:17.172Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:23:17.227Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:23:44.774Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:23:44.780Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:23:44.786Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:23:44.863Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:23:48.869Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:23:48.875Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:23:48.879Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:23:48.940Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:24:04.363Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:24:04.367Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:24:04.374Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:24:04.440Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:24:19.281Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:24:19.286Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:24:19.294Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:24:19.361Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:25:22.342Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:25:22.360Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:25:22.375Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:25:22.492Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:25:26.082Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:25:26.089Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:25:26.095Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:25:26.192Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:25:44.266Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:25:44.271Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:25:44.276Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:25:44.334Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:25:56.843Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:25:56.847Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:25:56.855Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:25:56.963Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:26:07.422Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:26:07.429Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:26:07.437Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:26:07.566Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:26:11.360Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:26:11.365Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:26:11.372Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:26:11.431Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:26:20.991Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:26:20.996Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:26:21.003Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:26:21.074Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:26:37.686Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:26:37.692Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:26:37.699Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:26:37.847Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:26:41.384Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:26:41.390Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:26:41.397Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:26:41.478Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:26:52.299Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:26:52.307Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:26:52.322Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:26:52.448Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:27:02.942Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:27:02.947Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:27:02.954Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:27:03.019Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:27:13.959Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:27:13.965Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:27:13.972Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:27:14.028Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:27:29.258Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:27:29.262Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:27:29.267Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:27:29.341Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:27:43.061Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:27:43.066Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:27:43.072Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:27:43.143Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:27:53.272Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:27:53.278Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:27:53.284Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:27:53.362Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:28:08.344Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:28:08.350Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:28:08.357Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:28:08.422Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:28:20.603Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:28:20.621Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:28:20.631Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:28:20.738Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:28:32.055Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:28:32.075Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:28:32.104Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:28:32.244Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:28:46.445Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:28:46.452Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:28:46.457Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:28:46.540Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:28:53.689Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:28:53.704Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:28:53.718Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:28:53.809Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:28:57.569Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:28:57.574Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:28:57.583Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:28:57.657Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:29:06.339Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:29:06.344Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:29:06.350Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:29:06.404Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:29:29.409Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:29:29.414Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:29:29.418Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:29:29.498Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:31:08.668Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:31:08.672Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:31:08.677Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:31:08.745Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:32:20.180Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:32:20.184Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:32:20.189Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:32:20.248Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:32:33.006Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:32:33.012Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:32:33.018Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:32:33.091Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:32:37.716Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:32:37.721Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:32:37.727Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:32:37.804Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:32:45.181Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:32:48.344Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:32:48.347Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:32:48.353Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:32:48.422Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:32:56.459Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:32:56.465Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:32:56.471Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:32:56.530Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:33:08.952Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:33:08.956Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:33:08.961Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:33:09.040Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:33:13.013Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:33:13.017Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:33:13.023Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:33:13.082Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:33:20.450Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:33:20.455Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:33:20.462Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:33:20.557Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:33:39.578Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:33:39.597Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:33:39.633Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:33:39.905Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:33:44.283Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:33:44.291Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:33:44.297Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:33:44.376Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:33:55.605Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:33:55.611Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:33:55.617Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:33:55.695Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:34:01.164Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:34:01.169Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:34:01.174Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:34:01.234Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:34:12.095Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:34:12.099Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:34:12.107Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:34:12.239Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:34:26.317Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:34:26.322Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:34:26.329Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:34:26.420Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:34:38.838Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:34:38.843Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:34:38.849Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:34:38.923Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:34:50.978Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:34:50.981Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:34:50.989Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:34:51.211Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:34:55.652Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:34:55.658Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:34:55.663Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:34:55.758Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:35:06.857Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:35:06.862Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:35:06.872Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:35:06.937Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:35:22.252Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:35:22.257Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:35:22.264Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:35:22.353Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:35:29.894Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:35:29.898Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:35:29.905Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:35:29.977Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:35:33.384Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:35:33.389Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:35:33.393Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:35:33.460Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:35:57.114Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:35:57.118Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:35:57.125Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:35:57.191Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:36:06.949Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:36:06.955Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:36:06.962Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:36:07.054Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:36:27.267Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:36:27.272Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:36:27.278Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:36:27.347Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:36:34.983Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:36:34.991Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:36:35.002Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:36:35.088Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:36:42.639Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:36:42.643Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:36:42.650Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:36:42.721Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:36:54.852Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:36:54.858Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:36:54.870Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:36:54.971Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:37:05.855Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:37:05.859Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:37:05.867Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:37:05.931Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:37:14.847Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:37:14.851Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:37:14.857Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:37:14.943Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:37:22.879Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:37:22.885Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:37:22.891Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:37:22.953Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:37:33.130Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:37:33.135Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:37:33.141Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:37:33.200Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:37:44.704Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:37:44.711Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:37:44.716Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:37:44.800Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:37:55.046Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:37:55.051Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:37:55.057Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:37:55.143Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:38:01.069Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:38:01.073Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:38:01.078Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:38:01.139Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:38:13.204Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:38:13.208Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:38:13.216Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:38:13.291Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:38:23.520Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:38:23.525Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:38:23.533Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:38:23.606Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:38:47.221Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:38:47.225Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:38:47.233Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:38:47.289Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:38:52.568Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:38:52.574Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:38:52.581Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:38:52.650Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:39:04.413Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:39:04.419Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:39:04.427Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:39:04.491Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:39:10.448Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:39:10.454Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:39:10.459Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:39:10.526Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:39:19.749Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:39:19.753Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:39:19.760Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:39:19.852Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:39:31.420Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:39:31.424Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:39:31.428Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:39:31.492Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:40:08.807Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:40:08.812Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:40:08.818Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:40:08.876Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:42:01.111Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:42:01.117Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:42:01.122Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:42:01.186Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:42:19.533Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:42:19.536Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:42:19.543Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:42:19.605Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:42:23.383Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:42:23.387Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:42:23.392Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:42:23.462Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:42:49.430Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:42:49.434Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:42:49.439Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:42:49.507Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:44:13.189Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:44:13.193Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:44:13.199Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:44:13.249Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:45:27.767Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:45:27.773Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:45:27.781Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:45:27.851Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:45:44.020Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:45:44.024Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:45:44.029Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:45:44.108Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:47:56.963Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:47:56.968Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:47:56.975Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:47:57.052Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:48:01.782Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:48:01.786Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:48:01.794Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:48:01.883Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:48:16.484Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:48:16.488Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:48:16.494Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:48:16.590Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:48:32.958Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:48:32.964Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:48:32.972Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:48:33.052Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:48:53.077Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:48:53.082Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:48:53.086Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:48:53.137Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:49:21.719Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:49:21.724Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:49:21.730Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:49:21.808Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:49:42.068Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:49:42.073Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:49:42.081Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:49:42.156Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:49:46.303Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:49:46.307Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:49:46.311Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:49:46.365Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:49:57.930Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:49:57.935Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:49:57.942Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:49:58.068Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:50:05.066Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:50:05.070Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:50:05.076Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:50:05.150Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:50:43.703Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:50:43.717Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:50:43.728Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:50:43.822Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:51:10.844Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:51:10.849Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:51:10.856Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:51:10.932Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:51:14.397Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:51:14.401Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:51:14.408Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:51:14.480Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:51:44.434Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:51:44.439Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:51:44.444Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:51:44.502Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:52:12.065Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:52:12.069Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:52:12.074Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:52:12.138Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:52:23.967Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:52:23.972Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:52:23.979Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:52:24.053Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:52:43.020Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:52:43.027Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:52:43.035Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:52:43.113Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:53:09.038Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:53:09.044Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:53:09.052Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:53:09.108Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:53:23.655Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:53:23.659Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:53:23.667Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:53:23.773Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:53:42.431Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:53:42.435Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:53:42.439Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:53:42.495Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:54:27.749Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:54:27.753Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:54:27.757Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:54:27.819Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:54:57.281Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:54:57.286Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:54:57.293Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:54:57.354Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:55:36.092Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:55:36.096Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:55:36.100Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:55:36.154Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:56:15.265Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:56:15.271Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:56:15.277Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:56:15.336Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:56:51.425Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:56:51.429Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:56:51.436Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:56:51.506Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:57:19.021Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:57:19.026Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:57:19.031Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:57:19.096Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:57:47.352Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:57:47.356Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:57:47.363Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:57:47.438Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:58:03.447Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:58:03.453Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:58:03.457Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:58:03.523Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:58:19.517Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:58:19.522Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:58:19.529Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:58:19.621Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:58:40.591Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:58:40.596Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:58:40.603Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:58:40.665Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T07:58:51.161Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T07:58:51.166Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T07:58:51.172Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T07:58:51.254Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T08:02:37.312Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T08:02:37.317Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T08:02:37.323Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T08:02:37.389Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T08:02:44.488Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T08:02:44.493Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T08:02:44.500Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T08:02:44.577Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T08:11:24.739Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T08:11:24.745Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T08:11:24.750Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T08:11:24.818Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T08:12:10.720Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T08:12:10.724Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T08:12:10.731Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T08:12:10.801Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T08:12:44.947Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T08:12:44.950Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T08:12:44.956Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T08:12:45.017Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T08:13:05.850Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T08:13:05.854Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T08:13:05.862Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T08:13:05.934Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T08:13:17.381Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T08:13:17.385Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T08:13:17.391Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T08:13:17.448Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T08:13:41.670Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T08:13:41.674Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T08:13:41.679Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T08:13:41.731Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T08:13:58.430Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T08:13:58.434Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T08:13:58.439Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T08:13:58.494Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T08:14:15.362Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T08:14:15.389Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T08:14:15.397Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T08:14:15.477Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T08:14:32.226Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T08:14:32.230Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T08:14:32.234Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T08:14:32.287Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T08:14:48.187Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T08:14:48.191Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T08:14:48.196Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T08:14:48.254Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T08:14:59.873Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T08:14:59.879Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T08:14:59.885Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T08:14:59.959Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T08:15:39.640Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T08:15:39.645Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T08:15:39.653Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T08:15:39.709Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T08:16:17.203Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T08:16:17.208Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T08:16:17.213Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T08:16:17.281Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T08:17:48.433Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T08:17:48.438Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T08:17:48.443Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T08:17:48.506Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T08:19:37.690Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T08:19:37.702Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T08:19:37.708Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T08:19:37.856Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T08:53:06.516Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T08:53:06.522Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T08:53:06.529Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T08:53:06.596Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T08:54:16.021Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T08:54:16.025Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T08:54:16.031Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T08:54:16.085Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T08:56:35.063Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T08:56:35.072Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T08:56:35.080Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T08:56:35.189Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T08:56:48.060Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T08:56:48.067Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T08:56:48.090Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T08:56:48.206Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T09:01:27.658Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T09:01:27.663Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T09:01:27.668Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T09:01:27.740Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T09:01:58.489Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T09:01:58.494Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T09:01:58.500Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T09:01:58.562Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T09:02:17.159Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T09:02:17.164Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T09:02:17.169Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T09:02:17.222Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T09:03:08.666Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T09:03:08.671Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T09:03:08.678Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T09:03:08.749Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T09:03:12.673Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T09:03:12.680Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T09:03:12.685Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T09:03:12.751Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T09:03:25.240Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T09:03:25.247Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T09:03:25.253Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T09:03:25.342Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T09:03:38.535Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T09:03:38.539Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T09:03:38.546Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T09:03:38.631Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T09:03:48.366Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T09:03:48.371Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T09:03:48.379Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T09:03:48.461Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T09:04:07.454Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T09:04:07.460Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T09:04:07.470Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T09:04:07.565Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T09:04:17.188Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T09:04:17.194Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T09:04:17.202Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T09:04:17.300Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-27T09:28:57.864Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-27T09:28:57.869Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-27T09:28:57.876Z [INFO]: 🚀 Server running on port 5000 
+2025-09-27T09:28:57.958Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T03:13:43.580Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T03:13:43.584Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T03:13:43.591Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T03:13:43.728Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T03:27:33.446Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T03:27:33.457Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T03:27:33.468Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T03:27:33.565Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T03:27:39.716Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T03:27:39.721Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T03:27:39.728Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T03:27:39.808Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T03:27:50.388Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T03:27:50.394Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T03:27:50.401Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T03:27:50.496Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T03:27:58.679Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T03:27:58.696Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T03:27:58.706Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T03:27:58.800Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T03:28:01.936Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T03:28:01.942Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T03:28:01.947Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T03:28:02.018Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T03:28:10.201Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T03:28:10.227Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T03:28:10.237Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T03:28:10.346Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T03:28:13.147Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T03:28:13.153Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T03:28:13.160Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T03:28:13.223Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T03:30:38.046Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T03:30:38.051Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T03:30:38.057Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T03:30:38.121Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:08:20.387Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:08:20.391Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:08:20.400Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:08:20.478Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:08:24.127Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:08:24.131Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:08:24.137Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:08:24.190Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:08:52.964Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:08:52.970Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:08:52.975Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:08:53.047Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:08:57.091Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:08:57.100Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:08:57.105Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:08:57.188Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:09:08.458Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:09:08.468Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:09:08.474Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:09:08.536Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:09:22.075Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:09:22.081Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:09:22.087Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:09:22.175Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:09:33.953Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:09:33.959Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:09:33.966Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:09:34.050Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:09:46.186Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:09:46.191Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:09:46.198Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:09:46.265Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:09:59.924Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:09:59.935Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:09:59.943Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:10:00.075Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:10:31.772Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:10:31.779Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:10:31.784Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:10:31.833Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:12:20.328Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:12:20.334Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:12:20.339Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:12:20.409Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:12:28.189Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:12:28.198Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:12:28.204Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:12:28.282Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:12:31.996Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:12:32.001Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:12:32.008Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:12:32.098Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:12:43.574Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:12:43.579Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:12:43.585Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:12:43.661Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:12:56.255Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:12:56.259Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:12:56.264Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:12:56.329Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:13:06.387Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:13:06.391Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:13:06.397Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:13:06.463Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:13:26.621Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:13:26.626Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:13:26.631Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:13:26.700Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:13:29.663Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:13:29.667Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:13:29.674Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:13:29.753Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:13:35.718Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:13:35.725Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:13:35.732Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:13:35.816Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:13:47.352Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:13:47.378Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:13:47.444Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:13:47.599Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:13:54.946Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:13:54.952Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:13:54.964Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:13:55.081Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:14:02.481Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:14:02.496Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:14:02.510Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:14:02.623Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:14:08.056Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:14:08.062Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:14:08.068Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:14:08.148Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:14:17.095Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:14:17.100Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:14:17.107Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:14:17.173Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:14:55.097Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:14:55.102Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:14:55.107Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:14:55.157Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:21:07.650Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:21:07.660Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:21:07.675Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:21:07.863Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:32:34.184Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:32:34.189Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:32:34.196Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:32:34.267Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:38:21.720Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:38:21.725Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:38:21.731Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:38:21.803Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:38:33.320Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:38:33.323Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:38:33.328Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:38:33.386Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:38:47.414Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:38:47.418Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:38:47.423Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:38:47.488Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T04:39:13.270Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T04:39:13.274Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T04:39:13.279Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T04:39:13.373Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T05:13:45.723Z [ERROR]: Error fetching user analytics: CastError: Cast to date failed for value "Invalid Date" (type Date) at path "attemptedAt" for model "QuizAttempt" 
+2025-09-28T05:13:45.740Z [ERROR]: Error fetching user analytics: CastError: Cast to date failed for value "Invalid Date" (type Date) at path "attemptedAt" for model "QuizAttempt" 
+2025-09-28T05:19:20.367Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T05:19:20.371Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T05:19:20.375Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T05:19:20.445Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T05:19:34.918Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T05:19:34.923Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T05:19:34.929Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T05:19:34.994Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T05:20:15.578Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T05:20:15.582Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T05:20:15.586Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T05:20:15.646Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T05:21:10.793Z [ERROR]: Error fetching user analytics: CastError: Cast to date failed for value "Invalid Date" (type Date) at path "attemptedAt" for model "QuizAttempt" 
+2025-09-28T05:21:10.812Z [ERROR]: Error fetching user analytics: CastError: Cast to date failed for value "Invalid Date" (type Date) at path "attemptedAt" for model "QuizAttempt" 
+2025-09-28T05:22:10.605Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T05:22:10.609Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T05:22:10.616Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T05:22:10.696Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T05:22:16.502Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T05:22:16.507Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T05:22:16.513Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T05:22:16.571Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T05:22:32.485Z [ERROR]: Error fetching user analytics: CastError: Cast to date failed for value "Invalid Date" (type Date) at path "attemptedAt" for model "QuizAttempt" 
+2025-09-28T05:22:32.510Z [ERROR]: Error fetching user analytics: CastError: Cast to date failed for value "Invalid Date" (type Date) at path "attemptedAt" for model "QuizAttempt" 
+2025-09-28T05:23:03.043Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T05:23:03.050Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T05:23:03.058Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T05:23:03.130Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T05:23:36.243Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T05:23:39.702Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T05:23:39.706Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T05:23:39.711Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T05:23:39.771Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T05:24:13.154Z [ERROR]: Error fetching user analytics: CastError: Cast to date failed for value "Invalid Date" (type Date) at path "attemptedAt" for model "QuizAttempt" 
+2025-09-28T05:24:13.202Z [ERROR]: Error fetching user analytics: CastError: Cast to date failed for value "Invalid Date" (type Date) at path "attemptedAt" for model "QuizAttempt" 
+2025-09-28T05:24:17.484Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T05:24:17.489Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T05:24:17.494Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T05:24:17.551Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T05:25:07.403Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T05:25:07.408Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T05:25:07.414Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T05:25:07.479Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T05:25:14.548Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T05:25:14.554Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T05:25:14.558Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T05:25:14.632Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T05:25:22.887Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T05:25:22.892Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T05:25:22.899Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T05:25:22.986Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T05:25:33.725Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T05:25:33.735Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T05:25:33.742Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T05:25:33.836Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T05:25:41.637Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T05:25:41.644Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T05:25:41.653Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T05:25:41.738Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T05:25:59.991Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T05:25:59.996Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T05:26:00.004Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T05:26:00.077Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T05:26:14.531Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T05:26:14.564Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T05:26:14.632Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T05:26:14.777Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T05:27:21.999Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T05:27:22.004Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T05:27:22.011Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T05:27:22.070Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T05:27:31.267Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T05:27:31.271Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T05:27:31.275Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T05:27:31.326Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T05:27:55.775Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T05:27:55.803Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T05:27:55.825Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T05:27:55.923Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T11:47:16.234Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T11:47:16.238Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T11:47:16.244Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T11:47:16.358Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T11:49:50.086Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T11:49:50.091Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T11:49:50.098Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T11:49:50.161Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T11:50:21.356Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T11:50:21.363Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T11:50:21.369Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T11:50:21.449Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T11:50:29.881Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T11:50:29.887Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T11:50:29.892Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T11:50:29.954Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T11:50:42.017Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T11:50:42.021Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T11:50:42.028Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T11:50:42.110Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T11:50:53.916Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T11:50:53.923Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T11:50:53.930Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T11:50:54.035Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T11:51:09.607Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T11:51:09.613Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T11:51:09.623Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T11:51:09.710Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T11:52:28.534Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T11:52:28.538Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T11:52:28.543Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T11:52:28.608Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T11:53:21.348Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T11:53:21.352Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T11:53:21.357Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T11:53:21.412Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T11:53:31.982Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T11:53:31.986Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T11:53:31.992Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T11:53:32.070Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T11:54:48.581Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T11:54:48.587Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T11:54:48.597Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T11:54:48.685Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T11:54:58.159Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T11:54:58.164Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T11:54:58.169Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T11:54:58.246Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T11:55:33.152Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T11:55:33.158Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T11:55:33.163Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T11:55:33.231Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T11:55:37.360Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T11:55:37.364Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T11:55:37.370Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T11:55:37.425Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T11:56:04.819Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T11:56:04.823Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T11:56:04.828Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T11:56:04.892Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T11:56:18.792Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T11:56:18.797Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T11:56:18.804Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T11:56:18.868Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T11:57:44.649Z [ERROR]: JWT verification failed in protect: jwt malformed Token: test 
+2025-09-28T12:07:30.800Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T12:07:30.807Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T12:07:30.815Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T12:07:30.901Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T12:07:46.888Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T12:07:46.893Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T12:07:46.898Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T12:07:46.965Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T12:08:11.434Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T12:08:11.439Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T12:08:11.444Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T12:08:11.504Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T12:08:41.763Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T12:08:41.767Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T12:08:41.772Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T12:08:41.841Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T12:08:54.400Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T12:08:54.405Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T12:08:54.412Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T12:08:54.477Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T12:10:45.580Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T12:10:45.585Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T12:10:45.592Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T12:10:45.681Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T12:29:16.764Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T12:29:16.769Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T12:29:16.774Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T12:29:16.830Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T12:29:27.793Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T12:29:27.797Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T12:29:27.802Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T12:29:27.856Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T12:29:37.967Z [ERROR]: JWT verification failed in protect: jwt malformed Token: test 
+2025-09-28T12:29:57.817Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T12:29:57.821Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T12:29:57.827Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T12:29:57.911Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T12:30:18.891Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T12:30:18.917Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T12:30:18.943Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T12:30:19.043Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T12:30:23.956Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T12:30:23.963Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T12:30:23.969Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T12:30:24.032Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T12:31:44.515Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T12:31:44.521Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T12:31:44.534Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T12:31:44.606Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-28T12:31:57.363Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-28T12:31:57.366Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-28T12:31:57.371Z [INFO]: 🚀 Server running on port 5000 
+2025-09-28T12:31:57.433Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-29T04:48:55.001Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-29T04:48:55.006Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-29T04:48:55.013Z [INFO]: 🚀 Server running on port 5000 
+2025-09-29T04:48:55.132Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-29T04:58:48.993Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-29T04:58:48.999Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-29T04:58:49.005Z [INFO]: 🚀 Server running on port 5000 
+2025-09-29T04:58:49.091Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-29T04:59:06.782Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-29T04:59:06.786Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-29T04:59:06.791Z [INFO]: 🚀 Server running on port 5000 
+2025-09-29T04:59:06.841Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-29T04:59:25.077Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-29T04:59:25.080Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-29T04:59:25.085Z [INFO]: 🚀 Server running on port 5000 
+2025-09-29T04:59:25.138Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-29T04:59:37.113Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-29T04:59:37.117Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-29T04:59:37.121Z [INFO]: 🚀 Server running on port 5000 
+2025-09-29T04:59:37.170Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-29T04:59:50.610Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-29T04:59:50.618Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-29T04:59:50.633Z [INFO]: 🚀 Server running on port 5000 
+2025-09-29T04:59:50.735Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-29T05:00:22.812Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-29T05:00:22.817Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-29T05:00:22.821Z [INFO]: 🚀 Server running on port 5000 
+2025-09-29T05:00:22.885Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-29T05:00:42.275Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-29T05:00:42.280Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-29T05:00:42.284Z [INFO]: 🚀 Server running on port 5000 
+2025-09-29T05:00:42.348Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-29T05:00:56.326Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-29T05:00:56.330Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-29T05:00:56.335Z [INFO]: 🚀 Server running on port 5000 
+2025-09-29T05:00:56.391Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-29T05:01:11.569Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-29T05:01:11.574Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-29T05:01:11.578Z [INFO]: 🚀 Server running on port 5000 
+2025-09-29T05:01:11.633Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-29T05:01:31.227Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-29T05:01:31.231Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-29T05:01:31.236Z [INFO]: 🚀 Server running on port 5000 
+2025-09-29T05:01:31.288Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-29T05:02:05.218Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-29T05:02:05.223Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-29T05:02:05.228Z [INFO]: 🚀 Server running on port 5000 
+2025-09-29T05:02:05.276Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-29T05:15:35.801Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-29T05:15:35.809Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-29T05:15:35.816Z [INFO]: 🚀 Server running on port 5000 
+2025-09-29T05:15:35.895Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-29T05:15:58.331Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-29T05:15:58.336Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-29T05:15:58.343Z [INFO]: 🚀 Server running on port 5000 
+2025-09-29T05:15:58.409Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T05:05:03.436Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T05:05:03.440Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T05:05:03.445Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T05:05:03.580Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:10:45.017Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:10:45.021Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:10:45.030Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:10:45.159Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:11:52.162Z [ERROR]: JWT verification failed in protect: jwt expired Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU5MTIzMDA3LCJleHAiOjE3NTkyMDk0MDd9.h9ZiEu7dSN4tUXSk9uhrq0c2PAAnzp9QI157LBySWnk 
+2025-09-30T16:11:52.251Z [ERROR]: JWT verification failed in protect: jwt expired Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmE2ZmEzNjU4MDA2Mzk1MjIxNDAxMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU5MTIzMDA3LCJleHAiOjE3NTkyMDk0MDd9.h9ZiEu7dSN4tUXSk9uhrq0c2PAAnzp9QI157LBySWnk 
+2025-09-30T16:14:15.359Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:14:15.364Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:14:15.370Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:14:15.435Z [ERROR]: ❌ Failed to schedule monthly reset: RangeError: Invalid time value 
+2025-09-30T16:15:04.680Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:15:04.684Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:15:04.689Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:15:04.760Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:15:09.086Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:15:09.090Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:15:09.097Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:15:09.163Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:15:17.576Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:15:17.582Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:15:17.595Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:15:17.670Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:16:00.037Z [INFO]: ⏰ Monthly reset running on last day for 2025-09, resetting to 2025-10 ... 
+2025-09-30T16:16:00.039Z [ERROR]: ❌ Monthly reset failed: ReferenceError: Cannot access 'User' before initialization 
+2025-09-30T16:16:26.618Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:16:26.623Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:16:26.628Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:16:26.683Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:16:55.481Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:16:55.487Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:16:55.497Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:16:55.573Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:17:05.825Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:17:05.829Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:17:05.834Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:17:05.897Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:17:09.787Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:17:09.791Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:17:09.798Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:17:09.863Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:17:13.650Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:17:13.654Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:17:13.658Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:17:13.715Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:18:00.059Z [INFO]: ⏰ Monthly reset running on last day for 2025-09, resetting to 2025-10 ... 
+2025-09-30T16:18:00.395Z [INFO]: 📊 Monthly winners saved for 2025-09: 3 winners 
+2025-09-30T16:18:00.630Z [INFO]: 🏆 Monthly reward processed for Rajat Katiyar: Rank 1, Amount: ₹2500 
+2025-09-30T16:18:00.716Z [INFO]: 🏆 Monthly reward processed for Devanshu Tiwari: Rank 2, Amount: ₹2000 
+2025-09-30T16:18:00.805Z [INFO]: 🏆 Monthly reward processed for MSK: Rank 3, Amount: ₹1500 
+2025-09-30T16:18:00.830Z [INFO]: ✅ Monthly reset completed (including student defaults) 
+2025-09-30T16:21:15.863Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:21:15.870Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:21:15.878Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:21:15.952Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:21:31.288Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:21:31.295Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:21:31.302Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:21:31.377Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:21:49.927Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:21:49.931Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:21:49.938Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:21:49.998Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:23:05.887Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:23:05.893Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:23:05.897Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:23:05.955Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:24:02.299Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:24:02.304Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:24:02.309Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:24:02.374Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:24:22.076Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:24:22.090Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:24:22.099Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:24:22.197Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:25:00.046Z [INFO]: ⏰ Monthly reset running on last day for 2025-09, resetting to 2025-10 ... 
+2025-09-30T16:25:00.229Z [ERROR]: ❌ Monthly reset failed: ReferenceError: topUsers is not defined 
+2025-09-30T16:25:57.789Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:25:57.795Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:25:57.802Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:25:57.869Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:26:06.758Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:26:06.762Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:26:06.766Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:26:06.825Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:26:25.346Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:26:25.350Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:26:25.357Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:26:25.413Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:26:46.728Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:26:46.732Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:26:46.738Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:26:46.793Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:27:00.047Z [INFO]: ⏰ Monthly reset running on last day for 2025-09, resetting to 2025-10 ... 
+2025-09-30T16:27:00.258Z [INFO]: 📊 Monthly winners saved for 2025-09: 5 winners 
+2025-09-30T16:27:00.403Z [INFO]: 🏆 Monthly reward processed for Rajat Katiyar: Rank 1, Amount: ₹2500 
+2025-09-30T16:27:00.462Z [INFO]: 🏆 Monthly reward processed for Devanshu Tiwari: Rank 2, Amount: ₹2000 
+2025-09-30T16:27:00.513Z [INFO]: 🏆 Monthly reward processed for MSK: Rank 3, Amount: ₹1500 
+2025-09-30T16:27:00.536Z [INFO]: 🏆 Monthly reward processed for Ariff: Rank 4, Amount: ₹1200 
+2025-09-30T16:27:00.552Z [INFO]: 🏆 Monthly reward processed for Asif Khan: Rank 5, Amount: ₹800 
+2025-09-30T16:27:00.615Z [INFO]: 🗑️ Cleared quiz attempts: 1831 records removed 
+2025-09-30T16:27:00.628Z [INFO]: ✅ Monthly reset completed (including student defaults) 
+2025-09-30T16:30:33.735Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:30:33.741Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:30:33.749Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:30:33.826Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:31:09.294Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:31:09.298Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:31:09.302Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:31:09.359Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:35:22.839Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:35:22.844Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:35:22.849Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:35:22.907Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:36:02.504Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:36:02.508Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:36:02.514Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:36:02.587Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:36:08.052Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:36:08.056Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:36:08.061Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:36:08.129Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:36:16.081Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:36:16.086Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:36:16.091Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:36:16.153Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:37:14.176Z [INFO]: 🔎 Eligibility: monthlyProgress.highScoreWins >= 220 
+2025-09-30T16:37:14.284Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:37:14.285Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:37:14.290Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:37:14.347Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:37:26.507Z [INFO]: 🔎 Eligibility: monthlyProgress.highScoreWins >= number 
+2025-09-30T16:37:26.613Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:37:26.614Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:37:26.620Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:37:26.701Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:37:38.763Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:37:38.768Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:37:38.773Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:37:38.827Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:38:47.393Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:38:47.397Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:38:47.402Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:38:47.485Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:39:00.040Z [INFO]: ⏰ Monthly reset running on last day for 2025-09, resetting to 2025-10 ... 
+2025-09-30T16:39:00.041Z [INFO]: 🔎 Eligibility: monthlyProgress.highScoreWins >= 220 
+2025-09-30T16:39:00.248Z [INFO]: 📊 Monthly winners saved for 2025-09: 5 winners 
+2025-09-30T16:39:00.360Z [INFO]: 🏆 Monthly reward processed for Rajat Katiyar: Rank 1, Amount: ₹2500 
+2025-09-30T16:39:00.389Z [INFO]: 🏆 Monthly reward processed for Devanshu Tiwari: Rank 2, Amount: ₹2000 
+2025-09-30T16:39:00.430Z [INFO]: 🏆 Monthly reward processed for MSK: Rank 3, Amount: ₹1500 
+2025-09-30T16:39:00.450Z [INFO]: 🏆 Monthly reward processed for Ariff: Rank 4, Amount: ₹1200 
+2025-09-30T16:39:00.460Z [INFO]: 🏆 Monthly reward processed for Asif Khan: Rank 5, Amount: ₹800 
+2025-09-30T16:39:00.508Z [INFO]: 🗑️ Cleared quiz attempts: 1831 records removed 
+2025-09-30T16:39:00.524Z [INFO]: ✅ Monthly reset completed (including student defaults) 
+2025-09-30T16:40:42.771Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:40:42.779Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:40:42.792Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:40:42.891Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:40:54.541Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:40:54.545Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:40:54.550Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:40:54.622Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:41:04.385Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:41:04.389Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:41:04.395Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:41:04.455Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:42:44.300Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:42:44.305Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:42:44.310Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:42:44.373Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:43:00.049Z [INFO]: ⏰ Monthly reset running on last day for 2025-09, resetting to 2025-10 ... 
+2025-09-30T16:43:00.050Z [INFO]: 🔎 Eligibility: monthlyProgress.highScoreWins >= 220 
+2025-09-30T16:43:00.236Z [INFO]: 📊 Monthly winners saved for 2025-09: 3 winners 
+2025-09-30T16:43:00.341Z [INFO]: 🏆 Monthly reward processed for Rajat Katiyar: Rank 1, Amount: ₹2500 
+2025-09-30T16:43:00.368Z [INFO]: 🏆 Monthly reward processed for Devanshu Tiwari: Rank 2, Amount: ₹2000 
+2025-09-30T16:43:00.411Z [INFO]: 🏆 Monthly reward processed for MSK: Rank 3, Amount: ₹1500 
+2025-09-30T16:43:00.456Z [INFO]: 🗑️ Cleared quiz attempts: 1831 records removed 
+2025-09-30T16:43:00.471Z [INFO]: ✅ Monthly reset completed (including student defaults) 
+2025-09-30T16:45:21.927Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:45:21.932Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:45:21.939Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:45:22.015Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:45:33.974Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:45:33.979Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:45:33.983Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:45:34.055Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:45:58.168Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:45:58.173Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:45:58.180Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:45:58.254Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:46:14.666Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:46:14.670Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:46:14.675Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:46:14.746Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:46:23.475Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:46:23.479Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:46:23.486Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:46:23.639Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:46:55.357Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:46:55.362Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:46:55.367Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:46:55.420Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:48:34.757Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:48:34.762Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:48:34.768Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:48:34.834Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:49:00.051Z [INFO]: ⏰ Monthly reset running on last day for 2025-09, resetting to 2025-10 ... 
+2025-09-30T16:49:00.052Z [INFO]: 🔎 Eligibility: monthlyProgress.highScoreWins >= 220 
+2025-09-30T16:49:00.249Z [INFO]: 📊 Monthly winners saved for 2025-09: 3 winners 
+2025-09-30T16:49:00.378Z [INFO]: 🏆 Monthly reward processed for Rajat Katiyar: Rank 1, Amount: ₹2500 
+2025-09-30T16:49:00.439Z [INFO]: 🏆 Monthly reward processed for Devanshu Tiwari: Rank 2, Amount: ₹2000 
+2025-09-30T16:49:00.484Z [INFO]: 🏆 Monthly reward processed for MSK: Rank 3, Amount: ₹1500 
+2025-09-30T16:49:00.524Z [INFO]: 🗑️ Cleared quiz attempts: 1831 records removed 
+2025-09-30T16:49:00.536Z [INFO]: ✅ Monthly reset completed (including student defaults) 
+2025-09-30T16:50:52.481Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:50:52.485Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:50:52.489Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:50:52.550Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:52:24.328Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:52:24.332Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:52:24.338Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:52:24.412Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:52:28.461Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:52:28.465Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:52:28.470Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:52:28.532Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:52:33.629Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:52:33.632Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:52:33.637Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:52:33.693Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:52:46.534Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:52:46.538Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:52:46.544Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:52:46.597Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:53:00.044Z [INFO]: ⏰ Monthly reset running on last day for 2025-09, resetting to 2025-10 ... 
+2025-09-30T16:53:00.046Z [INFO]: 🔎 Eligibility: monthlyProgress.highScoreWins >= 220 
+2025-09-30T16:53:00.258Z [INFO]: 📊 Monthly winners saved for 2025-09: 3 winners 
+2025-09-30T16:53:00.426Z [INFO]: 🏆 Monthly reward processed for Rajat Katiyar: Rank 1, Amount: ₹2500 
+2025-09-30T16:53:00.594Z [INFO]: 🏆 Monthly reward processed for Devanshu Tiwari: Rank 2, Amount: ₹2000 
+2025-09-30T16:53:00.673Z [INFO]: 🏆 Monthly reward processed for MSK: Rank 3, Amount: ₹1500 
+2025-09-30T16:53:00.724Z [INFO]: 🗑️ Cleared quiz attempts: 1831 records removed 
+2025-09-30T16:53:00.737Z [INFO]: ✅ Monthly reset completed (including student defaults) 
+2025-09-30T16:55:51.459Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:55:51.465Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:55:51.474Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:55:51.579Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T16:56:00.337Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T16:56:00.344Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T16:56:00.361Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T16:56:00.479Z [INFO]: ✅ Monthly reset CRON scheduled 
+2025-09-30T17:01:05.189Z [INFO]: ✅ Database Connected to MongoDB 
+2025-09-30T17:01:05.194Z [INFO]: ✅ Database URI mongodb://localhost:27017/SubgQuiz 
+2025-09-30T17:01:05.201Z [INFO]: 🚀 Server running on port 5000 
+2025-09-30T17:01:05.269Z [INFO]: ✅ Monthly reset CRON scheduled 

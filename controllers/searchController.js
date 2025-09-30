@@ -61,16 +61,20 @@ const searchAll = async (req, res) => {
       ]
     };
 
-    const [quizzes, quizCount] = await Promise.all([
+    const [allQuizzes, quizCount] = await Promise.all([
       Quiz.find(quizFilter)
         .select('_id title category subcategory requiredLevel')
         .populate('category', '_id name')
-        .populate('subcategory', '_id name')
-        .skip(skip)
-        .limit(parseInt(limit)),
+        .populate('subcategory', '_id name'),
 
       Quiz.countDocuments(quizFilter)
     ]);
+    
+    // Randomize the order of quizzes
+    const shuffledQuizzes = allQuizzes.sort(() => Math.random() - 0.5);
+    
+    // Apply pagination after randomization
+    const quizzes = shuffledQuizzes.slice(skip, skip + parseInt(limit));
 
     res.json({
       success: true,

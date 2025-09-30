@@ -22,9 +22,17 @@ const monthlyWinnersRoutes = require('./routes/monthlyWinners');
 const winston = require('winston');
 const morgan = require('morgan');
 const searchRoutes = require('./routes/search');
+const proUserQuestionsRoutes = require('./routes/proUserQuestions.routes');
+const proWalletRoutes = require('./routes/proWallet.routes');
+const proWithdrawRoutes = require('./routes/proWithdraw.routes');
+const adminProUserRoutes = require('./routes/adminProUser.routes');
+const QuizAttempt = require('./models/QuizAttempt');
 
 dotenv.config();
 
+// Quiz requirement configuration
+const MONTHLY_REWARD_QUIZ_REQUIREMENT = parseInt(process.env.MONTHLY_REWARD_QUIZ_REQUIREMENT) || 220;
+console.log(typeof MONTHLY_REWARD_QUIZ_REQUIREMENT, 'MONTHLY_REWARD_QUIZ_REQUIREMENT')
 // Validate required environment variables
 const requiredEnvVars = [
   'JWT_SECRET',
@@ -111,6 +119,10 @@ app.use('/api/contacts', contactRoutes);
 app.use('/api/bank-details', bankDetailRoutes);
 app.use('/api/monthly-winners', monthlyWinnersRoutes);
 app.use('/api', searchRoutes);
+app.use('/api', proUserQuestionsRoutes);
+app.use('/api', proWalletRoutes);
+app.use('/api', proWithdrawRoutes);
+app.use('/api/admin', adminProUserRoutes);
 // app.use('/api/rewards', rewardsRoutes); // deprecated: locked rewards removed in monthly system
 // Register public routes
 const publicRoutes = require('./routes/public');
@@ -188,9 +200,9 @@ io.on("connection", (socket) => {
 // Using a daily check to find the last day of each month
 const initializeMonthlyReset = () => {
   try {
-    // Check daily at 9:00 PM IST to see if it's the last day of the month
-    cron.schedule('0 21 * * *', async () => {
-              try {
+    // Check daily at 9:45 PM IST to see if it's the last day of the month
+    cron.schedule('23 22 * * *', async () => {
+          try {
           // Check if today is the last day of the month
           const today = dayjs();
           const lastDayOfMonth = today.endOf('month');
@@ -206,24 +218,42 @@ const initializeMonthlyReset = () => {
           const nextMonth = today.add(1, 'month').format('YYYY-MM');
           console.log(`⏰ Monthly reset running on last day for ${today.format('YYYY-MM')}, resetting to ${nextMonth} ...`);
           
-                    // First, find top 3 eligible users for monthly rewards
-          const topUsers = await User.find({
-            'monthlyProgress.rewardEligible': true,
-            'monthlyProgress.accuracy': { $gte: 75 }
+          // Find top 10 users for monthly rewards
+          // Primary eligibility: Level 10 + high-score wins >= requirement
+          // If fewer than 10 eligible, fill remaining slots with next best users at level 10
+          // Ranking: 1) highScoreWins 2) accuracy 3) totalScore 4) totalQuizAttempts
+          const sortCriteria = {
+            'monthlyProgress.highScoreWins': -1,
+            'monthlyProgress.accuracy': -1,
+            'level.totalScore': -1,
+            'monthlyProgress.totalQuizAttempts': -1
+          };
+
+          const requiredWins = Number.isFinite(Number(MONTHLY_REWARD_QUIZ_REQUIREMENT)) ? Number(MONTHLY_REWARD_QUIZ_REQUIREMENT) : 0;
+          console.log(`🔎 Eligibility: monthlyProgress.highScoreWins >= ${requiredWins}`);
+          const eligibleTopUsers = await User.find({
+            'level.currentLevel': 10,
+            'monthlyProgress.highScoreWins': { $gte: requiredWins }
           })
-          .sort({ 'monthlyProgress.highScoreWins': -1, 'monthlyProgress.accuracy': -1 })
-          .limit(3);
+          .sort(sortCriteria)
+          .limit(10);
+
+          // Only users who meet the threshold are considered winners; no fallback fill
+          const winnersUsers = eligibleTopUsers;
 
           // Save monthly winners before resetting data
-          if (topUsers.length > 0) {
+          if (winnersUsers.length > 0) {
             const currentMonth = today.format('MM'); // 08 for August
-            const currentYear = today.year(); // 2024
+            const currentYear = today.year(); // 2025
             const monthYear = today.format('YYYY-MM'); // 2024-08
             
-            // Prepare winners data
-            const winners = topUsers.map((user, index) => {
+            // Prepare winners data with new reward distribution
+            const rewardDistribution = User.getRewardDistribution();
+            
+            let winners = winnersUsers.map((user, index) => {
               const rank = index + 1;
-              const rewardAmount = Math.round((9999 * [3, 2, 1][index]) / 6); // 3:2:1 ratio
+              const rewardInfo = rewardDistribution[index] || { amount: 0 };
+              const rewardAmount = rewardInfo.amount;
               
               return {
                 rank,
@@ -231,7 +261,11 @@ const initializeMonthlyReset = () => {
                 userName: user.name,
                 userEmail: user.email,
                 highScoreWins: user.monthlyProgress.highScoreWins,
+                highScoreQuizzes: user.level.highScoreQuizzes,
+                averageScore: user.level.averageScore,
                 accuracy: user.monthlyProgress.accuracy,
+                totalQuizAttempts: user.monthlyProgress.totalQuizAttempts,
+                totalCorrectAnswers: user.level.totalScore,
                 rewardAmount,
                 claimableRewards: user.claimableRewards || 0
               };
@@ -249,7 +283,7 @@ const initializeMonthlyReset = () => {
                 resetDate: new Date(),
                 processedBy: 'monthly_reset_cron',
                 metadata: {
-                  totalEligibleUsers: topUsers.length,
+                  totalEligibleUsers: winnersUsers.length,
                   resetTimestamp: new Date(),
                   cronJobId: 'monthly_reset_' + monthYear
                 }
@@ -260,15 +294,14 @@ const initializeMonthlyReset = () => {
             console.log(`📊 Monthly winners saved for ${monthYear}: ${winners.length} winners`);
           }
 
-          // Process rewards for top 3 users with 3:2:1 ratio
-          const totalPrizePool = 9999; // Total prize pool ₹9,999
-          const ratios = [3, 2, 1]; // 3:2:1 ratio
-          const totalRatio = ratios.reduce((sum, ratio) => sum + ratio, 0);
+          // Process rewards for top 10 users with new distribution
+          // Distribute rewards using new Top 10 system
+          const rewardDistribution = User.getRewardDistribution();
           
-          for (let i = 0; i < topUsers.length; i++) {
-            const user = topUsers[i];
-            // Calculate reward based on 3:2:1 ratio
-            const rewardAmount = Math.round((totalPrizePool * ratios[i]) / totalRatio);
+          for (let i = 0; i < winnersUsers.length; i++) {
+            const user = winnersUsers[i];
+            const rewardInfo = rewardDistribution[i] || { amount: 0 };
+            const rewardAmount = rewardInfo.amount;
             
             // Add to claimable rewards
             user.claimableRewards = (user.claimableRewards || 0) + rewardAmount;
@@ -290,7 +323,29 @@ const initializeMonthlyReset = () => {
             'monthlyProgress.rewardRank': null
           }
         });
-        console.log('✅ Monthly reset completed');
+
+        // Clear all quiz attempts for the new month
+       
+        const deleteResult = await QuizAttempt.deleteMany({});
+        console.log(`🗑️ Cleared quiz attempts: ${deleteResult.deletedCount} records removed`);
+
+        // Additionally, reset student progress and badges to defaults
+        await User.updateMany({ role: 'student' }, {
+          $set: {
+            badges: ['Student'],
+            'level.currentLevel': 1,
+            'level.levelName': 'Starter',
+            'level.quizzesPlayed': 0,
+            'level.highScoreQuizzes': 0,
+            'level.totalScore': 0,
+            'level.averageScore': 0,
+            'level.levelProgress': 0,
+            'level.lastLevelUp': '',
+            totalQuizzesPlayed: 0,
+            quizBestScores: []
+          }
+        });
+        console.log('✅ Monthly reset completed (including student defaults)');
       } catch (e) {
         console.error('❌ Monthly reset failed:', e);
       }
@@ -303,7 +358,8 @@ const initializeMonthlyReset = () => {
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
-    console.log('✅ Database Connected to MongoDB');
+    console.log(`✅ Database Connected to MongoDB`);
+    console.log(`✅ Database URI ${process.env.MONGO_URI}`);
     server.listen(PORT, () => {
       console.log(`🚀 Server running on port ${PORT}`);
       

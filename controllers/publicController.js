@@ -215,22 +215,29 @@ exports.getMonthlyLeaderboard = async (req, res) => {
 
     const users = await User.find({
       role: 'student',
-      'monthlyProgress.month': month,
-      'monthlyProgress.currentLevel': 10,
-      'monthlyProgress.accuracy': { $gte: 75 },
-      'monthlyProgress.rewardEligible': true
+      'level.currentLevel': 10,
+      'level.highScoreQuizzes': { $gte: parseInt(process.env.MONTHLY_REWARD_QUIZ_REQUIREMENT) || 220 }
     })
-    .select('name monthlyProgress subscriptionStatus')
+    .select('name level monthlyProgress subscriptionStatus')
     .lean();
 
-    // Sort: wins desc, then accuracy desc
+    // Sort: 1. Highest Average Quiz Score, 2. Highest Accuracy, 3. Total Score, 4. Total Quizzes Played
     users.sort((a, b) => {
-      const aw = a.monthlyProgress?.highScoreWins || 0;
-      const bw = b.monthlyProgress?.highScoreWins || 0;
-      if (aw !== bw) return bw - aw;
-      const aa = a.monthlyProgress?.accuracy || 0;
-      const ba = b.monthlyProgress?.accuracy || 0;
-      return ba - aa;
+      const aAvg = a.level?.averageScore || 0;
+      const bAvg = b.level?.averageScore || 0;
+      if (aAvg !== bAvg) return bAvg - aAvg;
+      
+      const aAcc = a.monthlyProgress?.accuracy || 0;
+      const bAcc = b.monthlyProgress?.accuracy || 0;
+      if (aAcc !== bAcc) return bAcc - aAcc;
+      
+      const aScore = a.level?.totalScore || 0;
+      const bScore = b.level?.totalScore || 0;
+      if (aScore !== bScore) return bScore - aScore;
+      
+      const aQuizzes = a.level?.quizzesPlayed || 0;
+      const bQuizzes = b.level?.quizzesPlayed || 0;
+      return bQuizzes - aQuizzes;
     });
 
     const top = users.slice(0, limit).map((u, idx) => ({
@@ -238,12 +245,16 @@ exports.getMonthlyLeaderboard = async (req, res) => {
       name: u.name,
       rank: idx + 1,
       month,
+      level: {
+        currentLevel: u.level?.currentLevel || 0,
+        highScoreQuizzes: u.level?.highScoreQuizzes || 0,
+        averageScore: u.level?.averageScore || 0,
+        totalScore: u.level?.totalScore || 0,
+        quizzesPlayed: u.level?.quizzesPlayed || 0
+      },
       monthly: {
-        highScoreWins: u.monthlyProgress?.highScoreWins || 0,
-        totalQuizAttempts: u.monthlyProgress?.totalQuizAttempts || 0,
         accuracy: u.monthlyProgress?.accuracy || 0,
-        currentLevel: u.monthlyProgress?.currentLevel || 0,
-        rewardEligible: !!u.monthlyProgress?.rewardEligible
+        rewardEligible: true // All users in this query are eligible
       }
     }));
 
@@ -286,7 +297,7 @@ exports.getTopPerformersMonthly = async (req, res) => {
       role: 'student',
       'monthlyProgress.month': month
     })
-    .select('_id name monthlyProgress profilePicture subscriptionStatus')
+    .select('_id name monthlyProgress level profilePicture subscriptionStatus')
     .lean();
 
     // If we don't have enough users with current month data, get additional users with global level data
@@ -309,6 +320,7 @@ exports.getTopPerformersMonthly = async (req, res) => {
         name: user.name,
         profilePicture: user.profilePicture,
         subscriptionStatus: user.subscriptionStatus,
+        level: user.level,
         monthlyProgress: {
           month: month,
           highScoreWins: user.level?.highScoreQuizzes || 0,
@@ -332,6 +344,16 @@ exports.getTopPerformersMonthly = async (req, res) => {
           accuracy: 0,
           currentLevel: 0,
           rewardEligible: false
+        };
+      }
+      // Ensure level data exists
+      if (!user.level) {
+        user.level = {
+          totalScore: 0,
+          quizzesPlayed: 0,
+          averageScore: 0,
+          currentLevel: 0,
+          highScoreQuizzes: 0
         };
       }
     });
@@ -368,6 +390,7 @@ exports.getTopPerformersMonthly = async (req, res) => {
       month: month,
       profilePicture: user.profilePicture,
       subscriptionName: getSubscriptionDisplayName(user.subscriptionStatus),
+      totalCorrectAnswers: user.level?.totalScore || 0,
       monthly: {
         highScoreWins: user.monthlyProgress?.highScoreWins || 0,
         totalQuizAttempts: user.monthlyProgress?.totalQuizAttempts || 0,
@@ -413,13 +436,15 @@ exports.getTopPerformersMonthly = async (req, res) => {
           position: user.position,
           isCurrentUser: user._id.toString() === currentUserId.toString(),
           subscriptionName: getSubscriptionDisplayName(user.subscriptionStatus),
+          totalCorrectAnswers: user.level?.totalScore || 0,
           level: {
             currentLevel: user.monthlyProgress?.currentLevel || 0,
             levelName: user.monthlyProgress?.currentLevel === 10 ? 'Legend' : getLevelName(user.monthlyProgress?.currentLevel || 0),
             highScoreQuizzes: user.monthlyProgress?.highScoreWins || 0,
             quizzesPlayed: user.monthlyProgress?.totalQuizAttempts || 0,
             accuracy: user.monthlyProgress?.accuracy || 0,
-            averageScore: user.monthlyProgress?.accuracy || 0
+            averageScore: user.monthlyProgress?.accuracy || 0,
+            totalScore: user.level?.totalScore || 0
           }
         }));
       }
@@ -437,13 +462,15 @@ exports.getTopPerformersMonthly = async (req, res) => {
           position: currentUserData.position,
           isCurrentUser: true,
           subscriptionName: getSubscriptionDisplayName(currentUserData.subscriptionStatus),
+          totalCorrectAnswers: currentUserData.level?.totalScore || 0,
           level: {
             currentLevel: currentUserData.monthlyProgress?.currentLevel || 0,
             levelName: currentUserData.monthlyProgress?.currentLevel === 10 ? 'Legend' : getLevelName(currentUserData.monthlyProgress?.currentLevel || 0),
             highScoreQuizzes: currentUserData.monthlyProgress?.highScoreWins || 0,
             quizzesPlayed: currentUserData.monthlyProgress?.totalQuizAttempts || 0,
             accuracy: currentUserData.monthlyProgress?.accuracy || 0,
-            averageScore: currentUserData.monthlyProgress?.accuracy || 0
+            averageScore: currentUserData.monthlyProgress?.accuracy || 0,
+            totalScore: currentUserData.level?.totalScore || 0
           }
         } : null,
         surroundingUsers
@@ -491,7 +518,7 @@ exports.getLandingStats = async (req, res) => {
       totalQuestions: totalQuestions,
       quizzesTaken: totalQuizAttempts,
       paidSubscriptions: paidSubscriptions, // Add count of users with paid subscriptions
-      monthlyPrizePool: '₹9,999'
+      monthlyPrizePool: `₹${parseInt(process.env.MONTHLY_PRIZE_POOL) || 10000}`
     };
 
     res.json({ success: true, data: stats });
@@ -554,7 +581,7 @@ exports.getLandingTopPerformers = async (req, res) => {
       role: 'student',
       'monthlyProgress.month': month
     })
-      .select('_id name monthlyProgress createdAt subscriptionStatus')
+      .select('_id name monthlyProgress level createdAt subscriptionStatus')
       .lean();
 
     // If we don't have enough users with current month data, get additional users with global level data
@@ -602,6 +629,16 @@ exports.getLandingTopPerformers = async (req, res) => {
           rewardEligible: false
         };
       }
+      // Ensure level data exists
+      if (!user.level) {
+        user.level = {
+          totalScore: 0,
+          quizzesPlayed: 0,
+          averageScore: 0,
+          currentLevel: 0,
+          highScoreQuizzes: 0
+        };
+      }
     });
 
     // Sort by high score wins, accuracy, and total quizzes - same as Performance Analytics
@@ -638,6 +675,9 @@ exports.getLandingTopPerformers = async (req, res) => {
       totalQuizzes: user.monthlyProgress?.totalQuizAttempts || 0,
       highQuizzes: user.monthlyProgress?.highScoreWins || 0,
       accuracy: user.monthlyProgress?.accuracy || 0,
+      // Add total score and correct answers count
+      totalScore: user.level?.totalScore || 0,
+      totalCorrectAnswers: user.level?.totalScore || 0, // totalScore represents total correct answers
       // Keep existing fields for backward compatibility
       level: user.monthlyProgress?.currentLevel || 0,
       score: user.monthlyProgress?.highScoreWins || 0,
