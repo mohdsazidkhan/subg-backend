@@ -1,9 +1,8 @@
 const User = require('../models/User');
 const Quiz = require('../models/Quiz');
 const QuizAttempt = require('../models/QuizAttempt');
-const Category = require('../models/Category');
-const Subcategory = require('../models/Subcategory');
 const MonthlyWinners = require('../models/MonthlyWinners');
+const PaymentOrder = require('../models/PaymentOrder');
 
 // Dashboard overview analytics
 exports.getDashboardOverview = async (req, res) => {
@@ -11,8 +10,6 @@ exports.getDashboardOverview = async (req, res) => {
     const totalUsers = await User.countDocuments({ role: 'student' });
     const totalQuizzes = await Quiz.countDocuments();
     const totalAttempts = await QuizAttempt.countDocuments();
-    const totalCategories = await Category.countDocuments();
-    const totalSubcategories = await Subcategory.countDocuments();
 
     // Get active users (users who have attempted quizzes in last 30 days)
     const thirtyDaysAgo = new Date();
@@ -21,24 +18,13 @@ exports.getDashboardOverview = async (req, res) => {
       attemptedAt: { $gte: thirtyDaysAgo }
     });
 
-    // Get total revenue from subscriptions (mock calculation)
-    const subscriptionRevenue = await User.aggregate([
-      { $match: { role: 'student' } },
+    // Get total revenue from completed payments
+    const revenueSummary = await PaymentOrder.aggregate([
+      { $match: { payuStatus: 'success' } },
       {
         $group: {
           _id: null,
-          totalRevenue: {
-            $sum: {
-              $switch: {
-                branches: [
-                  { case: { $eq: ['$subscriptionStatus', 'basic'] }, then: 99 },
-                  { case: { $eq: ['$subscriptionStatus', 'premium'] }, then: 199 },
-                  { case: { $eq: ['$subscriptionStatus', 'pro'] }, then: 299 }
-                ],
-                default: 0
-              }
-            }
-          }
+          totalRevenue: { $sum: '$amount' }
         }
       }
     ]);
@@ -70,15 +56,38 @@ exports.getDashboardOverview = async (req, res) => {
       { $sort: { _id: 1 } }
     ]);
 
+    // Helper function to calculate accuracy from quizBestScores array
+    const calculateAccuracyFromBestScores = (quizBestScores) => {
+      if (!quizBestScores || quizBestScores.length === 0) {
+        return 0;
+      }
+      const totalPercentage = quizBestScores.reduce((sum, quiz) => {
+        return sum + (quiz.bestScorePercentage || 0);
+      }, 0);
+      return Math.round(totalPercentage / quizBestScores.length);
+    };
+
     // Get top users based on monthly progress
     const currentMonth = new Date().toISOString().slice(0, 7);
     const topUsers = await User.find({
       role: 'student',
       'monthlyProgress.month': currentMonth
     })
-    .select('name level monthlyProgress')
+    .select('name level monthlyProgress quizBestScores')
     .sort({ 'monthlyProgress.highScoreWins': -1, 'monthlyProgress.accuracy': -1 })
-    .limit(10);
+    .limit(10)
+    .lean();
+
+    // Calculate and update accuracy from quizBestScores for each user
+    topUsers.forEach(user => {
+      const calculatedAccuracy = calculateAccuracyFromBestScores(user.quizBestScores);
+      if (!user.monthlyProgress) {
+        user.monthlyProgress = {};
+      }
+      user.monthlyProgress.accuracy = calculatedAccuracy;
+      // Remove quizBestScores from response
+      delete user.quizBestScores;
+    });
 
     res.json({
       success: true,
@@ -87,7 +96,7 @@ exports.getDashboardOverview = async (req, res) => {
           totalUsers,
           totalQuizzes,
           totalAttempts,
-          totalRevenue: subscriptionRevenue[0]?.totalRevenue || 0,
+          totalRevenue: revenueSummary[0]?.totalRevenue || 0,
           activeUsers: activeUsers.length,
           totalSubscriptions
         },
@@ -551,6 +560,17 @@ exports.getPerformanceAnalytics = async (req, res) => {
       }
     ]);
 
+    // Helper function to calculate accuracy from quizBestScores array
+    const calculateAccuracyFromBestScores = (quizBestScores) => {
+      if (!quizBestScores || quizBestScores.length === 0) {
+        return 0;
+      }
+      const totalPercentage = quizBestScores.reduce((sum, quiz) => {
+        return sum + (quiz.bestScorePercentage || 0);
+      }, 0);
+      return Math.round(totalPercentage / quizBestScores.length);
+    };
+
     // Top performers - use monthlyProgress data when period is month
     let topPerformers;
     if (period === 'month') {
@@ -559,10 +579,19 @@ exports.getPerformanceAnalytics = async (req, res) => {
         role: 'student',
         'monthlyProgress.month': currentMonth
       })
-      .select('name email level monthlyProgress')
+      .select('name email level monthlyProgress quizBestScores')
       .sort({ 'monthlyProgress.highScoreWins': -1, 'monthlyProgress.accuracy': -1 })
       .limit(10)
       .lean();
+      
+      // Calculate and update accuracy from quizBestScores for each user
+      topPerformers.forEach(user => {
+        const calculatedAccuracy = calculateAccuracyFromBestScores(user.quizBestScores);
+        if (!user.monthlyProgress) {
+          user.monthlyProgress = {};
+        }
+        user.monthlyProgress.accuracy = calculatedAccuracy;
+      });
       
       // Calculate total scores for each user from quiz attempts
       const userIds = topPerformers.map(user => user._id);

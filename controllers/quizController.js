@@ -106,6 +106,21 @@ exports.attemptQuiz = async (req, res) => {
     let levelUpdate = null;
     levelUpdate = user.addQuizCompletion(score, questions.length);
     
+    // Calculate and update accuracy from quizBestScores array
+    const calculateAccuracyFromBestScores = (quizBestScores) => {
+      if (!quizBestScores || quizBestScores.length === 0) {
+        return 0;
+      }
+      const totalPercentage = quizBestScores.reduce((sum, quiz) => {
+        return sum + (quiz.bestScorePercentage || 0);
+      }, 0);
+      return Math.round(totalPercentage / quizBestScores.length);
+    };
+    
+    // Update monthlyProgress.accuracy with calculated value
+    const calculatedAccuracy = calculateAccuracyFromBestScores(user.quizBestScores);
+    user.ensureMonthlyProgress(); // Ensure monthlyProgress exists
+    user.monthlyProgress.accuracy = calculatedAccuracy;
     await user.save();
 
     // Note: Rewards are now handled by the monthly rewards system

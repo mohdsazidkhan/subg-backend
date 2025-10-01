@@ -22,3 +22,5 @@
 2025-09-30T16:14:15.435Z [ERROR]: ❌ Failed to schedule monthly reset: RangeError: Invalid time value 
 2025-09-30T16:16:00.039Z [ERROR]: ❌ Monthly reset failed: ReferenceError: Cannot access 'User' before initialization 
 2025-09-30T16:25:00.229Z [ERROR]: ❌ Monthly reset failed: ReferenceError: topUsers is not defined 
+2025-10-01T05:57:10.336Z [ERROR]: Error fetching dashboard overview: ReferenceError: PaymentOrder is not defined 
+2025-10-01T05:57:10.572Z [ERROR]: Error fetching dashboard overview: ReferenceError: PaymentOrder is not defined 
