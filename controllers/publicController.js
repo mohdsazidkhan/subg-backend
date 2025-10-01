@@ -581,7 +581,7 @@ exports.getLandingTopPerformers = async (req, res) => {
       role: 'student',
       'monthlyProgress.month': month
     })
-      .select('_id name monthlyProgress level createdAt subscriptionStatus')
+      .select('_id name monthlyProgress level profilePicture quizBestScores createdAt subscriptionStatus')
       .lean();
 
     // If we don't have enough users with current month data, get additional users with global level data
@@ -593,7 +593,7 @@ exports.getLandingTopPerformers = async (req, res) => {
           { monthlyProgress: { $exists: false } }
         ]
       })
-        .select('_id name level createdAt subscriptionStatus')
+        .select('_id name level profilePicture quizBestScores createdAt subscriptionStatus')
         .sort({ 'level.highScoreQuizzes': -1, 'level.averageScore': -1 })
         .limit(parseInt(limit) - allUsers.length)
         .lean();
@@ -602,7 +602,16 @@ exports.getLandingTopPerformers = async (req, res) => {
       const transformedAdditionalUsers = additionalUsers.map(user => ({
         _id: user._id,
         name: user.name,
+        profilePicture: user.profilePicture,
         subscriptionStatus: user.subscriptionStatus,
+        quizBestScores: user.quizBestScores || [],
+        level: user.level || {
+          totalScore: 0,
+          quizzesPlayed: 0,
+          averageScore: 0,
+          currentLevel: 0,
+          highScoreQuizzes: 0
+        },
         monthlyProgress: {
           month: month,
           highScoreWins: user.level?.highScoreQuizzes || 0,
@@ -617,19 +626,38 @@ exports.getLandingTopPerformers = async (req, res) => {
       allUsers = [...allUsers, ...transformedAdditionalUsers];
     }
 
-    // Ensure all users have monthly progress data, set defaults if missing
+    // Helper function to calculate accuracy from quizBestScores array
+    const calculateAccuracyFromBestScores = (quizBestScores) => {
+      if (!quizBestScores || quizBestScores.length === 0) {
+        return 0;
+      }
+      const totalPercentage = quizBestScores.reduce((sum, quiz) => {
+        return sum + (quiz.bestScorePercentage || 0);
+      }, 0);
+      return Math.round(totalPercentage / quizBestScores.length);
+    };
+
+    // Ensure all users have complete data, set defaults if missing
     allUsers.forEach(user => {
+      // Calculate accuracy from quizBestScores array
+      const calculatedAccuracy = calculateAccuracyFromBestScores(user.quizBestScores);
+      
+      // Ensure monthlyProgress exists
       if (!user.monthlyProgress) {
         user.monthlyProgress = {
           month: month,
           highScoreWins: 0,
           totalQuizAttempts: 0,
-          accuracy: 0,
+          accuracy: calculatedAccuracy,
           currentLevel: 0,
           rewardEligible: false
         };
+      } else {
+        // Update accuracy with calculated value from quizBestScores
+        user.monthlyProgress.accuracy = calculatedAccuracy;
       }
-      // Ensure level data exists
+      
+      // Ensure level data exists with all required fields
       if (!user.level) {
         user.level = {
           totalScore: 0,
@@ -638,6 +666,13 @@ exports.getLandingTopPerformers = async (req, res) => {
           currentLevel: 0,
           highScoreQuizzes: 0
         };
+      } else {
+        // Ensure all level fields have default values if missing
+        user.level.totalScore = user.level.totalScore || 0;
+        user.level.quizzesPlayed = user.level.quizzesPlayed || 0;
+        user.level.averageScore = user.level.averageScore || 0;
+        user.level.currentLevel = user.level.currentLevel || 0;
+        user.level.highScoreQuizzes = user.level.highScoreQuizzes || 0;
       }
     });
 
@@ -667,8 +702,13 @@ exports.getLandingTopPerformers = async (req, res) => {
     // Get top performers and format for landing page with all required fields
     const topPerformers = allUsers.slice(0, parseInt(limit)).map((user, index) => ({
       _id: user._id,
+      userId: user._id,
       name: user.name || 'Anonymous',
+      profilePicture: user.profilePicture || null,
       subscriptionName: getSubscriptionDisplayName(user.subscriptionStatus),
+      subscriptionStatus: user.subscriptionStatus || 'free',
+      rank: index + 1,
+      position: index + 1,
       userLevel: user.monthlyProgress?.currentLevel || 0,
       userLevelName: getLevelName(user.monthlyProgress?.currentLevel || 0),
       userLevelNo: user.monthlyProgress?.currentLevel || 0,
@@ -681,7 +721,16 @@ exports.getLandingTopPerformers = async (req, res) => {
       // Keep existing fields for backward compatibility
       level: user.monthlyProgress?.currentLevel || 0,
       score: user.monthlyProgress?.highScoreWins || 0,
-      quizCount: user.monthlyProgress?.totalQuizAttempts || 0
+      quizCount: user.monthlyProgress?.totalQuizAttempts || 0,
+      // Add monthly and level details
+      monthly: {
+        month: month,
+        highScoreWins: user.monthlyProgress?.highScoreWins || 0,
+        totalQuizAttempts: user.monthlyProgress?.totalQuizAttempts || 0,
+        accuracy: user.monthlyProgress?.accuracy || 0,
+        currentLevel: user.monthlyProgress?.currentLevel || 0,
+        rewardEligible: user.monthlyProgress?.rewardEligible || false
+      }
     }));
 
     res.json({ success: true, data: topPerformers });
