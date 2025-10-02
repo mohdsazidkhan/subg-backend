@@ -747,7 +747,7 @@ exports.deleteStudent = async (req, res) => {
 // ---------------- User Wallets (Admin) ----------------
 exports.getUserWallets = async (req, res) => {
   try {
-    const { page, limit, search } = req.query;
+    const { page, limit, search, sortBy = 'amount', sortOrder = 'desc' } = req.query;
     const pageNum = parseInt(page) || 1;
     const limitNum = Math.min(parseInt(limit) || 20, 100);
     const skip = (pageNum - 1) * limitNum;
@@ -761,12 +761,19 @@ exports.getUserWallets = async (req, res) => {
       ];
     }
 
+    // Build sort object based on sortBy parameter
+    let sortObj = {};
+    if (sortBy === 'amount') {
+      sortObj = { amount: sortOrder === 'desc' ? -1 : 1 };
+    } else if (sortBy === 'createdAt') {
+      sortObj = { createdAt: sortOrder === 'desc' ? -1 : 1 };
+    } else {
+      sortObj = { createdAt: -1 }; // default fallback
+    }
+
     const [rows, countResult] = await Promise.all([
       User.aggregate([
         { $match: match },
-        { $sort: { createdAt: -1 } },
-        { $skip: skip },
-        { $limit: limitNum },
         {
           $lookup: {
             from: 'userwallets',
@@ -791,6 +798,9 @@ exports.getUserWallets = async (req, res) => {
             email: 1,
             phone: 1,
             amount: { $ifNull: ['$wallet.balance', 0] },
+            createdAt: 1,
+            level: 1,
+            subscriptionStatus: 1,
             questionCounts: {
               total: { $size: '$questions' },
               approved: {
@@ -819,7 +829,10 @@ exports.getUserWallets = async (req, res) => {
               }
             }
           }
-        }
+        },
+        { $sort: sortObj },
+        { $skip: skip },
+        { $limit: limitNum }
       ]),
       User.countDocuments(match)
     ]);
@@ -827,11 +840,14 @@ exports.getUserWallets = async (req, res) => {
     const items = rows.map(r => ({
       id: r._id,
       amount: r.amount || 0,
+      createdAt: r.createdAt,
       user: {
         id: r._id,
         name: r.name || 'Unknown',
         email: r.email || '',
-        phone: r.phone || ''
+        phone: r.phone || '',
+        level: r.level || { currentLevel: 0, levelName: 'Starter' },
+        subscriptionStatus: r.subscriptionStatus || 'free'
       },
       questionCounts: {
         total: r.questionCounts?.total || 0,
