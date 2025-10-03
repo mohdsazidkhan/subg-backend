@@ -8,10 +8,37 @@ const UserQuestionViews = require('../models/UserQuestionViews');
 const CREDIT_INTERVAL = parseInt(process.env.PRO_USER_APPROVALS_PER_CREDIT || '10', 10);
 const CREDIT_AMOUNT = parseInt(process.env.PRO_USER_CREDIT_AMOUNT || '10', 10); // ₹10 per approved question
 
+// Helper function to count user questions in current month
+const getCurrentMonthQuestionCount = async (userId) => {
+	const now = new Date();
+	const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+	const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59, 999);
+	
+	return await UserQuestions.countDocuments({
+		userId,
+		createdAt: {
+			$gte: startOfMonth,
+			$lte: endOfMonth
+		}
+	});
+};
+
 exports.createQuestion = async (req, res) => {
 	try {
 		const userId = req.user.id;
 		const { questionText, options, correctOptionIndex } = req.body;
+		
+		// Check monthly question limit
+		const currentMonthCount = await getCurrentMonthQuestionCount(userId);
+		if (currentMonthCount >= 100) {
+			return res.status(429).json({ 
+				message: 'You can add max 100 questions in a month',
+				error: 'MONTHLY_LIMIT_EXCEEDED',
+				currentCount: currentMonthCount,
+				limit: 100
+			});
+		}
+		
 		if (!questionText || !Array.isArray(options) || options.length !== 4) {
 			return res.status(400).json({ message: 'questionText and exactly 4 options are required' });
 		}
@@ -249,6 +276,28 @@ exports.listMyQuestions = async (req, res) => {
 		return res.json({ success: true, data: items, pagination: { page: parseInt(page), limit: parseInt(limit), total } });
 	} catch (err) {
 		console.error('listMyQuestions error:', err);
+		return res.status(500).json({ message: 'Internal server error' });
+	}
+};
+
+// Get current month question count for user
+exports.getCurrentMonthQuestionCount = async (req, res) => {
+	try {
+		const userId = req.user.id;
+		const currentCount = await getCurrentMonthQuestionCount(userId);
+		const remaining = Math.max(0, 100 - currentCount);
+		
+		return res.json({ 
+			success: true, 
+			data: { 
+				currentCount, 
+				limit: 100, 
+				remaining,
+				canAddMore: currentCount < 100
+			} 
+		});
+	} catch (err) {
+		console.error('getCurrentMonthQuestionCount error:', err);
 		return res.status(500).json({ message: 'Internal server error' });
 	}
 };

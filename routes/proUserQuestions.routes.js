@@ -18,6 +18,7 @@ router.post('/userQuestions/:id/answer', protect, interactLimiter, ctrl.answerQu
 router.post('/userQuestions/:id/like', protect, interactLimiter, ctrl.likeQuestion);
 router.post('/userQuestions/:id/share', protect, interactLimiter, ctrl.shareQuestion);
 router.get('/userQuestions/mine/list', protect, ctrl.listMyQuestions);
+router.get('/userQuestions/monthly-count', protect, ctrl.getCurrentMonthQuestionCount);
 
 module.exports = router;
 
